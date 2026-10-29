@@ -37,10 +37,10 @@ The page sets no cookies and sends nothing about you anywhere. Fonts are served 
 | Bistrot | Weekly text with a section per day |
 | Cuckoo's Nest | Weekly text with a line per day |
 | District One | Weekly text with a section per day |
-| Oishii, Miss F, Alkemisten | Fixed menu, entered by hand |
+| Oishii, Miss F, Alkemisten, BISTRO 3 | Fixed menu, entered by hand |
 | Bombay Bistro | Four-week rotation, but the site doesn't say which week is current, so shown as a fixed menu for now |
 
-Matminnen closed in June 2026.
+Matminnen closed in June 2026. Masala Kitchen publishes four rotating menus as images with no readable text; its lunch page does say which one is this week's.
 
 ## Adding a place
 
