@@ -1,0 +1,65 @@
+# Ellenial Luncheon
+
+Every lunch menu near Lindholmen, Gothenburg, for today, on one screen. Compare everything at a glance and decide where to eat.
+
+Free, no ads, no tracking, no accounts. An [Ellenial](https://ellenial.app) tool, built by one person with help from Claude.
+
+## How it works
+
+- **`places.json`** lists the lunch places: name, website, location and how its menu is read.
+- **`scripts/read-menus.mjs`** reads each place's menu from the restaurant's own website and writes **`data/menus.json`**. It has no dependencies (Node 20+).
+- **`.github/workflows/read-menus.yml`** runs the reader on weekday mornings and saves the file when a menu changes.
+- **`index.html`**, **`app.js`** and **`styles.css`** are the page. It reads `data/menus.json` and shows every place's menu for today.
+
+### Being honest about freshness
+
+Every menu carries a label, so an old menu never looks like today's:
+
+| Label | Meaning |
+| --- | --- |
+| Updated 09:02 | Today's menu, read this morning |
+| From Wednesday · may have changed | The site still shows an earlier day's menu, or couldn't be read today |
+| No menu found today | Nothing readable; the restaurant's own page may have it |
+| Grey card | A fixed menu that's the same every day |
+
+### Privacy
+
+The page sets no cookies and sends nothing about you anywhere. Walking times are counted from Lindholmen Science Park, not from your location.
+
+## Places in the first version
+
+| Place | How the menu is read |
+| --- | --- |
+| Uni3 World of Food | Weekly menu data embedded in the Compass Group page |
+| Kooperativet | Weekly text with a section per day |
+| Bistrot | Weekly text with a section per day |
+| Cuckoo's Nest | Weekly text with a line per day |
+| Oishii | Fixed menu, entered by hand |
+
+Some sites (District One, Bombay Bistro, Miss F, Alkemisten) don't answer requests from GitHub's servers, so they need another way in. Matminnen closed in June 2026.
+
+## Adding a place
+
+1. Add it to `places.json` with its website and coordinates from OpenStreetMap.
+2. If its menu changes, add a reader function to `scripts/read-menus.mjs` and name it in `reader`. If it's the same every day, use `"kind": "fixed"` and write a short `note` instead.
+3. Test against a saved copy of the page:
+
+   ```sh
+   mkdir fixtures && curl -sL https://example.se/lunch -o fixtures/<place id>.html
+   LUNCHEON_FIXTURES=fixtures LUNCHEON_TODAY=2026-10-29 node scripts/read-menus.mjs
+   ```
+
+## Run it locally
+
+```sh
+node scripts/read-menus.mjs   # fetch today's menus
+python3 -m http.server        # then open http://localhost:8000
+```
+
+## Respecting the restaurants
+
+The reader fetches each page a few times per weekday morning, identifies itself, and links back to the restaurant. If a restaurant would rather not be included, or wants to post its menu directly, it can open an issue and we'll sort it out.
+
+## Licence
+
+Open source. Licence to be chosen.

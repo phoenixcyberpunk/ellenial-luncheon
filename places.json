@@ -1,0 +1,51 @@
+{
+  "_about": "Lunch places shown in Luncheon. 'reader' names the function in scripts/read-menus.mjs that reads the menu; 'fixed' places have the same menu every day and are entered by hand. Coordinates are from OpenStreetMap. Uni3 uses the Lindholmspiren 3 building and Bistrot the Diagonalen street, so their walking times are approximate. Oishii's location is not filled in yet.",
+  "places": [
+    {
+      "id": "uni3",
+      "name": "Uni3 World of Food",
+      "url": "https://www.compass-group.se/restauranger-och-menyer/ovriga-restauranger/uni3-world-of-food/",
+      "lat": 57.70661,
+      "lon": 11.9405,
+      "reader": "compass",
+      "note": "Earth is the vegetarian station."
+    },
+    {
+      "id": "kooperativet",
+      "name": "Kooperativet",
+      "url": "https://www.kooperativet.se/",
+      "lat": 57.70859,
+      "lon": 11.94472,
+      "reader": "kooperativet",
+      "note": "139 kr with salad buffet, bread, coffee and cake."
+    },
+    {
+      "id": "bistrot",
+      "name": "Bistrot",
+      "url": "https://bistrot.se/",
+      "lat": 57.70442,
+      "lon": 11.93748,
+      "reader": "bistrot",
+      "note": "139 kr with salad buffet, sourdough bread, coffee and cake."
+    },
+    {
+      "id": "cuckoosnest",
+      "name": "Cuckoo's Nest",
+      "url": "https://www.cuckoosnest.se/menyer/lunch",
+      "lat": 57.70772,
+      "lon": 11.94092,
+      "reader": "cuckoo",
+      "note": "195 kr with salad buffet, coffee, tea and cake."
+    },
+    {
+      "id": "oishii",
+      "name": "Oishii",
+      "url": "https://oishii.se/lunchmeny/",
+      "lat": null,
+      "lon": null,
+      "kind": "fixed",
+      "veg": true,
+      "note": "Sushi, ramen, bento and poke bowls. Same menu every day, vegetarian sushi available. From 100 kr."
+    }
+  ]
+}

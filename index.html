@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Luncheon · today's lunch menus at Lindholmen</title>
+  <meta name="description" content="Every lunch menu near Lindholmen for today, on one screen. Free, no ads, no tracking. An Ellenial tool.">
+  <meta name="theme-color" content="#FAF7F2">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+</head>
+<body>
+  <main class="page">
+    <header class="top">
+      <p class="eyebrow" id="today-label">Today · Lindholmen</p>
+      <h1>All lunch menus, today</h1>
+      <p class="sub" id="summary">Loading today's menus…</p>
+      <div class="filters" role="group" aria-label="Filters">
+        <button type="button" class="chip" data-filter="veg" aria-pressed="false">Veg option</button>
+        <button type="button" class="chip" data-filter="near" aria-pressed="false">≤ 10 min walk</button>
+      </div>
+    </header>
+
+    <section id="list" class="list" aria-live="polite"></section>
+
+    <footer class="foot">
+      <p>Menus are read from each restaurant's own website every weekday morning. Something wrong? Check the restaurant's page before you walk over.</p>
+      <p>Walking times are counted from Lindholmen Science Park.</p>
+      <p>Free · no ads · no tracking · an <a href="https://ellenial.app">Ellenial</a> tool · <a href="https://github.com/phoenixcyberpunk/ellenial-luncheon">open source</a></p>
+    </footer>
+  </main>
+
+  <template id="card-tpl">
+    <article class="card">
+      <div class="card-head">
+        <a class="name" target="_blank" rel="noopener"></a>
+        <span class="walk"></span>
+      </div>
+      <ul class="dishes"></ul>
+      <p class="note"></p>
+      <span class="fresh"></span>
+    </article>
+  </template>
+
+  <script src="app.js" defer></script>
+</body>
+</html>
