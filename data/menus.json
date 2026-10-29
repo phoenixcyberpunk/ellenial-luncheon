@@ -200,6 +200,18 @@
       "kind": "fixed",
       "veg": true,
       "note": "Pinsa, classic mains, salads and kebab, 99–139 kr, plus a weekly dish (ask the staff, it isn't on their site). Vegetarian pinsa and Greek salad."
+    },
+    {
+      "id": "masala",
+      "name": "Masala Kitchen",
+      "url": "https://masalakitchen.se/lunch/",
+      "lat": null,
+      "lon": null,
+      "kind": "daily",
+      "menuDate": null,
+      "readAt": null,
+      "items": [],
+      "note": "129 kr with lunch naan, rice, salad and water."
     }
   ]
 }
