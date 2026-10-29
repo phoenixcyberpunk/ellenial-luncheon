@@ -208,10 +208,21 @@
       "lat": null,
       "lon": null,
       "kind": "daily",
-      "menuDate": null,
-      "readAt": null,
-      "items": [],
-      "note": "129 kr with lunch naan, rice, salad and water."
+      "menuDate": "2026-10-29",
+      "readAt": "2026-10-29T19:26:02.286Z",
+      "items": [
+        {
+          "text": "Aam Chicken · kycklingfilé i fruktig sås med kokosmjölk, mango, mynta och grön chili"
+        },
+        {
+          "text": "Kolhapuri Gosht · het lammrätt med svartpeppar, kokosmjölk och koriander"
+        },
+        {
+          "text": "Paneer Khumbi Masala · paneer och svamp i mustig tomat- och löksås",
+          "diet": "veg"
+        }
+      ],
+      "note": "Menu 4 of 4 this week. Always on: Subzi thali 139 kr (can be made vegan), palak paneer 139 kr, butter chicken, rogan josh and more, 139–165 kr."
     }
   ]
 }
