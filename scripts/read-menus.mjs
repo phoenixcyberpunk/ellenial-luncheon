@@ -232,6 +232,34 @@ const readers = {
     return { menuDate: dateInWeek(today, week, dow), items };
   },
 
+  // District One: "Vecka 44", then per day a dotted line, the day name, and pairs of
+  // category ("Fisk", "Vegetarisk Poke bowl") + dish text ending with a full stop.
+  districtone(html, today) {
+    const lines = htmlToLines(html);
+    const start = lines.findIndex((l) => /^vecka\s*\d+/i.test(l));
+    if (start < 0) throw new Error('week heading not found');
+    const week = Number(lines[start].match(/\d+/)[0]);
+    const wanted = weekday(today);
+    const dayAt = lines.findIndex((l, i) => i > start && l.toLowerCase() === DAYS_SV[wanted]);
+    if (dayAt < 0) return { menuDate: null, items: [] };
+    const items = [];
+    let category = null;
+    let dish = [];
+    for (const l of lines.slice(dayAt + 1)) {
+      if (/^\.{5,}$/.test(l) || DAYS_SV.includes(l.toLowerCase()) || /^(hem|lunch)$/i.test(l)) break;
+      if (category === null) { category = l; continue; }
+      dish.push(l.replace(/^-\s*/, ''));
+      if (/[.!]$/.test(l)) {
+        const text = clean(dish.join(' '));
+        if (!/^sallad$/i.test(category)) { // same Caesar salad every day
+          items.push({ text: `${category}: ${text}`, diet: VEG_WORDS.test(category) ? 'veg' : undefined });
+        }
+        category = null; dish = [];
+      }
+    }
+    return { menuDate: dateInWeek(today, week, wanted), items };
+  },
+
   // Cuckoo's Nest: "Vecka 44", then day names each followed by the dish, then "Veckans vegetariska".
   cuckoo(html, today) {
     const lines = htmlToLines(html);
