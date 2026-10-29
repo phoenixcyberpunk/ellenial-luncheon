@@ -1,5 +1,5 @@
 {
-  "_about": "Lunch places shown in Luncheon. 'reader' names the function in scripts/read-menus.mjs that reads the menu; 'fixed' places have the same menu every day and are entered by hand. Coordinates are from OpenStreetMap. Uni3 uses the Lindholmspiren 3 building and Bistrot the Diagonalen street, so their walking times are approximate. Oishii's and BISTRO 3's locations are not filled in yet. Bombay Bistro rotates four weekly menus but its site doesn't say which week is current, so it's shown as a fixed menu for now.",
+  "_about": "Lunch places shown in Luncheon. 'reader' names the function in scripts/read-menus.mjs that reads the menu; 'fixed' places have the same menu every day and are entered by hand. Coordinates are from OpenStreetMap. Uni3 uses the Lindholmspiren 3 building and Bistrot the Diagonalen street, so their walking times are approximate. Oishii's, BISTRO 3's and Masala Kitchen's locations are not filled in yet. Bombay Bistro rotates four weekly menus but its site doesn't say which week is current, so it's shown as a fixed menu for now.",
   "places": [
     {
       "id": "uni3",
@@ -95,6 +95,15 @@
       "kind": "fixed",
       "veg": true,
       "note": "Pinsa, classic mains, salads and kebab, 99–139 kr, plus a weekly dish (ask the staff, it isn't on their site). Vegetarian pinsa and Greek salad."
+    },
+    {
+      "id": "masala",
+      "name": "Masala Kitchen",
+      "url": "https://masalakitchen.se/lunch/",
+      "lat": null,
+      "lon": null,
+      "reader": "masala",
+      "note": "129 kr with lunch naan, rice, salad and water."
     }
   ]
 }

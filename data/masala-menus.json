@@ -1,0 +1,256 @@
+{
+  "_about": "Masala Kitchen's four rotating weekly lunch menus, typed in by hand from the menu images on masalakitchen.se/lunch (version 'nov2025' / 'dec2025'). The reader picks this week's number from the 'Veckans Meny' tab. diet: vegan = marked V on the menu, veg = vegetarian but not marked vegan. If the restaurant changes its menus, these need typing in again.",
+  "source": "https://masalakitchen.se/lunch/",
+  "typedIn": "2026-10-29",
+  "menus": {
+    "1": {
+      "1": [
+        {
+          "text": "Lahsuni Tikka · kycklingfilé marinerad i vitlök, ingefära, grön chili, yoghurt och lime, i tandoorisås"
+        },
+        {
+          "text": "Adraki Lamb Do Pyaza · lammrostbiff med rödlök, ingefära, chili, citron och panch phoron"
+        },
+        {
+          "text": "Tadka Dal · flamberade linser med indiska kryddor och koriander",
+          "diet": "vegan"
+        }
+      ],
+      "2": [
+        {
+          "text": "Murg Hara Masala · örtkryddad kycklinggryta med koriander, bockhornsklöver, basilika och grön chili i kokosmjölk"
+        },
+        {
+          "text": "Lamb Saag · lamm från Punjab med spenat, tomat, rödlök och grön chili"
+        },
+        {
+          "text": "Paneer Makhani · krämig tomatgryta med paneer, ingefära, vitlök och garam masala",
+          "diet": "veg"
+        }
+      ],
+      "3": [
+        {
+          "text": "Murg Vindaloo · eldig kycklingrätt från Goa med palmvinäger, nejlikor och piri-piri masala"
+        },
+        {
+          "text": "Shahi Gosht · mild och krämig lammrätt med kardemumma, cashew- och pistagenötter"
+        },
+        {
+          "text": "Aloo Baingan · aubergine och potatis i kryddig tomatsås",
+          "diet": "vegan"
+        }
+      ],
+      "4": [
+        {
+          "text": "Murg Lucknowi · kycklingfilé med lök, tomat, ingefära, chili, kewra, rosenvatten och koriander"
+        },
+        {
+          "text": "Lamb Hyderabadi · lamm med färsk koriander, mynta och grön chili i kokosmjölk"
+        },
+        {
+          "text": "Pudina Chana Masala · kikärtsgryta med mynta- och currysås, friterad lök",
+          "diet": "vegan"
+        }
+      ],
+      "5": [
+        {
+          "text": "Palak Chicken · kycklingfilé med spenat, paprika, grön chili, ingefära och vitlök"
+        },
+        {
+          "text": "Meen Moilee · grillad laxfilé med senapsfrö, lök, curry och kokosmjölk"
+        },
+        {
+          "text": "Tofu Kadhai · tofu med tomat, paprika, champinjoner, ingefära, koriander och chili",
+          "diet": "vegan"
+        }
+      ]
+    },
+    "2": {
+      "1": [
+        {
+          "text": "Murg Makhni · tandoorimarinerad kyckling i krämig tomatsås med kardemumma"
+        },
+        {
+          "text": "Achari Mirch Gosht · lammrostbiff med röd chili, limeblad, ingefära, pickles, mynta och kokosmjölk"
+        },
+        {
+          "text": "Aloo Ghobi Masala · potatis- och blomkålsgryta med lök, tomat och ingefära",
+          "diet": "vegan"
+        }
+      ],
+      "2": [
+        {
+          "text": "Murg Kali Mirch · kycklingfilé med lök och tomat i svartpeppar- och ingefärasås"
+        },
+        {
+          "text": "Seekh Kebab · lammfärsrullar med ingefära, vitlök, ägg, koriander och garam masala, tandoorisås"
+        },
+        {
+          "text": "Paneer Jodhpuri · paneer i mild currysås med cashewnötskräm, toppad med papadom",
+          "diet": "veg"
+        }
+      ],
+      "3": [
+        {
+          "text": "Chicken Kadhai · kycklingfilé med tomat, paprika, champinjoner, ingefära, koriander och chili"
+        },
+        {
+          "text": "Kashmiri Lamb · lammrostbiff med tomat, lök, saffran, ingefära, koriander och röd chili"
+        },
+        {
+          "text": "Dal Makhni · flamberade linser i krämig tomatgryta med ingefära, vitlök och garam masala",
+          "diet": "veg"
+        }
+      ],
+      "4": [
+        {
+          "text": "Hyderabadi Murg · örtkryddad kycklinggryta med koriander, mynta och grön chili i kokosmjölk"
+        },
+        {
+          "text": "Lamb Badami · mild och krämig lammgryta med kardemumma och mandel"
+        },
+        {
+          "text": "Matter Mushroom · champinjoner, gröna ärtor, majs och paprika med tomat och lök",
+          "diet": "vegan"
+        }
+      ],
+      "5": [
+        {
+          "text": "Murg Methi Malai · kycklingfilé med bockhornsklöver, lök, ingefära, cashewnötter och tomatgräddsås"
+        },
+        {
+          "text": "Machili Bengali · laxfilé med grön chili och tamarind i kokosmjölk"
+        },
+        {
+          "text": "Dal Dhokli · linsgryta med mjuka vetedumplings, ingefära och tamarind",
+          "diet": "vegan"
+        }
+      ]
+    },
+    "3": {
+      "1": [
+        {
+          "text": "Chicken Butter Masala · krämig nordindisk curry med kycklingfilé i smörig tomatsås"
+        },
+        {
+          "text": "Lamb Vindaloo · eldig lammrätt från Goa med palmvinäger, nejlikor och piri-piri masala"
+        },
+        {
+          "text": "Veg Kadhai · zucchini, potatis, lök, ingefära, peppar, chili och koriander",
+          "diet": "vegan"
+        }
+      ],
+      "2": [
+        {
+          "text": "Jardalo Murg · kycklingfilé med aprikos, kanel, chili, lök, ingefära och currysås"
+        },
+        {
+          "text": "Lamb Kadhai · lammrostbiff med lök, ingefära, peppar, chili och koriander"
+        },
+        {
+          "text": "Mutter Paneer · paneer i krämig sås av lök, tomat och gröna ärtor",
+          "diet": "veg"
+        }
+      ],
+      "3": [
+        {
+          "text": "Murg Zaffrani · saffransmarinerad grillad kyckling i krämig cashewnötsås"
+        },
+        {
+          "text": "Lamb Laal Maas · traditionell lammcurry med paprika, spiskummin och ingefära"
+        },
+        {
+          "text": "Palak Kofta · stekta spenatbollar i lök- och tomatsås",
+          "diet": "vegan"
+        }
+      ],
+      "4": [
+        {
+          "text": "Chicken Chamba · kycklingrätt från Himalaya med lök och tomat i yoghurt-masalasås"
+        },
+        {
+          "text": "Lamb Coconut Curry · lammrostbiff med lök, tomat, senap, fänkål, curryblad, lime och chili"
+        },
+        {
+          "text": "Paneer Achari · paneer med röd chili, ingefära, pickles, mynta och kokosmjölk",
+          "diet": "veg"
+        }
+      ],
+      "5": [
+        {
+          "text": "Murg Do Pyaza · kycklingrätt från Hyderabad med lök, tomat och husets kryddblandning"
+        },
+        {
+          "text": "Lahsuni Machili Nimbu · laxfilé i krämig masalasås med lime"
+        },
+        {
+          "text": "Palak Chana Masala · spenat med kikärtor, lök, tomat, garam masala, chili och ingefära",
+          "diet": "vegan"
+        }
+      ]
+    },
+    "4": {
+      "1": [
+        {
+          "text": "Tandoori Tikka Boti · kycklingfilé marinerad i lime, yoghurt och tandoori masala, i tandoorisås"
+        },
+        {
+          "text": "Lamb Punjabi Curry · lamm i sås av lök, tomat, paprika, ingefära, koriander och grön chili"
+        },
+        {
+          "text": "Baingan Mirch Masala · aubergine, paprika, tomat, kryddor och koriander",
+          "diet": "vegan"
+        }
+      ],
+      "2": [
+        {
+          "text": "Chicken Shahi Korma · krämig kycklingfilégryta med malda pistage- och cashewnötter"
+        },
+        {
+          "text": "Lamb Chana Boti · lamm med kikärtor, tomat, färsk koriander, mynta och lime"
+        },
+        {
+          "text": "Dal Zucchini · lätt kryddad linsgryta med zucchini, vitlök och ingefära",
+          "diet": "vegan"
+        }
+      ],
+      "3": [
+        {
+          "text": "Chicken Chettinad · sydindisk kycklinggryta i pepprig kryddblandning med kokos"
+        },
+        {
+          "text": "Keema Matter · kryddstark gryta med lammfärs och gröna ärtor"
+        },
+        {
+          "text": "Pancharatan Dal · linsgryta på fem sorters linser med spiskummin, vitlök och koriander",
+          "diet": "vegan"
+        }
+      ],
+      "4": [
+        {
+          "text": "Aam Chicken · kycklingfilé i fruktig sås med kokosmjölk, mango, mynta och grön chili"
+        },
+        {
+          "text": "Kolhapuri Gosht · het lammrätt med svartpeppar, kokosmjölk och koriander"
+        },
+        {
+          "text": "Paneer Khumbi Masala · paneer och svamp i mustig tomat- och löksås",
+          "diet": "veg"
+        }
+      ],
+      "5": [
+        {
+          "text": "Malvani Chicken · kycklingfilé i sås av kokoskräm, röd chili och Malvani masala"
+        },
+        {
+          "text": "Fish Tikka · marinerad, grillad laxfilé i husets kryddor, med tandoorisås"
+        },
+        {
+          "text": "Mix Veg Korma · säsongens grönsaker i krämig kormasås med kokosmjölk och nötter",
+          "diet": "veg"
+        }
+      ]
+    }
+  },
+  "always": "Always on: Subzi thali 139 kr (can be made vegan), palak paneer 139 kr, butter chicken, rogan josh and more, 139–165 kr."
+}
