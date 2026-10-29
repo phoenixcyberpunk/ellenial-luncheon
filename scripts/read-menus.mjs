@@ -26,6 +26,7 @@ const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const OUT = path.join(ROOT, 'data', 'menus.json');
 const USER_AGENT = 'Mozilla/5.0 (compatible; EllenialLuncheon/0.1; +https://github.com/phoenixcyberpunk/ellenial-luncheon)';
 const FIXTURES = process.env.LUNCHEON_FIXTURES || '';
+const MASALA = JSON.parse(await readFile(path.join(ROOT, 'data', 'masala-menus.json'), 'utf8'));
 
 // ---------- dates (always Stockholm) ----------
 
@@ -260,6 +261,26 @@ const readers = {
     return { menuDate: dateInWeek(today, week, wanted), items };
   },
 
+  // Masala Kitchen: four rotating weekly menus, published as images with no readable
+  // text. We typed the four menus into data/masala-menus.json; the lunch page's
+  // "Veckans Meny" tab shows this week's images, whose file names carry the menu
+  // number (lunch-menu4-…, LM2-…). We read that number and pick the day's dishes.
+  masala(html, today) {
+    const tabs = html.search(/Nästa Veckas Meny/i);
+    if (tabs < 0) throw new Error('"Nästa Veckas Meny" tab not found');
+    const numbers = [...html.slice(tabs).matchAll(/uploads\/[^"'\s)]*?(?:lunch-menu|LM)(\d)\b[^"'\s)]*\.svg/gi)].map((m) => m[1]);
+    if (!numbers.length) throw new Error('no menu images found after the tabs');
+    const thisWeek = numbers[0];
+    const nextWeek = numbers.find((n) => n !== thisWeek);
+    const expectedNext = String((Number(thisWeek) % 4) + 1);
+    if (nextWeek && nextWeek !== expectedNext) console.warn(`masala: this week ${thisWeek}, next ${nextWeek} (expected ${expectedNext}); check the page`);
+    const menu = MASALA.menus[thisWeek];
+    if (!menu) throw new Error(`menu ${thisWeek} is not typed in`);
+    const dow = weekday(today);
+    const items = menu[String(dow)] || [];
+    return { menuDate: items.length ? today : null, items, note: `Menu ${thisWeek} of 4 this week. ${MASALA.always}` };
+  },
+
   // Cuckoo's Nest: "Vecka 44", then day names each followed by the dish, then "Veckans vegetariska".
   cuckoo(html, today) {
     const lines = htmlToLines(html);
@@ -349,7 +370,7 @@ async function main() {
     const prev = prevById[cfg.id];
     try {
       const html = await getPage(cfg);
-      const { menuDate, items } = readers[cfg.reader](html, today);
+      const { menuDate, items, note: readNote } = readers[cfg.reader](html, today);
       const cleanItems = items.filter((i) => i.text).map((i) => (i.diet ? { text: i.text, diet: i.diet } : { text: i.text }));
       // Only a real menu replaces what we have. If the site shows nothing for today
       // (not posted yet, or a redesign broke the reader), keep the last menu we had;
@@ -368,7 +389,7 @@ async function main() {
         menuDate: cleanItems.length ? menuDate : null,
         readAt: same ? prev.readAt : now,
         items: cleanItems,
-        note: cfg.note || '',
+        note: readNote || cfg.note || '',
       });
       console.log(`${cfg.id}: ${cleanItems.length} dishes for ${menuDate || 'no date'}${same ? ' (unchanged)' : ''}`);
     } catch (err) {
