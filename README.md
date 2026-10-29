@@ -2,6 +2,8 @@
 
 Every lunch menu near Lindholmen, Gothenburg, for today, on one screen. Compare everything at a glance and decide where to eat.
 
+Live at [lunch.ellenial.app](https://lunch.ellenial.app). Colours and type follow [Gillefeeling](https://github.com/phoenixcyberpunk/gillefeeling), so the Ellenial apps look like one family.
+
 Free, no ads, no tracking, no accounts. An [Ellenial](https://ellenial.app) tool, built by one person with help from Claude.
 
 ## How it works
@@ -62,7 +64,7 @@ The reader fetches each page a few times per weekday morning, identifies itself,
 
 ## Credits
 
-- [Fraunces](https://github.com/undercasetype/Fraunces) by Undercase Type and [Instrument Sans](https://github.com/Instrument/instrument-sans) by Instrument, both under the SIL Open Font License, via [Fontsource](https://fontsource.org).
+- [Fraunces](https://github.com/undercasetype/Fraunces) by Undercase Type and [DM Sans](https://github.com/googlefonts/dm-fonts) by Colophon Foundry, both under the SIL Open Font License, via [Fontsource](https://fontsource.org).
 - Locations from [OpenStreetMap](https://www.openstreetmap.org/copyright) contributors.
 
 ## Licence
