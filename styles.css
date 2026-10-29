@@ -1,26 +1,58 @@
-/* Ellenial Luncheon — visual style follows ellenial.app */
+/* Ellenial Luncheon — colours, type and shapes follow Gillefeeling
+   (gillefeeling/src/shared/styles/tokens.css): cream paper, indigo accent,
+   lavender tints, Fraunces + DM Sans. Text pairs checked for WCAG AA in both themes. */
+
 /* Fonts are served from this site, so no third party sees visitors. */
-@font-face { font-family: 'Fraunces'; font-style: normal; font-weight: 400; font-display: swap; src: url('fonts/fraunces-latin-400-normal.woff2') format('woff2'); }
-@font-face { font-family: 'Fraunces'; font-style: normal; font-weight: 600; font-display: swap; src: url('fonts/fraunces-latin-600-normal.woff2') format('woff2'); }
-@font-face { font-family: 'Instrument Sans'; font-style: normal; font-weight: 400; font-display: swap; src: url('fonts/instrument-sans-latin-400-normal.woff2') format('woff2'); }
-@font-face { font-family: 'Instrument Sans'; font-style: normal; font-weight: 500; font-display: swap; src: url('fonts/instrument-sans-latin-500-normal.woff2') format('woff2'); }
-@font-face { font-family: 'Instrument Sans'; font-style: normal; font-weight: 600; font-display: swap; src: url('fonts/instrument-sans-latin-600-normal.woff2') format('woff2'); }
+@font-face { font-family: 'Fraunces'; font-style: normal; font-weight: 500; font-display: swap; src: url('fonts/fraunces-latin-500-normal.woff2') format('woff2'); }
+@font-face { font-family: 'DM Sans'; font-style: normal; font-weight: 400; font-display: swap; src: url('fonts/dm-sans-latin-400-normal.woff2') format('woff2'); }
+@font-face { font-family: 'DM Sans'; font-style: normal; font-weight: 500; font-display: swap; src: url('fonts/dm-sans-latin-500-normal.woff2') format('woff2'); }
+@font-face { font-family: 'DM Sans'; font-style: normal; font-weight: 600; font-display: swap; src: url('fonts/dm-sans-latin-600-normal.woff2') format('woff2'); }
 
 :root {
-  --bg: #FAF7F2;
-  --ink: #2A2420;
-  --muted: #5E554C;
-  --accent: #B4530A;
-  --accent-ink: #8A3E07;
-  --soft: #F1ECE4;
-  --line: #E8E1D6;
-  --line-strong: #D8CFC1;
-  --card: #FFFFFF;
-  --ok: #2F5A3D;
-  --warn-bg: #F9EEDA;
-  --warn-ink: #7A3606;
-  --serif: 'Fraunces', Georgia, serif;
-  --sans: 'Instrument Sans', system-ui, sans-serif;
+  /* shared with Gillefeeling */
+  --bg: #FEF2E2;
+  --surface: #FFFBF5;
+  --surface-soft: #F1EAF8;
+  --ink: #1F1A2E;
+  --ink-muted: #575166;
+  --ink-faint: #6A6476;
+  --line: #EDE1D1;
+  --line-strong: #D6C8B6;
+  --accent: #342E86;
+  --accent-ink: #FFFFFF;
+  --accent-soft: #E6DDF3;
+  --accent-hover: #2A2570;
+  --cover-sun: #F3E3B5;
+
+  /* Luncheon's own: green for vegetarian dishes and today's menus */
+  --veg: #3D6B4A;
+
+  --font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
+  --font-body: 'DM Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  --radius-md: 18px;
+  --radius-pill: 999px;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #17141F;
+    --surface: #221E2C;
+    --surface-soft: #2D2640;
+    --ink: #F3EEF8;
+    --ink-muted: #C2BACF;
+    --ink-faint: #A9A1B7;
+    --line: #332D40;
+    --line-strong: #4A4259;
+    --accent: #B39AE8;
+    --accent-ink: #1A1430;
+    --accent-soft: #3A3052;
+    --accent-hover: #C7B4F0;
+    --cover-sun: #4A4128;
+    --veg: #9CC9A8;
+    color-scheme: dark;
+  }
 }
 
 * { box-sizing: border-box; }
@@ -31,7 +63,7 @@ body {
   margin: 0;
   background: var(--bg);
   color: var(--ink);
-  font-family: var(--sans);
+  font-family: var(--font-body);
   font-size: 16px;
   line-height: 1.45;
 }
@@ -44,7 +76,7 @@ a:hover { color: var(--accent); }
 .page {
   max-width: 560px;
   margin: 0 auto;
-  padding: 24px 20px 40px;
+  padding: calc(24px + env(safe-area-inset-top, 0px)) max(20px, env(safe-area-inset-right, 0px)) 40px max(20px, env(safe-area-inset-left, 0px));
 }
 
 .top { display: flex; flex-direction: column; gap: 12px; }
@@ -53,54 +85,55 @@ a:hover { color: var(--accent); }
   margin: 0;
   font-size: 13px;
   font-weight: 600;
-  letter-spacing: 1.5px;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
   color: var(--accent);
 }
 
 h1 {
   margin: 0;
-  font-family: var(--serif);
-  font-weight: 400;
-  font-size: 34px;
-  line-height: 1.08;
-  letter-spacing: -0.8px;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 36px;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
 }
 
-.sub { margin: 0; font-size: 14px; color: var(--muted); }
+.sub { margin: 0; font-size: 14px; color: var(--ink-muted); }
 
 .filters { display: flex; gap: 8px; flex-wrap: wrap; }
 
 .chip {
-  min-height: 40px;
-  padding: 0 14px;
-  border-radius: 999px;
+  min-height: 44px;
+  padding: 0 16px;
+  border-radius: var(--radius-pill);
   border: 1.5px solid var(--line-strong);
-  background: transparent;
+  background: var(--surface);
   color: var(--ink);
-  font: 600 14px var(--sans);
+  font: 600 14px var(--font-body);
   cursor: pointer;
 }
-.chip[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: var(--bg); }
+.chip:hover { border-color: var(--accent); }
+.chip[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
 
 .list { padding-top: 18px; display: flex; flex-direction: column; gap: 12px; }
 
 .card {
   padding: 14px 16px;
-  border-radius: 18px;
-  background: var(--card);
+  border-radius: var(--radius-md);
+  background: var(--surface);
   border: 1px solid var(--line);
   display: flex;
   flex-direction: column;
   gap: 8px;
 }
 .card.is-missing { background: transparent; border: 1.5px dashed var(--line-strong); }
-.card.is-fixed { background: var(--soft); border-color: transparent; }
+.card.is-fixed { background: var(--surface-soft); border-color: transparent; }
 
 .card-head { display: flex; align-items: baseline; gap: 8px; }
-.name { flex: 1; font-weight: 600; font-size: 17px; text-decoration: none; }
+.name { flex: 1; font-family: var(--font-display); font-weight: 500; font-size: 19px; text-decoration: none; }
 .name:hover { text-decoration: underline; }
-.walk { font-size: 13px; color: var(--muted); white-space: nowrap; }
+.walk { font-size: 13px; color: var(--ink-muted); white-space: nowrap; }
 
 .dishes {
   margin: 0;
@@ -113,30 +146,30 @@ h1 {
   line-height: 1.4;
 }
 .dishes li { display: flex; justify-content: space-between; gap: 12px; }
-.dishes .price { color: var(--muted); white-space: nowrap; }
-.dishes .tag { font-weight: 600; color: var(--ok); }
+.dishes .price { color: var(--ink-muted); white-space: nowrap; }
+.dishes .tag { font-weight: 600; color: var(--veg); }
 .dishes .label { font-weight: 600; }
 .dishes:empty { display: none; }
 
-.note { margin: 0; font-size: 14px; color: var(--muted); }
+.note { margin: 0; font-size: 14px; color: var(--ink-muted); }
 .note:empty { display: none; }
 
-.fresh { font-size: 12px; font-weight: 600; color: var(--ok); }
+.fresh { font-size: 12px; font-weight: 600; color: var(--veg); }
 .fresh.is-stale {
   align-self: flex-start;
-  padding: 2px 9px;
-  border-radius: 999px;
-  background: var(--warn-bg);
-  color: var(--warn-ink);
+  padding: 2px 10px;
+  border-radius: var(--radius-pill);
+  background: var(--cover-sun);
+  color: var(--ink);
 }
-.fresh.is-missing { color: var(--muted); font-weight: 500; }
+.fresh.is-missing { color: var(--ink-muted); font-weight: 500; }
 .fresh:empty { display: none; }
 
 .empty {
   margin: 8px 0 0;
   padding: 18px;
-  border-radius: 18px;
-  background: var(--soft);
+  border-radius: var(--radius-md);
+  background: var(--surface-soft);
   font-size: 15px;
 }
 
@@ -145,7 +178,7 @@ h1 {
   padding-top: 16px;
   border-top: 1px solid var(--line);
   font-size: 13px;
-  color: var(--muted);
+  color: var(--ink-muted);
 }
 .foot p { margin: 0 0 8px; }
-.foot a { color: var(--muted); }
+.foot a { color: var(--ink-muted); }
