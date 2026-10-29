@@ -125,21 +125,31 @@
       (p.items || []).forEach(function (it) {
         var li = document.createElement('li');
         var text = document.createElement('span');
-        var labelIsVeg = /^(veg|vegetar|vegan)/i.test(it.text);
-        if ((it.diet === 'veg' || it.diet === 'vegan') && !labelIsVeg) {
+        // Vegetarian 🥦 and vegan 🌱 dishes get an emoji right after the word
+        var isVegan = it.diet === 'vegan' || /\bvegan/i.test(it.text);
+        var isVeg = isVegan || it.diet === 'veg';
+        var emoji = isVegan ? '🌱' : '🥦';
+        var emojiLabel = isVegan ? 'vegan' : 'vegetarian';
+        var m = it.text.match(/^([^:]{2,22}):\s+(.+)$/);
+        var labelIsVeg = m && /^(veg|vegetar|vegan)/i.test(m[1]);
+        if (isVeg && !labelIsVeg) {
           var tag = document.createElement('b');
-          tag.className = 'tag';
-          tag.textContent = it.diet === 'vegan' ? 'Vegan' : 'Veg';
+          tag.className = 'label';
+          tag.textContent = isVegan ? 'Vegan ' : 'Veg ';
           text.appendChild(tag);
+          text.appendChild(emojiNode(emoji, emojiLabel));
           text.appendChild(document.createTextNode(' · '));
         }
         // "Fire: Grillad kyckling…" → the station or category in bold, for scanning
-        var m = it.text.match(/^([^:]{2,22}):\s+(.+)$/);
         if (m) {
           var label = document.createElement('span');
           label.className = 'label';
           label.textContent = m[1] + ' ';
           text.appendChild(label);
+          if (labelIsVeg) {
+            text.appendChild(emojiNode(emoji, emojiLabel));
+            text.appendChild(document.createTextNode(' '));
+          }
           text.appendChild(document.createTextNode(m[2]));
         } else {
           text.appendChild(document.createTextNode(it.text));
@@ -163,6 +173,15 @@
       }
     }
     return node;
+  }
+
+  function emojiNode(char, label) {
+    var span = document.createElement('span');
+    span.className = 'emoji';
+    span.setAttribute('role', 'img');
+    span.setAttribute('aria-label', label);
+    span.textContent = char;
+    return span;
   }
 
   function wireFilters() {
