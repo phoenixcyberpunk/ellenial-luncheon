@@ -124,6 +124,72 @@
       "kind": "fixed",
       "veg": true,
       "note": "Sushi, ramen, bento and poke bowls. Same menu every day, vegetarian sushi available. From 100 kr."
+    },
+    {
+      "id": "districtone",
+      "name": "District One",
+      "url": "https://www.districtone.se/lunch.html",
+      "lat": 57.70969,
+      "lon": 11.94277,
+      "kind": "daily",
+      "menuDate": "2026-10-29",
+      "readAt": "2026-10-29T19:12:46.702Z",
+      "items": [
+        {
+          "text": "Fisk: Prästostbakad koljafile med hummersås och rostade rotfrukter, serveras med krossad potatis med brynt ponzusmör."
+        },
+        {
+          "text": "Kött: Wallenbergare med gräddsås och rårörda lingon, serveras med pressgurka och potatismos."
+        },
+        {
+          "text": "Red curry: Kyckling med röd curry i kokosmjölk med paprika, lök, bambuskott och limeblad serveras med jasminris."
+        },
+        {
+          "text": "Vegetarisk: Vegetarisk dumplings med röd curry i kokosmjölk med paprika, lök, bambuskott och limeblad serveras med jasminris.",
+          "diet": "veg"
+        },
+        {
+          "text": "Poke bowl: Ponzu marinerad lax eller räkor med sesamfrön, sushiris, romansallad, sojabönor, rädisa, picklad rödlök, mango och avokado, serveras med chili majo och koriander."
+        },
+        {
+          "text": "Vegetarisk Poke bowl: Tofu med sesamfrön, sushiris, romansallad, sojabönor, rädisa, picklad rödlök, mango och avokado, serveras med chili majo och koriander.",
+          "diet": "veg"
+        },
+        {
+          "text": "Pho: Vietnamesisk nudelsoppa med biff, koriander, gräslök, lök, böngroddar, chili, thai basilika, serveras med lime, hoisinsås och srirachasås."
+        }
+      ],
+      "note": "135 kr with homemade bread, salad buffet, coffee and cake."
+    },
+    {
+      "id": "missf",
+      "name": "Miss F",
+      "url": "https://www.missf.se/",
+      "lat": 57.7081,
+      "lon": 11.94456,
+      "kind": "fixed",
+      "veg": true,
+      "note": "Ciabatta, salads, poke bowls, bibimbap and sushi. Same menu every day, tofu and chèvre options. 105–135 kr."
+    },
+    {
+      "id": "bombay",
+      "name": "Bombay Bistro",
+      "url": "https://www.bombaybistro.se/lunch/",
+      "lat": 57.70841,
+      "lon": 11.9377,
+      "kind": "fixed",
+      "veg": true,
+      "note": "Indian curries on a four-week rotation, plus a daily vegetarian thali (can be made vegan). 129 kr with salad, naan and water."
+    },
+    {
+      "id": "alkemisten",
+      "name": "Alkemisten",
+      "url": "https://www.alkemistenkaffebar.se/",
+      "lat": 57.70856,
+      "lon": 11.94031,
+      "kind": "fixed",
+      "veg": true,
+      "note": "Specialty coffee bar with a vegetarian or vegan lunch on weekdays. Their site doesn't list the dishes."
     }
   ]
 }
