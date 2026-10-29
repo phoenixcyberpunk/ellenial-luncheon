@@ -28,7 +28,7 @@ Every menu carries a label, so an old menu never looks like today's:
 
 The page sets no cookies and sends nothing about you anywhere. Fonts are served from this site, so no third party sees visitors. Walking times are counted from Lindholmen Science Park, not from your location.
 
-## Places in the first version
+## Places
 
 | Place | How the menu is read |
 | --- | --- |
@@ -36,9 +36,11 @@ The page sets no cookies and sends nothing about you anywhere. Fonts are served 
 | Kooperativet | Weekly text with a section per day |
 | Bistrot | Weekly text with a section per day |
 | Cuckoo's Nest | Weekly text with a line per day |
-| Oishii | Fixed menu, entered by hand |
+| District One | Weekly text with a section per day |
+| Oishii, Miss F, Alkemisten | Fixed menu, entered by hand |
+| Bombay Bistro | Four-week rotation, but the site doesn't say which week is current, so shown as a fixed menu for now |
 
-Some sites (District One, Bombay Bistro, Miss F, Alkemisten) don't answer requests from GitHub's servers, so they need another way in. Matminnen closed in June 2026.
+Matminnen closed in June 2026.
 
 ## Adding a place
 

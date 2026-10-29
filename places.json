@@ -1,5 +1,5 @@
 {
-  "_about": "Lunch places shown in Luncheon. 'reader' names the function in scripts/read-menus.mjs that reads the menu; 'fixed' places have the same menu every day and are entered by hand. Coordinates are from OpenStreetMap. Uni3 uses the Lindholmspiren 3 building and Bistrot the Diagonalen street, so their walking times are approximate. Oishii's location is not filled in yet.",
+  "_about": "Lunch places shown in Luncheon. 'reader' names the function in scripts/read-menus.mjs that reads the menu; 'fixed' places have the same menu every day and are entered by hand. Coordinates are from OpenStreetMap. Uni3 uses the Lindholmspiren 3 building and Bistrot the Diagonalen street, so their walking times are approximate. Oishii's location is not filled in yet. Bombay Bistro rotates four weekly menus but its site doesn't say which week is current, so it's shown as a fixed menu for now.",
   "places": [
     {
       "id": "uni3",
@@ -46,6 +46,45 @@
       "kind": "fixed",
       "veg": true,
       "note": "Sushi, ramen, bento and poke bowls. Same menu every day, vegetarian sushi available. From 100 kr."
+    },
+    {
+      "id": "districtone",
+      "name": "District One",
+      "url": "https://www.districtone.se/lunch.html",
+      "lat": 57.70969,
+      "lon": 11.94277,
+      "reader": "districtone",
+      "note": "135 kr with homemade bread, salad buffet, coffee and cake."
+    },
+    {
+      "id": "missf",
+      "name": "Miss F",
+      "url": "https://www.missf.se/",
+      "lat": 57.7081,
+      "lon": 11.94456,
+      "kind": "fixed",
+      "veg": true,
+      "note": "Ciabatta, salads, poke bowls, bibimbap and sushi. Same menu every day, tofu and chèvre options. 105–135 kr."
+    },
+    {
+      "id": "bombay",
+      "name": "Bombay Bistro",
+      "url": "https://www.bombaybistro.se/lunch/",
+      "lat": 57.70841,
+      "lon": 11.9377,
+      "kind": "fixed",
+      "veg": true,
+      "note": "Indian curries on a four-week rotation, plus a daily vegetarian thali (can be made vegan). 129 kr with salad, naan and water."
+    },
+    {
+      "id": "alkemisten",
+      "name": "Alkemisten",
+      "url": "https://www.alkemistenkaffebar.se/",
+      "lat": 57.70856,
+      "lon": 11.94031,
+      "kind": "fixed",
+      "veg": true,
+      "note": "Specialty coffee bar with a vegetarian or vegan lunch on weekdays. Their site doesn't list the dishes."
     }
   ]
 }
