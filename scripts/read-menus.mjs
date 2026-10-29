@@ -7,8 +7,9 @@
 // Rules:
 // - Only today's menu (Stockholm time) counts as fresh. If a site still shows
 //   last week's menu, we keep it but label it with the date it was for.
-// - If a site can't be read, we keep the last menu we had, so the page can
-//   say "from Monday · may have changed" instead of showing nothing.
+// - Only a real new menu replaces the one we have. If a site can't be read, or
+//   shows nothing for today, we keep the last menu we had (up to a week old),
+//   so the page can say "From Thursday · may have changed" instead of nothing.
 // - The file only changes when a menu actually changes, so the repo isn't
 //   flooded with empty commits.
 //
@@ -42,6 +43,11 @@ function dateParts(iso) {
 
 function toIso(date) {
   return date.toISOString().slice(0, 10);
+}
+
+function daysBetween(fromIso, toIso) {
+  if (!fromIso) return Infinity;
+  return Math.round((dateParts(toIso) - dateParts(fromIso)) / 86400000);
 }
 
 function weekday(iso) {
@@ -317,6 +323,16 @@ async function main() {
       const html = await getPage(cfg);
       const { menuDate, items } = readers[cfg.reader](html, today);
       const cleanItems = items.filter((i) => i.text).map((i) => (i.diet ? { text: i.text, diet: i.diet } : { text: i.text }));
+      // Only a real menu replaces what we have. If the site shows nothing for today
+      // (not posted yet, or a redesign broke the reader), keep the last menu we had;
+      // the page labels it with its own date ("From Thursday · may have changed").
+      // Menus older than a week are dropped rather than shown.
+      if (!cleanItems.length || !menuDate || menuDate < (prev && prev.menuDate || '') || daysBetween(menuDate, today) > 7) {
+        const keep = prev && prev.items && prev.items.length && daysBetween(prev.menuDate, today) <= 7;
+        places.push(keep ? { ...prev, ...base, note: cfg.note || '' } : { ...base, kind: 'daily', menuDate: null, readAt: null, items: [], note: cfg.note || '' });
+        console.log(`${cfg.id}: nothing new for ${today}; ${keep ? `keeping the menu from ${prev.menuDate}` : 'no recent menu to keep'}`);
+        continue;
+      }
       const same = prev && prev.menuDate === menuDate && JSON.stringify(prev.items) === JSON.stringify(cleanItems);
       places.push({
         ...base,
@@ -329,8 +345,9 @@ async function main() {
       console.log(`${cfg.id}: ${cleanItems.length} dishes for ${menuDate || 'no date'}${same ? ' (unchanged)' : ''}`);
     } catch (err) {
       failures++;
-      console.warn(`${cfg.id}: could not read (${err.message}); keeping the last menu we had`);
-      places.push(prev ? { ...prev, ...base, note: cfg.note || '' } : { ...base, kind: 'daily', menuDate: null, readAt: null, items: [], note: cfg.note || '' });
+      const keep = prev && prev.items && prev.items.length && daysBetween(prev.menuDate, today) <= 7;
+      console.warn(`${cfg.id}: could not read (${err.message}); ${keep ? 'keeping the last menu we had' : 'no recent menu to keep'}`);
+      places.push(keep ? { ...prev, ...base, note: cfg.note || '' } : { ...base, kind: 'daily', menuDate: null, readAt: null, items: [], note: cfg.note || '' });
     }
   }
 

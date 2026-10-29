@@ -168,7 +168,15 @@
         fresh.textContent = 'Updated ' + stockholmTime(new Date(p.readAt));
       } else {
         fresh.classList.add('is-stale');
-        var from = p.menuDate ? weekdayName(new Date(p.menuDate + 'T12:00:00Z')) : 'an earlier day';
+        // "From Thursday" this week, "From last Friday" if it's from an earlier week
+        var from = 'an earlier day';
+        var now = new Date(), today = stockholmDate(now);
+        if (p.menuDate) {
+          var menuDay = new Date(p.menuDate + 'T12:00:00Z');
+          var daysAgo = Math.round((new Date(today + 'T12:00:00Z') - menuDay) / 86400000);
+          var todayIdx = weekdayIndex(now) || 7;
+          from = (daysAgo >= todayIdx ? 'last ' : '') + weekdayName(menuDay);
+        }
         fresh.textContent = 'From ' + from + ' · may have changed';
       }
     }
