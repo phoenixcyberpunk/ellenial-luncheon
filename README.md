@@ -24,7 +24,7 @@ Every menu carries a label, so an old menu never looks like today's:
 
 ### Privacy
 
-The page sets no cookies and sends nothing about you anywhere. Walking times are counted from Lindholmen Science Park, not from your location.
+The page sets no cookies and sends nothing about you anywhere. Fonts are served from this site, so no third party sees visitors. Walking times are counted from Lindholmen Science Park, not from your location.
 
 ## Places in the first version
 
@@ -60,6 +60,11 @@ python3 -m http.server        # then open http://localhost:8000
 
 The reader fetches each page a few times per weekday morning, identifies itself, and links back to the restaurant. If a restaurant would rather not be included, or wants to post its menu directly, it can open an issue and we'll sort it out.
 
+## Credits
+
+- [Fraunces](https://github.com/undercasetype/Fraunces) by Undercase Type and [Instrument Sans](https://github.com/Instrument/instrument-sans) by Instrument, both under the SIL Open Font License, via [Fontsource](https://fontsource.org).
+- Locations from [OpenStreetMap](https://www.openstreetmap.org/copyright) contributors.
+
 ## Licence
 
-Open source. Licence to be chosen.
+The code is AGPL-3.0, the same as [ellenial.app](https://github.com/phoenixcyberpunk/ellenial). See `LICENSE`. The menus themselves belong to each restaurant; Luncheon only shows them with a link back.
