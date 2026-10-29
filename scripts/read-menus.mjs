@@ -380,6 +380,7 @@ async function main() {
         const keep = prev && prev.items && prev.items.length && daysBetween(prev.menuDate, today) <= 7;
         places.push(keep ? { ...prev, ...base, note: cfg.note || '' } : { ...base, kind: 'daily', menuDate: null, readAt: null, items: [], note: cfg.note || '' });
         console.log(`${cfg.id}: nothing new for ${today}; ${keep ? `keeping the menu from ${prev.menuDate}` : 'no recent menu to keep'}`);
+        places[places.length - 1].problem = `${today}: page read, but no menu for today`;
         continue;
       }
       const same = prev && prev.menuDate === menuDate && JSON.stringify(prev.items) === JSON.stringify(cleanItems);
@@ -397,6 +398,8 @@ async function main() {
       const keep = prev && prev.items && prev.items.length && daysBetween(prev.menuDate, today) <= 7;
       console.warn(`${cfg.id}: could not read (${err.message}); ${keep ? 'keeping the last menu we had' : 'no recent menu to keep'}`);
       places.push(keep ? { ...prev, ...base, note: cfg.note || '' } : { ...base, kind: 'daily', menuDate: null, readAt: null, items: [], note: cfg.note || '' });
+      // Kept in the data file so a failing reader can be spotted without the run logs.
+      places[places.length - 1].problem = `${today}: ${err.message}`.slice(0, 200);
     }
   }
 
