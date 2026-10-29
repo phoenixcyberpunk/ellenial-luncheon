@@ -190,6 +190,16 @@
       "kind": "fixed",
       "veg": true,
       "note": "Specialty coffee bar with a vegetarian or vegan lunch on weekdays. Their site doesn't list the dishes."
+    },
+    {
+      "id": "bistro3",
+      "name": "BISTRO 3",
+      "url": "https://www.bistro3.se/",
+      "lat": null,
+      "lon": null,
+      "kind": "fixed",
+      "veg": true,
+      "note": "Pinsa, classic mains, salads and kebab, 99–139 kr, plus a weekly dish (ask the staff, it isn't on their site). Vegetarian pinsa and Greek salad."
     }
   ]
 }
