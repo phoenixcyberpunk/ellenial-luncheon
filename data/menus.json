@@ -1,0 +1,129 @@
+{
+  "about": "Written by scripts/read-menus.mjs. Menus come from each restaurant’s own website.",
+  "places": [
+    {
+      "id": "uni3",
+      "name": "Uni3 World of Food",
+      "url": "https://www.compass-group.se/restauranger-och-menyer/ovriga-restauranger/uni3-world-of-food/",
+      "lat": 57.70661,
+      "lon": 11.9405,
+      "kind": "daily",
+      "menuDate": "2026-10-29",
+      "readAt": "2026-10-29T18:28:17.613Z",
+      "items": [
+        {
+          "text": "Fire: Grillat kycklinglårfilé - rostad potatis – piri piri sås - grönkålsceasar"
+        },
+        {
+          "text": "Water: Gräddig fisksoppa – inkokt fänkål - rostad palsternacka – tärnad tomat - kokt potatis – bakad fisk – dill - körvelolja"
+        },
+        {
+          "text": "Metal: Klassisk pannbiff - potatispuré - löksky - saltgurka"
+        },
+        {
+          "text": "Earth: Örtrostade morötter - krämiga linser - padrones – rostad getost - ruccola - syrad lök & hot honey",
+          "diet": "veg"
+        }
+      ],
+      "note": "Earth is the vegetarian station."
+    },
+    {
+      "id": "kooperativet",
+      "name": "Kooperativet",
+      "url": "https://www.kooperativet.se/",
+      "lat": 57.70859,
+      "lon": 11.94472,
+      "kind": "daily",
+      "menuDate": "2026-10-29",
+      "readAt": "2026-10-29T18:28:17.613Z",
+      "items": [
+        {
+          "text": "Veckans special: Kooperativets Udon Ramen svamp & miso buljong, serveras med udonnudlar malen kyckling, toppas med rökig sallad på morötter och böngroddar servers bakad ägg och koriander"
+        },
+        {
+          "text": "Veg: Udon Ramen · Kooperativets Udon Ramen svamp & miso buljong, serveras med udonnudlar marinerad tofu toppas med rökig sallad på morötter och böngroddar servers bakad ägg och koriander",
+          "diet": "veg"
+        },
+        {
+          "text": "Kött: PepparKött nattbakad högrev serveras med potatispure, krämig gräddsås smaksatt med fermenterad svartpeppar samt svartvinbärsgele"
+        },
+        {
+          "text": "Fisk: Halstrad laxfjäril serveras med potatismos, murkelsås samt citron och örtsallad"
+        },
+        {
+          "text": "Thai: Smoked Korean BBQ Pork – 16h rökt gårdsgris toppad med asiatisk chimichurri serveras med krämig kålsallad och jasminris"
+        },
+        {
+          "text": "Vegetarisk: Kooperativets klassiska Butter Haloumi– indisk gryta med friterad haloumi serveras med rostad mandel, koriander, Naan samt feffakräm 1/5",
+          "diet": "veg"
+        },
+        {
+          "text": "Indisk: Kooperativets klassiska Butter Chicken – indisk gryta med kyckling serveras med rostad mandel, koriander, Naan samt feffakräm chili 1/5"
+        },
+        {
+          "text": "Världen: Högrevsburgare med dubbel cheddar, rökig BBQ-dressing, jalapeño, krispig lök och dillpicklad gurka. Serveras med cajun fries och ranchdipp."
+        }
+      ],
+      "note": "139 kr with salad buffet, bread, coffee and cake."
+    },
+    {
+      "id": "bistrot",
+      "name": "Bistrot",
+      "url": "https://bistrot.se/",
+      "lat": 57.70442,
+      "lon": 11.93748,
+      "kind": "daily",
+      "menuDate": "2026-10-29",
+      "readAt": "2026-10-29T18:28:17.613Z",
+      "items": [
+        {
+          "text": "Högrevsburgare · Chilimayo – Friterade jalapeños – Rostad lök – Sallad – Pommes"
+        },
+        {
+          "text": "Halstrad fångst · Picklade kantareller, morötter & Schalottenlök – Hollandaisesås – Rostad potatis – Gräslök"
+        },
+        {
+          "text": "Torsdags Dessert!"
+        },
+        {
+          "text": "Veckans: Kyckling pasta · Soltorkad tomatpesto – Grillade grönsaker – Tortiglioni –Rucola – Grana padano"
+        },
+        {
+          "text": "Quesadilla · Avocado & mangosalsa – Kålsallad – Koriander",
+          "diet": "veg"
+        }
+      ],
+      "note": "139 kr with salad buffet, sourdough bread, coffee and cake."
+    },
+    {
+      "id": "cuckoosnest",
+      "name": "Cuckoo's Nest",
+      "url": "https://www.cuckoosnest.se/menyer/lunch",
+      "lat": 57.70772,
+      "lon": 11.94092,
+      "kind": "daily",
+      "menuDate": "2026-10-29",
+      "readAt": "2026-10-29T18:28:17.613Z",
+      "items": [
+        {
+          "text": "Kyckling serveras med potatisgratäng, brysselkål och svampsås"
+        },
+        {
+          "text": "stekt gnocchi serveras med vispad keso, brysselkål, lingon och rödbetskrisp",
+          "diet": "veg"
+        }
+      ],
+      "note": "195 kr with salad buffet, coffee, tea and cake."
+    },
+    {
+      "id": "oishii",
+      "name": "Oishii",
+      "url": "https://oishii.se/lunchmeny/",
+      "lat": null,
+      "lon": null,
+      "kind": "fixed",
+      "veg": true,
+      "note": "Sushi, ramen, bento and poke bowls. Same menu every day, vegetarian sushi available. From 100 kr."
+    }
+  ]
+}
