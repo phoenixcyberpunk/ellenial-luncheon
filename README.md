@@ -69,7 +69,7 @@ The reader fetches each page a few times per weekday morning, identifies itself,
 
 ## Credits
 
-- [Fraunces](https://github.com/undercasetype/Fraunces) by Undercase Type and [DM Sans](https://github.com/googlefonts/dm-fonts) by Colophon Foundry, both under the SIL Open Font License, via [Fontsource](https://fontsource.org).
+- [Fraunces](https://github.com/undercasetype/Fraunces) by Undercase Type and [Instrument Sans](https://github.com/Instrument/instrument-sans) by Instrument, both under the SIL Open Font License, via [Fontsource](https://fontsource.org).
 - Locations from [OpenStreetMap](https://www.openstreetmap.org/copyright) contributors.
 
 ## Licence
