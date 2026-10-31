@@ -1,12 +1,12 @@
 /* Ellenial Luncheon — colours, type and shapes follow Gillefeeling
    (gillefeeling/src/shared/styles/tokens.css): cream paper, indigo accent,
-   lavender tints, Fraunces + DM Sans. Text pairs checked for WCAG AA in both themes. */
+   lavender tints, Fraunces + Instrument Sans. Text pairs checked for WCAG AA in both themes. */
 
 /* Fonts are served from this site, so no third party sees visitors. */
 @font-face { font-family: 'Fraunces'; font-style: normal; font-weight: 500; font-display: swap; src: url('fonts/fraunces-latin-500-normal.woff2') format('woff2'); }
-@font-face { font-family: 'DM Sans'; font-style: normal; font-weight: 400; font-display: swap; src: url('fonts/dm-sans-latin-400-normal.woff2') format('woff2'); }
-@font-face { font-family: 'DM Sans'; font-style: normal; font-weight: 500; font-display: swap; src: url('fonts/dm-sans-latin-500-normal.woff2') format('woff2'); }
-@font-face { font-family: 'DM Sans'; font-style: normal; font-weight: 600; font-display: swap; src: url('fonts/dm-sans-latin-600-normal.woff2') format('woff2'); }
+@font-face { font-family: 'Instrument Sans'; font-style: normal; font-weight: 400; font-display: swap; src: url('fonts/instrument-sans-latin-400-normal.woff2') format('woff2'); }
+@font-face { font-family: 'Instrument Sans'; font-style: normal; font-weight: 500; font-display: swap; src: url('fonts/instrument-sans-latin-500-normal.woff2') format('woff2'); }
+@font-face { font-family: 'Instrument Sans'; font-style: normal; font-weight: 600; font-display: swap; src: url('fonts/instrument-sans-latin-600-normal.woff2') format('woff2'); }
 
 :root {
   /* shared with Gillefeeling */
@@ -28,7 +28,7 @@
   --fresh: #3D6B4A;
 
   --font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
-  --font-body: 'DM Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-body: 'Instrument Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
 
   --radius-md: 18px;
   --radius-pill: 999px;
