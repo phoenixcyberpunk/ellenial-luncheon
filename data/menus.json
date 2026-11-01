@@ -170,7 +170,7 @@
       "note": "",
       "price": "135 kr",
       "includes": "homemade bread, salad buffet, coffee and cake",
-      "problem": "2026-11-01: fetch failed"
+      "problem": "2026-11-01: page read, but no menu for today"
     },
     {
       "id": "missf",
