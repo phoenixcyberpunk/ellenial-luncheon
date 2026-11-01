@@ -26,11 +26,15 @@ Every menu carries a label, so an old menu never looks like today's:
 | No menu found today | Nothing readable; the restaurant's own page may have it |
 | Lavender card | A fixed menu that's the same every day (also says so in words) |
 
+### Weekends and new weeks
+
+At weekends, and on a Monday morning before the new menus are read, the page keeps showing the latest menus (each still labelled "From Friday · may have changed") under a banner: "Menus for week 45 aren't out yet". The week number is always shown at the top. Menus older than a week are dropped by the reader.
+
 ### Accessibility
 
-Nothing rests on colour alone: freshness is always written out (and stale menus get a clock icon), selected filters get a tick, and fixed or missing menus say so in words. Text is at least 4.5:1 and anything you can tap has an edge of at least 3:1, in both themes.
+Double-tap zoom is off (it fired by accident while scrolling); pinch-to-zoom still works. Every card ends with links to the place's lunch page and to its spot on OpenStreetMap.
 
-To see menus on a weekend (for testing), add `?weekday=1` to the address.
+Nothing rests on colour alone: freshness is always written out (and stale menus get a clock icon), selected filters get a tick, and fixed or missing menus say so in words. Text is at least 4.5:1 and anything you can tap has an edge of at least 3:1, in both themes.
 
 ### Privacy
 

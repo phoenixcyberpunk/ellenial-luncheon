@@ -35,6 +35,11 @@ const pairs = (t) => [
   ['jump link text on lavender', t.ink, t.soft, 4.5],
   ['jump link edge on page', t.edge, t.bg, 3],
   ['"Show all" button on card', t.accent, t.surface, 4.5],
+  ['card links on card', t.accent, t.surface, 4.5],
+  ['card links on lavender (fixed card)', t.accent, t.soft, 4.5],
+  ['banner text on lavender', t.ink, t.soft, 4.5],
+  ['banner muted text on lavender', t.muted, t.soft, 4.5],
+  ['banner edge and icon (Indigo) on page', t.accent, t.bg, 3],
   ['focus ring on page', t.accent, t.bg, 3],
   ['focus ring on card', t.accent, t.surface, 3],
 ]
