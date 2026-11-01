@@ -60,7 +60,9 @@
     document.getElementById('today-label').textContent = weekdayName(now) + ' · Lindholmen';
 
     var wd = weekdayIndex(now);
-    if (wd === 0 || wd === 6) {
+    // Testing on a weekend: ?weekday=1 shows the latest menus anyway (this visit only, nothing saved).
+    var forceWeekday = /[?&]weekday=1\b/.test(location.search);
+    if ((wd === 0 || wd === 6) && !forceWeekday) {
       summary.textContent = 'Lunch menus are back on Monday.';
       addEmpty(list, 'It’s the weekend, so most places don’t serve weekday lunch. See you on Monday.');
       return;
@@ -212,6 +214,18 @@
       });
   }
 
+  // Auto / Light / Dark, the shared Ellenial switch (ellenial-theme.js), saved on this phone only.
+  function mountThemeSwitch() {
+    var slot = document.getElementById('prefs');
+    if (!slot) return;
+    if (!window.EllenialTheme) { slot.hidden = true; return; }
+    slot.appendChild(window.EllenialTheme.control({
+      label: 'Theme', autoHint: 'Follows your phone', separator: ' · ',
+      labels: { auto: 'Auto', light: 'Light', dark: 'Dark' }
+    }));
+  }
+
+  mountThemeSwitch();
   wireFilters();
   render();
   load();
