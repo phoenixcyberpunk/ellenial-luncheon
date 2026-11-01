@@ -10,7 +10,8 @@
   var WALK_M_PER_MIN = 80;   // a relaxed lunch pace
   var DETOUR = 1.3;          // streets are not straight lines
 
-  var state = { data: null, filters: { veg: false, near: false } };
+  var state = { data: null, filters: { veg: false, near: false }, open: {} };
+  var FOLD_AFTER = 4; // dishes shown before "Show all"
 
   function stockholmDate(d) {
     // YYYY-MM-DD in Stockholm time
@@ -55,6 +56,9 @@
     var list = document.getElementById('list');
     var summary = document.getElementById('summary');
     list.textContent = '';
+    var jump = document.getElementById('jump');
+    jump.textContent = '';
+    jump.hidden = true;
     var now = new Date();
     var today = stockholmDate(now);
     document.getElementById('today-label').textContent = weekdayName(now) + ' · Lindholmen';
@@ -95,6 +99,34 @@
       return;
     }
     shown.forEach(function (p) { list.appendChild(card(p)); });
+    fillJump(jump, shown);
+  }
+
+  // Quick list of the places shown, in page order; tapping a name jumps to its card.
+  function fillJump(jump, shown) {
+    if (shown.length < 2) return;
+    var label = document.createElement('span');
+    label.className = 'jump__label';
+    label.textContent = 'Jump to';
+    jump.appendChild(label);
+    shown.forEach(function (p) {
+      var a = document.createElement('a');
+      a.className = 'jump__link';
+      a.href = '#place-' + p.id;
+      a.textContent = p.name;
+      a.addEventListener('click', function (e) {
+        var target = document.getElementById('place-' + p.id);
+        if (!target) return;
+        e.preventDefault();
+        var calm = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        target.scrollIntoView({ behavior: calm ? 'auto' : 'smooth', block: 'start' });
+        // Move focus to the card's name so keyboard and screen-reader users land there too
+        var name = target.querySelector('.name');
+        if (name) name.focus({ preventScroll: true });
+      });
+      jump.appendChild(a);
+    });
+    jump.hidden = false;
   }
 
   function addEmpty(list, text) {
@@ -106,6 +138,7 @@
 
   function card(p) {
     var node = document.getElementById('card-tpl').content.firstElementChild.cloneNode(true);
+    node.id = 'place-' + p.id;
     var name = node.querySelector('.name');
     name.textContent = p.name;
     if (p.url) name.href = p.url; else name.removeAttribute('href');
@@ -136,6 +169,7 @@
       fresh.textContent = p.url ? 'Their own page may have it.' : '';
     } else {
       (p.items || []).forEach(function (it) { ul.appendChild(dishItem(it)); });
+      foldDishes(node, ul, p);
       if (p.note) note.textContent = p.note;
       if (p.state === 'fresh') {
         fresh.textContent = 'Updated ' + stockholmTime(new Date(p.readAt));
@@ -165,6 +199,7 @@
     var li = document.createElement('li');
     var isVegan = it.diet === 'vegan' || /\bvegan/i.test(it.text);
     var isVeg = isVegan || it.diet === 'veg';
+    if (isVeg) li.setAttribute('data-veg', '');
 
     var text = it.text.trim();
     var label = '';
@@ -207,6 +242,29 @@
       li.appendChild(sides);
     }
     return li;
+  }
+
+  // Long menus fold after the first few dishes, with "Show all 8 dishes" underneath.
+  // With the Veg filter on, vegetarian and vegan dishes always stay visible.
+  function foldDishes(node, ul, p) {
+    var btn = node.querySelector('.more');
+    var items = Array.prototype.slice.call(ul.children);
+    var hideable = items.filter(function (li, i) {
+      return i >= FOLD_AFTER && !(state.filters.veg && li.hasAttribute('data-veg'));
+    });
+    if (hideable.length < 2) return; // folding away a single dish saves nothing
+    var listId = 'dishes-' + p.id;
+    ul.id = listId;
+    btn.setAttribute('aria-controls', listId);
+    btn.hidden = false;
+    function apply() {
+      var open = !!state.open[p.id];
+      hideable.forEach(function (li) { li.hidden = !open; });
+      btn.setAttribute('aria-expanded', String(open));
+      btn.textContent = open ? 'Show fewer dishes' : 'Show all ' + items.length + ' dishes';
+    }
+    btn.addEventListener('click', function () { state.open[p.id] = !state.open[p.id]; apply(); });
+    apply();
   }
 
   function splitDish(text) {

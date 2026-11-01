@@ -32,6 +32,9 @@ const pairs = (t) => [
   ['chip edge on page', t.edge, t.bg, 3],
   ['chip edge on card fill', t.edge, t.surface, 3],
   ['dashed "no menu" outline on page', t.edge, t.bg, 3],
+  ['jump link text on lavender', t.ink, t.soft, 4.5],
+  ['jump link edge on page', t.edge, t.bg, 3],
+  ['"Show all" button on card', t.accent, t.surface, 4.5],
   ['focus ring on page', t.accent, t.bg, 3],
   ['focus ring on card', t.accent, t.surface, 3],
 ]
