@@ -38,6 +38,7 @@
   --radius-pill: 999px;
   --tick: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E");
   --clock: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='9'/%3E%3Cpath d='M12 7v5l3 2'/%3E%3C/svg%3E");
+  --calendar: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='5' width='18' height='16' rx='2'/%3E%3Cpath d='M3 10h18M8 3v4M16 3v4'/%3E%3C/svg%3E");
   color-scheme: light;
 }
 
@@ -61,7 +62,9 @@
 * { box-sizing: border-box; }
 [hidden] { display: none !important; }
 
-html { -webkit-text-size-adjust: 100%; }
+/* No double-tap zoom (it fired by accident while scrolling menus); pinch-to-zoom still works,
+   so anyone who needs bigger text can still zoom. */
+html { -webkit-text-size-adjust: 100%; touch-action: manipulation; }
 
 body {
   margin: 0;
@@ -103,6 +106,30 @@ h1 {
   line-height: 1.1;
   letter-spacing: -0.01em;
 }
+
+/* "Menus for week 45 aren't out yet": a Lavender panel with a calendar icon and words, never colour alone */
+.banner {
+  position: relative;
+  padding: 12px 14px 12px 44px;
+  border-radius: 14px;
+  background: var(--soft);
+  border: 1.5px solid var(--accent);
+  color: var(--ink);
+}
+.banner::before {
+  content: '';
+  position: absolute;
+  left: 14px;
+  top: 14px;
+  width: 18px;
+  height: 18px;
+  background: var(--accent);
+  -webkit-mask: var(--calendar) center / contain no-repeat;
+  mask: var(--calendar) center / contain no-repeat;
+}
+.banner p { margin: 0; }
+.banner__title { font-weight: 600; font-size: 15px; }
+.banner__text { margin-top: 2px !important; font-size: 14px; color: var(--muted); }
 
 .sub { margin: 0; font-size: 14px; color: var(--muted); }
 
@@ -225,6 +252,20 @@ h1 {
 .more::after { content: '▾'; text-decoration: none; display: inline-block; }
 .more[aria-expanded="true"]::after { content: '▴'; }
 .dishes li[hidden] { display: none; }
+
+/* Links to the place: its lunch page and a map, at the bottom of every card */
+.links { margin: 0; display: flex; flex-wrap: wrap; gap: 0 18px; }
+.links__a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--accent);
+  font-size: 14px;
+  font-weight: 600;
+  text-underline-offset: 4px;
+}
+.links__a:hover { color: var(--ink); }
+.card .links { margin-bottom: -10px; }
 
 .note { margin: 0; font-size: 14px; color: var(--muted); }
 .note:empty { display: none; }

@@ -15,7 +15,11 @@
   <main class="page">
     <header class="top">
       <p class="eyebrow" id="today-label">Today · Lindholmen</p>
-      <h1>All lunch menus, today</h1>
+      <h1 id="heading">All lunch menus, today</h1>
+      <div class="banner" id="banner" role="status" hidden>
+        <p class="banner__title"></p>
+        <p class="banner__text"></p>
+      </div>
       <p class="sub" id="summary">Loading today's menus…</p>
       <div class="filters" role="group" aria-label="Filters">
         <button type="button" class="chip" data-filter="veg" aria-pressed="false">Veg option</button>
@@ -45,6 +49,7 @@
       <button type="button" class="more" hidden></button>
       <p class="note"></p>
       <span class="fresh"></span>
+      <p class="links"></p>
     </article>
   </template>
 

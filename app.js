@@ -28,6 +28,25 @@
     return ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].indexOf(s);
   }
 
+  // ISO week number (Swedish weeks: Monday first) of a YYYY-MM-DD date
+  function isoWeek(ymd) {
+    var d = new Date(ymd + 'T12:00:00Z');
+    var day = d.getUTCDay() || 7;
+    d.setUTCDate(d.getUTCDate() + 4 - day);
+    var yearStart = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
+    return Math.ceil(((d - yearStart) / 86400000 + 1) / 7);
+  }
+  function addDays(ymd, n) {
+    var d = new Date(ymd + 'T12:00:00Z');
+    d.setUTCDate(d.getUTCDate() + n);
+    return d.toISOString().slice(0, 10);
+  }
+  // Monday of the week a date is in
+  function weekStart(ymd) {
+    var day = new Date(ymd + 'T12:00:00Z').getUTCDay() || 7;
+    return addDays(ymd, 1 - day);
+  }
+
   function walkMinutes(p) {
     if (typeof p.lat !== 'number' || typeof p.lon !== 'number') return null;
     var R = 6371000, toRad = Math.PI / 180;
@@ -61,21 +80,33 @@
     jump.hidden = true;
     var now = new Date();
     var today = stockholmDate(now);
-    document.getElementById('today-label').textContent = weekdayName(now) + ' · Lindholmen';
-
     var wd = weekdayIndex(now);
-    // Testing on a weekend: ?weekday=1 shows the latest menus anyway (this visit only, nothing saved).
-    var forceWeekday = /[?&]weekday=1\b/.test(location.search);
-    if ((wd === 0 || wd === 6) && !forceWeekday) {
-      summary.textContent = 'Lunch menus are back on Monday.';
-      addEmpty(list, 'It’s the weekend, so most places don’t serve weekday lunch. See you on Monday.');
-      return;
-    }
+    var weekend = wd === 0 || wd === 6;
+    var week = isoWeek(today);
+    document.getElementById('today-label').textContent = weekdayName(now) + ' · Week ' + week + ' · Lindholmen';
+    document.getElementById('heading').textContent = weekend ? 'Latest lunch menus' : 'All lunch menus, today';
+    var banner = document.getElementById('banner');
+    banner.hidden = true;
     if (!state.data) return;
 
     var places = state.data.places.map(function (p) {
       return Object.assign({}, p, { walk: walkMinutes(p), state: classify(p, today) });
     });
+
+    // Banner when no daily menu is from the lunch week we're in. At weekends the lunch week
+    // is the one coming up, so last week's menus stay on screen with a clear notice.
+    var lunchWeekStart = weekend ? addDays(weekStart(today), 7) : weekStart(today);
+    var lunchWeek = isoWeek(lunchWeekStart);
+    var daily = places.filter(function (p) { return p.kind !== 'fixed' && p.items && p.items.length; });
+    var thisWeeks = daily.filter(function (p) { return p.menuDate && p.menuDate >= lunchWeekStart; });
+    if (daily.length && !thisWeeks.length) {
+      var latest = daily.map(function (p) { return p.menuDate; }).sort().pop();
+      var fromWeek = latest ? isoWeek(latest) : null;
+      banner.querySelector('.banner__title').textContent = 'Menus for week ' + lunchWeek + ' aren’t out yet';
+      banner.querySelector('.banner__text').textContent = (fromWeek ? 'Showing the latest menus, from week ' + fromWeek + '. ' : 'Showing the latest menus we have. ') +
+        'They may have changed, so check the place’s own page before you walk over. New menus are read every weekday morning.';
+      banner.hidden = false;
+    }
 
     var order = { fresh: 0, stale: 1, fixed: 2, missing: 3 };
     places.sort(function (a, b) {
@@ -92,7 +123,9 @@
     });
 
     var freshCount = places.filter(function (p) { return p.state === 'fresh'; }).length;
-    summary.textContent = places.length + ' places · ' + freshCount + ' with today’s menu · sorted by walking time';
+    summary.textContent = weekend
+      ? places.length + ' places · no weekday lunch today · sorted by walking time'
+      : places.length + ' places · ' + freshCount + ' with today’s menu · sorted by walking time';
 
     if (!shown.length) {
       addEmpty(list, 'No places match these filters. Turn one off to see more.');
@@ -187,6 +220,7 @@
         fresh.textContent = 'From ' + from + ' · may have changed';
       }
     }
+    addLinks(node, p);
     return node;
   }
 
@@ -297,6 +331,28 @@
     name = name.replace(/[,\s]+$/, '').trim();
     rest = rest.replace(/\s+·\s+/g, ' · ').replace(/[.\s]+$/, '').trim();
     return { name: name.charAt(0).toUpperCase() + name.slice(1), sides: rest };
+  }
+
+  // Links at the bottom of every card: the place's own lunch page and where it is on a map.
+  // Both open in a new tab; the map link only carries the place's position, nothing about you.
+  function addLinks(node, p) {
+    var row = node.querySelector('.links');
+    if (p.url) row.appendChild(linkTo(p.url, 'Lunch page', 'Open ' + p.name + '’s lunch page'));
+    if (typeof p.lat === 'number' && typeof p.lon === 'number') {
+      var map = 'https://www.openstreetmap.org/?mlat=' + p.lat + '&mlon=' + p.lon + '#map=18/' + p.lat + '/' + p.lon;
+      row.appendChild(linkTo(map, 'Map', 'Show ' + p.name + ' on OpenStreetMap'));
+    }
+    if (!row.children.length) row.hidden = true;
+  }
+  function linkTo(href, text, label) {
+    var a = document.createElement('a');
+    a.className = 'links__a';
+    a.href = href;
+    a.target = '_blank';
+    a.rel = 'noopener noreferrer';
+    a.setAttribute('aria-label', label + ' (opens in a new tab)');
+    a.textContent = text + ' ↗';
+    return a;
   }
 
   function emojiNode(char, label) {
