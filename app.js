@@ -111,6 +111,17 @@
     if (p.url) name.href = p.url; else name.removeAttribute('href');
     node.querySelector('.walk').textContent = p.walk != null ? p.walk + ' min' : '';
 
+    // Price row: the lunch price and what comes with it, or an honest "not on their site"
+    var amount = node.querySelector('.price-amount');
+    var incl = node.querySelector('.price-incl');
+    if (p.price) {
+      amount.textContent = p.price;
+      incl.textContent = p.includes ? 'incl. ' + p.includes : '';
+    } else {
+      node.querySelector('.price-row').classList.add('is-unknown');
+      amount.textContent = 'Price not on their site';
+    }
+
     var ul = node.querySelector('.dishes');
     var note = node.querySelector('.note');
     var fresh = node.querySelector('.fresh');
@@ -124,47 +135,7 @@
       fresh.classList.add('is-missing');
       fresh.textContent = p.url ? 'Their own page may have it.' : '';
     } else {
-      (p.items || []).forEach(function (it) {
-        var li = document.createElement('li');
-        var text = document.createElement('span');
-        // Vegetarian 🥦 and vegan 🌱 dishes get an emoji right after the word
-        var isVegan = it.diet === 'vegan' || /\bvegan/i.test(it.text);
-        var isVeg = isVegan || it.diet === 'veg';
-        var emoji = isVegan ? '🌱' : '🥦';
-        var emojiLabel = isVegan ? 'vegan' : 'vegetarian';
-        var m = it.text.match(/^([^:]{2,22}):\s+(.+)$/);
-        var labelIsVeg = m && /^(veg|vegetar|vegan)/i.test(m[1]);
-        if (isVeg && !labelIsVeg) {
-          var tag = document.createElement('b');
-          tag.className = 'label';
-          tag.textContent = isVegan ? 'Vegan ' : 'Veg ';
-          text.appendChild(tag);
-          text.appendChild(emojiNode(emoji, emojiLabel));
-          text.appendChild(document.createTextNode(' · '));
-        }
-        // "Fire: Grillad kyckling…" → the station or category in bold, for scanning
-        if (m) {
-          var label = document.createElement('span');
-          label.className = 'label';
-          label.textContent = m[1] + ' ';
-          text.appendChild(label);
-          if (labelIsVeg) {
-            text.appendChild(emojiNode(emoji, emojiLabel));
-            text.appendChild(document.createTextNode(' '));
-          }
-          text.appendChild(document.createTextNode(m[2]));
-        } else {
-          text.appendChild(document.createTextNode(it.text));
-        }
-        li.appendChild(text);
-        if (it.price) {
-          var price = document.createElement('span');
-          price.className = 'price';
-          price.textContent = it.price;
-          li.appendChild(price);
-        }
-        ul.appendChild(li);
-      });
+      (p.items || []).forEach(function (it) { ul.appendChild(dishItem(it)); });
       if (p.note) note.textContent = p.note;
       if (p.state === 'fresh') {
         fresh.textContent = 'Updated ' + stockholmTime(new Date(p.readAt));
@@ -183,6 +154,91 @@
       }
     }
     return node;
+  }
+
+
+  // One dish, in three lines so a long menu can be scanned:
+  //   FIRE · 🥦 VEG          station or category, small caps (left out when there is none)
+  //   Grillat kycklinglårfilé   the dish itself
+  //   rostad potatis · piri piri sås · grönkålsceasar   what comes with it, quieter
+  function dishItem(it) {
+    var li = document.createElement('li');
+    var isVegan = it.diet === 'vegan' || /\bvegan/i.test(it.text);
+    var isVeg = isVegan || it.diet === 'veg';
+
+    var text = it.text.trim();
+    var label = '';
+    var m = text.match(/^([^:]{2,22}):\s+(.+)$/);
+    if (m) { label = m[1].trim(); text = m[2].trim(); }
+    var labelIsVeg = /^(veg|vegetar|vegan)/i.test(label);
+
+    // Tag line: the station or category, plus a Veg/Vegan word and emoji (never the emoji alone)
+    if (label || isVeg) {
+      var tag = document.createElement('p');
+      tag.className = 'dish-tag';
+      if (label) tag.appendChild(document.createTextNode(label));
+      if (isVeg) {
+        if (label && !labelIsVeg) tag.appendChild(document.createTextNode(' · '));
+        if (!labelIsVeg) tag.appendChild(document.createTextNode(isVegan ? 'Vegan ' : 'Veg '));
+        else tag.appendChild(document.createTextNode(' '));
+        tag.appendChild(emojiNode(isVegan ? '🌱' : '🥦', isVegan ? 'vegan' : 'vegetarian'));
+      }
+      li.appendChild(tag);
+    }
+
+    // Split the dish from its sides at the first " · ", " – ", " - " or "serveras med"
+    var split = splitDish(text);
+    var head = document.createElement('p');
+    head.className = 'dish-name';
+    var name = document.createElement('span');
+    name.textContent = split.name;
+    head.appendChild(name);
+    if (it.price) {
+      var price = document.createElement('span');
+      price.className = 'dish-price';
+      price.textContent = it.price;
+      head.appendChild(price);
+    }
+    li.appendChild(head);
+    if (split.sides) {
+      var sides = document.createElement('p');
+      sides.className = 'dish-sides';
+      sides.textContent = split.sides;
+      li.appendChild(sides);
+    }
+    return li;
+  }
+
+  function splitDish(text) {
+    // "(Pad Thai) Wokade risnudlar…": drop a bracketed name that only repeats the label
+    text = text.replace(/^\([^)]{2,30}\)\s+/, '');
+    var name = text, rest = '';
+    var seps = [' · ', ' – ', ' - ', ' — '];
+    var cut = -1, len = 0;
+    seps.forEach(function (sep) {
+      var i = text.indexOf(sep);
+      if (i > 2 && (cut < 0 || i < cut)) { cut = i; len = sep.length; }
+    });
+    if (cut > 0) {
+      name = text.slice(0, cut);
+      // The remaining dashes are a list of sides: show them with middle dots
+      rest = text.slice(cut + len).replace(/\s+[–—-]\s*|\s*–\s+/g, ' · ');
+    } else {
+      // Otherwise cut at the earliest of ", ", " serveras med ", " med " (kept: it reads as a sentence)
+      var best = null;
+      [[/,\s+(serveras med\s+)?/i, false], [/\s+serveras med\s+/i, false], [/\s+(med|with)\s+/i, true]].forEach(function (r) {
+        var m = text.match(r[0]);
+        if (m && m.index >= 3 && m.index <= 60 && (!best || m.index < best.index)) best = { index: m.index, m: m, keep: r[1] };
+      });
+      if (best) {
+        name = text.slice(0, best.index);
+        rest = text.slice(best.index + best.m[0].length);
+        if (best.keep) rest = best.m[1].toLowerCase() + ' ' + rest;
+      }
+    }
+    name = name.replace(/[,\s]+$/, '').trim();
+    rest = rest.replace(/\s+·\s+/g, ' · ').replace(/[.\s]+$/, '').trim();
+    return { name: name.charAt(0).toUpperCase() + name.slice(1), sides: rest };
   }
 
   function emojiNode(char, label) {
