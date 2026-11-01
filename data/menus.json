@@ -25,7 +25,8 @@
           "diet": "veg"
         }
       ],
-      "note": "Earth is the vegetarian station."
+      "note": "Earth is the vegetarian station.",
+      "problem": "2026-11-01: page read, but no menu for today"
     },
     {
       "id": "kooperativet",
@@ -66,7 +67,8 @@
       ],
       "note": "",
       "price": "139 kr",
-      "includes": "salad buffet, bread, coffee and cake"
+      "includes": "salad buffet, bread, coffee and cake",
+      "problem": "2026-11-01: page read, but no menu for today"
     },
     {
       "id": "bistrot",
@@ -94,7 +96,8 @@
       ],
       "note": "",
       "price": "139 kr",
-      "includes": "salad buffet, sourdough bread, coffee and cake"
+      "includes": "salad buffet, sourdough bread, coffee and cake",
+      "problem": "2026-11-01: page read, but no menu for today"
     },
     {
       "id": "cuckoosnest",
@@ -116,7 +119,8 @@
       ],
       "note": "",
       "price": "195 kr",
-      "includes": "salad buffet, coffee, tea and cake"
+      "includes": "salad buffet, coffee, tea and cake",
+      "problem": "2026-11-01: page read, but no menu for today"
     },
     {
       "id": "oishii",
@@ -124,10 +128,10 @@
       "url": "https://oishii.se/lunchmeny/",
       "lat": null,
       "lon": null,
+      "price": "From 100 kr",
       "kind": "fixed",
       "veg": true,
-      "note": "Sushi, ramen, bento and poke bowls. Same menu every day, vegetarian sushi available.",
-      "price": "From 100 kr"
+      "note": "Sushi, ramen, bento and poke bowls. Same menu every day, vegetarian sushi available."
     },
     {
       "id": "districtone",
@@ -165,7 +169,8 @@
       ],
       "note": "",
       "price": "135 kr",
-      "includes": "homemade bread, salad buffet, coffee and cake"
+      "includes": "homemade bread, salad buffet, coffee and cake",
+      "problem": "2026-11-01: fetch failed"
     },
     {
       "id": "missf",
@@ -173,10 +178,10 @@
       "url": "https://www.missf.se/",
       "lat": 57.7081,
       "lon": 11.94456,
+      "price": "105–135 kr",
       "kind": "fixed",
       "veg": true,
-      "note": "Ciabatta, salads, poke bowls, bibimbap and sushi. Same menu every day, tofu and chèvre options.",
-      "price": "105–135 kr"
+      "note": "Ciabatta, salads, poke bowls, bibimbap and sushi. Same menu every day, tofu and chèvre options."
     },
     {
       "id": "bombay",
@@ -184,11 +189,11 @@
       "url": "https://www.bombaybistro.se/lunch/",
       "lat": 57.70841,
       "lon": 11.9377,
+      "price": "129 kr",
+      "includes": "salad, naan and water",
       "kind": "fixed",
       "veg": true,
-      "note": "Indian curries on a four-week rotation, plus a daily vegetarian thali (can be made vegan).",
-      "price": "129 kr",
-      "includes": "salad, naan and water"
+      "note": "Indian curries on a four-week rotation, plus a daily vegetarian thali (can be made vegan)."
     },
     {
       "id": "alkemisten",
@@ -206,10 +211,10 @@
       "url": "https://www.bistro3.se/",
       "lat": null,
       "lon": null,
+      "price": "99–139 kr",
       "kind": "fixed",
       "veg": true,
-      "note": "Pinsa, classic mains, salads and kebab, plus a weekly dish (ask the staff, it isn't on their site). Vegetarian pinsa and Greek salad.",
-      "price": "99–139 kr"
+      "note": "Pinsa, classic mains, salads and kebab, plus a weekly dish (ask the staff, it isn't on their site). Vegetarian pinsa and Greek salad."
     },
     {
       "id": "masala",
@@ -232,9 +237,10 @@
           "diet": "veg"
         }
       ],
-      "note": "Menu 4 of 4 this week. Always on: Subzi thali 139 kr (can be made vegan), palak paneer 139 kr, butter chicken, rogan josh and more, 139–165 kr.",
+      "note": "",
       "price": "129 kr",
-      "includes": "lunch naan, rice, salad and water"
+      "includes": "lunch naan, rice, salad and water",
+      "problem": "2026-11-01: page read, but no menu for today"
     }
   ]
 }
