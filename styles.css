@@ -59,6 +59,7 @@
 }
 
 * { box-sizing: border-box; }
+[hidden] { display: none !important; }
 
 html { -webkit-text-size-adjust: 100%; }
 
@@ -135,6 +136,27 @@ h1 {
   mask: var(--tick) center / contain no-repeat;
 }
 
+/* Jump list: every place shown, in page order. Tapping one scrolls to its card. */
+.jump { display: flex; flex-wrap: wrap; gap: 6px; padding-top: 4px; }
+.jump__label { align-self: center; margin-right: 2px; font-size: 13px; font-weight: 600; color: var(--muted); }
+.jump__link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 36px;
+  padding: 0 12px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--edge);
+  background: var(--soft);
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+}
+.jump__link:hover { border-color: var(--accent); color: var(--ink); }
+.card { scroll-margin-top: 16px; }
+.name:focus { outline: none; }
+.name:focus-visible { outline: 3px solid var(--accent); }
+
 .list { padding-top: 18px; display: flex; flex-direction: column; gap: 12px; }
 
 .card {
@@ -182,6 +204,27 @@ h1 {
 
 .dish-price { color: var(--muted); font-weight: 500; white-space: nowrap; }
 .dish-sides { margin-top: 2px !important; font-size: 14px; line-height: 1.4; color: var(--muted); }
+
+/* "Show all 8 dishes": a quiet text button with an arrow, so it reads as an action, not a dish */
+.more {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 44px;
+  margin: -6px 0 -4px;
+  padding: 0 2px;
+  border: none;
+  background: none;
+  color: var(--accent);
+  font: 600 14px var(--font-body);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  cursor: pointer;
+}
+.more::after { content: '▾'; text-decoration: none; display: inline-block; }
+.more[aria-expanded="true"]::after { content: '▴'; }
+.dishes li[hidden] { display: none; }
 
 .note { margin: 0; font-size: 14px; color: var(--muted); }
 .note:empty { display: none; }
