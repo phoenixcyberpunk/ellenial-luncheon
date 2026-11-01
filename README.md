@@ -55,7 +55,7 @@ If Masala Kitchen changes its menus, its images get new file names; the four men
 
 ## Adding a place
 
-1. Add it to `places.json` with its website and coordinates from OpenStreetMap.
+1. Add it to `places.json` with its website, coordinates from OpenStreetMap, and its lunch `price` as the place states it (`"139 kr"`, `"105–135 kr"`, `"From 100 kr"`) plus `includes` (what comes with it). Leave `price` out if their site doesn't say; the card then reads "Price not on their site".
 2. If its menu changes, add a reader function to `scripts/read-menus.mjs` and name it in `reader`. If it's the same every day, use `"kind": "fixed"` and write a short `note` instead.
 3. Test against a saved copy of the page:
 

@@ -1,5 +1,5 @@
 {
-  "_about": "Lunch places shown in Luncheon. 'reader' names the function in scripts/read-menus.mjs that reads the menu; 'fixed' places have the same menu every day and are entered by hand. Coordinates are from OpenStreetMap. Uni3 uses the Lindholmspiren 3 building and Bistrot the Diagonalen street, so their walking times are approximate. Oishii's, BISTRO 3's and Masala Kitchen's locations are not filled in yet. Bombay Bistro rotates four weekly menus but its site doesn't say which week is current, so it's shown as a fixed menu for now.",
+  "_about": "Lunch places shown in Luncheon. 'reader' names the function in scripts/read-menus.mjs that reads the menu; 'fixed' places have the same menu every day and are entered by hand. Coordinates are from OpenStreetMap. Uni3 uses the Lindholmspiren 3 building and Bistrot the Diagonalen street, so their walking times are approximate. Oishii's, BISTRO 3's and Masala Kitchen's locations are not filled in yet. Bombay Bistro rotates four weekly menus but its site doesn't say which week is current, so it's shown as a fixed menu for now. 'price' is the lunch price as the place states it (a range or 'From …' when it varies), 'includes' what comes with it; leave price out when their site doesn't say.",
   "places": [
     {
       "id": "uni3",
@@ -17,7 +17,8 @@
       "lat": 57.70859,
       "lon": 11.94472,
       "reader": "kooperativet",
-      "note": "139 kr with salad buffet, bread, coffee and cake."
+      "price": "139 kr",
+      "includes": "salad buffet, bread, coffee and cake"
     },
     {
       "id": "bistrot",
@@ -26,7 +27,8 @@
       "lat": 57.70442,
       "lon": 11.93748,
       "reader": "bistrot",
-      "note": "139 kr with salad buffet, sourdough bread, coffee and cake."
+      "price": "139 kr",
+      "includes": "salad buffet, sourdough bread, coffee and cake"
     },
     {
       "id": "cuckoosnest",
@@ -35,7 +37,8 @@
       "lat": 57.70772,
       "lon": 11.94092,
       "reader": "cuckoo",
-      "note": "195 kr with salad buffet, coffee, tea and cake."
+      "price": "195 kr",
+      "includes": "salad buffet, coffee, tea and cake"
     },
     {
       "id": "oishii",
@@ -45,7 +48,8 @@
       "lon": null,
       "kind": "fixed",
       "veg": true,
-      "note": "Sushi, ramen, bento and poke bowls. Same menu every day, vegetarian sushi available. From 100 kr."
+      "price": "From 100 kr",
+      "note": "Sushi, ramen, bento and poke bowls. Same menu every day, vegetarian sushi available."
     },
     {
       "id": "districtone",
@@ -54,7 +58,8 @@
       "lat": 57.70969,
       "lon": 11.94277,
       "reader": "districtone",
-      "note": "135 kr with homemade bread, salad buffet, coffee and cake."
+      "price": "135 kr",
+      "includes": "homemade bread, salad buffet, coffee and cake"
     },
     {
       "id": "missf",
@@ -64,7 +69,8 @@
       "lon": 11.94456,
       "kind": "fixed",
       "veg": true,
-      "note": "Ciabatta, salads, poke bowls, bibimbap and sushi. Same menu every day, tofu and chèvre options. 105–135 kr."
+      "price": "105–135 kr",
+      "note": "Ciabatta, salads, poke bowls, bibimbap and sushi. Same menu every day, tofu and chèvre options."
     },
     {
       "id": "bombay",
@@ -74,7 +80,9 @@
       "lon": 11.9377,
       "kind": "fixed",
       "veg": true,
-      "note": "Indian curries on a four-week rotation, plus a daily vegetarian thali (can be made vegan). 129 kr with salad, naan and water."
+      "price": "129 kr",
+      "includes": "salad, naan and water",
+      "note": "Indian curries on a four-week rotation, plus a daily vegetarian thali (can be made vegan)."
     },
     {
       "id": "alkemisten",
@@ -94,7 +102,8 @@
       "lon": null,
       "kind": "fixed",
       "veg": true,
-      "note": "Pinsa, classic mains, salads and kebab, 99–139 kr, plus a weekly dish (ask the staff, it isn't on their site). Vegetarian pinsa and Greek salad."
+      "price": "99–139 kr",
+      "note": "Pinsa, classic mains, salads and kebab, plus a weekly dish (ask the staff, it isn't on their site). Vegetarian pinsa and Greek salad."
     },
     {
       "id": "masala",
@@ -103,7 +112,8 @@
       "lat": null,
       "lon": null,
       "reader": "masala",
-      "note": "129 kr with lunch naan, rice, salad and water."
+      "price": "129 kr",
+      "includes": "lunch naan, rice, salad and water"
     }
   ]
 }

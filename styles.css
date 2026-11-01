@@ -156,21 +156,32 @@ h1 {
 .name:hover { text-decoration: underline; }
 .walk { font-size: 13px; color: var(--muted); white-space: nowrap; }
 
-.dishes {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  font-size: 14px;
-  line-height: 1.4;
-}
-.dishes li { display: flex; justify-content: space-between; gap: 12px; }
-.dishes .price { color: var(--muted); white-space: nowrap; }
-.dishes .label { font-weight: 600; }
-.dishes .emoji { font-style: normal; }
+/* Price row: its own line under the name, so prices can be compared down the page */
+.price-row { margin: -2px 0 2px; display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 8px; font-size: 14px; }
+.price-amount { font-weight: 600; color: var(--ink); white-space: nowrap; }
+.price-incl { color: var(--muted); }
+.price-row.is-unknown .price-amount { font-weight: 500; color: var(--muted); }
+
+/* Dishes: tag / dish / sides, with a hairline between dishes for easy scanning */
+.dishes { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; }
 .dishes:empty { display: none; }
+.dishes li { padding: 10px 0; border-top: 1px solid var(--line); }
+.dishes li:first-child { border-top: none; padding-top: 4px; }
+.dishes li:last-child { padding-bottom: 2px; }
+.dishes p { margin: 0; }
+.dish-tag {
+  margin-bottom: 2px !important;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.dish-tag .emoji { font-style: normal; letter-spacing: 0; }
+.dish-name { display: flex; justify-content: space-between; gap: 12px; font-size: 15px; font-weight: 500; line-height: 1.35; }
+
+.dish-price { color: var(--muted); font-weight: 500; white-space: nowrap; }
+.dish-sides { margin-top: 2px !important; font-size: 14px; line-height: 1.4; color: var(--muted); }
 
 .note { margin: 0; font-size: 14px; color: var(--muted); }
 .note:empty { display: none; }

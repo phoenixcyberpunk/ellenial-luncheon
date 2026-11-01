@@ -64,7 +64,9 @@
           "text": "Världen: Långbakad nordafrikanskt kryddad högrev med citroncouscous, rostade morötter, kikärtor och harissayoghurt."
         }
       ],
-      "note": "139 kr with salad buffet, bread, coffee and cake."
+      "note": "",
+      "price": "139 kr",
+      "includes": "salad buffet, bread, coffee and cake"
     },
     {
       "id": "bistrot",
@@ -90,7 +92,9 @@
           "diet": "veg"
         }
       ],
-      "note": "139 kr with salad buffet, sourdough bread, coffee and cake."
+      "note": "",
+      "price": "139 kr",
+      "includes": "salad buffet, sourdough bread, coffee and cake"
     },
     {
       "id": "cuckoosnest",
@@ -110,7 +114,9 @@
           "diet": "veg"
         }
       ],
-      "note": "195 kr with salad buffet, coffee, tea and cake."
+      "note": "",
+      "price": "195 kr",
+      "includes": "salad buffet, coffee, tea and cake"
     },
     {
       "id": "oishii",
@@ -120,7 +126,8 @@
       "lon": null,
       "kind": "fixed",
       "veg": true,
-      "note": "Sushi, ramen, bento and poke bowls. Same menu every day, vegetarian sushi available. From 100 kr."
+      "note": "Sushi, ramen, bento and poke bowls. Same menu every day, vegetarian sushi available.",
+      "price": "From 100 kr"
     },
     {
       "id": "districtone",
@@ -156,7 +163,9 @@
           "text": "Pho: Vietnamesisk nudelsoppa med biff, koriander, gräslök, lök, böngroddar, chili, thai basilika, serveras med lime, hoisinsås och srirachasås."
         }
       ],
-      "note": "135 kr with homemade bread, salad buffet, coffee and cake."
+      "note": "",
+      "price": "135 kr",
+      "includes": "homemade bread, salad buffet, coffee and cake"
     },
     {
       "id": "missf",
@@ -166,7 +175,8 @@
       "lon": 11.94456,
       "kind": "fixed",
       "veg": true,
-      "note": "Ciabatta, salads, poke bowls, bibimbap and sushi. Same menu every day, tofu and chèvre options. 105–135 kr."
+      "note": "Ciabatta, salads, poke bowls, bibimbap and sushi. Same menu every day, tofu and chèvre options.",
+      "price": "105–135 kr"
     },
     {
       "id": "bombay",
@@ -176,7 +186,9 @@
       "lon": 11.9377,
       "kind": "fixed",
       "veg": true,
-      "note": "Indian curries on a four-week rotation, plus a daily vegetarian thali (can be made vegan). 129 kr with salad, naan and water."
+      "note": "Indian curries on a four-week rotation, plus a daily vegetarian thali (can be made vegan).",
+      "price": "129 kr",
+      "includes": "salad, naan and water"
     },
     {
       "id": "alkemisten",
@@ -196,7 +208,8 @@
       "lon": null,
       "kind": "fixed",
       "veg": true,
-      "note": "Pinsa, classic mains, salads and kebab, 99–139 kr, plus a weekly dish (ask the staff, it isn't on their site). Vegetarian pinsa and Greek salad."
+      "note": "Pinsa, classic mains, salads and kebab, plus a weekly dish (ask the staff, it isn't on their site). Vegetarian pinsa and Greek salad.",
+      "price": "99–139 kr"
     },
     {
       "id": "masala",
@@ -219,7 +232,9 @@
           "diet": "veg"
         }
       ],
-      "note": "Menu 4 of 4 this week. Always on: Subzi thali 139 kr (can be made vegan), palak paneer 139 kr, butter chicken, rogan josh and more, 139–165 kr."
+      "note": "Menu 4 of 4 this week. Always on: Subzi thali 139 kr (can be made vegan), palak paneer 139 kr, butter chicken, rogan josh and more, 139–165 kr.",
+      "price": "129 kr",
+      "includes": "lunch naan, rice, salad and water"
     }
   ]
 }

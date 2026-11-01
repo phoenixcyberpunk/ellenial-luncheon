@@ -363,6 +363,9 @@ async function main() {
   const places = [];
   for (const cfg of config.places) {
     const base = { id: cfg.id, name: cfg.name, url: cfg.url, lat: cfg.lat ?? null, lon: cfg.lon ?? null };
+    // Lunch price and what comes with it, as the place states it (hand-entered in places.json)
+    if (cfg.price) base.price = cfg.price;
+    if (cfg.includes) base.includes = cfg.includes;
     if (cfg.kind === 'fixed') {
       places.push({ ...base, kind: 'fixed', veg: !!cfg.veg, note: cfg.note || '' });
       continue;
