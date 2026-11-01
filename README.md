@@ -2,7 +2,7 @@
 
 Every lunch menu near Lindholmen, Gothenburg, for today, on one screen. Compare everything at a glance and decide where to eat.
 
-Live at [lunch.ellenial.app](https://lunch.ellenial.app). Colours and type follow [Gillefeeling](https://github.com/phoenixcyberpunk/gillefeeling), so the Ellenial apps look like one family.
+Live at [lunch.ellenial.app](https://lunch.ellenial.app). Colours and type follow the final Ellenial brand (1 Nov 2026): one palette for every Ellenial app, with Periwinkle for selected things, Fraunces for headings and DM Sans for text. Auto / Light / Dark uses the shared switch from [ellenial maps](https://github.com/phoenixcyberpunk/ellenial-maps) (`ellenial-theme.js`, copied unchanged).
 
 Free, no ads, no tracking, no accounts. An [Ellenial](https://ellenial.app) tool, built by one person with help from Claude.
 
@@ -11,6 +11,8 @@ Free, no ads, no tracking, no accounts. An [Ellenial](https://ellenial.app) tool
 - **`places.json`** lists the lunch places: name, website, location and how its menu is read.
 - **`scripts/read-menus.mjs`** reads each place's menu from the restaurant's own website and writes **`data/menus.json`**. It has no dependencies (Node 20+).
 - **`.github/workflows/read-menus.yml`** runs the reader on weekday mornings and saves the file when a menu changes.
+- **`ellenial-theme.js`** is the shared Ellenial Auto / Light / Dark switch. The choice is saved on this phone only. Add `?theme=light` or `?theme=dark` to test a theme without saving it.
+- **`scripts/check-contrast.mjs`** checks every colour pair against the accessibility rules (text 4.5:1, controls 3:1). Run it before shipping a colour change.
 - **`index.html`**, **`app.js`** and **`styles.css`** are the page. It reads `data/menus.json` and shows every place's menu for today.
 
 ### Being honest about freshness
@@ -22,7 +24,13 @@ Every menu carries a label, so an old menu never looks like today's:
 | Updated 09:02 | Today's menu, read this morning |
 | From Wednesday · may have changed | The site still shows an earlier day's menu, or couldn't be read today |
 | No menu found today | Nothing readable; the restaurant's own page may have it |
-| Grey card | A fixed menu that's the same every day |
+| Lavender card | A fixed menu that's the same every day (also says so in words) |
+
+### Accessibility
+
+Nothing rests on colour alone: freshness is always written out (and stale menus get a clock icon), selected filters get a tick, and fixed or missing menus say so in words. Text is at least 4.5:1 and anything you can tap has an edge of at least 3:1, in both themes.
+
+To see menus on a weekend (for testing), add `?weekday=1` to the address.
 
 ### Privacy
 
@@ -69,7 +77,7 @@ The reader fetches each page a few times per weekday morning, identifies itself,
 
 ## Credits
 
-- [Fraunces](https://github.com/undercasetype/Fraunces) by Undercase Type and [Instrument Sans](https://github.com/Instrument/instrument-sans) by Instrument, both under the SIL Open Font License, via [Fontsource](https://fontsource.org).
+- [Fraunces](https://github.com/undercasetype/Fraunces) by Undercase Type and [DM Sans](https://github.com/googlefonts/dm-fonts) by Colophon Foundry, both under the SIL Open Font License, via [Fontsource](https://fontsource.org).
 - Locations from [OpenStreetMap](https://www.openstreetmap.org/copyright) contributors.
 
 ## Licence
