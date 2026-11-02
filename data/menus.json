@@ -9,10 +9,10 @@
       "lon": 11.9405,
       "kind": "daily",
       "menuDate": "2026-11-02",
-      "readAt": "2026-11-02T07:44:58.357Z",
+      "readAt": "2026-11-02T10:37:59.321Z",
       "items": [
         {
-          "text": "Water: Bakad uer - kokt potatis – misosmörsås - sallad på gurka och gari – dill - rädisa"
+          "text": "Water: Bakad uer - kokt potatis – misosmörsås - sallad på zucchini och gari – dill - rädisa"
         },
         {
           "text": "Fire: Chicken vindaloo – basmatiris - yoghurtsås - kycklinglår - koriander – mynta"
@@ -37,13 +37,24 @@
       "includes": "salad buffet, bread, coffee and cake",
       "kind": "daily",
       "menuDate": "2026-11-02",
-      "readAt": "2026-11-02T07:44:58.357Z",
+      "readAt": "2026-11-02T10:37:59.321Z",
       "items": [
         {
-          "text": "Veckans special: Bi Bim Bap med pankofriterade räkor toppas med soyasås serveras på sesamris med kimchi, soya bönor, smached cucumber och böngroddar serveras med chilimajonnäs & bakat ägg"
+          "text": "Veckans special: Bi Bim Bap med pankofriterade räkor toppas med sojasås serveras"
         },
         {
-          "text": "Veg: Bi Bim Bap med quorn i soyasås serveras på sesamris med kimchi, soya bönor, smached cucumber och böngroddar serveras med chilimajonnäs & bakat ägg",
+          "text": "Veckans special: på sesamris med kimchi, soja bönor, sesammarinerade morrötter och böngroddar serveras med chilimajonnäs & bakat ägg"
+        },
+        {
+          "text": "Veg: Bi Bim Bap med quorn i sojasås serveras på sesamris med",
+          "diet": "veg"
+        },
+        {
+          "text": "Veg: kimchi, soja bönor, sesammarinerade morrötter och böngroddar",
+          "diet": "veg"
+        },
+        {
+          "text": "Veg: serveras med chilimajonnäs & bakat ägg",
           "diet": "veg"
         },
         {
@@ -135,21 +146,23 @@
       "url": "https://www.districtone.se/lunch.html",
       "lat": 57.70969,
       "lon": 11.94277,
+      "price": "135 kr",
+      "includes": "homemade bread, salad buffet, coffee and cake",
       "kind": "daily",
-      "menuDate": "2026-10-30",
-      "readAt": "2026-10-30T07:20:07.357Z",
+      "menuDate": "2026-11-02",
+      "readAt": "2026-11-02T10:37:59.321Z",
       "items": [
         {
-          "text": "Fisk: Smörstekt torskfile med skagensås och rostad fänkål, serveras med potatismos."
+          "text": "Fisk: Pocherad torskfile med rödbetor, kapris och skirat smör serveras med färsk pepparrot och potatismos."
         },
         {
-          "text": "Kött: Ostfylld schnitzel med rödvinssky och gröna ärtor, rostad potatis samt klassiska tillbehör."
+          "text": "Kött: Köttbullar på kalvfärs med gräddsås och rårörda lingon, serveras med pressgurka och potatismos."
         },
         {
-          "text": "Pad thai: (Pad Thai) Wokade risnudlar med kyckling, grönsaker, chilli, lime, jordnötter och ägg."
+          "text": "Fried chicken: Friterad kyckling med chili mayo och jordnötssås, serveras med morot och vitkålssallad samt jasminris."
         },
         {
-          "text": "Vegetarisk: Friterad dumplings med panang curry i kokosmjölk med paprika, lök, bambuskott och limeblad serveras med jasminris.",
+          "text": "Vegetarisk: Friterad dumplings med chili mayo och jordnötssås, serveras med morot och vitkålssallad samt jasminris.",
           "diet": "veg"
         },
         {
@@ -163,10 +176,7 @@
           "text": "Pho: Vietnamesisk nudelsoppa med biff, koriander, gräslök, lök, böngroddar, chili, thai basilika, serveras med lime, hoisinsås och srirachasås."
         }
       ],
-      "note": "",
-      "price": "135 kr",
-      "includes": "homemade bread, salad buffet, coffee and cake",
-      "problem": "2026-11-02: page read, but no menu for today"
+      "note": ""
     },
     {
       "id": "missf",
