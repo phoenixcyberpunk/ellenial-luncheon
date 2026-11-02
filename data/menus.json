@@ -102,22 +102,21 @@
       "url": "https://www.cuckoosnest.se/menyer/lunch",
       "lat": 57.70772,
       "lon": 11.94092,
+      "price": "195 kr",
+      "includes": "salad buffet, coffee, tea and cake",
       "kind": "daily",
-      "menuDate": "2026-10-30",
-      "readAt": "2026-10-30T07:20:07.357Z",
+      "menuDate": "2026-11-02",
+      "readAt": "2026-11-02T09:17:53.477Z",
       "items": [
         {
-          "text": "Viltskavsgryta serveras med västerbottenmos, rårörda lingon och svampfräs"
+          "text": "Kyckling serveras med rostad rotselleri, morot, citronsås och rostade mandlar"
         },
         {
-          "text": "stekt gnocchi serveras med vispad keso, brysselkål, lingon och rödbetskrisp",
+          "text": "pasta tagliatelle serveras med kantarellsås, tryffelolja, sockerärtor och grana padano",
           "diet": "veg"
         }
       ],
-      "note": "",
-      "price": "195 kr",
-      "includes": "salad buffet, coffee, tea and cake",
-      "problem": "2026-11-02: page read, but no menu for today"
+      "note": ""
     },
     {
       "id": "oishii",
