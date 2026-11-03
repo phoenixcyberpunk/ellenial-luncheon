@@ -1,4 +1,4 @@
-// Checks every colour pair Luncheon uses against the Ellenial accessibility rules:
+// Checks every colour pair Ellenial Lunch uses against the Ellenial accessibility rules:
 // text 4.5:1 (large text 3:1), controls, outlines and icons 3:1. Run: node scripts/check-contrast.mjs
 // Exits with an error if any pair fails, so it can run before shipping.
 

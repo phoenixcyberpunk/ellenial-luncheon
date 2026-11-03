@@ -1,4 +1,4 @@
-# Ellenial Luncheon
+# Ellenial Lunch
 
 Every lunch menu near Lindholmen, Gothenburg, for today, on one screen. Compare everything at a glance and decide where to eat.
 
@@ -99,4 +99,4 @@ The reader fetches each page a few times per weekday morning, identifies itself,
 
 ## Licence
 
-The code is AGPL-3.0, the same as [ellenial.app](https://github.com/phoenixcyberpunk/ellenial). See `LICENSE`. Two outside libraries are included, both under the MIT License: `vendor/supabase.js` is [supabase-js](https://github.com/supabase/supabase-js), © 2020 Supabase (full text in `vendor/supabase-js.LICENSE`), and `vendor/qrcode.js` is [qrcode-generator](https://github.com/kazuhikoarase/qrcode-generator), © 2009 Kazuhiko Arase (full text in `vendor/qrcode-generator.LICENSE`). MIT code can be used inside an AGPL project as long as its notice stays with it. The menus themselves belong to each restaurant; Luncheon only shows them with a link back.
+The code is AGPL-3.0, the same as [ellenial.app](https://github.com/phoenixcyberpunk/ellenial). See `LICENSE`. Two outside libraries are included, both under the MIT License: `vendor/supabase.js` is [supabase-js](https://github.com/supabase/supabase-js), © 2020 Supabase (full text in `vendor/supabase-js.LICENSE`), and `vendor/qrcode.js` is [qrcode-generator](https://github.com/kazuhikoarase/qrcode-generator), © 2009 Kazuhiko Arase (full text in `vendor/qrcode-generator.LICENSE`). MIT code can be used inside an AGPL project as long as its notice stays with it. The menus themselves belong to each restaurant; Ellenial Lunch only shows them with a link back.

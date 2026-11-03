@@ -1,4 +1,4 @@
-// Ellenial Luncheon — main screen.
+// Ellenial Lunch — main screen.
 // Reads data/menus.json (written every weekday morning by scripts/read-menus.mjs)
 // and shows every place's menu for today on one screen. No cookies, no tracking.
 (function () {

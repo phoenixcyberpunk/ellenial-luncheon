@@ -1,4 +1,4 @@
-// Ellenial Luncheon — morning menu reader.
+// Ellenial Lunch — morning menu reader.
 //
 // Reads each place's menu from the restaurant's own website and writes
 // data/menus.json, which the main screen shows. Runs on weekday mornings
@@ -24,7 +24,7 @@ import { fileURLToPath } from 'node:url';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const OUT = path.join(ROOT, 'data', 'menus.json');
-const USER_AGENT = 'Mozilla/5.0 (compatible; EllenialLuncheon/0.1; +https://github.com/phoenixcyberpunk/ellenial-luncheon)';
+const USER_AGENT = 'Mozilla/5.0 (compatible; EllenialLunch/0.1; +https://github.com/phoenixcyberpunk/ellenial-luncheon)';
 const FIXTURES = process.env.LUNCHEON_FIXTURES || '';
 const MASALA = JSON.parse(await readFile(path.join(ROOT, 'data', 'masala-menus.json'), 'utf8'));
 
