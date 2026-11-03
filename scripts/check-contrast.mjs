@@ -60,6 +60,9 @@ const pairs = (t) => [
   ['dialog text', t.ink, t.surface, 4.5],
   ['dialog small text', t.muted, t.surface, 4.5],
   ['QR code (Night on white)', '#1F1A2E', '#FFFFFF', 4.5],
+  ['"We\'re going here" label on Periwinkle', t.onPeri, t.peri, 4.5],
+  ['picked card outline (Indigo) on page', t.accent, t.bg, 3],
+  ['"How this works" steps on lavender', t.muted, t.soft, 4.5],
   ['focus ring on page', t.accent, t.bg, 3],
   ['focus ring on card', t.accent, t.surface, 3],
 ]

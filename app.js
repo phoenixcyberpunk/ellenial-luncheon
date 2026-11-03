@@ -119,13 +119,35 @@
       heart.setAttribute('aria-label', p.name + ': hearted by ' + list + '. ' + (on ? 'Remove your heart' : 'Add your heart'));
       heart.title = 'Hearted by ' + list;
       node.classList.toggle('is-group-hearted', who.length > 0);
+      updatePick(node, p, who.length);
     } else {
+      updatePick(node, p, 0);
       count.textContent = '';
       heart.setAttribute('aria-label', on ? p.name + ' is on your shortlist. Remove it' : 'Add ' + p.name + ' to your shortlist');
       heart.title = on ? 'On your shortlist (tap to remove)' : 'Add to your shortlist';
       node.classList.remove('is-group-hearted');
     }
     node.classList.toggle('is-hearted', on);
+  }
+
+  // On a card in a lunch: "✓ We're going here · picked by Anna" on the chosen place, and a button
+  // on every hearted place to pick it (or undo the pick on the chosen one)
+  function updatePick(node, p, hearts) {
+    var label = node.querySelector('.picked');
+    var row = node.querySelector('.pick-row');
+    var btn = row.querySelector('.pick-btn');
+    var gp = plan.lunch ? groupPick() : null;
+    var chosen = !!(gp && gp.id === p.id);
+    node.classList.toggle('is-picked', chosen);
+    label.hidden = !chosen;
+    label.textContent = chosen ? '✓ We’re going here · picked by ' + gp.by : '';
+    var canPick = !!(plan.lunch && plan.loaded && myName() && (hearts > 0 || chosen));
+    row.hidden = !canPick;
+    if (!canPick) return;
+    btn.className = chosen ? 'pick-btn btn-quiet' : (gp ? 'pick-btn btn-quiet' : 'pick-btn btn');
+    btn.textContent = chosen ? 'Undo pick' : gp ? 'Go here instead' : 'We’re going here';
+    btn.setAttribute('aria-label', chosen ? 'Undo the pick of ' + p.name : (gp ? 'Go to ' + p.name + ' instead' : 'We’re going to ' + p.name));
+    btn.onclick = function () { setPick(chosen ? null : p.id); };
   }
 
   function announce(text) {
@@ -175,7 +197,7 @@
   var LUNCH_KEY = 'luncheon.lunch';
   var plan = {
     lunch: null, loaded: false, answers: [], myId: null, rev: null,
-    out: false, host: false, saving: false, again: false, conflictRetry: false, stop: null, reloadTimer: null
+    out: false, host: false, pick: null, pickAt: 0, lastPick: null, saving: false, again: false, conflictRetry: false, stop: null, reloadTimer: null
   };
   var P = function () { return window.LunchPlanner; };
 
@@ -233,8 +255,36 @@
     return h ? h.data.name : '';
   }
 
+  // "We're going here": the newest pick in the lunch wins, whoever made it. Undoing a pick is a
+  // newer pick of nothing, so it clears the place for everyone.
+  function groupPick() {
+    var best = plan.pickAt ? { id: plan.pick, at: plan.pickAt, by: 'you' } : null;
+    others().forEach(function (x) {
+      if (x.data.pickAt && (!best || x.data.pickAt > best.at)) best = { id: x.data.pick, at: x.data.pickAt, by: x.data.name };
+    });
+    if (!best || !best.id || !placeById(best.id)) return null;
+    return best;
+  }
+  function newestPickAt() {
+    var at = plan.pickAt || 0;
+    others().forEach(function (x) { if (x.data.pickAt > at) at = x.data.pickAt; });
+    return at;
+  }
+  function placeById(id) {
+    return ((state.data && state.data.places) || []).filter(function (p) { return p.id === id; })[0] || null;
+  }
+  function setPick(id) {
+    plan.pick = id;
+    plan.pickAt = Math.max(Date.now(), newestPickAt() + 1); // newer than any pick seen, even if clocks differ
+    plan.lastPick = id;
+    queueSave();
+    refreshLunch();
+    var p = id && placeById(id);
+    announce(p ? 'Picked ' + p.name + '. Everyone in the lunch sees it.' : 'Pick undone.');
+  }
+
   function myData() {
-    return { name: myName(), hearts: state.hearts.slice(0, 30), out: plan.out, pick: null, host: plan.host };
+    return { name: myName(), hearts: state.hearts.slice(0, 30), out: plan.out, pick: plan.pick, pickAt: plan.pickAt, host: plan.host };
   }
 
   // One save at a time; a change made while saving is sent right after.
@@ -288,6 +338,8 @@
           saveHearts();
           plan.out = mine.data.out;
           plan.host = mine.data.host;
+          plan.pick = mine.data.pick;
+          plan.pickAt = mine.data.pickAt || 0;
           if (mine.data.name && !myName()) setMyName(mine.data.name);
         }
       } else if (!plan.loaded) {
@@ -295,6 +347,13 @@
       }
       var first = !plan.loaded;
       plan.loaded = true;
+      var gp = groupPick();
+      var gpId = gp ? gp.id : null;
+      if (!first && gpId !== plan.lastPick) {
+        var gpPlace = gp && placeById(gp.id);
+        announce(gpPlace ? gp.by + ' picked ' + gpPlace.name + '.' : 'The pick was undone.');
+      }
+      plan.lastPick = gpId;
       if (first && !mine && myName()) queueSave(); // join with the hearts you already had
       refreshLunch();
     }, planError);
@@ -324,6 +383,7 @@
     plan.myId = P().myAnswerId(lunch.id);
     plan.rev = null;
     plan.out = false;
+    plan.pick = null; plan.pickAt = 0; plan.lastPick = null;
     plan.host = !!(opts && opts.host);
     store(LUNCH_KEY, { id: lunch.id, secret: lunch.secret, day: lunch.day || stockholmDate(new Date()) });
     if (plan.stop) plan.stop();
@@ -339,6 +399,7 @@
     plan.answers = [];
     plan.host = false;
     plan.out = false;
+    plan.pick = null; plan.pickAt = 0; plan.lastPick = null;
     store(LUNCH_KEY, null);
   }
 
@@ -386,6 +447,8 @@
         box.classList.add('is-ended');
         title.textContent = 'This lunch has ended';
         text.textContent = 'Lunch links work for one day, and everything in them is deleted at midnight, on purpose. Here are today’s menus.';
+        document.getElementById('lunch-goto').hidden = true;
+        box.classList.remove('is-picked');
         nameForm.hidden = true; share.hidden = true; outBtn.hidden = true; leave.hidden = true; ok.hidden = false;
       } else {
         box.hidden = true;
@@ -396,14 +459,27 @@
     box.classList.remove('is-ended');
     ok.hidden = true; leave.hidden = false; outBtn.hidden = false; share.hidden = false;
     var host = hostName();
-    title.textContent = host === 'you' ? 'You’re planning lunch' : host ? host + ' is planning lunch' : 'Planning lunch together';
+    var gp = plan.loaded ? groupPick() : null;
+    var gpPlace = gp && placeById(gp.id);
+    var go = document.getElementById('lunch-goto');
+    go.hidden = !gpPlace;
+    box.classList.toggle('is-picked', !!gpPlace);
+    if (gpPlace) {
+      title.textContent = 'We’re going to ' + gpPlace.name;
+      go.textContent = 'Show ' + gpPlace.name;
+      go.onclick = function () { goTo(gpPlace.id); };
+    } else {
+      title.textContent = host === 'you' ? 'You’re planning lunch' : host ? host + ' is planning lunch' : 'Planning lunch together';
+    }
     if (!plan.loaded) {
       text.textContent = 'Opening the lunch…';
     } else {
       var joined = [], notJoining = 0;
       if (myName()) { if (plan.out) notJoining++; else joined.push('you'); }
       others().forEach(function (x) { if (x.data.out) notJoining++; else joined.push(x.data.name); });
-      var line = plan.out ? 'You’re not joining today. ' : 'Heart the places you’d like. ';
+      var line = plan.out ? 'You’re not joining today. '
+        : gpPlace ? 'Picked by ' + gp.by + '. Anyone can change it. '
+        : 'Heart the places you’d like. ';
       line += joined.length ? 'Eating: ' + listNames(joined) + '.' : 'Nobody has joined yet.';
       if (notJoining) line += ' ' + notJoining + ' not joining today.';
       text.textContent = line;
@@ -996,7 +1072,11 @@
   var lunchReady = startLunch();
   var patience = new Promise(function (resolve) { window.setTimeout(resolve, 4000); });
   Promise.all([load(), Promise.race([lunchReady, patience])]).then(function () {
-    if (plan.lunch && plan.loaded) state.sortHearts = groupPlaceIds();
+    if (plan.lunch && plan.loaded) {
+      state.sortHearts = groupPlaceIds();
+      var gp = groupPick();
+      if (gp) state.sortHearts = [gp.id].concat(state.sortHearts.filter(function (id) { return id !== gp.id; }));
+    }
     render();
     renderLunchBanner();
   });

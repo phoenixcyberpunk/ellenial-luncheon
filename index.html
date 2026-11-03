@@ -30,11 +30,20 @@
           </span>
         </form>
         <p class="lunch-banner__actions">
+          <button type="button" class="btn" id="lunch-goto" hidden></button>
           <button type="button" class="btn" id="lunch-share">Share link</button>
           <button type="button" class="btn-quiet" id="lunch-out"></button>
           <button type="button" class="btn-quiet" id="lunch-leave">Leave this lunch</button>
           <button type="button" class="btn-quiet" id="lunch-ok" hidden>OK</button>
         </p>
+        <details class="how">
+          <summary>How this works</summary>
+          <ol>
+            <li>Heart the places you’d like. Everyone with the link sees the hearts as they happen.</li>
+            <li>When you’ve agreed, anyone taps <strong>We’re going here</strong> on a hearted place. Anyone can change it.</li>
+            <li>No accounts. Names and hearts are scrambled on your phones before they’re sent, so the server can’t read them, and the whole lunch is deleted at midnight.</li>
+          </ol>
+        </details>
       </section>
       <p class="sub" id="summary">Loading today's menus…</p>
       <div class="filters" role="group" aria-label="Filters">
@@ -79,6 +88,7 @@
           <span class="heart__count"></span>
         </button>
       </div>
+      <p class="picked" hidden></p>
       <p class="price-row"><span class="price-amount"></span><span class="price-incl"></span></p>
       <ul class="dishes"></ul>
       <button type="button" class="more" hidden></button>
@@ -88,6 +98,7 @@
         <span class="menu-pic__label"></span>
       </button>
       <span class="fresh"></span>
+      <p class="pick-row" hidden><button type="button" class="pick-btn"></button></p>
       <p class="links"></p>
     </article>
   </template>
@@ -115,6 +126,14 @@
         <input class="ask__input" id="ask-name" maxlength="40" autocomplete="given-name" required>
         <p class="ask__buttons"><button type="submit" class="btn" id="ask-create">Create link</button></p>
         <p class="ask__error" id="ask-error" role="alert" hidden></p>
+        <details class="how">
+        <summary>How this works</summary>
+        <ol>
+          <li>Heart the places you’d like. Everyone with the link sees the hearts as they happen.</li>
+          <li>When you’ve agreed, anyone taps <strong>We’re going here</strong> on a hearted place. Anyone can change it.</li>
+          <li>No accounts. Names and hearts are scrambled on your phones before they’re sent, so the server can’t read them, and the whole lunch is deleted at midnight.</li>
+        </ol>
+        </details>
       </form>
       <div id="ask-share" hidden>
         <p>Send this link to the people you're eating with. It works until midnight.</p>

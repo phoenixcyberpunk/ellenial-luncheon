@@ -119,7 +119,8 @@
 
   // What an answer may hold. Anything else is dropped, so a friend's phone can't send
   // something odd that breaks yours.
-  //   { name: "Ellen", hearts: ["masala", "pier11"], out: false, pick: "pier11" | null, host: true }
+  //   { name: "Ellen", hearts: ["masala", "pier11"], out: false, pick: "pier11" | null, pickAt: 1762171200000, host: true }
+  // pickAt is when this person last picked (or undid a pick); the newest pick in the lunch wins.
   function cleanAnswer(a) {
     a = a && typeof a === 'object' ? a : {};
     var hearts = Array.isArray(a.hearts) ? a.hearts.filter(function (h) {
@@ -130,6 +131,7 @@
       hearts: hearts.filter(function (h, i) { return hearts.indexOf(h) === i; }),
       out: a.out === true,
       pick: typeof a.pick === 'string' && /^[a-z0-9-]{1,40}$/.test(a.pick) ? a.pick : null,
+      pickAt: typeof a.pickAt === 'number' && isFinite(a.pickAt) && a.pickAt > 0 ? Math.floor(a.pickAt) : 0,
       host: a.host === true
     };
   }
