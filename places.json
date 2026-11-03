@@ -248,6 +248,48 @@
       "kind": "fixed",
       "veg": true,
       "note": "Salad bar: build your own salad from a big buffet and pay by weight. Weekdays 10.30–14.00. Their site doesn't give this restaurant's price. Theres Svenssons gata 9."
+    },
+    {
+      "id": "pier11",
+      "name": "Pier 11",
+      "url": "https://ericssonbynordrest.se/restaurang/restaurant-pier-11/",
+      "lat": 57.70479,
+      "lon": 11.9419,
+      "reader": "pier11",
+      "price": "124 kr",
+      "includes": "salad buffet, coffee and soft ice cream",
+      "note": "Ericsson's restaurant, open to everyone. Three dishes a day, one usually vegetarian; menu in English."
+    },
+    {
+      "id": "aran",
+      "name": "Restaurang Äran",
+      "url": "https://www.lindholmen.se/en/restaurang-aran",
+      "lat": 57.70471,
+      "lon": 11.93745,
+      "kind": "fixed",
+      "veg": false,
+      "includes": "salad and bread buffet",
+      "note": "Daily lunch specials 11–14, salad and bread buffet with every dish. They don't publish the menu online, so the link goes to Lindholmen Science Park's page about them. Diagonalen 6."
+    },
+    {
+      "id": "lskitchen",
+      "name": "L's Kitchen",
+      "url": "https://www.lindholmen.se/en/ls-kitchen",
+      "lat": 57.70658,
+      "lon": 11.93948,
+      "kind": "fixed",
+      "veg": true,
+      "note": "Food court with five dishes a day (fish, meat, salad and a vegetarian main) plus Caesar salad and a weekly salad, 11.00–13.30. The day's menu is only on a screen there. Pay with a guest card from the cashier. Lindholmspiren 5."
+    },
+    {
+      "id": "halongbay",
+      "name": "Ha Long Bay",
+      "url": "https://qopla.com/restaurant/ha-long-bay/qDQaLmwaqv/home",
+      "lat": 57.70596,
+      "lon": 11.94,
+      "kind": "fixed",
+      "veg": false,
+      "note": "Vietnamese and pan-Asian: spring rolls, pho and noodle soups, banh mi, pad thai, curry, bibimbap and poke bowls. Same menu every day; the link goes to their online ordering page. Lindholmspiren 9."
     }
   ]
 }

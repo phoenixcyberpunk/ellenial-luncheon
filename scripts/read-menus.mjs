@@ -281,6 +281,36 @@ const readers = {
     return { menuDate: items.length ? today : null, items, note: `Menu ${thisWeek} of 4 this week. ${MASALA.always}` };
   },
 
+  // Pier 11 (Ericsson by Nordrest): "LUNCH PRICE", then Måndag … Fredag, each followed by
+  // three dishes as name / sides / allergens ("Gluten • Lactose • Fish"). The page lists two
+  // weeks and marks today with "Idag" under its weekday, so we read only that day. A dish is
+  // vegetarian when its allergen line names no meat or fish.
+  pier11(html, today) {
+    const lines = htmlToLines(html);
+    const start = lines.findIndex((l) => /^lunch price/i.test(l));
+    if (start < 0) throw new Error('"LUNCH PRICE" heading not found');
+    const idag = lines.findIndex((l, i) => i > start && /^idag$/i.test(l));
+    if (idag < 0) return { menuDate: null, items: [] };
+    if (DAYS_SV.indexOf((lines[idag - 1] || '').toLowerCase()) !== weekday(today)) return { menuDate: null, items: [] };
+    const ALLERGENS = /^(gluten|lactose|laktos|eggs?|ägg|fish|fisk|soya|soja|nuts|nötter|sesame|sesam|peanuts|jordnötter|pork|fläsk|poultry|fågel|beef|nöt|mustard|senap|crustaceans|skaldjur|celery|selleri|lamb|lamm|molluscs|blötdjur|sulphites|lupin)(\s*•\s*[\wåäö]+)*$/i;
+    const ANIMAL = /pork|fläsk|poultry|fågel|beef|\bnöt\b|fish|fisk|crustaceans|skaldjur|lamb|lamm|molluscs|blötdjur/i;
+    const items = [];
+    let buf = [];
+    const flush = (allergens) => {
+      const [name, ...sides] = buf;
+      if (name) items.push({ text: clean(sides.length ? `${name} · ${sides.join(', ')}` : name), diet: allergens && !ANIMAL.test(allergens) ? 'veg' : undefined });
+      buf = [];
+    };
+    for (const l of lines.slice(idag + 1)) {
+      if (DAYS_SV.includes(l.toLowerCase()) || /^(klimato|lunch w\.?\s*\d+|download pdf)/i.test(l)) break;
+      if (ALLERGENS.test(l)) flush(l);
+      else buf.push(l);
+    }
+    flush(null);
+    if (!items.length) return { menuDate: null, items: [] };
+    return { menuDate: today, items };
+  },
+
   // Cuckoo's Nest: "Vecka 44", then day names each followed by the dish, then "Veckans vegetariska".
   cuckoo(html, today) {
     const lines = htmlToLines(html);
