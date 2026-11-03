@@ -50,7 +50,8 @@ The page sets no cookies and sends nothing about you anywhere. Fonts are served 
 | Cuckoo's Nest | Weekly text with a line per day |
 | District One | Weekly text with a section per day |
 | Masala Kitchen | Four rotating weekly menus typed into `data/masala-menus.json`; the reader picks this week's from the lunch page's "Veckans Meny" tab |
-| Oishii, Miss F, Alkemisten, BISTRO 3, Dunder Döner | Fixed menu, entered by hand |
+| Oishii, Miss F, Alkemisten, BISTRO 3, Dunder Döner, BENNE Pastabar, Gansu Köket, Smash-N-Go, Shiro, Karla Bakeshop, Pizza di Ciro | Fixed menu, entered by hand |
+| Mimolett | Fixed menu, entered by hand. Its own site is gone, so the link goes to its Menydags page, which shows the same 129 kr list every day |
 | Bombay Bistro | Four-week rotation, but the site doesn't say which week is current, so shown as a fixed menu for now |
 
 Matminnen closed in June 2026.

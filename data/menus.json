@@ -229,19 +229,19 @@
       "id": "dunderdoner",
       "name": "Dunder Döner",
       "url": "https://www.dunderdoner.se/",
-      "lat": null,
-      "lon": null,
+      "lat": 57.70803,
+      "lon": 11.93917,
       "price": "120–165 kr",
       "kind": "fixed",
       "veg": true,
-      "note": "Döner kebab and chicken as rolls, pitas, plates with fries or rice, salads and burgers, plus Iskender. Same menu every day, falafel versions of most dishes. Weekday lunch 10.30–14.00 includes a drink and coffee. Lindholmsallén 36."
+      "note": "Döner kebab and chicken as rolls, pitas, plates with fries or rice, salads and burgers, plus Iskender. Same menu every day, falafel versions of most dishes. Weekday lunch 10.30–14.00 includes a drink and coffee."
     },
     {
       "id": "masala",
       "name": "Masala Kitchen",
       "url": "https://masalakitchen.se/lunch/",
-      "lat": null,
-      "lon": null,
+      "lat": 57.70657,
+      "lon": 11.94535,
       "price": "129 kr",
       "includes": "lunch naan, rice, salad and water",
       "kind": "daily",
@@ -260,6 +260,84 @@
         }
       ],
       "note": "Menu 4 of 4 this week. Always on: Subzi thali 139 kr (can be made vegan), palak paneer 139 kr, butter chicken, rogan josh and more, 139–165 kr."
+    },
+    {
+      "id": "mimolett",
+      "name": "Mimolett",
+      "url": "https://www.menydags.se/restaurang/mimolett",
+      "lat": 57.70801,
+      "lon": 11.93535,
+      "price": "129 kr",
+      "includes": "salad and coffee",
+      "kind": "fixed",
+      "veg": true,
+      "note": "Italian: risotto, pasta, lasagne, fish gratin, burger and entrecôte, all 129 kr. Same list every day (their own site is gone; menu via Menydags). Penne Vegetale and Penne Pesto are vegetarian. Takeaway 115 kr."
+    },
+    {
+      "id": "benne",
+      "name": "BENNE Pastabar",
+      "url": "https://bennepastabar.se/",
+      "lat": 57.70828,
+      "lon": 11.943,
+      "price": "59–105 kr",
+      "kind": "fixed",
+      "veg": true,
+      "note": "Fresh pasta in eight sauces, same menu all day. Slow Tomato (vegan without cheese), Västerbotten cheese and truffle mushroom are vegetarian."
+    },
+    {
+      "id": "gansu",
+      "name": "Gansu Köket",
+      "url": "https://lindholmen.github.io/gansukoket/",
+      "lat": 57.71163,
+      "lon": 11.9452,
+      "kind": "fixed",
+      "veg": true,
+      "note": "Western Chinese: Lanzhou beef noodle soup, dumplings, xiao long bao and other noodles. Same menu every day, vegetarian options. Lindholmsallén 8C."
+    },
+    {
+      "id": "smashngo",
+      "name": "Smash-N-Go",
+      "url": "https://www.foodora.se/restaurant/rt18/smash-n-go-lindholmen-rt18",
+      "lat": 57.7095,
+      "lon": 11.94305,
+      "price": "From 139 kr",
+      "kind": "fixed",
+      "veg": false,
+      "note": "Smash burgers (food truck) with fries, onion rings and mozzarella sticks. Same menu every day, no vegetarian burger. No website, so the link goes to their foodora page."
+    },
+    {
+      "id": "shiro",
+      "name": "Shiro",
+      "url": "https://shirogbg.se/meny/",
+      "lat": 57.7082,
+      "lon": 11.93729,
+      "price": "85–179 kr",
+      "kind": "fixed",
+      "veg": true,
+      "note": "Japanese fusion: sushi, maki rolls and poke bowls, à la carte (no separate lunch deal on their site). Vegan tofu poke bowl."
+    },
+    {
+      "id": "karla",
+      "name": "Karla Bakeshop",
+      "url": "https://karlabake.se/",
+      "lat": 57.70982,
+      "lon": 11.94015,
+      "price": "From 129 kr",
+      "kind": "fixed",
+      "veg": false,
+      "note": "Asian fusion bistro and bakery by Karlatornet: poke bowls, salads, pasta, pizza, sandwiches and husman. Same menu every day; their site doesn't say which dishes are vegetarian."
+    },
+    {
+      "id": "ciro",
+      "name": "Pizza di Ciro",
+      "url": "https://pizzadiciro.se/",
+      "lat": 57.70939,
+      "lon": 11.93699,
+      "price": "119 kr",
+      "includes": "pizza salad, drink and coffee",
+      "kind": "fixed",
+      "veg": true,
+      "note": "Neapolitan pizza. Lunch pizzas: Margherita (vegetarian), Vesuvio, Capricciosa, Diavola, Kebab and Bacon. Kuskens Gata 3."
     }
   ]
 }

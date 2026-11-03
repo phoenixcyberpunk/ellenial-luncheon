@@ -1,5 +1,5 @@
 {
-  "_about": "Lunch places shown in Luncheon. 'reader' names the function in scripts/read-menus.mjs that reads the menu; 'fixed' places have the same menu every day and are entered by hand. Coordinates are from OpenStreetMap. Uni3 uses the Lindholmspiren 3 building and Bistrot the Diagonalen street, so their walking times are approximate. Oishii's, BISTRO 3's, Masala Kitchen's and Dunder Döner's locations are not filled in yet. Bombay Bistro rotates four weekly menus but its site doesn't say which week is current, so it's shown as a fixed menu for now. 'price' is the lunch price as the place states it (a range or 'From …' when it varies), 'includes' what comes with it; leave price out when their site doesn't say.",
+  "_about": "Lunch places shown in Luncheon. 'reader' names the function in scripts/read-menus.mjs that reads the menu; 'fixed' places have the same menu every day and are entered by hand. Coordinates are from OpenStreetMap. Uni3 uses the Lindholmspiren 3 building and Bistrot the Diagonalen street, so their walking times are approximate. Oishii's and BISTRO 3's locations are not filled in yet. Bombay Bistro rotates four weekly menus but its site doesn't say which week is current, so it's shown as a fixed menu for now. 'price' is the lunch price as the place states it (a range or 'From …' when it varies), 'includes' what comes with it; leave price out when their site doesn't say.",
   "places": [
     {
       "id": "uni3",
@@ -109,22 +109,100 @@
       "id": "dunderdoner",
       "name": "Dunder Döner",
       "url": "https://www.dunderdoner.se/",
-      "lat": null,
-      "lon": null,
+      "lat": 57.70803,
+      "lon": 11.93917,
       "kind": "fixed",
       "veg": true,
       "price": "120–165 kr",
-      "note": "Döner kebab and chicken as rolls, pitas, plates with fries or rice, salads and burgers, plus Iskender. Same menu every day, falafel versions of most dishes. Weekday lunch 10.30–14.00 includes a drink and coffee. Lindholmsallén 36."
+      "note": "Döner kebab and chicken as rolls, pitas, plates with fries or rice, salads and burgers, plus Iskender. Same menu every day, falafel versions of most dishes. Weekday lunch 10.30–14.00 includes a drink and coffee."
     },
     {
       "id": "masala",
       "name": "Masala Kitchen",
       "url": "https://masalakitchen.se/lunch/",
-      "lat": null,
-      "lon": null,
+      "lat": 57.70657,
+      "lon": 11.94535,
       "reader": "masala",
       "price": "129 kr",
       "includes": "lunch naan, rice, salad and water"
+    },
+    {
+      "id": "mimolett",
+      "name": "Mimolett",
+      "url": "https://www.menydags.se/restaurang/mimolett",
+      "lat": 57.70801,
+      "lon": 11.93535,
+      "kind": "fixed",
+      "veg": true,
+      "price": "129 kr",
+      "includes": "salad and coffee",
+      "note": "Italian: risotto, pasta, lasagne, fish gratin, burger and entrecôte, all 129 kr. Same list every day (their own site is gone; menu via Menydags). Penne Vegetale and Penne Pesto are vegetarian. Takeaway 115 kr."
+    },
+    {
+      "id": "benne",
+      "name": "BENNE Pastabar",
+      "url": "https://bennepastabar.se/",
+      "lat": 57.70828,
+      "lon": 11.943,
+      "kind": "fixed",
+      "veg": true,
+      "price": "59–105 kr",
+      "note": "Fresh pasta in eight sauces, same menu all day. Slow Tomato (vegan without cheese), Västerbotten cheese and truffle mushroom are vegetarian."
+    },
+    {
+      "id": "gansu",
+      "name": "Gansu Köket",
+      "url": "https://lindholmen.github.io/gansukoket/",
+      "lat": 57.71163,
+      "lon": 11.9452,
+      "kind": "fixed",
+      "veg": true,
+      "note": "Western Chinese: Lanzhou beef noodle soup, dumplings, xiao long bao and other noodles. Same menu every day, vegetarian options. Lindholmsallén 8C."
+    },
+    {
+      "id": "smashngo",
+      "name": "Smash-N-Go",
+      "url": "https://www.foodora.se/restaurant/rt18/smash-n-go-lindholmen-rt18",
+      "lat": 57.7095,
+      "lon": 11.94305,
+      "kind": "fixed",
+      "veg": false,
+      "price": "From 139 kr",
+      "note": "Smash burgers (food truck) with fries, onion rings and mozzarella sticks. Same menu every day, no vegetarian burger. No website, so the link goes to their foodora page."
+    },
+    {
+      "id": "shiro",
+      "name": "Shiro",
+      "url": "https://shirogbg.se/meny/",
+      "lat": 57.7082,
+      "lon": 11.93729,
+      "kind": "fixed",
+      "veg": true,
+      "price": "85–179 kr",
+      "note": "Japanese fusion: sushi, maki rolls and poke bowls, à la carte (no separate lunch deal on their site). Vegan tofu poke bowl."
+    },
+    {
+      "id": "karla",
+      "name": "Karla Bakeshop",
+      "url": "https://karlabake.se/",
+      "lat": 57.70982,
+      "lon": 11.94015,
+      "kind": "fixed",
+      "veg": false,
+      "price": "From 129 kr",
+      "note": "Asian fusion bistro and bakery by Karlatornet: poke bowls, salads, pasta, pizza, sandwiches and husman. Same menu every day; their site doesn't say which dishes are vegetarian."
+    },
+    {
+      "id": "ciro",
+      "name": "Pizza di Ciro",
+      "url": "https://pizzadiciro.se/",
+      "lat": 57.70939,
+      "lon": 11.93699,
+      "kind": "fixed",
+      "veg": true,
+      "price": "119 kr",
+      "includes": "pizza salad, drink and coffee",
+      "note": "Neapolitan pizza. Lunch pizzas: Margherita (vegetarian), Vesuvio, Capricciosa, Diavola, Kebab and Bacon. Kuskens Gata 3."
     }
   ]
 }
