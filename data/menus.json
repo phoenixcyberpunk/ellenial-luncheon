@@ -338,6 +338,27 @@
       "kind": "fixed",
       "veg": true,
       "note": "Neapolitan pizza. Lunch pizzas: Margherita (vegetarian), Vesuvio, Capricciosa, Diavola, Kebab and Bacon. Kuskens Gata 3."
+    },
+    {
+      "id": "schiacciate",
+      "name": "Bar Schiacciate",
+      "url": "https://www.barschiacciate.se/meny",
+      "lat": 57.70962,
+      "lon": 11.94162,
+      "price": "129–198 kr",
+      "kind": "fixed",
+      "veg": true,
+      "note": "Tuscan schiacciata sandwiches, half or whole: mortadella, 'nduja, prosciutto, tuna, roast beef, turkey Caesar. Same menu every day; Caprese (pesto, mozzarella, tomato) is vegetarian. Lindholmsallén 22C."
+    },
+    {
+      "id": "brunchoteket",
+      "name": "Brunchoteket",
+      "url": "https://www.brunchoteket.com/",
+      "lat": 57.7097,
+      "lon": 11.94186,
+      "kind": "fixed",
+      "veg": false,
+      "note": "Breakfast and brunch all day, 09–17: eggs Benedict, pancakes, bowls, shakshuka. Same menu every day; their menu is an image, so dishes and prices aren't listed here. Lindholmsallén 22A."
     }
   ]
 }
