@@ -223,12 +223,22 @@
       });
     },
     // Calls onChange whenever someone saves. Returns a function that stops listening.
+    // Safety net (as in Split): the live channel can take a moment to wake up after being
+    // idle, so we also check every 30 s and whenever the page becomes visible again.
     watch: function (lunch, onChange, onStatus) {
       var channel = db()
         .channel('lunch:' + lunch.id, { config: { broadcast: { self: false } } })
         .on('broadcast', { event: 'changed' }, function () { onChange(); })
         .subscribe(function (status) { if (onStatus) onStatus(status === 'SUBSCRIBED'); });
-      return function () { db().removeChannel(channel); };
+      var timer = setInterval(function () { onChange(); }, 30000);
+      var doc = root.document;
+      function onVisible() { if (doc.visibilityState === 'visible') onChange(); }
+      if (doc) doc.addEventListener('visibilitychange', onVisible);
+      return function () {
+        clearInterval(timer);
+        if (doc) doc.removeEventListener('visibilitychange', onVisible);
+        db().removeChannel(channel);
+      };
     },
     makeLink: makeLink,
     parseLink: parseLink,

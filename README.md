@@ -14,6 +14,7 @@ Free, no ads, no tracking, no accounts. An [Ellenial](https://ellenial.app) tool
 - **`ellenial-theme.js`** is the shared Ellenial Auto / Light / Dark switch. The choice is saved on this phone only. Add `?theme=light` or `?theme=dark` to test a theme without saving it.
 - **`scripts/check-contrast.mjs`** checks every colour pair against the accessibility rules (text 4.5:1, controls 3:1). Run it before shipping a colour change.
 - **Lunch planner, step 1 (hearts):** tap the heart on a card to put it on your shortlist. Tapping never moves cards: a bar lists your shortlisted places (tap a name to jump to it), and they come first the next time you open the page. The shortlist is kept in this browser only (localStorage, with today's date) and forgotten at midnight; nothing is sent anywhere. Sharing it with friends comes in a later step.
+- **Lunch planner, step 2 (the scrambled store, not used by the page yet):** `planner-store.js` and `supabase/migrations/20261103140000_luncheon_planner.sql`. A lunch's secret lives only in the link after `#`; the phone turns it into an encryption key (never sent anywhere) and an access token (the server keeps only its SHA-256). Each phone saves one encrypted answer (first name, hearts, not joining, pick). The server, a separate `luncheon` section in the same Supabase project as Split, sees only random ids, scrambled text and times; a lunch belongs to one day and is deleted after midnight. Same design as [Ellenial Split](https://github.com/phoenixcyberpunk/ellenial-split). `vendor/supabase.js` is supabase-js 2.105.0 (MIT), copied unchanged so nothing loads from other sites. Test with two phones: `node tests/planner-two-phones.mjs B & node tests/planner-two-phones.mjs A` (needs to reach Supabase).
 - **Menu pictures:** for places that only publish their menu as a picture, `menuImage` in `places.json` points at it. The reader saves a copy in **`data/menu-images/`** (JPEG, PNG or WebP, at most 3 MB, only rewritten when it changes) and the card shows a small preview that opens full size, with the date their server says it last changed and a link to the original.
 - **`index.html`**, **`app.js`** and **`styles.css`** are the page. It reads `data/menus.json` and shows every place's menu for today.
 
@@ -85,6 +86,8 @@ python3 -m http.server        # then open http://localhost:8000
 The reader fetches each page a few times per weekday morning, identifies itself, and links back to the restaurant. If a restaurant would rather not be included, or wants to post its menu directly, it can open an issue and we'll sort it out.
 
 ## Credits
+
+- [supabase-js](https://github.com/supabase/supabase-js) (MIT), for the Lunch planner.
 
 - [Fraunces](https://github.com/undercasetype/Fraunces) by Undercase Type and [DM Sans](https://github.com/googlefonts/dm-fonts) by Colophon Foundry, both under the SIL Open Font License, via [Fontsource](https://fontsource.org).
 - Locations from [OpenStreetMap](https://www.openstreetmap.org/copyright) contributors.
