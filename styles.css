@@ -191,6 +191,9 @@ h1 {
 .card.is-missing { background: transparent; border: 1.5px dashed var(--edge); }
 /* Same every day: Lavender card and the words "Same menu every day" */
 .card.is-fixed { background: var(--soft); border-color: transparent; }
+/* An Indigo edge down each card's left side, so neighbouring cards are easy to tell apart.
+   Decorative only: it means nothing, so it's the same on every card. */
+.card, .card.is-fixed, .card.is-missing { border-left: 5px solid var(--accent); }
 
 .card-head { display: flex; align-items: baseline; gap: 8px; }
 .name { flex: 1; font-family: var(--font-display); font-weight: 500; font-size: 19px; text-decoration: none; }
