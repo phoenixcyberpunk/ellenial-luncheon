@@ -8,8 +8,8 @@
       "lat": 57.70661,
       "lon": 11.9405,
       "kind": "daily",
-      "menuDate": "2026-11-02",
-      "readAt": "2026-11-02T10:37:59.321Z",
+      "menuDate": "2026-11-03",
+      "readAt": "2026-11-03T07:32:34.324Z",
       "items": [
         {
           "text": "Water: Bakad uer - kokt potatis – misosmörsås - sallad på zucchini och gari – dill - rädisa"
@@ -36,8 +36,8 @@
       "price": "139 kr",
       "includes": "salad buffet, bread, coffee and cake",
       "kind": "daily",
-      "menuDate": "2026-11-02",
-      "readAt": "2026-11-02T10:37:59.321Z",
+      "menuDate": "2026-11-03",
+      "readAt": "2026-11-03T07:32:34.324Z",
       "items": [
         {
           "text": "Veckans special: Bi Bim Bap med pankofriterade räkor toppas med sojasås serveras"
@@ -58,22 +58,22 @@
           "diet": "veg"
         },
         {
-          "text": "Kött: Kooperativets klassiska Köttbullemåndag på nötfärs med potatispuré, gräddsås, rårörda lingon & pressgurka"
+          "text": "Kött: Kooperativets Chili Cheese Schnitzel på gårdsgris serveras med frasiga pommes och ljummen ostsås"
         },
         {
-          "text": "Fisk: Pocherad torsk serveras med dillkokt potatis, vitvinssås, gröna ärtor och örtsallad"
+          "text": "Fisk: Bakad kolja serveras med en krämig svamprisotto, tryffelaioli, ruccola och färskriven grana padano"
         },
         {
-          "text": "Thai: Chicken cashew – wokad kyckling med grönsaker i ostronsås med cashewnötter serveras med jasminris & koriander"
+          "text": "Thai: Nasigoreng – Stekt ris smaksatt med Sambal oelek & soja toppad med panko friterade räkor & grillad kyckling, bakat ägg samt stekta grönsaker & koriander"
         },
         {
-          "text": "Indisk: Chicken Balti – Indisk Mild currygryta med kyckling, paprika & lök serveras med basmatiris, mangochutney & smörat naanbröd CHILI 2/5"
+          "text": "Indisk: Kolgrillad Tandoori kycklingspett serveras med masalasås, myntayoghurt och sallad på spenat & rödlök samt smörat Naan"
         },
         {
-          "text": "Världen: Vedeldad kycklingfile med klyftpotatis, örtaioli & rödvinssås"
+          "text": "Världen: Kolgrillad kycklingfile med gnocchi Quattro Formaggi toppad med ruccola och rostad lök"
         },
         {
-          "text": "Vegetarisk: Tofu cashew – wokad tofu med grönsaker i vegetarisk soyasås med cashewnötter serveras med jasminris & koriander",
+          "text": "Vegetariskt: Nasigoreng – Stekt ris smaksatt med Sambal oelek & soja toppad med friterad tofu, bakat ägg samt stekta grönsaker & koriander",
           "diet": "veg"
         }
       ],
@@ -88,14 +88,14 @@
       "price": "139 kr",
       "includes": "salad buffet, sourdough bread, coffee and cake",
       "kind": "daily",
-      "menuDate": "2026-11-02",
-      "readAt": "2026-11-02T07:44:58.357Z",
+      "menuDate": "2026-11-03",
+      "readAt": "2026-11-03T07:32:34.324Z",
       "items": [
         {
-          "text": "Pannbiff · Gräddsås – Stekt lök – Saltgurka – Potatispuré"
+          "text": "Stekt fläsk · Raggmunk & Lingon eller Kokt potatis & Löksås – Persilja"
         },
         {
-          "text": "Pocherad fångst · Rödbetor – Kapris – Schalottenlök – Brynt smör – Dillkokt potatis"
+          "text": "Smörstekt fångst · Sandefjordsås – Forellrom – Gräslök – Broccoli – Kokt potatis"
         },
         {
           "text": "Veckans: Lasagne · Tomat & löksallad – Grana padano – Rucola"
@@ -116,11 +116,11 @@
       "price": "195 kr",
       "includes": "salad buffet, coffee, tea and cake",
       "kind": "daily",
-      "menuDate": "2026-11-02",
-      "readAt": "2026-11-02T09:17:53.477Z",
+      "menuDate": "2026-11-03",
+      "readAt": "2026-11-03T07:32:34.324Z",
       "items": [
         {
-          "text": "Kyckling serveras med rostad rotselleri, morot, citronsås och rostade mandlar"
+          "text": "lax serveras med ostgratinerad potatis, rödbetor och dillsås"
         },
         {
           "text": "pasta tagliatelle serveras med kantarellsås, tryffelolja, sockerärtor och grana padano",
@@ -176,7 +176,8 @@
           "text": "Pho: Vietnamesisk nudelsoppa med biff, koriander, gräslök, lök, böngroddar, chili, thai basilika, serveras med lime, hoisinsås och srirachasås."
         }
       ],
-      "note": ""
+      "note": "",
+      "problem": "2026-11-03: HTTP 503"
     },
     {
       "id": "missf",
@@ -231,17 +232,17 @@
       "price": "129 kr",
       "includes": "lunch naan, rice, salad and water",
       "kind": "daily",
-      "menuDate": "2026-11-02",
-      "readAt": "2026-11-02T07:44:58.357Z",
+      "menuDate": "2026-11-03",
+      "readAt": "2026-11-03T07:32:34.324Z",
       "items": [
         {
-          "text": "Tandoori Tikka Boti · kycklingfilé marinerad i lime, yoghurt och tandoori masala, i tandoorisås"
+          "text": "Chicken Shahi Korma · krämig kycklingfilégryta med malda pistage- och cashewnötter"
         },
         {
-          "text": "Lamb Punjabi Curry · lamm i sås av lök, tomat, paprika, ingefära, koriander och grön chili"
+          "text": "Lamb Chana Boti · lamm med kikärtor, tomat, färsk koriander, mynta och lime"
         },
         {
-          "text": "Baingan Mirch Masala · aubergine, paprika, tomat, kryddor och koriander",
+          "text": "Dal Zucchini · lätt kryddad linsgryta med zucchini, vitlök och ingefära",
           "diet": "vegan"
         }
       ],
