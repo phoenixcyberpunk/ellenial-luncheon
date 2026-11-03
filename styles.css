@@ -38,6 +38,7 @@
   --radius-pill: 999px;
   --tick: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E");
   --clock: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='9'/%3E%3Cpath d='M12 7v5l3 2'/%3E%3C/svg%3E");
+  --heart: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 20.5s-7.5-4.6-9.3-9.2C1.4 8 3.4 4.5 6.9 4.5c2.1 0 3.6 1.2 5.1 3 1.5-1.8 3-3 5.1-3 3.5 0 5.5 3.5 4.2 6.8-1.8 4.6-9.3 9.2-9.3 9.2z' fill='%23000'/%3E%3C/svg%3E");
   --calendar: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='5' width='18' height='16' rx='2'/%3E%3Cpath d='M3 10h18M8 3v4M16 3v4'/%3E%3C/svg%3E");
   color-scheme: light;
 }
@@ -480,3 +481,93 @@ h1 {
 }
 @media (min-width: 1100px) { .list { columns: 3 300px; } }
 @media (min-width: 1500px) { .page { max-width: 1600px; } .list { columns: 4 300px; } }
+
+/* ---------- Lunch planner, step 3: plan lunch together ---------- */
+/* Heart with a count: how many people hearted the place (the names are in its label and the bar) */
+.heart__count { font: 700 13px/1 var(--font-body); font-variant-numeric: tabular-nums; }
+.heart__count:empty { display: none; }
+.heart:has(.heart__count:not(:empty)) { padding: 0 10px 0 8px; }
+
+/* Buttons: a filled Indigo one for the main action, a quiet outlined one for the rest */
+.btn, .btn-quiet {
+  flex: none;
+  min-height: 32px;
+  padding: 0 14px;
+  border-radius: var(--radius-pill);
+  font: 600 13px var(--font-body);
+  cursor: pointer;
+}
+.btn { border: 1px solid var(--accent); background: var(--accent); color: var(--on-accent); }
+.btn:hover { filter: brightness(1.08); }
+.btn:disabled { cursor: progress; opacity: 0.85; }
+.btn-quiet { border: 1px solid var(--edge); background: transparent; color: var(--ink); }
+.btn-quiet:hover { border-color: var(--accent); }
+.btn:focus-visible, .btn-quiet:focus-visible, .heart:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.shortlist__buttons { flex: none; display: flex; gap: 6px; align-items: center; }
+
+/* "Ellen is planning lunch": the same Lavender panel as the week notice, with a heart instead of a calendar */
+.lunch-banner {
+  position: relative;
+  padding: 12px 14px 12px 44px;
+  border-radius: 14px;
+  background: var(--soft);
+  border: 1.5px solid var(--accent);
+  color: var(--ink);
+}
+.lunch-banner::before {
+  content: '';
+  position: absolute;
+  left: 14px;
+  top: 14px;
+  width: 18px;
+  height: 18px;
+  background: var(--accent);
+  -webkit-mask: var(--heart) center / contain no-repeat;
+  mask: var(--heart) center / contain no-repeat;
+}
+.lunch-banner p { margin: 0; }
+.lunch-banner__title { font-weight: 600; font-size: 15px; }
+.lunch-banner__text { margin-top: 2px !important; font-size: 14px; color: var(--muted); }
+.lunch-banner__actions { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px !important; }
+.lunch-banner__actions:not(:has(button:not([hidden]))) { display: none; }
+
+.lunch-name { margin-top: 10px; display: grid; gap: 4px; font-size: 14px; font-weight: 600; }
+.lunch-name__hint { font-weight: 400; color: var(--muted); }
+.lunch-name__row { display: flex; gap: 6px; max-width: 420px; }
+.lunch-name input, .ask__input {
+  min-width: 0;
+  flex: 1;
+  min-height: 40px;
+  padding: 0 12px;
+  border-radius: 10px;
+  border: 1px solid var(--edge);
+  background: var(--surface);
+  color: var(--ink);
+  font: 400 16px var(--font-body); /* 16px: phones don't zoom in on the field */
+}
+.lunch-name input:focus-visible, .ask__input:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+.lunch-name .btn { min-height: 40px; }
+
+/* The "Plan lunch together" dialog */
+.ask {
+  width: min(440px, 100vw - 24px);
+  max-height: calc(100vh - 24px);
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  color: var(--ink);
+}
+.ask::backdrop { background: rgba(10, 8, 16, 0.7); }
+.ask__body { padding: 12px 16px 16px; font-size: 14px; }
+.ask__body p { margin: 0 0 10px; }
+.ask__label { display: block; margin: 4px 0 4px; font-weight: 600; }
+.ask__input { width: 100%; box-sizing: border-box; }
+.ask__buttons { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px !important; }
+.ask__buttons .btn, .ask__buttons .btn-quiet { min-height: 44px; padding: 0 18px; font-size: 14px; }
+.ask__error { color: var(--ink); font-weight: 600; }
+.ask__error::before { content: '⚠ '; }
+.ask__qr { display: flex; justify-content: center; margin: 4px 0 10px; }
+.ask__qr svg { border-radius: 8px; }
+.ask__small { color: var(--muted); font-size: 13px; }

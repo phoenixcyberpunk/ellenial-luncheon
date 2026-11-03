@@ -119,7 +119,7 @@
 
   // What an answer may hold. Anything else is dropped, so a friend's phone can't send
   // something odd that breaks yours.
-  //   { name: "Ellen", hearts: ["masala", "pier11"], out: false, pick: "pier11" | null }
+  //   { name: "Ellen", hearts: ["masala", "pier11"], out: false, pick: "pier11" | null, host: true }
   function cleanAnswer(a) {
     a = a && typeof a === 'object' ? a : {};
     var hearts = Array.isArray(a.hearts) ? a.hearts.filter(function (h) {
@@ -129,7 +129,8 @@
       name: typeof a.name === 'string' ? a.name.replace(/\s+/g, ' ').trim().slice(0, 40) : '',
       hearts: hearts.filter(function (h, i) { return hearts.indexOf(h) === i; }),
       out: a.out === true,
-      pick: typeof a.pick === 'string' && /^[a-z0-9-]{1,40}$/.test(a.pick) ? a.pick : null
+      pick: typeof a.pick === 'string' && /^[a-z0-9-]{1,40}$/.test(a.pick) ? a.pick : null,
+      host: a.host === true
     };
   }
 
@@ -161,8 +162,10 @@
   // ---------- links ----------
   function makeLink(lunch) {
     var host = root.location && root.location.hostname;
-    var origin = host && (host === 'localhost' || host === '127.0.0.1' || /\.ellenial\.app$/.test(host))
-      ? root.location.origin : CONFIG.shareOrigin; // never share a *.vercel.app preview address
+    // Real address for real use; previews (*.vercel.app, behind the team's login) and local
+    // testing keep their own address so a test lunch opens on the same build.
+    var origin = host && (host === 'localhost' || host === '127.0.0.1' || /\.ellenial\.app$/.test(host) || /\.vercel\.app$/.test(host))
+      ? root.location.origin : CONFIG.shareOrigin;
     return origin + '/#lunch=' + lunch.id + '.' + lunch.secret;
   }
   function parseLink(hash) {

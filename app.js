@@ -102,6 +102,7 @@
     var card = document.getElementById('place-' + p.id);
     if (card) updateHeart(card, p);
     renderShortlist();
+    queueSave();
     announce(on ? p.name + ' added to your shortlist.' : p.name + ' removed from your shortlist.');
   }
 
@@ -109,8 +110,21 @@
     var heart = node.querySelector('.heart');
     var on = isHearted(p.id);
     heart.setAttribute('aria-pressed', String(on));
-    heart.setAttribute('aria-label', on ? p.name + ' is on your shortlist. Remove it' : 'Add ' + p.name + ' to your shortlist');
-    heart.title = on ? 'On your shortlist (tap to remove)' : 'Add to your shortlist';
+    var count = heart.querySelector('.heart__count');
+    if (plan.lunch) {
+      // In a lunch: the number is everyone's hearts; the name list says who
+      var who = heartedBy(p.id);
+      count.textContent = who.length ? String(who.length) : '';
+      var list = who.length ? listNames(who) : 'nobody yet';
+      heart.setAttribute('aria-label', p.name + ': hearted by ' + list + '. ' + (on ? 'Remove your heart' : 'Add your heart'));
+      heart.title = 'Hearted by ' + list;
+      node.classList.toggle('is-group-hearted', who.length > 0);
+    } else {
+      count.textContent = '';
+      heart.setAttribute('aria-label', on ? p.name + ' is on your shortlist. Remove it' : 'Add ' + p.name + ' to your shortlist');
+      heart.title = on ? 'On your shortlist (tap to remove)' : 'Add to your shortlist';
+      node.classList.remove('is-group-hearted');
+    }
     node.classList.toggle('is-hearted', on);
   }
 
@@ -124,23 +138,426 @@
   function renderShortlist() {
     var box = document.getElementById('shortlist');
     if (!box) return;
-    var n = state.hearts.length;
-    box.hidden = n === 0;
-    document.body.classList.toggle('has-shortlist', n > 0);
-    document.getElementById('shortlist-text').textContent = n === 1 ? 'Your shortlist · 1 place' : 'Your shortlist · ' + n + ' places';
-    var names = document.getElementById('shortlist-names');
-    names.textContent = '';
     var byId = {};
     ((state.data && state.data.places) || []).forEach(function (p) { byId[p.id] = p; });
-    state.hearts.forEach(function (id, i) {
+    var inLunch = !!plan.lunch;
+    // Places in the bar: yours alone, or in a lunch everyone's (most hearts first, then in the order hearted)
+    var ids = inLunch ? groupPlaceIds() : state.hearts.slice();
+    ids = ids.filter(function (id) { return byId[id]; });
+    var n = ids.length;
+    box.hidden = n === 0;
+    document.body.classList.toggle('has-shortlist', n > 0);
+    var noun = n === 1 ? '1 place' : n + ' places';
+    document.getElementById('shortlist-text').textContent = (inLunch ? 'Hearted together · ' : 'Your shortlist · ') + noun;
+    var names = document.getElementById('shortlist-names');
+    names.textContent = '';
+    ids.forEach(function (id) {
       var p = byId[id];
-      if (!p) return;
       if (names.childNodes.length) names.appendChild(document.createTextNode(', '));
       var a = document.createElement('a');
       a.href = '#place-' + id;
       a.textContent = p.name;
       a.addEventListener('click', function (e) { e.preventDefault(); goTo(id); });
       names.appendChild(a);
+      if (inLunch) names.appendChild(document.createTextNode(' (' + listNames(heartedBy(id), true) + ')'));
+    });
+    document.getElementById('ask-friends').hidden = inLunch;
+    var clear = document.getElementById('shortlist-clear');
+    clear.textContent = inLunch ? 'Clear mine' : 'Clear';
+    clear.hidden = state.hearts.length === 0;
+  }
+
+  // ---------- Lunch planner, step 3: plan lunch together ----------
+  // "Ask friends" makes a link. Everyone who opens it hearts places, and all of you see each
+  // other's hearts as they happen. Names and hearts are scrambled on the phone before they're
+  // sent (planner-store.js), and the server deletes the whole lunch at midnight.
+  var NAME_KEY = 'luncheon.name';
+  var LUNCH_KEY = 'luncheon.lunch';
+  var plan = {
+    lunch: null, loaded: false, answers: [], myId: null, rev: null,
+    out: false, host: false, saving: false, again: false, conflictRetry: false, stop: null, reloadTimer: null
+  };
+  var P = function () { return window.LunchPlanner; };
+
+  function store(key, value) {
+    try {
+      if (value == null) window.localStorage.removeItem(key);
+      else window.localStorage.setItem(key, typeof value === 'string' ? value : JSON.stringify(value));
+    } catch (e) { /* storage unavailable: works until the page is closed */ }
+  }
+  function stored(key) {
+    try { return window.localStorage.getItem(key); } catch (e) { return null; }
+  }
+  function myName() { return (stored(NAME_KEY) || plan.name || '').trim(); }
+  function setMyName(name) {
+    name = String(name || '').replace(/\s+/g, ' ').trim().slice(0, 40);
+    plan.name = name;
+    store(NAME_KEY, name || null);
+    return name;
+  }
+
+  // Other people's answers (yours comes from this phone, so it's always up to date)
+  function others() {
+    return plan.answers.filter(function (x) { return x.id !== plan.myId && x.data && x.data.name; });
+  }
+  // Who hearted a place: "you" first, then friends in the order they joined.
+  // People who said they're not joining today don't count.
+  function heartedBy(id) {
+    var who = [];
+    if (!plan.out && isHearted(id)) who.push('you');
+    others().forEach(function (x) {
+      if (!x.data.out && x.data.hearts.indexOf(id) !== -1) who.push(x.data.name);
+    });
+    return who;
+  }
+  // Places with hearts: most hearts first, ties by the order of this phone's list
+  function groupPlaceIds() {
+    var seen = [], count = {};
+    function add(id) { if (seen.indexOf(id) === -1) seen.push(id); count[id] = (count[id] || 0) + 1; }
+    if (!plan.out) state.hearts.forEach(add);
+    others().forEach(function (x) { if (!x.data.out) x.data.hearts.forEach(add); });
+    return seen.map(function (id, i) { return { id: id, n: count[id], i: i }; })
+      .sort(function (a, b) { return b.n - a.n || a.i - b.i; })
+      .map(function (x) { return x.id; });
+  }
+  function listNames(who, short) {
+    if (!who.length) return '';
+    var names = who.slice();
+    if (!short) names = names.map(function (n, i) { return n === 'you' && i === 0 ? 'you' : n; });
+    if (names.length === 1) return names[0];
+    return names.slice(0, -1).join(', ') + ' and ' + names[names.length - 1];
+  }
+  function hostName() {
+    if (plan.host) return 'you';
+    var h = others().filter(function (x) { return x.data.host; })[0];
+    return h ? h.data.name : '';
+  }
+
+  function myData() {
+    return { name: myName(), hearts: state.hearts.slice(0, 30), out: plan.out, pick: null, host: plan.host };
+  }
+
+  // One save at a time; a change made while saving is sent right after.
+  // If someone else wrote to your answer meanwhile (a second tab), read it again and retry once.
+  function queueSave() {
+    if (!plan.lunch || !plan.loaded || !myName() || !P()) return;
+    if (plan.saving) { plan.again = true; return; }
+    plan.saving = true;
+    P().save(plan.lunch, plan.myId, myData(), plan.rev).then(function (rev) {
+      plan.rev = rev;
+      plan.conflictRetry = false;
+    }, function (e) {
+      if (e && e.code === 'edit_conflict' && !plan.conflictRetry) {
+        plan.conflictRetry = true;
+        plan.again = true;
+        return reloadLunch();
+      }
+      planError(e);
+    }).then(function () {
+      plan.saving = false;
+      if (plan.again) { plan.again = false; queueSave(); }
+    });
+  }
+
+  function planError(e) {
+    var code = e && e.code;
+    if (code === 'lunch_ended' || code === 'lunch_not_found') { endLunch(); return; }
+    var text = {
+      lunch_full: 'This lunch is full (30 people), so your hearts stay on this phone.',
+      offline: 'Couldn’t reach the lunch just now. Your hearts are kept on this phone and sent when you’re back online.',
+      rate_limited: 'Too many new lunches from here right now. Try again in a while.'
+    }[code] || 'Something went wrong with the lunch. Try again in a moment.';
+    announce(text);
+    var t = document.getElementById('lunch-text');
+    if (t && plan.lunch) t.textContent = text;
+  }
+
+  // Read everyone's answers again. The first time, this phone's saved answer (if any) wins
+  // over what's in this browser, so reopening the link on the same phone picks up where you were.
+  function reloadLunch() {
+    if (!plan.lunch || !P()) return Promise.resolve();
+    var lunch = plan.lunch;
+    return P().load(lunch).then(function (res) {
+      if (plan.lunch !== lunch) return;
+      plan.answers = res.answers;
+      var mine = res.answers.filter(function (x) { return x.id === plan.myId; })[0];
+      if (mine) {
+        plan.rev = mine.revision;
+        if (!plan.loaded) {
+          state.hearts = mine.data.hearts.slice();
+          saveHearts();
+          plan.out = mine.data.out;
+          plan.host = mine.data.host;
+          if (mine.data.name && !myName()) setMyName(mine.data.name);
+        }
+      } else if (!plan.loaded) {
+        plan.rev = null;
+      }
+      var first = !plan.loaded;
+      plan.loaded = true;
+      if (first && !mine && myName()) queueSave(); // join with the hearts you already had
+      refreshLunch();
+    }, planError);
+  }
+
+  // Update hearts, the bar and the banner in place. Cards never move while you're looking.
+  function refreshLunch() {
+    var byId = {};
+    ((state.data && state.data.places) || []).forEach(function (p) { byId[p.id] = p; });
+    document.querySelectorAll('.card').forEach(function (node) {
+      var p = byId[node.id.replace(/^place-/, '')];
+      if (p) updateHeart(node, p);
+    });
+    renderShortlist();
+    renderLunchBanner();
+  }
+
+  function scheduleReload() {
+    window.clearTimeout(plan.reloadTimer);
+    plan.reloadTimer = window.setTimeout(reloadLunch, 300);
+  }
+
+  function joinLunch(lunch, opts) {
+    plan.lunch = lunch;
+    plan.loaded = false;
+    plan.answers = [];
+    plan.myId = P().myAnswerId(lunch.id);
+    plan.rev = null;
+    plan.out = false;
+    plan.host = !!(opts && opts.host);
+    store(LUNCH_KEY, { id: lunch.id, secret: lunch.secret, day: lunch.day || stockholmDate(new Date()) });
+    if (plan.stop) plan.stop();
+    plan.stop = P().watch(lunch, scheduleReload);
+    return reloadLunch();
+  }
+
+  function forgetLunch() {
+    if (plan.stop) plan.stop();
+    plan.stop = null;
+    plan.lunch = null;
+    plan.loaded = false;
+    plan.answers = [];
+    plan.host = false;
+    plan.out = false;
+    store(LUNCH_KEY, null);
+  }
+
+  function endLunch() {
+    forgetLunch();
+    plan.ended = true;
+    refreshLunch();
+    announce('This lunch has ended.');
+  }
+
+  // On page open: a link in the address wins, else a lunch you're in today on this phone.
+  // The secret is taken out of the address bar once read (it stays in this phone's storage).
+  function startLunch() {
+    if (!P()) return Promise.resolve();
+    var fromLink = P().parseLink(window.location.hash);
+    if (fromLink && window.history && window.history.replaceState) {
+      window.history.replaceState(null, '', window.location.pathname + window.location.search);
+    }
+    var saved = null;
+    try { saved = JSON.parse(stored(LUNCH_KEY) || 'null'); } catch (e) { saved = null; }
+    if (saved && saved.day !== stockholmDate(new Date())) { store(LUNCH_KEY, null); saved = null; }
+    var pick = fromLink || saved;
+    if (!pick) return Promise.resolve();
+    var sameAsSaved = saved && fromLink && saved.id === fromLink.id;
+    return P().open(pick.id, pick.secret).then(function (lunch) {
+      lunch.day = (saved && (!fromLink || sameAsSaved)) ? saved.day : stockholmDate(new Date());
+      return joinLunch(lunch);
+    }).catch(function (e) { planError(e && e.code ? e : { code: 'lunch_not_found' }); });
+  }
+
+  function renderLunchBanner() {
+    var box = document.getElementById('lunch-banner');
+    if (!box) return;
+    var title = document.getElementById('lunch-title');
+    var text = document.getElementById('lunch-text');
+    var nameForm = document.getElementById('lunch-name');
+    var share = document.getElementById('lunch-share');
+    var outBtn = document.getElementById('lunch-out');
+    var leave = document.getElementById('lunch-leave');
+    var ok = document.getElementById('lunch-ok');
+
+    if (!plan.lunch) {
+      if (plan.ended) {
+        box.hidden = false;
+        box.classList.add('is-ended');
+        title.textContent = 'This lunch has ended';
+        text.textContent = 'Lunch links work for one day, and everything in them is deleted at midnight, on purpose. Here are today’s menus.';
+        nameForm.hidden = true; share.hidden = true; outBtn.hidden = true; leave.hidden = true; ok.hidden = false;
+      } else {
+        box.hidden = true;
+      }
+      return;
+    }
+    box.hidden = false;
+    box.classList.remove('is-ended');
+    ok.hidden = true; leave.hidden = false; outBtn.hidden = false; share.hidden = false;
+    var host = hostName();
+    title.textContent = host === 'you' ? 'You’re planning lunch' : host ? host + ' is planning lunch' : 'Planning lunch together';
+    if (!plan.loaded) {
+      text.textContent = 'Opening the lunch…';
+    } else {
+      var joined = [], notJoining = 0;
+      if (myName()) { if (plan.out) notJoining++; else joined.push('you'); }
+      others().forEach(function (x) { if (x.data.out) notJoining++; else joined.push(x.data.name); });
+      var line = plan.out ? 'You’re not joining today. ' : 'Heart the places you’d like. ';
+      line += joined.length ? 'Eating: ' + listNames(joined) + '.' : 'Nobody has joined yet.';
+      if (notJoining) line += ' ' + notJoining + ' not joining today.';
+      text.textContent = line;
+    }
+    var needsName = !myName();
+    nameForm.hidden = !needsName;
+    outBtn.textContent = plan.out ? 'I’m joining after all' : 'Not joining today';
+    outBtn.setAttribute('aria-pressed', String(plan.out));
+    outBtn.hidden = needsName;
+  }
+
+  // ----- the "Plan lunch together" dialog -----
+  function openAsk() {
+    var dlg = document.getElementById('ask');
+    if (!dlg) return;
+    var form = document.getElementById('ask-form');
+    var sharePart = document.getElementById('ask-share');
+    document.getElementById('ask-error').hidden = true;
+    if (plan.lunch) {
+      form.hidden = true;
+      showShare();
+    } else {
+      form.hidden = false;
+      sharePart.hidden = true;
+      document.getElementById('ask-name').value = myName();
+    }
+    if (typeof dlg.showModal === 'function') dlg.showModal(); else dlg.setAttribute('open', '');
+    var focus = plan.lunch ? document.getElementById('ask-copy') : document.getElementById('ask-name');
+    if (focus) focus.focus();
+  }
+
+  function showShare() {
+    var link = P().makeLink(plan.lunch);
+    document.getElementById('ask-share').hidden = false;
+    document.getElementById('ask-link').value = link;
+    var native = document.getElementById('ask-native');
+    native.hidden = !navigator.share;
+    drawQr(document.getElementById('ask-qr'), link);
+  }
+
+  // QR code as an SVG drawn from the code's squares (qrcode-generator, MIT). Always dark on
+  // light with a quiet border, in both themes, so every camera can read it.
+  function drawQr(slot, text) {
+    slot.textContent = '';
+    if (!window.qrcode) { slot.hidden = true; return; }
+    var qr = window.qrcode(0, 'M');
+    qr.addData(text);
+    qr.make();
+    var n = qr.getModuleCount(), q = 4, size = n + q * 2, d = '';
+    for (var r = 0; r < n; r++) {
+      for (var c = 0; c < n; c++) if (qr.isDark(r, c)) d += 'M' + (c + q) + ' ' + (r + q) + 'h1v1h-1z';
+    }
+    var NS = 'http://www.w3.org/2000/svg';
+    var svg = document.createElementNS(NS, 'svg');
+    svg.setAttribute('viewBox', '0 0 ' + size + ' ' + size);
+    svg.setAttribute('width', '180');
+    svg.setAttribute('height', '180');
+    svg.setAttribute('aria-hidden', 'true');
+    svg.setAttribute('shape-rendering', 'crispEdges');
+    var bg = document.createElementNS(NS, 'rect');
+    bg.setAttribute('width', size); bg.setAttribute('height', size); bg.setAttribute('fill', '#FFFFFF');
+    var path = document.createElementNS(NS, 'path');
+    path.setAttribute('d', d); path.setAttribute('fill', '#1F1A2E');
+    svg.appendChild(bg); svg.appendChild(path);
+    slot.appendChild(svg);
+    slot.hidden = false;
+  }
+
+  function wirePlanner() {
+    plan.name = stored(NAME_KEY) || '';
+    var dlg = document.getElementById('ask');
+    if (!dlg) return;
+    var ask = document.getElementById('ask-friends');
+    var err = document.getElementById('ask-error');
+    if (!P()) { ask.hidden = true; return; } // the planner script didn't load: menus still work
+    ask.addEventListener('click', openAsk);
+    document.getElementById('lunch-share').addEventListener('click', openAsk);
+    document.getElementById('ask-close').addEventListener('click', function () { dlg.close(); });
+    dlg.addEventListener('click', function (e) { if (e.target === dlg) dlg.close(); });
+
+    document.getElementById('ask-form').addEventListener('submit', function (e) {
+      e.preventDefault();
+      var name = setMyName(document.getElementById('ask-name').value);
+      if (!name) return;
+      var btn = document.getElementById('ask-create');
+      btn.disabled = true;
+      btn.textContent = 'Making the link…';
+      err.hidden = true;
+      P().create().then(function (lunch) {
+        plan.ended = false;
+        return joinLunch(lunch, { host: true }).then(function () {
+          queueSave();
+          document.getElementById('ask-form').hidden = true;
+          showShare();
+          document.getElementById('ask-copy').focus();
+          announce('Your lunch link is ready.');
+        });
+      }).catch(function (e2) {
+        err.textContent = {
+          rate_limited: 'Too many new lunches from here right now. Try again in a while.',
+          offline: 'Couldn’t reach the server. Check your connection and try again.'
+        }[e2 && e2.code] || 'The link couldn’t be made. Try again in a moment.';
+        err.hidden = false;
+      }).then(function () {
+        btn.disabled = false;
+        btn.textContent = 'Create link';
+      });
+    });
+
+    document.getElementById('ask-native').addEventListener('click', function () {
+      navigator.share({ title: 'Lunch today?', text: 'Heart the places you’d like for lunch:', url: document.getElementById('ask-link').value })
+        .catch(function () { /* closed the share sheet */ });
+    });
+    document.getElementById('ask-copy').addEventListener('click', function () {
+      var field = document.getElementById('ask-link');
+      var btn = this;
+      function done() { btn.textContent = 'Copied'; announce('Link copied.'); window.setTimeout(function () { btn.textContent = 'Copy link'; }, 2000); }
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(field.value).then(done, function () { field.select(); });
+      } else { field.select(); }
+    });
+    document.getElementById('ask-link').addEventListener('focus', function () { this.select(); });
+
+    // The banner: your first name, not joining, leave
+    document.getElementById('lunch-name').addEventListener('submit', function (e) {
+      e.preventDefault();
+      var name = setMyName(document.getElementById('lunch-name-input').value);
+      if (!name) return;
+      queueSave();
+      renderLunchBanner();
+      refreshLunch();
+      announce('Thanks, ' + name + '. Your hearts are shared with the lunch.');
+      var out = document.getElementById('lunch-out');
+      if (out) out.focus();
+    });
+    document.getElementById('lunch-out').addEventListener('click', function () {
+      plan.out = !plan.out;
+      queueSave();
+      refreshLunch();
+      announce(plan.out ? 'Marked as not joining today.' : 'You’re joining. Your hearts count again.');
+    });
+    document.getElementById('lunch-leave').addEventListener('click', function () {
+      // Leaving tells the others you're not coming, then forgets the lunch on this phone
+      plan.out = true;
+      queueSave();
+      window.setTimeout(function () {
+        forgetLunch();
+        refreshLunch();
+        announce('You left the lunch. Your hearts stay on this phone.');
+      }, 400);
+    });
+    document.getElementById('lunch-ok').addEventListener('click', function () {
+      plan.ended = false;
+      renderLunchBanner();
     });
   }
 
@@ -194,13 +611,15 @@
     state.hearts = state.hearts.filter(function (id) { return known.indexOf(id) !== -1; });
     state.sortHearts = state.sortHearts.filter(function (id) { return known.indexOf(id) !== -1; });
     var anyHearts = state.sortHearts.length > 0;
+    function rank(id) { var i = state.sortHearts.indexOf(id); return i === -1 ? 999 : i; }
     renderShortlist();
 
     var order = { fresh: 0, stale: 1, fixed: 2, missing: 3 };
     places.sort(function (a, b) {
       // your shortlist first (only when you have one), then places with a menu, then by walking time
       if (anyHearts) {
-        var h = (state.sortHearts.indexOf(b.id) !== -1 ? 1 : 0) - (state.sortHearts.indexOf(a.id) !== -1 ? 1 : 0);
+        // (in a lunch, sortHearts is ordered by how many hearts each place had when you opened the page)
+        var h = rank(a.id) - rank(b.id);
         if (h) return h;
       }
       var s = order[a.state] - order[b.state];
@@ -221,7 +640,7 @@
     summary.textContent = dayWeek + ' · ' + (weekend
       ? places.length + ' places · no weekday lunch today'
       : places.length + ' places · ' + freshCount + ' with today’s menu');
-    if (!phone) summary.textContent += ' · sorted by walking time' + (anyHearts ? ' · your shortlist first' : '');
+    if (!phone) summary.textContent += ' · sorted by walking time' + (anyHearts ? (plan.lunch ? ' · most hearted first' : ' · your shortlist first') : '');
 
     if (!shown.length) {
       addEmpty(list, 'No places match these filters. Turn one off to see more.');
@@ -526,9 +945,9 @@
   }
 
   function load() {
-    fetch('data/menus.json', { cache: 'no-store' })
+    return fetch('data/menus.json', { cache: 'no-store' })
       .then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
-      .then(function (data) { state.data = data; render(); })
+      .then(function (data) { state.data = data; })
       .catch(function () {
         document.getElementById('summary').textContent = 'Today’s menus couldn’t be loaded. Check your connection and reload the page.';
       });
@@ -560,7 +979,8 @@
         if (p) updateHeart(node, p);
       });
       renderShortlist();
-      announce('Your shortlist is cleared.');
+      queueSave();
+      announce(plan.lunch ? 'Your hearts are cleared.' : 'Your shortlist is cleared.');
       var first = document.querySelector('.card .heart');
       if (first) first.focus({ preventScroll: true });
     });
@@ -569,6 +989,15 @@
   mountThemeSwitch();
   wireFilters();
   wireShortlist();
+  wirePlanner();
   render();
-  load();
+  // The menus and (when you're in a lunch) everyone's hearts arrive together, so the cards
+  // are placed once, most hearted first. A slow server never holds the menus back for long.
+  var lunchReady = startLunch();
+  var patience = new Promise(function (resolve) { window.setTimeout(resolve, 4000); });
+  Promise.all([load(), Promise.race([lunchReady, patience])]).then(function () {
+    if (plan.lunch && plan.loaded) state.sortHearts = groupPlaceIds();
+    render();
+    renderLunchBanner();
+  });
 })();
