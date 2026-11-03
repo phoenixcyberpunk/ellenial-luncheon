@@ -46,7 +46,7 @@ const pairs = (t) => [
   ['heart edge on lavender (fixed card)', t.edge, t.soft, 3],
   ['"Shortlisted" text on Periwinkle', t.onPeri, t.peri, 4.5],
   ['shortlist bar text on lavender', t.ink, t.soft, 4.5],
-  ['shortlist bar note on lavender', t.muted, t.soft, 4.5],
+  ['shortlist bar names (links) on lavender', t.ink, t.soft, 4.5],
   ['shortlist bar edge (Indigo) on page', t.accent, t.bg, 3],
   ['"Clear" edge on lavender', t.edge, t.soft, 3],
   ['focus ring on page', t.accent, t.bg, 3],

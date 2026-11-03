@@ -25,9 +25,15 @@
         <button type="button" class="chip" data-filter="veg" aria-pressed="false">Veg option</button>
         <button type="button" class="chip" data-filter="near" aria-pressed="false">≤ 10 min walk</button>
       </div>
-      <nav class="jump" id="jump" aria-label="Jump to a place" hidden></nav>
+      <details class="jump-box" id="jump-box" hidden>
+        <summary class="jump-box__toggle" id="jump-toggle">Jump to a place</summary>
+        <nav class="jump" id="jump" aria-label="Jump to a place"></nav>
+      </details>
       <div class="shortlist" id="shortlist" hidden>
-        <p class="shortlist__text"><span class="shortlist__count" id="shortlist-text"></span><span class="shortlist__note">Kept on this phone until midnight</span></p>
+        <div class="shortlist__text">
+          <p class="shortlist__count" id="shortlist-text"></p>
+          <p class="shortlist__names" id="shortlist-names"></p>
+        </div>
         <button type="button" class="shortlist__clear" id="shortlist-clear">Clear</button>
       </div>
       <p class="visually-hidden" id="announce" aria-live="polite"></p>

@@ -10,7 +10,7 @@
   var WALK_M_PER_MIN = 80;   // a relaxed lunch pace
   var DETOUR = 1.3;          // streets are not straight lines
 
-  var state = { data: null, filters: { veg: false, near: false }, open: {}, hearts: [] };
+  var state = { data: null, filters: { veg: false, near: false }, open: {}, hearts: [], sortHearts: [] };
   var HEARTS_KEY = 'luncheon.shortlist';
   var FOLD_AFTER = 4; // dishes shown before "Show all"
 
@@ -92,24 +92,26 @@
   }
   function isHearted(id) { return state.hearts.indexOf(id) !== -1; }
 
+  // Tapping a heart never moves cards: the list keeps its order while you're on the page,
+  // and the bar lists your shortlisted places so you can jump to them. Shortlisted places
+  // come first the next time you open the page.
   function toggleHeart(p) {
-    // Keep the reader's place: remember where the card after this one sits on screen,
-    // re-sort, then scroll so that same card is back where it was.
-    var card = document.getElementById('place-' + p.id);
-    var anchor = card && (card.nextElementSibling || card.previousElementSibling);
-    var anchorId = anchor && anchor.id;
-    var before = anchor ? anchor.getBoundingClientRect().top : 0;
-
     var on = !isHearted(p.id);
     state.hearts = on ? state.hearts.concat(p.id) : state.hearts.filter(function (id) { return id !== p.id; });
     saveHearts();
-    render();
+    var card = document.getElementById('place-' + p.id);
+    if (card) updateHeart(card, p);
+    renderShortlist();
+    announce(on ? p.name + ' added to your shortlist.' : p.name + ' removed from your shortlist.');
+  }
 
-    var again = anchorId && document.getElementById(anchorId);
-    if (again) window.scrollBy(0, again.getBoundingClientRect().top - before);
-    var btn = document.querySelector('#place-' + p.id + ' .heart');
-    if (btn) btn.focus({ preventScroll: true });
-    announce(on ? p.name + ' added to your shortlist. Shortlisted places are now at the top.' : p.name + ' removed from your shortlist.');
+  function updateHeart(node, p) {
+    var heart = node.querySelector('.heart');
+    var on = isHearted(p.id);
+    heart.setAttribute('aria-pressed', String(on));
+    heart.setAttribute('aria-label', on ? p.name + ' is on your shortlist. Remove it' : 'Add ' + p.name + ' to your shortlist');
+    heart.title = on ? 'On your shortlist (tap to remove)' : 'Add to your shortlist';
+    node.classList.toggle('is-hearted', on);
   }
 
   function announce(text) {
@@ -125,7 +127,31 @@
     var n = state.hearts.length;
     box.hidden = n === 0;
     document.body.classList.toggle('has-shortlist', n > 0);
-    document.getElementById('shortlist-text').textContent = n === 1 ? '1 place on your shortlist' : n + ' places on your shortlist';
+    document.getElementById('shortlist-text').textContent = n === 1 ? 'Your shortlist · 1 place' : 'Your shortlist · ' + n + ' places';
+    var names = document.getElementById('shortlist-names');
+    names.textContent = '';
+    var byId = {};
+    ((state.data && state.data.places) || []).forEach(function (p) { byId[p.id] = p; });
+    state.hearts.forEach(function (id, i) {
+      var p = byId[id];
+      if (!p) return;
+      if (names.childNodes.length) names.appendChild(document.createTextNode(', '));
+      var a = document.createElement('a');
+      a.href = '#place-' + id;
+      a.textContent = p.name;
+      a.addEventListener('click', function (e) { e.preventDefault(); goTo(id); });
+      names.appendChild(a);
+    });
+  }
+
+  // Scroll to a card and move focus to its name (shared by the jump list and the shortlist bar)
+  function goTo(id) {
+    var target = document.getElementById('place-' + id);
+    if (!target) return;
+    var calm = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    target.scrollIntoView({ behavior: calm ? 'auto' : 'smooth', block: 'start' });
+    var name = target.querySelector('.name');
+    if (name) name.focus({ preventScroll: true });
   }
 
   function render() {
@@ -134,7 +160,7 @@
     list.textContent = '';
     var jump = document.getElementById('jump');
     jump.textContent = '';
-    jump.hidden = true;
+    document.getElementById('jump-box').hidden = true;
     var now = new Date();
     var today = stockholmDate(now);
     var wd = weekdayIndex(now);
@@ -168,14 +194,15 @@
     // Forget hearts for places that are no longer on the list
     var known = places.map(function (p) { return p.id; });
     state.hearts = state.hearts.filter(function (id) { return known.indexOf(id) !== -1; });
-    var anyHearts = state.hearts.length > 0;
+    state.sortHearts = state.sortHearts.filter(function (id) { return known.indexOf(id) !== -1; });
+    var anyHearts = state.sortHearts.length > 0;
     renderShortlist();
 
     var order = { fresh: 0, stale: 1, fixed: 2, missing: 3 };
     places.sort(function (a, b) {
       // your shortlist first (only when you have one), then places with a menu, then by walking time
       if (anyHearts) {
-        var h = (isHearted(b.id) ? 1 : 0) - (isHearted(a.id) ? 1 : 0);
+        var h = (state.sortHearts.indexOf(b.id) !== -1 ? 1 : 0) - (state.sortHearts.indexOf(a.id) !== -1 ? 1 : 0);
         if (h) return h;
       }
       var s = order[a.state] - order[b.state];
@@ -194,6 +221,10 @@
       ? places.length + ' places · no weekday lunch today · sorted by walking time'
       : places.length + ' places · ' + freshCount + ' with today’s menu · sorted by walking time';
     if (anyHearts) summary.textContent += ' · your shortlist first';
+    if (window.matchMedia && window.matchMedia('(max-width: 759px)').matches) {
+      // Shorter on a phone: the first screen should be menus, not meta
+      summary.textContent = weekend ? places.length + ' places · no weekday lunch today' : places.length + ' places · ' + freshCount + ' with today’s menu';
+    }
 
     if (!shown.length) {
       addEmpty(list, 'No places match these filters. Turn one off to see more.');
@@ -204,12 +235,11 @@
   }
 
   // Quick list of the places shown, in page order; tapping a name jumps to its card.
+  // Folded behind "Jump to a place" on a phone (27 names fill the first screen), open on a computer.
   function fillJump(jump, shown) {
+    var box = document.getElementById('jump-box');
     if (shown.length < 2) return;
-    var label = document.createElement('span');
-    label.className = 'jump__label';
-    label.textContent = 'Jump to';
-    jump.appendChild(label);
+    document.getElementById('jump-toggle').textContent = 'Jump to a place (' + shown.length + ')';
     shown.forEach(function (p, i) {
       // Each name and its following dot stay together, so a line never starts with a dot
       var item = document.createElement('span');
@@ -218,16 +248,7 @@
       a.className = 'jump__link';
       a.href = '#place-' + p.id;
       a.textContent = p.name;
-      a.addEventListener('click', function (e) {
-        var target = document.getElementById('place-' + p.id);
-        if (!target) return;
-        e.preventDefault();
-        var calm = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        target.scrollIntoView({ behavior: calm ? 'auto' : 'smooth', block: 'start' });
-        // Move focus to the card's name so keyboard and screen-reader users land there too
-        var name = target.querySelector('.name');
-        if (name) name.focus({ preventScroll: true });
-      });
+      a.addEventListener('click', function (e) { e.preventDefault(); goTo(p.id); });
       item.appendChild(a);
       if (i < shown.length - 1) {
         var sep = document.createElement('span');
@@ -239,7 +260,7 @@
       jump.appendChild(item);
       jump.appendChild(document.createTextNode(' '));
     });
-    jump.hidden = false;
+    box.hidden = false;
   }
 
   function addEmpty(list, text) {
@@ -259,13 +280,8 @@
 
     // Heart: an outlined heart; once tapped it fills, gains the word "Shortlisted" and a
     // Periwinkle fill, so being shortlisted never rests on colour alone.
-    var heart = node.querySelector('.heart');
-    var on = isHearted(p.id);
-    heart.setAttribute('aria-pressed', String(on));
-    heart.setAttribute('aria-label', on ? p.name + ' is on your shortlist. Remove it' : 'Add ' + p.name + ' to your shortlist');
-    heart.title = on ? 'On your shortlist (tap to remove)' : 'Add to your shortlist';
-    if (on) node.classList.add('is-hearted');
-    heart.addEventListener('click', function () { toggleHeart(p); });
+    updateHeart(node, p);
+    node.querySelector('.heart').addEventListener('click', function () { toggleHeart(p); });
 
     // Price row: the lunch price and what comes with it, or an honest "not on their site"
     var amount = node.querySelector('.price-amount');
@@ -534,11 +550,19 @@
 
   function wireShortlist() {
     state.hearts = loadHearts();
+    state.sortHearts = state.hearts.slice();
+    // The jump list starts open on a computer and folded on a phone
+    var box = document.getElementById('jump-box');
+    if (box && window.matchMedia && window.matchMedia('(min-width: 760px)').matches) box.open = true;
     var clear = document.getElementById('shortlist-clear');
     if (clear) clear.addEventListener('click', function () {
       state.hearts = [];
       saveHearts();
-      render();
+      document.querySelectorAll('.card').forEach(function (node) {
+        var p = (state.data.places || []).filter(function (x) { return 'place-' + x.id === node.id; })[0];
+        if (p) updateHeart(node, p);
+      });
+      renderShortlist();
       announce('Your shortlist is cleared.');
       var first = document.querySelector('.card .heart');
       if (first) first.focus({ preventScroll: true });

@@ -168,8 +168,25 @@ h1 {
 /* Jump list: every place shown, in page order, as plain underlined text links separated by
    dots (lighter than chips). Tapping one scrolls to its card. Inline links in running text
    are exempt from the 44px target size; the extra line height keeps them easy to hit. */
+.jump-box { margin: 0; }
+.jump-box__toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 32px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink);
+  cursor: pointer;
+  list-style: none;
+  text-decoration: underline;
+  text-decoration-color: var(--edge);
+  text-underline-offset: 3px;
+}
+.jump-box__toggle::-webkit-details-marker { display: none; }
+.jump-box__toggle::after { content: '▾'; text-decoration: none; display: inline-block; color: var(--muted); }
+.jump-box[open] .jump-box__toggle::after { content: '▴'; }
 .jump { margin: 0; padding-top: 2px; font-size: 14px; line-height: 2; color: var(--muted); }
-.jump__label { margin-right: 6px; font-weight: 600; }
 .jump__item { white-space: nowrap; }
 .jump__link { color: var(--ink); text-decoration: underline; text-decoration-color: var(--edge); text-underline-offset: 3px; }
 .jump__link:hover { color: var(--accent); text-decoration-color: currentColor; }
@@ -246,11 +263,19 @@ h1 {
   color: var(--ink);
   font-size: 13px;
 }
-.shortlist__text { margin: 0; display: flex; flex-wrap: wrap; align-items: baseline; gap: 0 8px; }
+.shortlist__text { min-width: 0; display: flex; flex-wrap: wrap; align-items: baseline; gap: 0 10px; }
+.shortlist__text p { margin: 0; }
 .shortlist__count { font-weight: 600; }
-.shortlist__note { color: var(--muted); font-size: 12.5px; }
-@media (min-width: 760px) { .shortlist__note::before { content: '· '; } }
-@media (max-width: 759px) { .shortlist__text { flex-direction: column; gap: 0; } .shortlist { border-radius: 18px; } }
+.shortlist__names { color: var(--muted); font-size: 13px; }
+.shortlist__names a { color: var(--ink); text-underline-offset: 3px; }
+.shortlist__names a:hover { color: var(--accent); }
+@media (max-width: 759px) {
+  .shortlist { border-radius: 18px; }
+  .shortlist__text { flex-direction: column; gap: 0; }
+  /* one line of names on a phone; the rest are a scroll away */
+  .shortlist__names { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%; }
+  h1 { font-size: 28px; }
+}
 .shortlist__clear {
   flex: none;
   min-height: 32px;
