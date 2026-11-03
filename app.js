@@ -283,25 +283,32 @@
   //   rostad potatis · piri piri sås · grönkålsceasar   what comes with it, quieter
   function dishItem(it) {
     var li = document.createElement('li');
-    var isVegan = it.diet === 'vegan' || /\bvegan/i.test(it.text);
-    var isVeg = isVegan || it.diet === 'veg';
-    if (isVeg) li.setAttribute('data-veg', '');
 
     var text = it.text.trim();
     var label = '';
     var m = text.match(/^([^:]{2,22}):\s+(.+)$/);
     if (m) { label = m[1].trim(); text = m[2].trim(); }
-    var labelIsVeg = /^(veg|vegetar|vegan)/i.test(label);
 
-    // Tag line: the station or category, plus a Veg/Vegan word and emoji (never the emoji alone)
+    // Restaurants call it "VEG", "Vegetarisk", "Vegetariskt", "Vegetarian"… We always say
+    // "Veg 🥦" (and "Vegan 🌱" for vegan), so the word is dropped from their label and any
+    // rest of it ("Vegetarisk Poke bowl" → "Poke bowl") stays as the category.
+    var VEG_LEAD = /^(vegan(sk[at]?)?|vegetari(sk[at]?|an|ska)|veggie|veg)\b[\s:·–-]*/i;
+    var leadMatch = label.match(VEG_LEAD);
+    var labelSaysVegan = !!(leadMatch && /^vegan/i.test(leadMatch[1]));
+    if (leadMatch) label = label.slice(leadMatch[0].length).trim();
+
+    var isVegan = it.diet === 'vegan' || labelSaysVegan || /\bvegan/i.test(it.text);
+    var isVeg = isVegan || it.diet === 'veg' || !!leadMatch;
+    if (isVeg) li.setAttribute('data-veg', '');
+
+    // Tag line: the station or category, plus "Veg 🥦" or "Vegan 🌱" (never the emoji alone)
     if (label || isVeg) {
       var tag = document.createElement('p');
       tag.className = 'dish-tag';
       if (label) tag.appendChild(document.createTextNode(label));
       if (isVeg) {
-        if (label && !labelIsVeg) tag.appendChild(document.createTextNode(' · '));
-        if (!labelIsVeg) tag.appendChild(document.createTextNode(isVegan ? 'Vegan ' : 'Veg '));
-        else tag.appendChild(document.createTextNode(' '));
+        if (label) tag.appendChild(document.createTextNode(' · '));
+        tag.appendChild(document.createTextNode(isVegan ? 'Vegan ' : 'Veg '));
         tag.appendChild(emojiNode(isVegan ? '🌱' : '🥦', isVegan ? 'vegan' : 'vegetarian'));
       }
       li.appendChild(tag);
