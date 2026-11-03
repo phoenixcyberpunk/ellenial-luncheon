@@ -38,8 +38,6 @@
   --radius-pill: 999px;
   --tick: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E");
   --clock: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='9'/%3E%3Cpath d='M12 7v5l3 2'/%3E%3C/svg%3E");
-  --heart: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.2' stroke-linejoin='round'%3E%3Cpath d='M12 20.5s-7.5-4.6-9.3-9.2C1.4 8 3.4 4.5 6.9 4.5c2.1 0 3.6 1.2 5.1 3 1.5-1.8 3-3 5.1-3 3.5 0 5.5 3.5 4.2 6.8-1.8 4.6-9.3 9.2-9.3 9.2z'/%3E%3C/svg%3E");
-  --heart-filled: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23000' stroke='%23000' stroke-width='2.2' stroke-linejoin='round'%3E%3Cpath d='M12 20.5s-7.5-4.6-9.3-9.2C1.4 8 3.4 4.5 6.9 4.5c2.1 0 3.6 1.2 5.1 3 1.5-1.8 3-3 5.1-3 3.5 0 5.5 3.5 4.2 6.8-1.8 4.6-9.3 9.2-9.3 9.2z'/%3E%3C/svg%3E");
   --calendar: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='5' width='18' height='16' rx='2'/%3E%3Cpath d='M3 10h18M8 3v4M16 3v4'/%3E%3C/svg%3E");
   color-scheme: light;
 }
@@ -225,18 +223,12 @@ h1 {
   color: var(--accent);
   cursor: pointer;
 }
-.heart::before {
-  content: '';
-  flex: none;
-  width: 16px;
-  height: 16px;
-  background: currentColor;
-  -webkit-mask: var(--heart) center / contain no-repeat;
-  mask: var(--heart) center / contain no-repeat;
-}
 .heart:hover { border-color: var(--accent); }
 .heart[aria-pressed="true"] { background: var(--peri); border-color: var(--accent); color: var(--on-peri); }
-.heart[aria-pressed="true"]::before { -webkit-mask-image: var(--heart-filled); mask-image: var(--heart-filled); }
+.heart svg { display: block; flex: none; }
+.heart__on { display: none !important; }
+.heart[aria-pressed="true"] .heart__off { display: none !important; }
+.heart[aria-pressed="true"] .heart__on { display: block !important; }
 
 /* Shortlist bar: pinned to the bottom of a phone screen, in the header on a computer */
 .shortlist {
