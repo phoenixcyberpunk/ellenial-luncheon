@@ -163,23 +163,15 @@ h1 {
   mask: var(--tick) center / contain no-repeat;
 }
 
-/* Jump list: every place shown, in page order. Tapping one scrolls to its card. */
-.jump { display: flex; flex-wrap: wrap; gap: 6px; padding-top: 4px; }
-.jump__label { align-self: center; margin-right: 2px; font-size: 13px; font-weight: 600; color: var(--muted); }
-.jump__link {
-  display: inline-flex;
-  align-items: center;
-  min-height: 36px;
-  padding: 0 12px;
-  border-radius: var(--radius-pill);
-  border: 1px solid var(--edge);
-  background: var(--soft);
-  color: var(--ink);
-  font-size: 13px;
-  font-weight: 600;
-  text-decoration: none;
-}
-.jump__link:hover { border-color: var(--accent); color: var(--ink); }
+/* Jump list: every place shown, in page order, as plain underlined text links separated by
+   dots (lighter than chips). Tapping one scrolls to its card. Inline links in running text
+   are exempt from the 44px target size; the extra line height keeps them easy to hit. */
+.jump { margin: 0; padding-top: 2px; font-size: 14px; line-height: 2; color: var(--muted); }
+.jump__label { margin-right: 6px; font-weight: 600; }
+.jump__item { white-space: nowrap; }
+.jump__link { color: var(--ink); text-decoration: underline; text-decoration-color: var(--edge); text-underline-offset: 3px; }
+.jump__link:hover { color: var(--accent); text-decoration-color: currentColor; }
+.jump__sep { margin-left: 6px; }
 .card { scroll-margin-top: 16px; }
 .name:focus { outline: none; }
 .name:focus-visible { outline: 3px solid var(--accent); }
@@ -214,7 +206,7 @@ h1 {
 /* Dishes: tag / dish / sides, with a hairline between dishes for easy scanning */
 .dishes { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; }
 .dishes:empty { display: none; }
-.dishes li { padding: 10px 0; border-top: 1px solid var(--line); }
+.dishes li { padding: 8px 0; border-top: 1px solid var(--line); }
 .dishes li:first-child { border-top: none; padding-top: 4px; }
 .dishes li:last-child { padding-bottom: 2px; }
 .dishes p { margin: 0; }
@@ -323,3 +315,17 @@ h1 {
 }
 /* Chosen = darker text AND underline, not colour alone */
 .theme-switch__btn[aria-pressed="true"] { color: var(--ink); text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 2px; }
+
+/* Computer screens: cards side by side for an overview. Columns (not a grid) so short cards
+   don't leave gaps; each card stays whole. Order runs down each column, by walking time. */
+@media (min-width: 760px) {
+  .page { max-width: 1240px; padding-left: 24px; padding-right: 24px; }
+  .foot { max-width: 760px; }
+  .sub, .banner { max-width: 760px; }
+  .list { display: block; columns: 2 300px; column-gap: 12px; }
+  .list > * { break-inside: avoid; margin: 0 0 12px; }
+  .card { padding: 12px 14px; gap: 6px; }
+  .name { font-size: 18px; }
+}
+@media (min-width: 1100px) { .list { columns: 3 300px; } }
+@media (min-width: 1500px) { .page { max-width: 1600px; } .list { columns: 4 300px; } }

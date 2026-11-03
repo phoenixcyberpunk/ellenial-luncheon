@@ -142,7 +142,10 @@
     label.className = 'jump__label';
     label.textContent = 'Jump to';
     jump.appendChild(label);
-    shown.forEach(function (p) {
+    shown.forEach(function (p, i) {
+      // Each name and its following dot stay together, so a line never starts with a dot
+      var item = document.createElement('span');
+      item.className = 'jump__item';
       var a = document.createElement('a');
       a.className = 'jump__link';
       a.href = '#place-' + p.id;
@@ -157,7 +160,16 @@
         var name = target.querySelector('.name');
         if (name) name.focus({ preventScroll: true });
       });
-      jump.appendChild(a);
+      item.appendChild(a);
+      if (i < shown.length - 1) {
+        var sep = document.createElement('span');
+        sep.className = 'jump__sep';
+        sep.setAttribute('aria-hidden', 'true');
+        sep.textContent = '·';
+        item.appendChild(sep);
+      }
+      jump.appendChild(item);
+      jump.appendChild(document.createTextNode(' '));
     });
     jump.hidden = false;
   }
