@@ -221,6 +221,12 @@
       "lat": null,
       "lon": null,
       "price": "99–139 kr",
+      "image": {
+        "src": "data/menu-images/bistro3.jpg",
+        "from": "https://www.bistro3.se/assets/images/full-menu-1000px.jpg",
+        "savedAt": "2026-11-03T12:13:24.462Z",
+        "updated": "2026-10-12"
+      },
       "kind": "fixed",
       "veg": true,
       "note": "Pinsa, classic mains, salads and kebab, plus a weekly dish (ask the staff, it isn't on their site). Vegetarian pinsa and Greek salad. Full menu as a picture below."
@@ -356,6 +362,12 @@
       "url": "https://www.brunchoteket.com/",
       "lat": 57.7097,
       "lon": 11.94186,
+      "image": {
+        "src": "data/menu-images/brunchoteket.jpg",
+        "from": "https://www.brunchoteket.com/foodmenu-scaled/",
+        "savedAt": "2026-11-03T12:13:24.462Z",
+        "updated": "2026-10-19"
+      },
       "kind": "fixed",
       "veg": false,
       "note": "Breakfast and brunch all day, 09–17: eggs Benedict, pancakes, bowls, shakshuka. Same menu every day; their menu is a picture (tap it to see it full size). Lindholmsallén 22A."
