@@ -133,21 +133,21 @@ h1 {
 
 .sub { margin: 0; font-size: 14px; color: var(--muted); }
 
-.filters { display: flex; gap: 8px; flex-wrap: wrap; }
+.filters { display: flex; gap: 6px; flex-wrap: wrap; }
 
 /* Chips: a 3:1 edge so they read as tappable; selected = Periwinkle fill + Indigo edge + a tick,
    so "on" never rests on colour alone. */
 .chip {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  min-height: 44px;
-  padding: 0 16px;
+  gap: 5px;
+  min-height: 32px;            /* small, but above the 24px minimum target size */
+  padding: 0 12px;
   border-radius: var(--radius-pill);
-  border: 1.5px solid var(--edge);
-  background: var(--surface);
+  border: 1px solid var(--edge);
+  background: transparent;
   color: var(--ink);
-  font: 600 14px var(--font-body);
+  font: 600 13px var(--font-body);
   cursor: pointer;
 }
 .chip:hover { border-color: var(--accent); }
@@ -155,9 +155,9 @@ h1 {
 .chip[aria-pressed="true"]::before {
   content: '';
   flex: none;
-  width: 14px;
-  height: 14px;
-  margin-left: -3px;
+  width: 12px;
+  height: 12px;
+  margin-left: -2px;
   background: currentColor;
   -webkit-mask: var(--tick) center / contain no-repeat;
   mask: var(--tick) center / contain no-repeat;
