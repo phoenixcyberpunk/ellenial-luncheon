@@ -226,6 +226,17 @@
       "note": "Pinsa, classic mains, salads and kebab, plus a weekly dish (ask the staff, it isn't on their site). Vegetarian pinsa and Greek salad."
     },
     {
+      "id": "dunderdoner",
+      "name": "Dunder Döner",
+      "url": "https://www.dunderdoner.se/",
+      "lat": null,
+      "lon": null,
+      "price": "120–165 kr",
+      "kind": "fixed",
+      "veg": true,
+      "note": "Döner kebab and chicken as rolls, pitas, plates with fries or rice, salads and burgers, plus Iskender. Same menu every day, falafel versions of most dishes. Weekday lunch 10.30–14.00 includes a drink and coffee. Lindholmsallén 36."
+    },
+    {
       "id": "masala",
       "name": "Masala Kitchen",
       "url": "https://masalakitchen.se/lunch/",

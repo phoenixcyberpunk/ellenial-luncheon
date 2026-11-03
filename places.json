@@ -1,5 +1,5 @@
 {
-  "_about": "Lunch places shown in Luncheon. 'reader' names the function in scripts/read-menus.mjs that reads the menu; 'fixed' places have the same menu every day and are entered by hand. Coordinates are from OpenStreetMap. Uni3 uses the Lindholmspiren 3 building and Bistrot the Diagonalen street, so their walking times are approximate. Oishii's, BISTRO 3's and Masala Kitchen's locations are not filled in yet. Bombay Bistro rotates four weekly menus but its site doesn't say which week is current, so it's shown as a fixed menu for now. 'price' is the lunch price as the place states it (a range or 'From …' when it varies), 'includes' what comes with it; leave price out when their site doesn't say.",
+  "_about": "Lunch places shown in Luncheon. 'reader' names the function in scripts/read-menus.mjs that reads the menu; 'fixed' places have the same menu every day and are entered by hand. Coordinates are from OpenStreetMap. Uni3 uses the Lindholmspiren 3 building and Bistrot the Diagonalen street, so their walking times are approximate. Oishii's, BISTRO 3's, Masala Kitchen's and Dunder Döner's locations are not filled in yet. Bombay Bistro rotates four weekly menus but its site doesn't say which week is current, so it's shown as a fixed menu for now. 'price' is the lunch price as the place states it (a range or 'From …' when it varies), 'includes' what comes with it; leave price out when their site doesn't say.",
   "places": [
     {
       "id": "uni3",
@@ -104,6 +104,17 @@
       "veg": true,
       "price": "99–139 kr",
       "note": "Pinsa, classic mains, salads and kebab, plus a weekly dish (ask the staff, it isn't on their site). Vegetarian pinsa and Greek salad."
+    },
+    {
+      "id": "dunderdoner",
+      "name": "Dunder Döner",
+      "url": "https://www.dunderdoner.se/",
+      "lat": null,
+      "lon": null,
+      "kind": "fixed",
+      "veg": true,
+      "price": "120–165 kr",
+      "note": "Döner kebab and chicken as rolls, pitas, plates with fries or rice, salads and burgers, plus Iskender. Same menu every day, falafel versions of most dishes. Weekday lunch 10.30–14.00 includes a drink and coffee. Lindholmsallén 36."
     },
     {
       "id": "masala",
