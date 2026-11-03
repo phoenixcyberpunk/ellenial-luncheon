@@ -89,24 +89,15 @@ a:hover { color: var(--accent); }
   padding: calc(24px + env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) 40px max(16px, env(safe-area-inset-left, 0px));
 }
 
-.top { display: flex; flex-direction: column; gap: 12px; }
-
-.eyebrow {
-  margin: 0;
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: var(--accent);
-}
+.top { display: flex; flex-direction: column; gap: 10px; }
 
 h1 {
   margin: 0;
   font-family: var(--font-display);
   font-weight: 500;
-  font-size: 36px;
-  line-height: 1.1;
-  letter-spacing: -0.01em;
+  font-size: 24px;
+  line-height: 1.2;
+  letter-spacing: -0.005em;
 }
 
 /* "Menus for week 45 aren't out yet": a Lavender panel with a calendar icon and words, never colour alone */
@@ -217,8 +208,8 @@ h1 {
 .card-head { display: flex; align-items: center; gap: 8px; }
 
 /* Heart (Lunch planner step 1). Off: an outlined heart on a quiet round button with a 3:1 edge.
-   On: a filled heart, the word "Shortlisted", Periwinkle fill and Indigo edge, so it never rests
-   on colour alone. 32px tall: above the 24px minimum target. */
+   On: a filled heart (the shape changes, so it never rests on colour alone) on Periwinkle with an
+   Indigo edge; screen readers hear "on your shortlist". 32px: above the 24px minimum target. */
 .heart {
   flex: none;
   display: inline-flex;
@@ -232,7 +223,6 @@ h1 {
   border: 1px solid var(--edge);
   background: transparent;
   color: var(--accent);
-  font: 600 12px var(--font-body);
   cursor: pointer;
 }
 .heart::before {
@@ -245,10 +235,8 @@ h1 {
   mask: var(--heart) center / contain no-repeat;
 }
 .heart:hover { border-color: var(--accent); }
-.heart__word { display: none; }
-.heart[aria-pressed="true"] { padding: 0 10px 0 8px; background: var(--peri); border-color: var(--accent); color: var(--on-peri); }
+.heart[aria-pressed="true"] { background: var(--peri); border-color: var(--accent); color: var(--on-peri); }
 .heart[aria-pressed="true"]::before { -webkit-mask-image: var(--heart-filled); mask-image: var(--heart-filled); }
-.heart[aria-pressed="true"] .heart__word { display: inline; }
 
 /* Shortlist bar: pinned to the bottom of a phone screen, in the header on a computer */
 .shortlist {
@@ -274,7 +262,7 @@ h1 {
   .shortlist__text { flex-direction: column; gap: 0; }
   /* one line of names on a phone; the rest are a scroll away */
   .shortlist__names { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%; }
-  h1 { font-size: 28px; }
+  h1 { font-size: 21px; }
 }
 .shortlist__clear {
   flex: none;

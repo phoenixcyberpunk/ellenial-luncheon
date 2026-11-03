@@ -166,8 +166,6 @@
     var wd = weekdayIndex(now);
     var weekend = wd === 0 || wd === 6;
     var week = isoWeek(today);
-    document.getElementById('today-label').textContent = weekdayName(now) + ' · Week ' + week + ' · Lindholmen';
-    document.getElementById('heading').textContent = weekend ? 'Latest lunch menus' : 'All lunch menus, today';
     var banner = document.getElementById('banner');
     banner.hidden = true;
     if (!state.data) return;
@@ -217,14 +215,13 @@
     });
 
     var freshCount = places.filter(function (p) { return p.state === 'fresh'; }).length;
-    summary.textContent = weekend
-      ? places.length + ' places · no weekday lunch today · sorted by walking time'
-      : places.length + ' places · ' + freshCount + ' with today’s menu · sorted by walking time';
-    if (anyHearts) summary.textContent += ' · your shortlist first';
-    if (window.matchMedia && window.matchMedia('(max-width: 759px)').matches) {
-      // Shorter on a phone: the first screen should be menus, not meta
-      summary.textContent = weekend ? places.length + ' places · no weekday lunch today' : places.length + ' places · ' + freshCount + ' with today’s menu';
-    }
+    // One quiet line under the heading: the day and week number, then what's on today
+    var dayWeek = weekdayName(now) + ', week ' + week;
+    var phone = window.matchMedia && window.matchMedia('(max-width: 759px)').matches;
+    summary.textContent = dayWeek + ' · ' + (weekend
+      ? places.length + ' places · no weekday lunch today'
+      : places.length + ' places · ' + freshCount + ' with today’s menu');
+    if (!phone) summary.textContent += ' · sorted by walking time' + (anyHearts ? ' · your shortlist first' : '');
 
     if (!shown.length) {
       addEmpty(list, 'No places match these filters. Turn one off to see more.');
@@ -278,8 +275,8 @@
     if (p.url) name.href = p.url; else name.removeAttribute('href');
     node.querySelector('.walk').textContent = p.walk != null ? p.walk + ' min' : '';
 
-    // Heart: an outlined heart; once tapped it fills, gains the word "Shortlisted" and a
-    // Periwinkle fill, so being shortlisted never rests on colour alone.
+    // Heart: an outlined heart; once tapped it fills (a change of shape, not just colour)
+    // on a Periwinkle background. Screen readers hear "on your shortlist".
     updateHeart(node, p);
     node.querySelector('.heart').addEventListener('click', function () { toggleHeart(p); });
 
