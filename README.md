@@ -94,4 +94,4 @@ The reader fetches each page a few times per weekday morning, identifies itself,
 
 ## Licence
 
-The code is AGPL-3.0, the same as [ellenial.app](https://github.com/phoenixcyberpunk/ellenial). See `LICENSE`. The menus themselves belong to each restaurant; Luncheon only shows them with a link back.
+The code is AGPL-3.0, the same as [ellenial.app](https://github.com/phoenixcyberpunk/ellenial). See `LICENSE`. One outside library is included: `vendor/supabase.js` is [supabase-js](https://github.com/supabase/supabase-js), © 2020 Supabase, under the MIT License (full text in `vendor/supabase-js.LICENSE`); MIT code can be used inside an AGPL project as long as its notice stays with it. The menus themselves belong to each restaurant; Luncheon only shows them with a link back.
