@@ -26,6 +26,11 @@
         <button type="button" class="chip" data-filter="near" aria-pressed="false">≤ 10 min walk</button>
       </div>
       <nav class="jump" id="jump" aria-label="Jump to a place" hidden></nav>
+      <div class="shortlist" id="shortlist" hidden>
+        <p class="shortlist__text"><span class="shortlist__count" id="shortlist-text"></span><span class="shortlist__note">Kept on this phone until midnight</span></p>
+        <button type="button" class="shortlist__clear" id="shortlist-clear">Clear</button>
+      </div>
+      <p class="visually-hidden" id="announce" aria-live="polite"></p>
     </header>
 
     <section id="list" class="list" aria-live="polite"></section>
@@ -43,6 +48,7 @@
       <div class="card-head">
         <a class="name" target="_blank" rel="noopener"></a>
         <span class="walk"></span>
+        <button type="button" class="heart" aria-pressed="false"><span class="heart__word">Shortlisted</span></button>
       </div>
       <p class="price-row"><span class="price-amount"></span><span class="price-incl"></span></p>
       <ul class="dishes"></ul>

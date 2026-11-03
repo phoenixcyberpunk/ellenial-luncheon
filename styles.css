@@ -38,6 +38,8 @@
   --radius-pill: 999px;
   --tick: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E");
   --clock: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='9'/%3E%3Cpath d='M12 7v5l3 2'/%3E%3C/svg%3E");
+  --heart: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.2' stroke-linejoin='round'%3E%3Cpath d='M12 20.5s-7.5-4.6-9.3-9.2C1.4 8 3.4 4.5 6.9 4.5c2.1 0 3.6 1.2 5.1 3 1.5-1.8 3-3 5.1-3 3.5 0 5.5 3.5 4.2 6.8-1.8 4.6-9.3 9.2-9.3 9.2z'/%3E%3C/svg%3E");
+  --heart-filled: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23000' stroke='%23000' stroke-width='2.2' stroke-linejoin='round'%3E%3Cpath d='M12 20.5s-7.5-4.6-9.3-9.2C1.4 8 3.4 4.5 6.9 4.5c2.1 0 3.6 1.2 5.1 3 1.5-1.8 3-3 5.1-3 3.5 0 5.5 3.5 4.2 6.8-1.8 4.6-9.3 9.2-9.3 9.2z'/%3E%3C/svg%3E");
   --calendar: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='5' width='18' height='16' rx='2'/%3E%3Cpath d='M3 10h18M8 3v4M16 3v4'/%3E%3C/svg%3E");
   color-scheme: light;
 }
@@ -195,7 +197,90 @@ h1 {
    Decorative only: it means nothing, so it's the same on every card. */
 .card, .card.is-fixed, .card.is-missing { border-left: 5px solid var(--accent); }
 
-.card-head { display: flex; align-items: baseline; gap: 8px; }
+.card-head { display: flex; align-items: center; gap: 8px; }
+
+/* Heart (Lunch planner step 1). Off: an outlined heart on a quiet round button with a 3:1 edge.
+   On: a filled heart, the word "Shortlisted", Periwinkle fill and Indigo edge, so it never rests
+   on colour alone. 32px tall: above the 24px minimum target. */
+.heart {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  min-width: 32px;
+  height: 32px;
+  padding: 0;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--edge);
+  background: transparent;
+  color: var(--accent);
+  font: 600 12px var(--font-body);
+  cursor: pointer;
+}
+.heart::before {
+  content: '';
+  flex: none;
+  width: 16px;
+  height: 16px;
+  background: currentColor;
+  -webkit-mask: var(--heart) center / contain no-repeat;
+  mask: var(--heart) center / contain no-repeat;
+}
+.heart:hover { border-color: var(--accent); }
+.heart__word { display: none; }
+.heart[aria-pressed="true"] { padding: 0 10px 0 8px; background: var(--peri); border-color: var(--accent); color: var(--on-peri); }
+.heart[aria-pressed="true"]::before { -webkit-mask-image: var(--heart-filled); mask-image: var(--heart-filled); }
+.heart[aria-pressed="true"] .heart__word { display: inline; }
+
+/* Shortlist bar: pinned to the bottom of a phone screen, in the header on a computer */
+.shortlist {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 6px 8px 6px 14px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--accent);
+  background: var(--soft);
+  color: var(--ink);
+  font-size: 13px;
+}
+.shortlist__text { margin: 0; display: flex; flex-wrap: wrap; align-items: baseline; gap: 0 8px; }
+.shortlist__count { font-weight: 600; }
+.shortlist__note { color: var(--muted); font-size: 12.5px; }
+@media (min-width: 760px) { .shortlist__note::before { content: '· '; } }
+@media (max-width: 759px) { .shortlist__text { flex-direction: column; gap: 0; } .shortlist { border-radius: 18px; } }
+.shortlist__clear {
+  flex: none;
+  min-height: 32px;
+  padding: 0 12px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--edge);
+  background: transparent;
+  color: var(--ink);
+  font: 600 13px var(--font-body);
+  cursor: pointer;
+}
+.shortlist__clear:hover { border-color: var(--accent); }
+@media (max-width: 759px) {
+  .shortlist {
+    position: fixed;
+    z-index: 5;
+    left: max(12px, env(safe-area-inset-left, 0px));
+    right: max(12px, env(safe-area-inset-right, 0px));
+    bottom: calc(12px + env(safe-area-inset-bottom, 0px));
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+  }
+  body.has-shortlist .page { padding-bottom: 96px; }
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  margin: -1px; padding: 0; overflow: hidden;
+  clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
 .name { flex: 1; font-family: var(--font-display); font-weight: 500; font-size: 19px; text-decoration: none; }
 .name:hover { text-decoration: underline; }
 .walk { font-size: 13px; color: var(--muted); white-space: nowrap; }

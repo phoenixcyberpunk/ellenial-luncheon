@@ -10,7 +10,8 @@
   var WALK_M_PER_MIN = 80;   // a relaxed lunch pace
   var DETOUR = 1.3;          // streets are not straight lines
 
-  var state = { data: null, filters: { veg: false, near: false }, open: {} };
+  var state = { data: null, filters: { veg: false, near: false }, open: {}, hearts: [] };
+  var HEARTS_KEY = 'luncheon.shortlist';
   var FOLD_AFTER = 4; // dishes shown before "Show all"
 
   function stockholmDate(d) {
@@ -71,6 +72,62 @@
     return (p.items || []).some(function (i) { return i.diet === 'veg' || i.diet === 'vegan'; });
   }
 
+  // ---------- Lunch planner, step 1: hearts on this phone ----------
+  // Your shortlist for today, kept in this browser only (localStorage) and forgotten at
+  // midnight: it's saved together with today's date and ignored once the date has passed.
+  // Nothing is sent anywhere. Storage can be missing or blocked, so every use is guarded.
+  function loadHearts() {
+    var today = stockholmDate(new Date());
+    try {
+      var saved = JSON.parse(window.localStorage.getItem(HEARTS_KEY) || 'null');
+      if (saved && saved.date === today && Array.isArray(saved.ids)) return saved.ids.filter(function (id) { return typeof id === 'string'; });
+    } catch (e) { /* storage unavailable: start empty */ }
+    return [];
+  }
+  function saveHearts() {
+    try {
+      if (state.hearts.length) window.localStorage.setItem(HEARTS_KEY, JSON.stringify({ date: stockholmDate(new Date()), ids: state.hearts }));
+      else window.localStorage.removeItem(HEARTS_KEY);
+    } catch (e) { /* the shortlist still works until the page is closed */ }
+  }
+  function isHearted(id) { return state.hearts.indexOf(id) !== -1; }
+
+  function toggleHeart(p) {
+    // Keep the reader's place: remember where the card after this one sits on screen,
+    // re-sort, then scroll so that same card is back where it was.
+    var card = document.getElementById('place-' + p.id);
+    var anchor = card && (card.nextElementSibling || card.previousElementSibling);
+    var anchorId = anchor && anchor.id;
+    var before = anchor ? anchor.getBoundingClientRect().top : 0;
+
+    var on = !isHearted(p.id);
+    state.hearts = on ? state.hearts.concat(p.id) : state.hearts.filter(function (id) { return id !== p.id; });
+    saveHearts();
+    render();
+
+    var again = anchorId && document.getElementById(anchorId);
+    if (again) window.scrollBy(0, again.getBoundingClientRect().top - before);
+    var btn = document.querySelector('#place-' + p.id + ' .heart');
+    if (btn) btn.focus({ preventScroll: true });
+    announce(on ? p.name + ' added to your shortlist. Shortlisted places are now at the top.' : p.name + ' removed from your shortlist.');
+  }
+
+  function announce(text) {
+    var el = document.getElementById('announce');
+    if (!el) return;
+    el.textContent = '';
+    window.setTimeout(function () { el.textContent = text; }, 50);
+  }
+
+  function renderShortlist() {
+    var box = document.getElementById('shortlist');
+    if (!box) return;
+    var n = state.hearts.length;
+    box.hidden = n === 0;
+    document.body.classList.toggle('has-shortlist', n > 0);
+    document.getElementById('shortlist-text').textContent = n === 1 ? '1 place on your shortlist' : n + ' places on your shortlist';
+  }
+
   function render() {
     var list = document.getElementById('list');
     var summary = document.getElementById('summary');
@@ -108,9 +165,19 @@
       banner.hidden = false;
     }
 
+    // Forget hearts for places that are no longer on the list
+    var known = places.map(function (p) { return p.id; });
+    state.hearts = state.hearts.filter(function (id) { return known.indexOf(id) !== -1; });
+    var anyHearts = state.hearts.length > 0;
+    renderShortlist();
+
     var order = { fresh: 0, stale: 1, fixed: 2, missing: 3 };
     places.sort(function (a, b) {
-      // places with a menu first, then by walking time
+      // your shortlist first (only when you have one), then places with a menu, then by walking time
+      if (anyHearts) {
+        var h = (isHearted(b.id) ? 1 : 0) - (isHearted(a.id) ? 1 : 0);
+        if (h) return h;
+      }
       var s = order[a.state] - order[b.state];
       if (s) return s;
       return (a.walk == null ? 99 : a.walk) - (b.walk == null ? 99 : b.walk);
@@ -126,6 +193,7 @@
     summary.textContent = weekend
       ? places.length + ' places · no weekday lunch today · sorted by walking time'
       : places.length + ' places · ' + freshCount + ' with today’s menu · sorted by walking time';
+    if (anyHearts) summary.textContent += ' · your shortlist first';
 
     if (!shown.length) {
       addEmpty(list, 'No places match these filters. Turn one off to see more.');
@@ -188,6 +256,16 @@
     name.textContent = p.name;
     if (p.url) name.href = p.url; else name.removeAttribute('href');
     node.querySelector('.walk').textContent = p.walk != null ? p.walk + ' min' : '';
+
+    // Heart: an outlined heart; once tapped it fills, gains the word "Shortlisted" and a
+    // Periwinkle fill, so being shortlisted never rests on colour alone.
+    var heart = node.querySelector('.heart');
+    var on = isHearted(p.id);
+    heart.setAttribute('aria-pressed', String(on));
+    heart.setAttribute('aria-label', on ? p.name + ' is on your shortlist. Remove it' : 'Add ' + p.name + ' to your shortlist');
+    heart.title = on ? 'On your shortlist (tap to remove)' : 'Add to your shortlist';
+    if (on) node.classList.add('is-hearted');
+    heart.addEventListener('click', function () { toggleHeart(p); });
 
     // Price row: the lunch price and what comes with it, or an honest "not on their site"
     var amount = node.querySelector('.price-amount');
@@ -454,8 +532,22 @@
     }));
   }
 
+  function wireShortlist() {
+    state.hearts = loadHearts();
+    var clear = document.getElementById('shortlist-clear');
+    if (clear) clear.addEventListener('click', function () {
+      state.hearts = [];
+      saveHearts();
+      render();
+      announce('Your shortlist is cleared.');
+      var first = document.querySelector('.card .heart');
+      if (first) first.focus({ preventScroll: true });
+    });
+  }
+
   mountThemeSwitch();
   wireFilters();
+  wireShortlist();
   render();
   load();
 })();

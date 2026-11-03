@@ -13,6 +13,7 @@ Free, no ads, no tracking, no accounts. An [Ellenial](https://ellenial.app) tool
 - **`.github/workflows/read-menus.yml`** runs the reader on weekday mornings and saves the file when a menu changes.
 - **`ellenial-theme.js`** is the shared Ellenial Auto / Light / Dark switch. The choice is saved on this phone only. Add `?theme=light` or `?theme=dark` to test a theme without saving it.
 - **`scripts/check-contrast.mjs`** checks every colour pair against the accessibility rules (text 4.5:1, controls 3:1). Run it before shipping a colour change.
+- **Lunch planner, step 1 (hearts):** tap the heart on a card to put it on your shortlist. Shortlisted places move to the top (only when you have any), and a bar shows how many. The shortlist is kept in this browser only (localStorage, with today's date) and forgotten at midnight; nothing is sent anywhere. Sharing it with friends comes in a later step.
 - **Menu pictures:** for places that only publish their menu as a picture, `menuImage` in `places.json` points at it. The reader saves a copy in **`data/menu-images/`** (JPEG, PNG or WebP, at most 3 MB, only rewritten when it changes) and the card shows a small preview that opens full size, with the date their server says it last changed and a link to the original.
 - **`index.html`**, **`app.js`** and **`styles.css`** are the page. It reads `data/menus.json` and shows every place's menu for today.
 
@@ -39,7 +40,7 @@ Nothing rests on colour alone: freshness is always written out (and stale menus 
 
 ### Privacy
 
-The page sets no cookies and sends nothing about you anywhere. Fonts and menu pictures are served from this site, so no third party sees visitors. Walking times are counted from Lindholmen Science Park, not from your location.
+The page sets no cookies and sends nothing about you anywhere. Your shortlist stays in your own browser and is forgotten at midnight. Fonts and menu pictures are served from this site, so no third party sees visitors. Walking times are counted from Lindholmen Science Park, not from your location.
 
 ## Places
 
