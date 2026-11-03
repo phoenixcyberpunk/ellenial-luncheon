@@ -37,7 +37,7 @@
       "includes": "salad buffet, bread, coffee and cake",
       "kind": "daily",
       "menuDate": "2026-11-03",
-      "readAt": "2026-11-03T07:32:34.324Z",
+      "readAt": "2026-11-03T09:00:38.933Z",
       "items": [
         {
           "text": "Veckans special: Bi Bim Bap med pankofriterade räkor toppas med sojasås serveras"
@@ -64,13 +64,16 @@
           "text": "Fisk: Bakad kolja serveras med en krämig svamprisotto, tryffelaioli, ruccola och färskriven grana padano"
         },
         {
-          "text": "Thai: Nasigoreng – Stekt ris smaksatt med Sambal oelek & soja toppad med panko friterade räkor & grillad kyckling, bakat ägg samt stekta grönsaker & koriander"
+          "text": "Thai: Nasigoreng – Stekt ris smaksatt med Sambal oelek & soja toppad med panko friterade räkor, friterad bläckfisk, grillad"
+        },
+        {
+          "text": "Thai: kyckling, bakat ägg samt stekta grönsaker & koriander"
         },
         {
           "text": "Indisk: Kolgrillad Tandoori kycklingspett serveras med masalasås, myntayoghurt och sallad på spenat & rödlök samt smörat Naan"
         },
         {
-          "text": "Världen: Kolgrillad kycklingfile med gnocchi Quattro Formaggi toppad med ruccola och rostad lök"
+          "text": "Världen: Ouattro Formaggio med gratinerad gnocchi toppas med grillad kyckling, rucola och rostad lök"
         },
         {
           "text": "Vegetariskt: Nasigoreng – Stekt ris smaksatt med Sambal oelek & soja toppad med friterad tofu, bakat ägg samt stekta grönsaker & koriander",
@@ -149,20 +152,20 @@
       "price": "135 kr",
       "includes": "homemade bread, salad buffet, coffee and cake",
       "kind": "daily",
-      "menuDate": "2026-11-02",
-      "readAt": "2026-11-02T10:37:59.321Z",
+      "menuDate": "2026-11-03",
+      "readAt": "2026-11-03T09:00:38.933Z",
       "items": [
         {
-          "text": "Fisk: Pocherad torskfile med rödbetor, kapris och skirat smör serveras med färsk pepparrot och potatismos."
+          "text": "Fisk: Skaldjuröverbakad torskfile med vitvinssås och kokt broccolil, serveras med potatismos."
         },
         {
-          "text": "Kött: Köttbullar på kalvfärs med gräddsås och rårörda lingon, serveras med pressgurka och potatismos."
+          "text": "Kött: Viltskavsgryta med champinjoner och kantareller samt lingon, serveras med potatismos."
         },
         {
-          "text": "Fried chicken: Friterad kyckling med chili mayo och jordnötssås, serveras med morot och vitkålssallad samt jasminris."
+          "text": "Bao buns: Bao buns med sidfläsk, inlagd morot och rättika, hoisinsås, jordnötter, chili, koriander och chili mayo, serveras med pommes frites samt koriander och jalapenomajo."
         },
         {
-          "text": "Vegetarisk: Friterad dumplings med chili mayo och jordnötssås, serveras med morot och vitkålssallad samt jasminris.",
+          "text": "Vegetarisk: Bao buns med tofu, inlagd morot och rättika, hoisinsås, jordnötter, chili, koriander och chili mayo, serveras med pommes frites samt koriander och jalapenomajo.",
           "diet": "veg"
         },
         {
@@ -176,8 +179,7 @@
           "text": "Pho: Vietnamesisk nudelsoppa med biff, koriander, gräslök, lök, böngroddar, chili, thai basilika, serveras med lime, hoisinsås och srirachasås."
         }
       ],
-      "note": "",
-      "problem": "2026-11-03: HTTP 503"
+      "note": ""
     },
     {
       "id": "missf",
