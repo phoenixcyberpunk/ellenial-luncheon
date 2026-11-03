@@ -1,5 +1,5 @@
 {
-  "_about": "Lunch places shown in Luncheon. 'reader' names the function in scripts/read-menus.mjs that reads the menu; 'fixed' places have the same menu every day and are entered by hand. Coordinates are from OpenStreetMap. Uni3 uses the Lindholmspiren 3 building and Bistrot the Diagonalen street, so their walking times are approximate. Oishii's and BISTRO 3's locations are not filled in yet. Bombay Bistro rotates four weekly menus but its site doesn't say which week is current, so it's shown as a fixed menu for now. 'price' is the lunch price as the place states it (a range or 'From …' when it varies), 'includes' what comes with it; leave price out when their site doesn't say.",
+  "_about": "Lunch places shown in Luncheon. 'reader' names the function in scripts/read-menus.mjs that reads the menu; 'fixed' places have the same menu every day and are entered by hand. Coordinates are from OpenStreetMap. Uni3 uses the Lindholmspiren 3 building and Bistrot the Diagonalen street, so their walking times are approximate. Oishii's and BISTRO 3's locations are not filled in yet. Bombay Bistro rotates four weekly menus but its site doesn't say which week is current, so it's shown as a fixed menu for now. 'price' is the lunch price as the place states it (a range or 'From …' when it varies), 'includes' what comes with it; leave price out when their site doesn't say. 'menuImage' is the address of a place's menu picture: the reader saves a copy in data/menu-images and the card shows it as a preview that opens full size.",
   "places": [
     {
       "id": "uni3",
@@ -103,7 +103,8 @@
       "kind": "fixed",
       "veg": true,
       "price": "99–139 kr",
-      "note": "Pinsa, classic mains, salads and kebab, plus a weekly dish (ask the staff, it isn't on their site). Vegetarian pinsa and Greek salad."
+      "note": "Pinsa, classic mains, salads and kebab, plus a weekly dish (ask the staff, it isn't on their site). Vegetarian pinsa and Greek salad. Full menu as a picture below.",
+      "menuImage": "https://www.bistro3.se/assets/images/full-menu-1000px.jpg"
     },
     {
       "id": "dunderdoner",
@@ -223,7 +224,8 @@
       "lon": 11.94186,
       "kind": "fixed",
       "veg": false,
-      "note": "Breakfast and brunch all day, 09–17: eggs Benedict, pancakes, bowls, shakshuka. Same menu every day; their menu is an image, so dishes and prices aren't listed here. Lindholmsallén 22A."
+      "note": "Breakfast and brunch all day, 09–17: eggs Benedict, pancakes, bowls, shakshuka. Same menu every day; their menu is a picture (tap it to see it full size). Lindholmsallén 22A.",
+      "menuImage": "https://www.brunchoteket.com/foodmenu-scaled/"
     }
   ]
 }

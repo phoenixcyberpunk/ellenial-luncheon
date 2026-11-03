@@ -350,6 +350,48 @@ async function getPage(place) {
   return res.text();
 }
 
+// ---------- menu pictures ----------
+// Some places only publish their menu as a picture. We save a copy on our own site
+// (so visitors' browsers never contact the restaurant) and show it as a small preview
+// that opens full size, with a link back to the original. Only real photo formats are
+// accepted (no SVG), and the copy is only rewritten when the picture actually changes.
+
+const IMG_DIR = path.join(ROOT, 'data', 'menu-images');
+const IMG_TYPES = { 'image/jpeg': 'jpg', 'image/png': 'png', 'image/webp': 'webp' };
+const IMG_MAX_BYTES = 3 * 1024 * 1024;
+
+async function readMenuImage(cfg, prev, now) {
+  const keep = (prev && prev.image) || null;
+  if (FIXTURES) return keep;
+  try {
+    const res = await fetch(cfg.menuImage, { headers: { 'User-Agent': USER_AGENT }, signal: AbortSignal.timeout(25000) });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const type = (res.headers.get('content-type') || '').split(';')[0].trim().toLowerCase();
+    const ext = IMG_TYPES[type];
+    if (!ext) throw new Error(`not a photo (${type || 'no type'})`);
+    const buf = Buffer.from(await res.arrayBuffer());
+    if (buf.length > IMG_MAX_BYTES) throw new Error(`picture too large (${buf.length} bytes)`);
+    const file = `${cfg.id}.${ext}`;
+    const full = path.join(IMG_DIR, file);
+    const old = existsSync(full) ? await readFile(full) : null;
+    const changed = !old || !old.equals(buf);
+    if (changed) {
+      await mkdir(IMG_DIR, { recursive: true });
+      await writeFile(full, buf);
+    }
+    // When the restaurant's server says the picture was last changed, if it says
+    const lm = res.headers.get('last-modified');
+    const updated = lm && !isNaN(Date.parse(lm)) ? new Date(lm).toISOString().slice(0, 10) : null;
+    const image = { src: `data/menu-images/${file}`, from: cfg.menuImage, savedAt: changed || !keep ? now : keep.savedAt };
+    if (updated) image.updated = updated;
+    console.log(`${cfg.id}: menu picture ${changed ? 'saved' : 'unchanged'}${updated ? ` (theirs from ${updated})` : ''}`);
+    return image;
+  } catch (err) {
+    console.warn(`${cfg.id}: menu picture not read (${err.message})${keep ? '; keeping the last copy' : ''}`);
+    return keep;
+  }
+}
+
 // ---------- main ----------
 
 async function main() {
@@ -366,11 +408,15 @@ async function main() {
     // Lunch price and what comes with it, as the place states it (hand-entered in places.json)
     if (cfg.price) base.price = cfg.price;
     if (cfg.includes) base.includes = cfg.includes;
+    const prev = prevById[cfg.id];
+    if (cfg.menuImage) {
+      const image = await readMenuImage(cfg, prev, now);
+      if (image) base.image = image;
+    }
     if (cfg.kind === 'fixed') {
       places.push({ ...base, kind: 'fixed', veg: !!cfg.veg, note: cfg.note || '' });
       continue;
     }
-    const prev = prevById[cfg.id];
     try {
       const html = await getPage(cfg);
       const { menuDate, items, note: readNote } = readers[cfg.reader](html, today);

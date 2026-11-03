@@ -48,10 +48,24 @@
       <ul class="dishes"></ul>
       <button type="button" class="more" hidden></button>
       <p class="note"></p>
+      <button type="button" class="menu-pic" hidden>
+        <img class="menu-pic__img" alt="" loading="lazy" decoding="async">
+        <span class="menu-pic__label"></span>
+      </button>
       <span class="fresh"></span>
       <p class="links"></p>
     </article>
   </template>
+
+  <!-- Full-size menu picture, opened from a card's preview -->
+  <dialog class="pic-view" id="pic-view" aria-labelledby="pic-view-title">
+    <div class="pic-view__bar">
+      <p class="pic-view__title" id="pic-view-title"></p>
+      <button type="button" class="pic-view__close" id="pic-view-close">Close</button>
+    </div>
+    <div class="pic-view__body"><img class="pic-view__img" id="pic-view-img" alt=""></div>
+    <p class="pic-view__foot"><a id="pic-view-source" target="_blank" rel="noopener">Open the original on their site ↗</a></p>
+  </dialog>
 
   <script src="app.js" defer></script>
 </body>

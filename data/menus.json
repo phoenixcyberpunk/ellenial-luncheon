@@ -223,7 +223,7 @@
       "price": "99–139 kr",
       "kind": "fixed",
       "veg": true,
-      "note": "Pinsa, classic mains, salads and kebab, plus a weekly dish (ask the staff, it isn't on their site). Vegetarian pinsa and Greek salad."
+      "note": "Pinsa, classic mains, salads and kebab, plus a weekly dish (ask the staff, it isn't on their site). Vegetarian pinsa and Greek salad. Full menu as a picture below."
     },
     {
       "id": "dunderdoner",
@@ -358,7 +358,7 @@
       "lon": 11.94186,
       "kind": "fixed",
       "veg": false,
-      "note": "Breakfast and brunch all day, 09–17: eggs Benedict, pancakes, bowls, shakshuka. Same menu every day; their menu is an image, so dishes and prices aren't listed here. Lindholmsallén 22A."
+      "note": "Breakfast and brunch all day, 09–17: eggs Benedict, pancakes, bowls, shakshuka. Same menu every day; their menu is a picture (tap it to see it full size). Lindholmsallén 22A."
     }
   ]
 }

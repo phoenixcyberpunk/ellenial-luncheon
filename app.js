@@ -232,9 +232,49 @@
         fresh.textContent = 'From ' + from + ' · may have changed';
       }
     }
+    addMenuPicture(node, p);
     addLinks(node, p);
     return node;
   }
+
+  // A menu that only exists as a picture: a small preview (saved on this site, so the
+  // restaurant never sees who's looking) that opens full size in a dialog.
+  function addMenuPicture(node, p) {
+    if (!p.image || !p.image.src) return;
+    var btn = node.querySelector('.menu-pic');
+    var img = btn.querySelector('.menu-pic__img');
+    img.src = p.image.src;
+    var when = p.image.updated ? ' · updated ' + shortDate(p.image.updated) : '';
+    btn.querySelector('.menu-pic__label').textContent = 'Menu picture from their site' + when + ' · tap to enlarge';
+    btn.setAttribute('aria-label', 'Show ' + p.name + "'s menu picture full size");
+    btn.hidden = false;
+    btn.addEventListener('click', function () { openPicture(p); });
+  }
+
+  function openPicture(p) {
+    var dlg = document.getElementById('pic-view');
+    if (!dlg || typeof dlg.showModal !== 'function') { window.open(p.image.src, '_blank', 'noopener'); return; }
+    document.getElementById('pic-view-title').textContent = p.name + ' · menu';
+    var img = document.getElementById('pic-view-img');
+    img.src = p.image.src;
+    img.alt = 'Picture of ' + p.name + "'s menu, from their website";
+    var src = document.getElementById('pic-view-source');
+    src.href = p.image.from || p.url || '#';
+    dlg.showModal();
+  }
+
+  function shortDate(iso) {
+    var d = new Date(iso + 'T12:00:00Z');
+    return d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', timeZone: 'Europe/Stockholm' });
+  }
+
+  (function setUpPictureView() {
+    var dlg = document.getElementById('pic-view');
+    if (!dlg) return;
+    document.getElementById('pic-view-close').addEventListener('click', function () { dlg.close(); });
+    // Tap outside the picture to close
+    dlg.addEventListener('click', function (e) { if (e.target === dlg) dlg.close(); });
+  })();
 
 
   // One dish, in three lines so a long menu can be scanned:
