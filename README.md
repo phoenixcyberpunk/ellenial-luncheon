@@ -13,6 +13,7 @@ Free, no ads, no tracking, no accounts. An [Ellenial](https://ellenial.app) tool
 - **`.github/workflows/read-menus.yml`** runs the reader on weekday mornings and saves the file when a menu changes.
 - **`ellenial-theme.js`** is the shared Ellenial Auto / Light / Dark switch. The choice is saved on this phone only. Add `?theme=light` or `?theme=dark` to test a theme without saving it.
 - **`scripts/check-contrast.mjs`** checks every colour pair against the accessibility rules (text 4.5:1, controls 3:1). Run it before shipping a colour change.
+- **Menu pictures:** for places that only publish their menu as a picture, `menuImage` in `places.json` points at it. The reader saves a copy in **`data/menu-images/`** (JPEG, PNG or WebP, at most 3 MB, only rewritten when it changes) and the card shows a small preview that opens full size, with the date their server says it last changed and a link to the original.
 - **`index.html`**, **`app.js`** and **`styles.css`** are the page. It reads `data/menus.json` and shows every place's menu for today.
 
 ### Being honest about freshness
@@ -38,7 +39,7 @@ Nothing rests on colour alone: freshness is always written out (and stale menus 
 
 ### Privacy
 
-The page sets no cookies and sends nothing about you anywhere. Fonts are served from this site, so no third party sees visitors. Walking times are counted from Lindholmen Science Park, not from your location.
+The page sets no cookies and sends nothing about you anywhere. Fonts and menu pictures are served from this site, so no third party sees visitors. Walking times are counted from Lindholmen Science Park, not from your location.
 
 ## Places
 
@@ -50,7 +51,8 @@ The page sets no cookies and sends nothing about you anywhere. Fonts are served 
 | Cuckoo's Nest | Weekly text with a line per day |
 | District One | Weekly text with a section per day |
 | Masala Kitchen | Four rotating weekly menus typed into `data/masala-menus.json`; the reader picks this week's from the lunch page's "Veckans Meny" tab |
-| Oishii, Miss F, Alkemisten, BISTRO 3, Dunder Döner, BENNE Pastabar, Gansu Köket, Smash-N-Go, Shiro, Karla Bakeshop, Pizza di Ciro, Bar Schiacciate, Brunchoteket | Fixed menu, entered by hand |
+| BISTRO 3, Brunchoteket | Fixed menu, entered by hand, plus their menu picture (saved each morning, shown as a preview) |
+| Oishii, Miss F, Alkemisten, Dunder Döner, BENNE Pastabar, Gansu Köket, Smash-N-Go, Shiro, Karla Bakeshop, Pizza di Ciro, Bar Schiacciate | Fixed menu, entered by hand |
 | Mimolett | Fixed menu, entered by hand. Its own site is gone, so the link goes to its Menydags page, which shows the same 129 kr list every day |
 | Bombay Bistro | Four-week rotation, but the site doesn't say which week is current, so shown as a fixed menu for now |
 
