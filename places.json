@@ -226,6 +226,28 @@
       "veg": false,
       "note": "Breakfast and brunch all day, 09–17: eggs Benedict, pancakes, bowls, shakshuka. Same menu every day; their menu is a picture (tap it to see it full size). Lindholmsallén 22A.",
       "menuImage": "https://www.brunchoteket.com/foodmenu-scaled/"
+    },
+    {
+      "id": "kaptennemos",
+      "name": "Kapten Nemos",
+      "url": "https://kaptennemos.com/lunch/lunch.htm",
+      "lat": 57.70798,
+      "lon": 11.93444,
+      "kind": "fixed",
+      "veg": true,
+      "price": "118 kr",
+      "includes": "salad buffet, 33 cl drink and coffee",
+      "note": "Pizzeria. Lunch weekdays 10–14: pizza no. 1–21, kebab plate, kebab roll or salad for 118 kr; the rest of the menu at its normal price, salad buffet, drink and coffee still included. Falafel dishes on the menu. Karlavagnsgatan 21."
+    },
+    {
+      "id": "picadeli",
+      "name": "Picadeli",
+      "url": "https://www.picadeli.se/sv/restauranger",
+      "lat": 57.70753,
+      "lon": 11.94355,
+      "kind": "fixed",
+      "veg": true,
+      "note": "Salad bar: build your own salad from a big buffet and pay by weight. Weekdays 10.30–14.00. Their site doesn't give this restaurant's price. Theres Svenssons gata 9."
     }
   ]
 }

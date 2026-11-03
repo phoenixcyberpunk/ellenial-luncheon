@@ -52,7 +52,7 @@ The page sets no cookies and sends nothing about you anywhere. Fonts and menu pi
 | District One | Weekly text with a section per day |
 | Masala Kitchen | Four rotating weekly menus typed into `data/masala-menus.json`; the reader picks this week's from the lunch page's "Veckans Meny" tab |
 | BISTRO 3, Brunchoteket | Fixed menu, entered by hand, plus their menu picture (saved each morning, shown as a preview) |
-| Oishii, Miss F, Alkemisten, Dunder Döner, BENNE Pastabar, Gansu Köket, Smash-N-Go, Shiro, Karla Bakeshop, Pizza di Ciro, Bar Schiacciate | Fixed menu, entered by hand |
+| Oishii, Miss F, Alkemisten, Dunder Döner, BENNE Pastabar, Gansu Köket, Smash-N-Go, Shiro, Karla Bakeshop, Pizza di Ciro, Bar Schiacciate, Kapten Nemos, Picadeli | Fixed menu, entered by hand |
 | Mimolett | Fixed menu, entered by hand. Its own site is gone, so the link goes to its Menydags page, which shows the same 129 kr list every day |
 | Bombay Bistro | Four-week rotation, but the site doesn't say which week is current, so shown as a fixed menu for now |
 
