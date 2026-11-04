@@ -54,6 +54,10 @@
         <summary class="jump-box__toggle" id="jump-toggle">Jump to a place</summary>
         <nav class="jump" id="jump" aria-label="Jump to a place"></nav>
       </details>
+      <p class="plan-start" id="plan-start" hidden>
+        <button type="button" class="btn-quiet" id="plan-start-btn">Plan lunch with friends</button>
+        <span class="plan-start__hint">Heart places now or later</span>
+      </p>
       <div class="shortlist" id="shortlist" hidden>
         <div class="shortlist__text">
           <p class="shortlist__count" id="shortlist-text"></p>
@@ -122,6 +126,7 @@
     <div class="ask__body">
       <form id="ask-form">
         <p>Friends open the link and heart the places they'd like. You all see each other's hearts as they happen. No accounts, and everything is deleted at midnight.</p>
+        <p>You don't have to heart anything first. Anyone who has already hearted places today brings them along when they join.</p>
         <label class="ask__label" for="ask-name">Your first name</label>
         <input class="ask__input" id="ask-name" maxlength="40" autocomplete="given-name" required>
         <p class="ask__buttons"><button type="submit" class="btn" id="ask-create">Create link</button></p>

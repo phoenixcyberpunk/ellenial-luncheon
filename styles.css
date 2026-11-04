@@ -232,6 +232,11 @@ h1 {
 .heart[aria-pressed="true"] .heart__on { display: block !important; }
 
 /* Shortlist bar: pinned to the bottom of a phone screen, in the header on a computer */
+/* "Plan lunch with friends" when you haven't hearted anything yet (quiet, one tap, never nags) */
+.plan-start { margin: 10px 0 0; display: flex; align-items: center; flex-wrap: wrap; gap: 4px 10px; }
+.plan-start .btn-quiet { min-height: 36px; padding: 0 14px; font-size: 14px; }
+.plan-start__hint { font-size: 13px; color: var(--muted); }
+
 .shortlist {
   display: flex;
   align-items: center;

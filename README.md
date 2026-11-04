@@ -59,11 +59,11 @@ The page sets no cookies and has no ads, tracking or accounts. Fonts and menu pi
 | Pier 11 | Weekly English text with a section per day; today is marked "Idag". A dish is vegetarian when its allergen line names no meat or fish |
 | Masala Kitchen | Four rotating weekly menus typed into `data/masala-menus.json`; the reader picks this week's from the lunch page's "Veckans Meny" tab |
 | BISTRO 3, Brunchoteket | Fixed menu, entered by hand, plus their menu picture (saved each morning, shown as a preview) |
-| Oishii, Miss F, Alkemisten, Dunder Döner, BENNE Pastabar, Gansu Köket, Smash-N-Go, Shiro, Karla Bakeshop, Pizza di Ciro, Bar Schiacciate, Kapten Nemos, Picadeli Lindholmen, Restaurang Äran, L's Kitchen, Ha Long Bay, Lindholmens Pizzeria, Sushi Yama, Subway, Lindholmens Kebab, Holy Greens, Esters Salutorg, Café Norra Älvstranden | Fixed menu, entered by hand |
+| Oishii, Miss F, Alkemisten, Dunder Döner, BENNE Pastabar, Gansu Köket, Smash-N-Go, Shiro, Karla Bakeshop, Pizza di Ciro, Bar Schiacciate, Kapten Nemos, Picadeli Lindholmen, Restaurang Äran, L's Kitchen, Ha Long Bay, Lindholmens Pizzeria, Sushi Yama, Subway, Lindholmens Kebab, Holy Greens, Esters Salutorg, Café Norra Älvstranden, TacO's | Fixed menu, entered by hand |
 | Mimolett | Fixed menu, entered by hand. Its own site is gone, so the link goes to its Menydags page, which shows the same 129 kr list every day |
 | Bombay Bistro | Four-week rotation, but the site doesn't say which week is current, so shown as a fixed menu for now |
 
-Matminnen closed in June 2026. Lindholmens Kebab has no website; its foodora page now calls it Sannegårdens Kebab Lindholmen. Café Norra Älvstranden publishes nothing online, so it may have closed.
+Matminnen closed in June 2026. Lindholmens Kebab has no website, so its card links to foodora. Café Norra Älvstranden publishes nothing online.
 
 If Masala Kitchen changes its menus, its images get new file names; the four menus in `data/masala-menus.json` then need typing in again.
 

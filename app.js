@@ -184,6 +184,9 @@
       if (inLunch) names.appendChild(document.createTextNode(' (' + listNames(heartedBy(id), true) + ')'));
     });
     document.getElementById('ask-friends').hidden = inLunch;
+    // With no hearts the bar is hidden, so "Plan lunch with friends" starts a lunch without hearting first
+    var start = document.getElementById('plan-start');
+    if (start) start.hidden = inLunch || n > 0 || !P();
     var clear = document.getElementById('shortlist-clear');
     clear.textContent = inLunch ? 'Clear mine' : 'Clear';
     clear.hidden = state.hearts.length === 0;
@@ -554,8 +557,9 @@
     if (!dlg) return;
     var ask = document.getElementById('ask-friends');
     var err = document.getElementById('ask-error');
-    if (!P()) { ask.hidden = true; return; } // the planner script didn't load: menus still work
+    if (!P()) { ask.hidden = true; document.getElementById('plan-start').hidden = true; return; } // the planner script didn't load: menus still work
     ask.addEventListener('click', openAsk);
+    document.getElementById('plan-start-btn').addEventListener('click', openAsk);
     document.getElementById('lunch-share').addEventListener('click', openAsk);
     document.getElementById('ask-close').addEventListener('click', function () { dlg.close(); });
     dlg.addEventListener('click', function (e) { if (e.target === dlg) dlg.close(); });

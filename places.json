@@ -334,7 +334,7 @@
       "kind": "fixed",
       "veg": true,
       "price": "149–169 kr",
-      "note": "Kebab, chicken and falafel as rolls, pitas, plates and salads (plates and salads come with bread). Same menu every day, weekdays 10–16, with vegan versions. No website, so the link goes to their foodora page, where it's now called Sannegårdens Kebab Lindholmen. Lindholmsallén 31."
+      "note": "Kebab, chicken and falafel as rolls, pitas, plates and salads (plates and salads come with bread). Same menu every day, weekdays 10–16, with vegan versions. No website, so the link goes to their foodora page. Lindholmsallén 31."
     },
     {
       "id": "holygreens",
@@ -366,6 +366,18 @@
       "kind": "fixed",
       "veg": false,
       "note": "Student café on the Lindholmen campus: coffee, lunch salads, pasta salad and smoothies. No menu, price or opening hours online, so check before you walk over. Forskningsgången 6."
+    },
+    {
+      "id": "tacos",
+      "name": "TacO's",
+      "url": "https://osstreetfood.se/#tacos",
+      "lat": 57.71191,
+      "lon": 11.94568,
+      "kind": "fixed",
+      "veg": true,
+      "price": "139 kr",
+      "includes": "a drink and coffee",
+      "note": "Birria tacos with consommé for dipping, burritos and bowls; every dish comes with beef, chicken or a vegetarian filling. Same menu every day. Part of O's Streetfood. Lindholmsallén 8A, at the corner of Pumpgatan."
     }
   ]
 }
