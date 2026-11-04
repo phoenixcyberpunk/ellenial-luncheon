@@ -5,8 +5,8 @@
       "id": "uni3",
       "name": "Uni3 World of Food",
       "url": "https://www.compass-group.se/restauranger-och-menyer/ovriga-restauranger/uni3-world-of-food/",
-      "lat": 57.70661,
-      "lon": 11.9405,
+      "lat": 57.7112,
+      "lon": 11.94633,
       "kind": "daily",
       "menuDate": "2026-11-04",
       "readAt": "2026-11-04T07:37:44.122Z",
@@ -533,7 +533,7 @@
       "includes": "a drink and coffee",
       "kind": "fixed",
       "veg": true,
-      "note": "Birria tacos with consommé for dipping, burritos and bowls; every dish comes with beef, chicken or a vegetarian filling. Same menu every day. Part of O's Streetfood. Lindholmsallén 8A, at the corner of Pumpgatan."
+      "note": "Birria tacos with consommé for dipping, burritos and bowls; every dish comes with beef, chicken or a vegetarian filling. Same menu every day. Part of O's Streetfood. Lindholmsallén 8A, by the Pumpgatan bus stop (same building as Uni3)."
     }
   ]
 }

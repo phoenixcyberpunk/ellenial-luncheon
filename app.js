@@ -652,6 +652,28 @@
     markJumped(target);
   }
 
+  // "↑ Top" in the bottom-right corner once you've scrolled about a screen down.
+  // Tapping it goes back to the top and puts focus on the page heading.
+  function wireToTop() {
+    var btn = document.getElementById('to-top');
+    if (!btn) return;
+    var ticking = false;
+    function update() {
+      ticking = false;
+      btn.hidden = window.scrollY < window.innerHeight * 0.9;
+    }
+    window.addEventListener('scroll', function () {
+      if (!ticking) { ticking = true; window.requestAnimationFrame(update); }
+    }, { passive: true });
+    btn.addEventListener('click', function () {
+      var calm = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      window.scrollTo({ top: 0, behavior: calm ? 'auto' : 'smooth' });
+      var h = document.getElementById('heading');
+      if (h) { h.setAttribute('tabindex', '-1'); h.focus({ preventScroll: true }); }
+    });
+    update();
+  }
+
   // Show which card you jumped to: a thick Indigo ring with a soft Periwinkle glow around it
   // (a shape, not just a colour). The glow fades at once; the ring stays a few seconds, then fades.
   var jumpedTimer = null;
@@ -1086,6 +1108,7 @@
   wireFilters();
   wireShortlist();
   wirePlanner();
+  wireToTop();
   render();
   // The menus and (when you're in a lunch) everyone's hearts arrive together, so the cards
   // are placed once, most hearted first. A slow server never holds the menus back for long.

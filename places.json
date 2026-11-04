@@ -1,12 +1,12 @@
 {
-  "_about": "Lunch places shown in Ellenial Lunch. 'reader' names the function in scripts/read-menus.mjs that reads the menu; 'fixed' places have the same menu every day and are entered by hand. Coordinates are from OpenStreetMap. Uni3 uses the Lindholmspiren 3 building and Bistrot the Diagonalen street, so their walking times are approximate. BISTRO 3's location is not filled in yet. Oishii isn't on OpenStreetMap, so it uses Lindholmens Pizzeria's spot (same building, Lindholmsvägen 1); Café Norra Älvstranden uses the unnamed café OpenStreetMap has at its address. Bombay Bistro rotates four weekly menus but its site doesn't say which week is current, so it's shown as a fixed menu for now. 'price' is the lunch price as the place states it (a range or 'From …' when it varies), 'includes' what comes with it; leave price out when their site doesn't say. 'menuImage' is the address of a place's menu picture: the reader saves a copy in data/menu-images and the card shows it as a preview that opens full size.",
+  "_about": "Lunch places shown in Ellenial Lunch. 'reader' names the function in scripts/read-menus.mjs that reads the menu; 'fixed' places have the same menu every day and are entered by hand. Coordinates are from OpenStreetMap. Bistrot uses the Diagonalen street, so its walking time is approximate. Uni3 World of Food and TacO's share one big building at Pumpgatan 1: TacO's by the Pumpgatan bus stop, Uni3 on the opposite side. BISTRO 3's location is not filled in yet. Oishii isn't on OpenStreetMap, so it uses Lindholmens Pizzeria's spot (same building, Lindholmsvägen 1); Café Norra Älvstranden uses the unnamed café OpenStreetMap has at its address. Bombay Bistro rotates four weekly menus but its site doesn't say which week is current, so it's shown as a fixed menu for now. 'price' is the lunch price as the place states it (a range or 'From …' when it varies), 'includes' what comes with it; leave price out when their site doesn't say. 'menuImage' is the address of a place's menu picture: the reader saves a copy in data/menu-images and the card shows it as a preview that opens full size.",
   "places": [
     {
       "id": "uni3",
       "name": "Uni3 World of Food",
       "url": "https://www.compass-group.se/restauranger-och-menyer/ovriga-restauranger/uni3-world-of-food/",
-      "lat": 57.70661,
-      "lon": 11.9405,
+      "lat": 57.7112,
+      "lon": 11.94633,
       "reader": "compass",
       "note": "Earth is the vegetarian station."
     },
@@ -377,7 +377,7 @@
       "veg": true,
       "price": "139 kr",
       "includes": "a drink and coffee",
-      "note": "Birria tacos with consommé for dipping, burritos and bowls; every dish comes with beef, chicken or a vegetarian filling. Same menu every day. Part of O's Streetfood. Lindholmsallén 8A, at the corner of Pumpgatan."
+      "note": "Birria tacos with consommé for dipping, burritos and bowls; every dish comes with beef, chicken or a vegetarian filling. Same menu every day. Part of O's Streetfood. Lindholmsallén 8A, by the Pumpgatan bus stop (same building as Uni3)."
     }
   ]
 }

@@ -622,3 +622,30 @@ h1 {
 .how li { margin: 2px 0; }
 .how strong { color: var(--ink); }
 .lunch-banner .how { margin-top: 8px; }
+
+/* ---------- "↑ Top" ---------- */
+/* Bottom-right corner once you've scrolled down; above the shortlist bar when that's showing on a phone.
+   Indigo edge (3:1 on the page) and the word "Top", so it doesn't rely on the arrow alone. */
+.to-top {
+  position: fixed;
+  z-index: 6;
+  right: max(16px, env(safe-area-inset-right, 0px));
+  bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+  min-height: 44px;
+  padding: 0 16px;
+  border-radius: var(--radius-pill);
+  border: 1.5px solid var(--accent);
+  background: var(--surface);
+  color: var(--ink);
+  font: 600 14px var(--font-body);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.22);
+  cursor: pointer;
+}
+.to-top[hidden] { display: none; }
+.to-top span { color: var(--accent); margin-right: 2px; }
+.to-top:hover { background: var(--soft); }
+.to-top:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+#heading:focus { outline: none; }
+@media (max-width: 759px) {
+  body.has-shortlist .to-top { bottom: calc(100px + env(safe-area-inset-bottom, 0px)); }
+}
