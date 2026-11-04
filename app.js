@@ -645,6 +645,22 @@
     target.scrollIntoView({ behavior: calm ? 'auto' : 'smooth', block: 'start' });
     var name = target.querySelector('.name');
     if (name) name.focus({ preventScroll: true });
+    markJumped(target);
+  }
+
+  // Show which card you jumped to: a thick Indigo ring with a soft Periwinkle glow around it
+  // (a shape, not just a colour). The glow fades at once; the ring stays a few seconds, then fades.
+  var jumpedTimer = null;
+  function markJumped(card) {
+    var old = document.querySelectorAll('.card.is-jumped, .card.is-jumped-out');
+    for (var i = 0; i < old.length; i++) old[i].classList.remove('is-jumped', 'is-jumped-out');
+    void card.offsetWidth;   // restart the glow if you jump to the same card again
+    card.classList.add('is-jumped');
+    clearTimeout(jumpedTimer);
+    jumpedTimer = setTimeout(function () {
+      card.classList.add('is-jumped-out');
+      jumpedTimer = setTimeout(function () { card.classList.remove('is-jumped', 'is-jumped-out'); }, 800);
+    }, 6000);
   }
 
   function render() {

@@ -181,7 +181,7 @@ h1 {
 .jump__link { color: var(--ink); text-decoration: underline; text-decoration-color: var(--edge); text-underline-offset: 3px; }
 .jump__link:hover { color: var(--accent); text-decoration-color: currentColor; }
 .jump__sep { margin-left: 6px; }
-.card { scroll-margin-top: 16px; }
+.card { scroll-margin-top: 26px; }   /* room for the jumped-to ring and glow */
 .name:focus { outline: none; }
 .name:focus-visible { outline: 3px solid var(--accent); }
 
@@ -585,6 +585,27 @@ h1 {
   font-weight: 700;
 }
 .card.is-picked { outline: 2px solid var(--accent); outline-offset: -1px; }
+
+/* ---------- The card you jumped to (from "Jump to a place" or the shortlist bar) ---------- */
+/* A thick Indigo ring around the whole card (3:1 on the page in both themes) plus a soft
+   Periwinkle glow that fades out. The glow sits outside the card, so no text is ever on it. */
+.card.is-jumped {
+  outline: 3px solid var(--accent);
+  outline-offset: 4px;
+  position: relative;
+  z-index: 1;   /* the glow goes over neighbouring cards, not under them */
+  animation: jumped-glow 1.8s ease-out 0.25s both;
+  transition: outline-color 0.8s ease;
+}
+.card.is-jumped-out { outline-color: transparent; }
+@keyframes jumped-glow {
+  0%   { box-shadow: 0 0 0 7px var(--bg), 0 0 0 14px var(--peri); }
+  60%  { box-shadow: 0 0 0 7px var(--bg), 0 0 0 14px var(--peri); }
+  100% { box-shadow: 0 0 0 7px var(--bg), 0 0 0 14px transparent; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .card.is-jumped { animation: none; transition: none; }
+}
 .pick-row { margin: 0; }
 .pick-row .btn, .pick-row .btn-quiet { min-height: 36px; }
 

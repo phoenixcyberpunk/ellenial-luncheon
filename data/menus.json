@@ -133,8 +133,8 @@
       "id": "oishii",
       "name": "Oishii",
       "url": "https://oishii.se/lunchmeny/",
-      "lat": null,
-      "lon": null,
+      "lat": 57.70547,
+      "lon": 11.9338,
       "price": "From 100 kr",
       "kind": "fixed",
       "veg": true,
@@ -383,7 +383,7 @@
     },
     {
       "id": "picadeli",
-      "name": "Picadeli",
+      "name": "Picadeli Lindholmen",
       "url": "https://www.picadeli.se/sv/restauranger",
       "lat": 57.70753,
       "lon": 11.94355,
@@ -446,6 +446,82 @@
       "kind": "fixed",
       "veg": false,
       "note": "Vietnamese and pan-Asian: spring rolls, pho and noodle soups, banh mi, pad thai, curry, bibimbap and poke bowls. Same menu every day; the link goes to their online ordering page. Lindholmspiren 9."
+    },
+    {
+      "id": "lindholmenspizzeria",
+      "name": "Lindholmens Pizzeria",
+      "url": "https://www.lindholmenspizzeria.se/",
+      "lat": 57.70547,
+      "lon": 11.9338,
+      "price": "124 kr",
+      "includes": "a drink",
+      "kind": "fixed",
+      "veg": true,
+      "note": "Weekday lunch 10.30–14.00: a pizza (nos. 1–21), the daily pasta, lasagne, a burger, falafel or kebab. Same menu every day, vegetarian pizzas and falafel. Lindholmsvägen 1."
+    },
+    {
+      "id": "sushiyama",
+      "name": "Sushi Yama",
+      "url": "https://sushiyama.se/meny/yama-lunch/",
+      "lat": 57.7073,
+      "lon": 11.9395,
+      "price": "125 kr",
+      "includes": "miso soup and a drink",
+      "kind": "fixed",
+      "veg": true,
+      "note": "Sushi combos, rolls, poke bowls, dumplings and bento. Same lunch menu every day, weekdays until 14.00, with vegan tofu bowls and a vegan combo. Lindholmspiren 5, next to Pressbyrån."
+    },
+    {
+      "id": "subway",
+      "name": "Subway",
+      "url": "https://restaurants.subway.com/sweden/goteborg/lindholmsallen-34",
+      "lat": 57.70824,
+      "lon": 11.93939,
+      "kind": "fixed",
+      "veg": true,
+      "note": "Build your own sub or salad, plus panini subs. Same menu every day, open every day 10–19. Lindholmsallén 34."
+    },
+    {
+      "id": "lindholmenskebab",
+      "name": "Lindholmens Kebab",
+      "url": "https://www.foodora.se/restaurant/ta76/lindholmens-kebab-ta76",
+      "lat": 57.70868,
+      "lon": 11.93814,
+      "price": "149–169 kr",
+      "kind": "fixed",
+      "veg": true,
+      "note": "Kebab, chicken and falafel as rolls, pitas, plates and salads (plates and salads come with bread). Same menu every day, weekdays 10–16, with vegan versions. No website, so the link goes to their foodora page, where it's now called Sannegårdens Kebab Lindholmen. Lindholmsallén 31."
+    },
+    {
+      "id": "holygreens",
+      "name": "Holy Greens",
+      "url": "https://holygreens.se/vara-restauranger/",
+      "lat": 57.70839,
+      "lon": 11.9429,
+      "price": "149–159 kr",
+      "kind": "fixed",
+      "veg": true,
+      "note": "Salads and hot bowls (bowls from 10.00), such as Holy Caesar, Laxokado, Seoul and Thai-ish. Same menu every day, vegan versions with vegobites; drinks cost extra. Götaverksgatan 35."
+    },
+    {
+      "id": "esters",
+      "name": "Esters Salutorg",
+      "url": "https://goteborg.se/wps/portal/enheter/ester-mosessons-gymnasium/om-oss/restauranger-och-salutorg",
+      "lat": 57.70553,
+      "lon": 11.93677,
+      "kind": "fixed",
+      "veg": false,
+      "note": "Run by the restaurant students at Ester Mosessons gymnasium: takeaway meals, sandwiches, bread, pastries and fika. Weekdays about 10–14.30 in term time, closed in school holidays. The menu is only on the school's Instagram and no price is given. Lärdomsgatan 5."
+    },
+    {
+      "id": "cafenorra",
+      "name": "Café Norra Älvstranden",
+      "url": "https://www.lindholmen.se/sv/cafe-norra-alvstranden",
+      "lat": 57.70681,
+      "lon": 11.93726,
+      "kind": "fixed",
+      "veg": false,
+      "note": "Student café on the Lindholmen campus: coffee, lunch salads, pasta salad and smoothies. No menu, price or opening hours online, so check before you walk over. Forskningsgången 6."
     }
   ]
 }

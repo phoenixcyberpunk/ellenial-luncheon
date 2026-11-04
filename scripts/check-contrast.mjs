@@ -34,6 +34,7 @@ const pairs = (t) => [
   ['dashed "no menu" outline on page', t.edge, t.bg, 3],
   ['jump link text on lavender', t.ink, t.soft, 4.5],
   ['jump link edge on page', t.edge, t.bg, 3],
+  ['jumped-to card ring (Indigo) on page', t.accent, t.bg, 3],
   ['"Show all" button on card', t.accent, t.surface, 4.5],
   ['card links on card', t.accent, t.surface, 4.5],
   ['card links on lavender (fixed card)', t.accent, t.soft, 4.5],
