@@ -10,7 +10,7 @@
   var WALK_M_PER_MIN = 80;   // a relaxed lunch pace
   var DETOUR = 1.3;          // streets are not straight lines
 
-  var state = { data: null, filters: { veg: false, near: false }, open: {}, hearts: [], sortHearts: [] };
+  var state = { data: null, filters: { veg: false, near: false, nopork: false }, open: {}, hearts: [], sortHearts: [] };
   var HEARTS_KEY = 'luncheon.shortlist';
   var FOLD_AFTER = 4; // dishes shown before "Show all"
 
@@ -66,6 +66,23 @@
     if (hasItems) return 'stale';
     return 'missing';
   }
+
+  // 🐷: a guess from the dish's words (pork.js). Veg and vegan dishes never get one.
+  function dishIsVeg(it) {
+    var m = it.text.trim().match(/^([^:]{2,22}):\s+/);
+    var label = m ? m[1].trim() : '';
+    return it.diet === 'veg' || it.diet === 'vegan' || /\bvegan/i.test(it.text) || VEG_LEAD.test(label);
+  }
+  function dishIsPork(it) {
+    return !!(window.EllenialPork && window.EllenialPork.looksLikePork(it.text, dishIsVeg(it)));
+  }
+  // With "No pork" on, a place whose every dish looks like pork has nothing left to show.
+  function onlyPork(p) {
+    if (p.kind === 'fixed' || p.state === 'fixed' || !p.items || !p.items.length) return false;
+    return p.items.every(dishIsPork);
+  }
+
+  var VEG_LEAD = /^(vegan(sk[at]?)?|vegetari(sk[at]?|an|ska)|veggie|veg)\b[\s:·–-]*/i;
 
   function hasVeg(p) {
     if (p.kind === 'fixed') return !!p.veg;
@@ -748,8 +765,10 @@
     var shown = places.filter(function (p) {
       if (state.filters.veg && !hasVeg(p)) return false;
       if (state.filters.near && (p.walk == null || p.walk > 10)) return false;
+      if (state.filters.nopork && onlyPork(p)) return false;
       return true;
     });
+    showPorkNote(shown);
 
     var freshCount = places.filter(function (p) { return p.state === 'fresh'; }).length;
     // One quiet line under the heading: the day and week number, then what's on today
@@ -841,7 +860,10 @@
       fresh.classList.add('is-missing');
       fresh.textContent = p.url ? 'Their own page may have it.' : '';
     } else {
-      (p.items || []).forEach(function (it) { ul.appendChild(dishItem(it)); });
+      (p.items || []).forEach(function (it) {
+        if (state.filters.nopork && dishIsPork(it)) return;
+        ul.appendChild(dishItem(it));
+      });
       foldDishes(node, ul, p);
       if (p.note) note.textContent = p.note;
       if (p.state === 'fresh') {
@@ -920,7 +942,6 @@
     // Restaurants call it "VEG", "Vegetarisk", "Vegetariskt", "Vegetarian"… We always say
     // "Veg 🥦" (and "Vegan 🌱" for vegan), so the word is dropped from their label and any
     // rest of it ("Vegetarisk Poke bowl" → "Poke bowl") stays as the category.
-    var VEG_LEAD = /^(vegan(sk[at]?)?|vegetari(sk[at]?|an|ska)|veggie|veg)\b[\s:·–-]*/i;
     var leadMatch = label.match(VEG_LEAD);
     var labelSaysVegan = !!(leadMatch && /^vegan/i.test(leadMatch[1]));
     if (leadMatch) label = label.slice(leadMatch[0].length).trim();
@@ -948,6 +969,12 @@
     head.className = 'dish-name';
     var name = document.createElement('span');
     name.textContent = split.name;
+    if (!isVeg && dishIsPork(it)) {
+      li.setAttribute('data-pork', '');
+      var pig = emojiNode('🐷', 'looks like pork');
+      pig.classList.add('pork');
+      name.appendChild(pig);
+    }
     head.appendChild(name);
     if (it.price) {
       var price = document.createElement('span');
@@ -1049,6 +1076,27 @@
     span.setAttribute('aria-label', label);
     span.textContent = char;
     return span;
+  }
+
+  // The 🐷 is a guess, so the page says so whenever a pig is shown or the filter is on.
+  function showPorkNote(shown) {
+    var note = document.getElementById('pork-note');
+    if (!note) return;
+    var anyPig = shown.some(function (p) {
+      return p.state !== 'fixed' && p.state !== 'missing' && (p.items || []).some(dishIsPork);
+    });
+    note.textContent = '';
+    if (!state.filters.nopork && !anyPig) { note.hidden = true; return; }
+    if (state.filters.nopork) {
+      note.appendChild(document.createTextNode('Hiding dishes that look like pork ('));
+      note.appendChild(emojiNode('🐷', 'pig'));
+      note.appendChild(document.createTextNode('). '));
+    } else {
+      note.appendChild(emojiNode('🐷', 'pig'));
+      note.appendChild(document.createTextNode(' = looks like pork. '));
+    }
+    note.appendChild(document.createTextNode('A guess from the dish name, so it may miss some. Ask the restaurant to be sure.'));
+    note.hidden = false;
   }
 
   function wireFilters() {

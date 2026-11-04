@@ -126,6 +126,8 @@ h1 {
 .sub { margin: 0; font-size: 14px; color: var(--muted); }
 
 .filters { display: flex; gap: 6px; flex-wrap: wrap; }
+.filter-note { margin: 6px 0 0; font-size: 13px; line-height: 1.4; color: var(--muted); }
+.filter-note .emoji { font-style: normal; }
 
 /* Chips: a 3:1 edge so they read as tappable; selected = Periwinkle fill + Indigo edge + a tick,
    so "on" never rests on colour alone. */
@@ -320,6 +322,7 @@ h1 {
 .dish-tag .emoji { font-style: normal; letter-spacing: 0; }
 .dish-name { display: flex; justify-content: space-between; gap: 12px; font-size: 15px; font-weight: 500; line-height: 1.35; }
 
+.dish-name .pork { margin-left: 4px; font-style: normal; font-weight: 400; }
 .dish-price { color: var(--muted); font-weight: 500; white-space: nowrap; }
 .dish-sides { margin-top: 2px !important; font-size: 14px; line-height: 1.4; color: var(--muted); }
 

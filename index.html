@@ -49,7 +49,9 @@
       <div class="filters" role="group" aria-label="Filters">
         <button type="button" class="chip" data-filter="veg" aria-pressed="false">Veg option</button>
         <button type="button" class="chip" data-filter="near" aria-pressed="false">≤ 10 min walk</button>
+        <button type="button" class="chip" data-filter="nopork" aria-pressed="false">No pork <span aria-hidden="true">🐷</span></button>
       </div>
+      <p class="filter-note" id="pork-note" hidden></p>
       <details class="jump-box" id="jump-box" hidden>
         <summary class="jump-box__toggle" id="jump-toggle">Jump to a place</summary>
         <nav class="jump" id="jump" aria-label="Jump to a place"></nav>
@@ -78,6 +80,7 @@
     <footer class="foot">
       <p>Menus are read from each restaurant's own website every weekday morning. Something wrong? Check the restaurant's page before you walk over.</p>
       <p>Walking times are counted from Lindholmen Science Park. Place locations © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors.</p>
+      <p>We count how many phones open this page each day: one number, nothing about you. 🐷 marks dishes that look like pork from their name, a guess, so ask the restaurant to be sure.</p>
       <p>Free · no ads · no tracking · an <a href="https://ellenial.app">Ellenial</a> tool · <a href="https://github.com/phoenixcyberpunk/ellenial-luncheon">open source</a></p>
       <p class="prefs" id="prefs">Theme:</p>
     </footer>
@@ -158,6 +161,8 @@
   <script src="vendor/supabase.js" defer></script>
   <script src="vendor/qrcode.js" defer></script>
   <script src="planner-store.js" defer></script>
+  <script src="pork.js" defer></script>
   <script src="app.js" defer></script>
+  <script src="visit-counter.js" defer></script>
 </body>
 </html>
