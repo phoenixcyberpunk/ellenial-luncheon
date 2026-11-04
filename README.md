@@ -43,6 +43,12 @@ Nothing rests on colour alone: freshness is always written out (and stale menus 
 
 The page sets no cookies and has no ads, tracking or accounts. Fonts and menu pictures are served from this site, so no third party sees visitors. Walking times are counted from Lindholmen Science Park, not from your location.
 
+The page counts how many phones open it each day, for the maker's own statistics. Your phone remembers that it was already counted today; the server only receives an empty "+1" (no id, no IP kept, no cookie) and stores one number per day. Previews and test copies of the site are never counted. See `visit-counter.js` and `supabase/migrations/20261104120000_luncheon_visit_counter.sql`.
+
+### The 🐷 mark
+
+Dishes whose name clearly says pork (fläsk, bacon, skinka, kassler…) get a 🐷, and the "No pork" filter hides them. It is a guess from the menu's words, not a promise: dishes that are often but not always pork (köttbullar, lasagne, korv) are left unmarked, and the site never says whether food is halal. See `pork.js`; `node tests/pork.mjs` runs its checks.
+
 - **On your own**, nothing about you leaves your phone. Your shortlist stays in your own browser and is forgotten at midnight.
 - **When you plan a lunch with friends**, your first name, hearts, pick and whether you're joining are stored on our server (Supabase, in Stockholm) so the others can see them. They're encrypted on your phone first, with a key that's only in the link, so the server can't read them; it sees random ids, scrambled text and when it was saved. Anyone you give the link to can read and join the lunch. The whole lunch is deleted after midnight, and you can use any name you like.
 - To keep the link working when you reopen the page, your phone remembers today's lunch, your first name and your answer's id in its own storage. Leaving the lunch forgets it.
