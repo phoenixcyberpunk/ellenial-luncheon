@@ -359,6 +359,7 @@ h1 {
   text-underline-offset: 4px;
 }
 .links__a:hover { color: var(--ink); }
+.links__icon { flex: none; margin-right: 6px; }
 .card .links { margin-bottom: -10px; }
 
 .note { margin: 0; font-size: 14px; color: var(--muted); }

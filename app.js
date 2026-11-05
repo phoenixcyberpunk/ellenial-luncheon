@@ -1047,26 +1047,48 @@
     return { name: name.charAt(0).toUpperCase() + name.slice(1), sides: rest };
   }
 
-  // Links at the bottom of every card: the place's own lunch page and where it is on a map.
-  // Both open in a new tab; the map link only carries the place's position, nothing about you.
+  // Links at the bottom of every card: the place's own lunch page and where it is in ellenial maps.
+  // Both open in a new tab; the maps link only carries the place's position and name, nothing
+  // about you. maps.ellenial.app/?at=LAT,LNG&name=PLACE selects the matching place there
+  // (within 50 m) or shows a labelled pin (deep link live since 5 Nov 2026).
+  var MAPS_URL = 'https://maps.ellenial.app/';
+  function mapsLink(p) {
+    return MAPS_URL + '?at=' + p.lat + ',' + p.lon + '&name=' + encodeURIComponent(p.name);
+  }
   function addLinks(node, p) {
     var row = node.querySelector('.links');
     if (p.url) row.appendChild(linkTo(p.url, 'Lunch page', 'Open ' + p.name + '’s lunch page'));
     if (typeof p.lat === 'number' && typeof p.lon === 'number') {
-      var map = 'https://www.openstreetmap.org/?mlat=' + p.lat + '&mlon=' + p.lon + '#map=18/' + p.lat + '/' + p.lon;
-      row.appendChild(linkTo(map, 'Map', 'Show ' + p.name + ' on OpenStreetMap'));
+      row.appendChild(linkTo(mapsLink(p), 'Show in ellenial maps', 'Show ' + p.name + ' in ellenial maps', pinIcon()));
     }
     if (!row.children.length) row.hidden = true;
   }
-  function linkTo(href, text, label) {
+  function linkTo(href, text, label, icon) {
     var a = document.createElement('a');
     a.className = 'links__a';
     a.href = href;
     a.target = '_blank';
     a.rel = 'noopener noreferrer';
     a.setAttribute('aria-label', label + ' (opens in a new tab)');
-    a.textContent = text + ' ↗';
+    if (icon) a.appendChild(icon);
+    a.appendChild(document.createTextNode(text + ' ↗'));
     return a;
+  }
+  // The ellenial maps pin (its app icon, drawn in the link colour). Always next to words, never alone.
+  function pinIcon() {
+    var svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    svg.setAttribute('class', 'links__icon');
+    svg.setAttribute('viewBox', '14 10 36 44');
+    svg.setAttribute('width', '14');
+    svg.setAttribute('height', '17');
+    svg.setAttribute('aria-hidden', 'true');
+    svg.setAttribute('focusable', 'false');
+    var path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    path.setAttribute('d', 'M32 14c-8 0-14 6-14 13.5C18 38 32 50 32 50s14-12 14-22.5C46 20 40 14 32 14z M32 22.5a5 5 0 1 0 0 10a5 5 0 1 0 0-10z');
+    path.setAttribute('fill', 'currentColor');
+    path.setAttribute('fill-rule', 'evenodd');
+    svg.appendChild(path);
+    return svg;
   }
 
   function emojiNode(char, label) {

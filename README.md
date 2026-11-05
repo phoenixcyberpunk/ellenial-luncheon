@@ -35,7 +35,7 @@ At weekends, and on a Monday morning before the new menus are read, the page kee
 
 ### Accessibility
 
-Double-tap zoom is off (it fired by accident while scrolling); pinch-to-zoom still works. Every card ends with links to the place's lunch page and to its spot on OpenStreetMap.
+Double-tap zoom is off (it fired by accident while scrolling); pinch-to-zoom still works. Every card ends with links to the place's lunch page and to its spot in ellenial maps (`maps.ellenial.app/?at=LAT,LNG&name=PLACE`, which selects the place there or shows a labelled pin).
 
 Nothing rests on colour alone: freshness is always written out (and stale menus get a clock icon), selected filters get a tick, and fixed or missing menus say so in words. Text is at least 4.5:1 and anything you can tap has an edge of at least 3:1, in both themes.
 
