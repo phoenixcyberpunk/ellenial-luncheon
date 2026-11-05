@@ -98,6 +98,9 @@ h1 {
   line-height: 1.2;
   letter-spacing: -0.005em;
 }
+/* The library tile from ellenial.app (Ellen's hand-drawn flower) beside the name, same as Weather. */
+.brand { display: flex; align-items: center; gap: 12px; }
+.brand-icon { width: 48px; height: 48px; border-radius: 11px; flex: none; }
 
 /* "Menus for week 45 aren't out yet": a Lavender panel with a calendar icon and words, never colour alone */
 .banner {
