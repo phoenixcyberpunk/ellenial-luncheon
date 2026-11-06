@@ -8,8 +8,8 @@
       "lat": 57.7112,
       "lon": 11.94633,
       "kind": "daily",
-      "menuDate": "2026-11-05",
-      "readAt": "2026-11-05T07:38:41.853Z",
+      "menuDate": "2026-11-06",
+      "readAt": "2026-11-06T07:36:15.314Z",
       "items": [
         {
           "text": "Fire: Grillat kycklinglår - sesamrostad potatis – grillad korianderchimichurri – mayonesa pimiento – zucchini & grillad paprikasallad"
@@ -18,11 +18,7 @@
           "text": "Water: Bakad sej – smörslungade betor – kapris – kokt potatis – brynt smör sandefjorsås - pepparrot – dill"
         },
         {
-          "text": "Metal: Husmanstorsdag: Raggmunk med fläsk - rårörda lingon – persilja – brynt smör med grädde"
-        },
-        {
-          "text": "Earth: Hummusbowl - pärlcouscous - rostade vindruvor – zaatar – kryddig vegofärs - marinerad tomat - gröna blad - örter",
-          "diet": "veg"
+          "text": "Metal: Gräddig svamppasta – stekt ostronskivling – kantarellsås med bacon – parmesan – persilja Earth: Hummusbowl - pärlcouscous - rostade vindruvor – zaatar – kryddig vegofärs - marinerad tomat - gröna blad - örter"
         }
       ],
       "note": "Earth is the vegetarian station."
@@ -36,8 +32,8 @@
       "price": "139 kr",
       "includes": "salad buffet, bread, coffee and cake",
       "kind": "daily",
-      "menuDate": "2026-11-05",
-      "readAt": "2026-11-05T07:38:41.853Z",
+      "menuDate": "2026-11-06",
+      "readAt": "2026-11-06T07:36:15.314Z",
       "items": [
         {
           "text": "Veckans special: Bi Bim Bap med pankofriterade räkor toppas med sojasås serveras"
@@ -58,23 +54,23 @@
           "diet": "veg"
         },
         {
-          "text": "Kött: Viltgryta på vårat vis med gräddig steksky, brynta champinjoner & smålökar serveras med potatispure smaksatt med lagrad prästsost samt grönkål & lingon"
+          "text": "Kött: Fredagsgrillen – kolgrillad gårdsgris med pommes & bea så klart!!"
         },
         {
-          "text": "Fisk: Fishsteak, pommes & skaldjursbea.. frågor på det?"
+          "text": "Fisk: Havets Wallenbergare serveras med potatismos, brynt smörsås smaksatt med scharlottenlök & gräslök toppas med citron och örtsallad"
         },
         {
-          "text": "Thai: Frasig vårrulle fylld med kyckling och wokadegränsaker serveras med ljummen sweet chilisås, krämig kålsallad och jasminris & koriander"
+          "text": "Thai: Sticky chicken – kyckling i hosinsås med krämigkålsallad serveras med jasminris, koriander & rostade sesamfrön chili 1/5"
         },
         {
-          "text": "Vegetarisk: Kooperativets klassiska Butter Halloumi– indisk gryta med friterad haloumi serveras med rostad mandel, koriander, Naan samt feffakräm 1/5",
+          "text": "Indisk: Chicken Tikka Masala– Indisk currygryta med kyckling med rostad mandel serveras med mango chutney, basmatiris & koriander och papadum"
+        },
+        {
+          "text": "Vegetarisk: Cauliflower Tikka Masala– Indisk currygryta med helgrillad blomkål med rostad mandel serveras med mango chutney, basmatiris & koriander och papadum",
           "diet": "veg"
         },
         {
-          "text": "Indisk: Kooperativets klassiska Butter Chicken – indisk gryta med kyckling serveras med rostad mandel, koriander, Naan samt feffakräm chili 1/5"
-        },
-        {
-          "text": "Världen: QP and Bacon – Högrevburgare toppad med dubbel cheddarost i briochebröd med bacon, rödlök, amerikansenapsmajonnäs, krispigsallad, & frasiga country fries"
+          "text": "Världen: Jägarmacka Nattbakat högrev på rostat surdegsbröd täcks av krämig svampsås serveras med svartpepparpommes"
         }
       ],
       "note": ""
@@ -88,23 +84,20 @@
       "price": "139 kr",
       "includes": "salad buffet, sourdough bread, coffee and cake",
       "kind": "daily",
-      "menuDate": "2026-11-05",
-      "readAt": "2026-11-05T07:38:41.853Z",
+      "menuDate": "2026-11-06",
+      "readAt": "2026-11-06T07:36:15.314Z",
       "items": [
         {
-          "text": "Schnitzel · Spetskålsallad med sesam – Tonkatsusås – Jasminris – Koriander"
+          "text": "Nattbakad Karré · Bearnaisesås – Rödvinssky – Bakad tomat – Klyftpotatis"
         },
         {
-          "text": "Halstrad fångst · Risotto – Fänkål – Citron – Vitvinssås – Rucola"
-        },
-        {
-          "text": "Torsdags Dessert!"
+          "text": "Parmesanstekt fångst · Burreblanc – semitorkade tomater – Ruccola - Rostad potatis"
         },
         {
           "text": "Veckans: Lasagne · Tomat & löksallad – Grana padano – Rucola"
         },
         {
-          "text": "Chili gryta · Nachochips – Gräddfil – Jasminris – Koriander",
+          "text": "Pannoumiburgare",
           "diet": "veg"
         }
       ],
@@ -119,11 +112,11 @@
       "price": "195 kr",
       "includes": "salad buffet, coffee, tea and cake",
       "kind": "daily",
-      "menuDate": "2026-11-05",
-      "readAt": "2026-11-05T07:38:41.853Z",
+      "menuDate": "2026-11-06",
+      "readAt": "2026-11-06T07:36:15.314Z",
       "items": [
         {
-          "text": "torsk serveras med potatis, grönkål, grillad fänkål och saffranssås"
+          "text": "lammfärsbiffar serveras med potatispuré, lingonsylt, grönaärtor och gräddsås"
         },
         {
           "text": "pasta tagliatelle serveras med kantarellsås, tryffelolja, sockerärtor och grana padano",
@@ -152,20 +145,20 @@
       "price": "135 kr",
       "includes": "homemade bread, salad buffet, coffee and cake",
       "kind": "daily",
-      "menuDate": "2026-11-05",
-      "readAt": "2026-11-05T07:38:41.853Z",
+      "menuDate": "2026-11-06",
+      "readAt": "2026-11-06T07:36:15.314Z",
       "items": [
         {
-          "text": "Fisk: Husets fiskgratäng smaksatt med bladspenat och vitvinssås, toppad med skaldjur serveras med potatismos."
+          "text": "Fisk: Smörstekt torskfile med sanderfjordssås och rostade rotfrukter, serveras med potatismos."
         },
         {
-          "text": "Kött: Wallenbergare med gräddsås och rårörda lingon, serveras med pressgurka och potatismos."
+          "text": "Kött: Flankstek med pepparsås och bakad tomat, serveras med rostad potatis."
         },
         {
-          "text": "Duck: Crispy duck med tamarindsås och grönsaker, serveras med jasminris."
+          "text": "Pad thai: (Pad Thai) Wokade risnudlar med kyckling, grönsaker, chilli, lime, jordnötter och ägg."
         },
         {
-          "text": "Vegetarisk: Tofu med tamarindsås och grönsaker, serveras med jasminris.",
+          "text": "Vegetarisk: Friterad dumplings med panang curry i kokosmjölk med paprika, lök, bambuskott och limeblad serveras med jasminris.",
           "diet": "veg"
         },
         {
@@ -251,17 +244,17 @@
       "price": "129 kr",
       "includes": "lunch naan, rice, salad and water",
       "kind": "daily",
-      "menuDate": "2026-11-05",
-      "readAt": "2026-11-05T07:38:41.853Z",
+      "menuDate": "2026-11-06",
+      "readAt": "2026-11-06T07:36:15.314Z",
       "items": [
         {
-          "text": "Aam Chicken · kycklingfilé i fruktig sås med kokosmjölk, mango, mynta och grön chili"
+          "text": "Malvani Chicken · kycklingfilé i sås av kokoskräm, röd chili och Malvani masala"
         },
         {
-          "text": "Kolhapuri Gosht · het lammrätt med svartpeppar, kokosmjölk och koriander"
+          "text": "Fish Tikka · marinerad, grillad laxfilé i husets kryddor, med tandoorisås"
         },
         {
-          "text": "Paneer Khumbi Masala · paneer och svamp i mustig tomat- och löksås",
+          "text": "Mix Veg Korma · säsongens grönsaker i krämig kormasås med kokosmjölk och nötter",
           "diet": "veg"
         }
       ],
@@ -403,18 +396,18 @@
       "price": "124 kr",
       "includes": "salad buffet, coffee and soft ice cream",
       "kind": "daily",
-      "menuDate": "2026-11-05",
-      "readAt": "2026-11-05T07:38:41.853Z",
+      "menuDate": "2026-11-06",
+      "readAt": "2026-11-06T07:36:15.314Z",
       "items": [
         {
-          "text": "Creamy Thai coconut curry · seasonal vegetables, cashews, steamed rice, kaffir lime & basil",
+          "text": "Halloumi burger · Truffle mayo, Pickled onions, Crispy salad, Fries",
           "diet": "veg"
         },
         {
-          "text": "Blackened chicken Alfredo · Cocktail tomato, Spring onion"
+          "text": "Grilled Beef Burger · Pickles, Red onions, Bacon mayo, Cheddar cheese, Crisp salad, Fries"
         },
         {
-          "text": "Poached haddock · white bean & shrimp casserole, roasted potatoes, sweet corn sauce"
+          "text": "Teriyaki salmon · Roasted peanuts, Sesame marinated spinach & cucumber, Steamed rice"
         }
       ],
       "note": "Ericsson's restaurant, open to everyone. Three dishes a day, one usually vegetarian; menu in English."
