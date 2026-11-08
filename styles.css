@@ -655,3 +655,7 @@ h1 {
 @media (max-width: 759px) {
   body.has-shortlist .to-top { bottom: calc(100px + env(safe-area-inset-bottom, 0px)); }
 }
+
+/* "Ellenial" above the app's name (decided 8 Nov 2026): credit where credit is due, without making the name longer. */
+.ellenial-eyebrow { display: block; font-family: 'DM Sans', system-ui, sans-serif; font-size: 11px; line-height: 14px; letter-spacing: .14em; text-transform: uppercase; font-weight: 600; color: var(--muted); margin: 0 0 2px; }
+.brand-name { display: flex; flex-direction: column; }
