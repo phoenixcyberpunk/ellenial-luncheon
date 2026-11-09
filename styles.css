@@ -659,3 +659,13 @@ h1 {
 /* "Ellenial" above the app's name (decided 8 Nov 2026): credit where credit is due, without making the name longer. */
 .ellenial-eyebrow { display: block; font-family: 'DM Sans', system-ui, sans-serif; font-size: 11px; line-height: 14px; letter-spacing: .14em; text-transform: uppercase; font-weight: 600; color: var(--muted); margin: 0 0 2px; }
 .brand-name { display: flex; flex-direction: column; }
+
+/* Ellenial shared footer (9 Nov 2026): the same lines, order and look in every app.
+   App-specific notes on top in Fraunces italic, the shared block in DM Sans, controls last. */
+@font-face { font-family: 'Fraunces'; font-style: italic; font-weight: 400; font-display: swap; src: url('fonts/fraunces-latin-400-italic.woff2') format('woff2'); }
+.ell-foot { display: flex; flex-direction: column; align-items: center; gap: 16px; margin-top: 28px; padding: 20px 16px 24px; border-top: 1px solid var(--line, rgba(127,127,127,.25)); text-align: center; font-family: 'DM Sans', system-ui, sans-serif; font-size: 13px; line-height: 18px; color: var(--muted); }
+.ell-foot p { margin: 0; }
+.ell-foot a { color: var(--accent); }
+.ell-notes { display: flex; flex-direction: column; gap: 4px; font-family: 'Fraunces', Georgia, serif; font-style: italic; font-weight: 400; line-height: 19px; max-width: 520px; }
+.ell-shared { display: flex; flex-direction: column; gap: 6px; }
+.ell-controls { display: flex; justify-content: center; align-items: center; gap: 8px; flex-wrap: wrap; margin: 0; }
