@@ -164,7 +164,8 @@
           "text": "Pho: Vietnamesisk nudelsoppa med biff, koriander, gräslök, lök, böngroddar, chili, thai basilika, serveras med lime, hoisinsås och srirachasås."
         }
       ],
-      "note": ""
+      "note": "",
+      "problem": "2026-11-09: fetch failed"
     },
     {
       "id": "missf",
