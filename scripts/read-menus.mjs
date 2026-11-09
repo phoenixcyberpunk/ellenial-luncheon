@@ -21,6 +21,7 @@ import { readFile, writeFile, mkdir } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { withRetries } from './retry.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const OUT = path.join(ROOT, 'data', 'menus.json');
@@ -372,12 +373,14 @@ function parseJsonAt(s, from) {
 
 async function getPage(place) {
   if (FIXTURES) return readFile(path.join(FIXTURES, `${place.id}.html`), 'utf8');
-  const res = await fetch(place.url, {
-    headers: { 'User-Agent': USER_AGENT, 'Accept-Language': 'sv-SE,sv;q=0.9,en;q=0.5' },
-    signal: AbortSignal.timeout(25000),
-  });
-  if (!res.ok) throw new Error(`HTTP ${res.status}`);
-  return res.text();
+  return withRetries(async () => {
+    const res = await fetch(place.url, {
+      headers: { 'User-Agent': USER_AGENT, 'Accept-Language': 'sv-SE,sv;q=0.9,en;q=0.5' },
+      signal: AbortSignal.timeout(25000),
+    });
+    if (!res.ok) throw Object.assign(new Error(`HTTP ${res.status}`), { status: res.status });
+    return res.text();
+  }, { label: place.id });
 }
 
 // ---------- menu pictures ----------
@@ -394,8 +397,11 @@ async function readMenuImage(cfg, prev, now) {
   const keep = (prev && prev.image) || null;
   if (FIXTURES) return keep;
   try {
-    const res = await fetch(cfg.menuImage, { headers: { 'User-Agent': USER_AGENT }, signal: AbortSignal.timeout(25000) });
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const res = await withRetries(async () => {
+      const r = await fetch(cfg.menuImage, { headers: { 'User-Agent': USER_AGENT }, signal: AbortSignal.timeout(25000) });
+      if (!r.ok) throw Object.assign(new Error(`HTTP ${r.status}`), { status: r.status });
+      return r;
+    }, { label: `${cfg.id} picture` });
     const type = (res.headers.get('content-type') || '').split(';')[0].trim().toLowerCase();
     const ext = IMG_TYPES[type];
     if (!ext) throw new Error(`not a photo (${type || 'no type'})`);
