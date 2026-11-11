@@ -8,21 +8,17 @@
       "lat": 57.7112,
       "lon": 11.94633,
       "kind": "daily",
-      "menuDate": "2026-11-10",
-      "readAt": "2026-11-10T05:50:30.871Z",
+      "menuDate": "2026-11-11",
+      "readAt": "2026-11-11T05:54:46.005Z",
       "items": [
         {
-          "text": "Water: Bakad fisk - wasabimajonnäs - gröna ärtor - kokt potatis – dill - tomatsmörsås"
+          "text": "Fire: “Chicken dopiaza” - bakat kycklinglår - dopiazasås - stekt lök - friterad lök - yoghurt – koriander (veg alternativ)"
         },
         {
-          "text": "Fire: Kebabkryddad kycklinglårfilé - kryddkokt ris – sallad – tomat - lök - feferoni – röd sås - vit sås (veg alternativ)"
+          "text": "Water: Saffransstinn fiskgryta – bakad fisk – rostade grönsaker - aioli - örter - rostad tomatolja"
         },
         {
-          "text": "Metal: Rosastekt fläskkarré - cidergräddsås - rostad potatis - bränd äppelkräm - pepparrot – persilja"
-        },
-        {
-          "text": "Earth: Pokebowl – sushiris – friterad glaserad tofu – marinerad sojaböna - inlagd rödkål - chilimajo - jordnötscrumble",
-          "diet": "veg"
+          "text": "Metal: Onsdagsschnitzeln - Fläskschnitzel - rökig bbqsås – ranchcoleslaw - rostad sötpotatis"
         }
       ],
       "note": "Earth is the vegetarian station."
@@ -36,8 +32,8 @@
       "price": "139 kr",
       "includes": "salad buffet, bread, coffee and cake",
       "kind": "daily",
-      "menuDate": "2026-11-10",
-      "readAt": "2026-11-10T10:25:53.660Z",
+      "menuDate": "2026-11-11",
+      "readAt": "2026-11-11T05:54:46.005Z",
       "items": [
         {
           "text": "Veckans special: Kooperativets Kimchi Ramen – Udonnudlar i svamp & miso buljong toppas med wokad kyckling, kimchi, böngroddar och koriander, serveras med bakat ägg"
@@ -46,22 +42,22 @@
           "text": "Veckans special: Kooperativets Kimchi Ramen – Udonnudlar i svamp & miso buljong toppas med wokad tofu, kimchi, böngroddar och koriander, serveras med bakat ägg"
         },
         {
-          "text": "Kött: Kooperativet grönpeppar Schnitzel på gårdsgris med vispat brynt smör smaksatt med grönpeppar, bacon & sherryvinäger serveras med nyrostade mandelpotatis & steksky"
+          "text": "Kött: Vilt Wallenbergare med krämig potatispure smaksatt med västerbottenost, rödvinssås smaksatt med bryntsmör & kantareller serveras med lingon"
         },
         {
-          "text": "Fisk: Bakad kolja serveras med färskoststompad potatis, citrussmörsås, rostad panko och örtsallad"
+          "text": "Fisk: Stekt panerad sejfile serveras med dillrostad potatis, pepparrotskräm, citron och örter"
         },
         {
-          "text": "Thai: Chicken karaage – Friterad kyckling kryddad sebbes heliga krydda, servers med smashed cucumber chilimajonnäs samt jasminris & koriander"
+          "text": "Thai: Crispy char Siu Pork – Wokade äggnudlar med 16h rökt fläsksida med kinesisk BBQsås och wokade grönsaker toppad med böngroddar, koriander & rostade sesamfrön"
         },
         {
-          "text": "Indisk: Chicken Tikka Masala– Indisk currygryta med majskyckling med rostad mandel serveras med pickelsmajonnäs, basmatiris & koriander och Naan"
+          "text": "Indisk: Chicken Alomonds and coriander – Indisk kycklinggryta med mandel & koriander serveras med basmatiris, yoghurt & garlic Naan CHILI 3/5"
         },
         {
-          "text": "Världen: Kooperativets Philly Cheese Sandwich- suregsbröd toppat med stekt biff, rostad paprika & brynt lök serveras med varm ostsås smaksatt med jalapeños samt frasiga waffle fries"
+          "text": "Världen: Marstrands stolthet, Afrikana Kolgrillad kyckling, krämig currysås, friterade bananchips, mandariner, jordnötter samt mango chutney"
         },
         {
-          "text": "Vegetariskt: Samosa Tikka Masala– Indisk currygryta med friterade fyllda potatisknyten toppas med rostad mandel serveras med pickelsmajonnäs, basmatiris & koriander och Naan",
+          "text": "Vegetarisk: Marstrands vegetariska stolthet, Afrikana Grillad quorn, krämig currysås, friterade bananchips, mandariner, jordnötter samt mango chutney",
           "diet": "veg"
         }
       ],
@@ -76,21 +72,17 @@
       "price": "139 kr",
       "includes": "salad buffet, sourdough bread, coffee and cake",
       "kind": "daily",
-      "menuDate": "2026-11-10",
-      "readAt": "2026-11-10T05:50:30.871Z",
+      "menuDate": "2026-11-11",
+      "readAt": "2026-11-11T05:54:46.005Z",
       "items": [
         {
-          "text": "Pestobakad kyckling · Risotto – Tomat – Veloutésås – Rucola"
+          "text": "Korean fried chicken · Kålsallad – Srirachamajonnäs – Sesamfrön – Jasminris – Koriander"
         },
         {
-          "text": "Pocherad fångst · Citronsmörsås – Potatis & palsternakspuré – Syrad dill & rädissallad"
+          "text": "Fisch and Chips · Remouladsås – Pommes – Dillsallad – Citron"
         },
         {
           "text": "Veckans: Fläsklägg · Rotmos – Pepparrotsås – Senap – Persilja"
-        },
-        {
-          "text": "Gnocchi · Kantareller – Spetskål – Brynt smör – Västerbottenostkräm – Rucola",
-          "diet": "veg"
         }
       ],
       "note": ""
@@ -104,11 +96,11 @@
       "price": "195 kr",
       "includes": "salad buffet, coffee, tea and cake",
       "kind": "daily",
-      "menuDate": "2026-11-10",
-      "readAt": "2026-11-10T05:50:30.871Z",
+      "menuDate": "2026-11-11",
+      "readAt": "2026-11-11T05:54:46.005Z",
       "items": [
         {
-          "text": "Lax serveras med gräslökspotatis, sparris, västerbottenostsås och citron"
+          "text": "Kyckling serveras med morotspuré, rostad palsternacka, chorizo och rödvinssky"
         },
         {
           "text": "risotto serveras med rostade tomater, mandelflakes, grönkål och grana padanao",
@@ -164,7 +156,8 @@
           "text": "Pho: Vietnamesisk nudelsoppa med biff, koriander, gräslök, lök, böngroddar, chili, thai basilika, serveras med lime, hoisinsås och srirachasås."
         }
       ],
-      "note": ""
+      "note": "",
+      "problem": "2026-11-11: HTTP 404"
     },
     {
       "id": "missf",
@@ -236,17 +229,17 @@
       "price": "129 kr",
       "includes": "lunch naan, rice, salad and water",
       "kind": "daily",
-      "menuDate": "2026-11-10",
-      "readAt": "2026-11-10T05:50:30.871Z",
+      "menuDate": "2026-11-11",
+      "readAt": "2026-11-11T05:54:46.005Z",
       "items": [
         {
-          "text": "Chicken Shahi Korma · krämig kycklingfilégryta med malda pistage- och cashewnötter"
+          "text": "Chicken Chettinad · sydindisk kycklinggryta i pepprig kryddblandning med kokos"
         },
         {
-          "text": "Lamb Chana Boti · lamm med kikärtor, tomat, färsk koriander, mynta och lime"
+          "text": "Keema Matter · kryddstark gryta med lammfärs och gröna ärtor"
         },
         {
-          "text": "Dal Zucchini · lätt kryddad linsgryta med zucchini, vitlök och ingefära",
+          "text": "Pancharatan Dal · linsgryta på fem sorters linser med spiskummin, vitlök och koriander",
           "diet": "vegan"
         }
       ],
@@ -388,18 +381,18 @@
       "price": "124 kr",
       "includes": "salad buffet, coffee and soft ice cream",
       "kind": "daily",
-      "menuDate": "2026-11-10",
-      "readAt": "2026-11-10T05:50:30.871Z",
+      "menuDate": "2026-11-11",
+      "readAt": "2026-11-11T05:54:46.005Z",
       "items": [
         {
-          "text": "Lasagna Bianco · Zucchini, Lentils, Peas, White Cheese, Pointed cabbage",
+          "text": "Halloumi and asparagus pasta Alfredo · spinach and scallion salad",
           "diet": "veg"
         },
         {
-          "text": "Moqueca Haddock · coconut milk, rice, lime, paprika, cilantro salad"
+          "text": "Lemon baked haddock · salsa rossa, spicy potato wedges, steamed broccoli"
         },
         {
-          "text": "Veal Wallenbergare · green peas, mashed potatoes, clarified butter, lingonberries"
+          "text": "Chicken piccata · capers & butter sauce, roasted potatoes, zucchini salad"
         }
       ],
       "note": "Ericsson's restaurant, open to everyone. Three dishes a day, one usually vegetarian; menu in English."
