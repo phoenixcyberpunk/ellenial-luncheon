@@ -49,10 +49,12 @@
       </section>
       <p class="sub" id="summary">Loading today's menus…</p>
       <div class="filters" role="group" aria-label="Filters">
+        <button type="button" class="chip chip--here" id="near-me" aria-pressed="false" hidden><svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true" focusable="false"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12zm0-9.2a2.8 2.8 0 1 1 0-5.6 2.8 2.8 0 0 1 0 5.6z" fill="currentColor" fill-rule="evenodd"/></svg>Near me</button>
         <button type="button" class="chip" data-filter="veg" aria-pressed="false">Veg option</button>
         <button type="button" class="chip" data-filter="near" aria-pressed="false">≤ 10 min walk</button>
         <button type="button" class="chip" data-filter="nopork" aria-pressed="false">No pork <span aria-hidden="true">🐷</span></button>
       </div>
+      <p class="here-note" id="here-note" role="status" hidden></p>
       <p class="filter-note" id="pork-note" hidden></p>
       <details class="jump-box" id="jump-box" hidden>
         <summary class="jump-box__toggle" id="jump-toggle">Jump to a place</summary>

@@ -10,7 +10,7 @@
   var WALK_M_PER_MIN = 80;   // a relaxed lunch pace
   var DETOUR = 1.3;          // streets are not straight lines
 
-  var state = { data: null, filters: { veg: false, near: false, nopork: false }, open: {}, hearts: [], sortHearts: [] };
+  var state = { here: null, data: null, filters: { veg: false, near: false, nopork: false }, open: {}, hearts: [], sortHearts: [] };
   var HEARTS_KEY = 'luncheon.shortlist';
   var FOLD_AFTER = 4; // dishes shown before "Show all"
 
@@ -48,13 +48,18 @@
     return addDays(ymd, 1 - day);
   }
 
+  // Straight-line metres between two points
+  function metresBetween(a, b) {
+    var R = 6371000, toRad = Math.PI / 180;
+    var dLat = (b.lat - a.lat) * toRad, dLon = (b.lon - a.lon) * toRad;
+    var h = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+      Math.cos(a.lat * toRad) * Math.cos(b.lat * toRad) * Math.sin(dLon / 2) * Math.sin(dLon / 2);
+    return 2 * R * Math.asin(Math.sqrt(h));
+  }
+  // Walking minutes from Science Park, or from where you are while "Near me" is on
   function walkMinutes(p) {
     if (typeof p.lat !== 'number' || typeof p.lon !== 'number') return null;
-    var R = 6371000, toRad = Math.PI / 180;
-    var dLat = (p.lat - ORIGIN.lat) * toRad, dLon = (p.lon - ORIGIN.lon) * toRad;
-    var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-      Math.cos(ORIGIN.lat * toRad) * Math.cos(p.lat * toRad) * Math.sin(dLon / 2) * Math.sin(dLon / 2);
-    var metres = 2 * R * Math.asin(Math.sqrt(a)) * DETOUR;
+    var metres = metresBetween(state.here || ORIGIN, p) * DETOUR;
     return Math.max(1, Math.round(metres / WALK_M_PER_MIN));
   }
 
@@ -868,9 +873,11 @@
         var h = rank(a.id) - rank(b.id);
         if (h) return h;
       }
+      var w = (a.walk == null ? 99 : a.walk) - (b.walk == null ? 99 : b.walk);
+      if (state.here && w) return w;   // Near me: simply nearest first
       var s = order[a.state] - order[b.state];
       if (s) return s;
-      return (a.walk == null ? 99 : a.walk) - (b.walk == null ? 99 : b.walk);
+      return w;
     });
 
     state.placesNow = places;
@@ -885,7 +892,8 @@
     summary.textContent = dayWeek + ' · ' + (weekend
       ? places.length + ' places · no weekday lunch today'
       : places.length + ' places · ' + freshCount + ' with today’s menu');
-    if (!phone) summary.textContent += ' · sorted by walking time' + (anyHearts ? ' · most hearted first' : '');
+    if (state.here) summary.textContent += ' · nearest to you first';
+    else if (!phone) summary.textContent += ' · sorted by walking time' + (anyHearts ? ' · most hearted first' : '');
 
     if (!shown.length) {
       addEmpty(list, 'No places match these filters. Turn one off to see more.');
@@ -937,7 +945,7 @@
     var name = node.querySelector('.name');
     name.textContent = p.name;
     if (p.url) name.href = p.url; else name.removeAttribute('href');
-    node.querySelector('.walk').textContent = p.walk != null ? p.walk + ' min' : '';
+    node.querySelector('.walk').textContent = p.walk != null ? p.walk + ' min' + (state.here ? ' from you' : '') : '';
 
     // Heart: an outlined heart; once tapped it fills (a change of shape, not just colour)
     // on a Periwinkle background. Screen readers hear "on your shortlist".
@@ -1238,6 +1246,50 @@
     }));
   }
 
+  // "Near me" (decided 11 Nov 2026): one tap, the browser asks first, walking times and order
+  // then count from where you are. The position stays on this phone: nothing is sent or saved,
+  // and the next visit starts from Science Park again. Over about 2 km away it stays on Science Park.
+  var NEAR_ME_MAX_M = 2000;
+  function wireNearMe() {
+    var btn = document.getElementById('near-me');
+    var note = document.getElementById('here-note');
+    if (!btn || !note || !navigator.geolocation) return;
+    btn.hidden = false;
+    var asking = false;
+    function say(text) { note.textContent = text; note.hidden = !text; }
+    function setHere(here) {
+      state.here = here;
+      btn.setAttribute('aria-pressed', String(!!here));
+      render();
+    }
+    btn.addEventListener('click', function () {
+      if (asking) return;
+      if (state.here) {
+        setHere(null);
+        say('');
+        announce('Walking times are from Lindholmen Science Park again.');
+        return;
+      }
+      asking = true;
+      say('Finding where you are…');
+      navigator.geolocation.getCurrentPosition(function (pos) {
+        asking = false;
+        var here = { lat: pos.coords.latitude, lon: pos.coords.longitude };
+        var away = metresBetween(ORIGIN, here);
+        if (away > NEAR_ME_MAX_M) {
+          var km = Math.round(away / 1000);
+          say('You’re about ' + (km < 1 ? 1 : km) + ' km from Lindholmen, so walking times stay from Lindholmen Science Park.');
+          return;
+        }
+        setHere(here);
+        say('Walking times are now from where you are. Your location stays on this phone and isn’t saved. Tap Near me again for Science Park.');
+      }, function () {
+        asking = false;
+        say('Couldn’t get your location, so walking times stay from Lindholmen Science Park. You can allow location in your browser and tap Near me again.');
+      }, { enableHighAccuracy: true, timeout: 15000, maximumAge: 60000 });
+    });
+  }
+
   function wireShortlist() {
     state.hearts = loadHearts();
     state.sortHearts = [];   // only a lunch link sorts the list (most hearted first); your own hearts get the strip
@@ -1269,6 +1321,7 @@
   mountThemeSwitch();
   wireFilters();
   wireShortlist();
+  wireNearMe();
   wirePlanner();
   wireToTop();
   render();

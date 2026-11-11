@@ -743,3 +743,9 @@ h1 {
 @media (prefers-reduced-motion: reduce) {
   .pinned { animation: none; transition: none; }
 }
+
+/* "Near me" (11 Nov 2026): a pin and the words; when on, the usual tick takes the pin's place */
+.chip--here svg { flex: none; color: var(--accent); }
+.chip--here[aria-pressed="true"] svg { display: none; }
+/* What Near me is doing, in plain words: on, finding you, too far, or no location */
+.here-note { margin: 10px 0 0; padding: 10px 12px; border-radius: 14px; background: var(--soft); color: var(--ink); font-size: 13px; line-height: 1.4; max-width: 760px; }

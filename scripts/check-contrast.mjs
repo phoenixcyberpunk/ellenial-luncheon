@@ -73,6 +73,8 @@ const pairs = (t) => [
   ['Your hearts count and note (muted) on lavender', t.muted, t.soft, 4.5],
   ['"No menu" dashed outline inside Your hearts', t.edge, t.soft, 3],
   ['"Pinned to Your hearts" text on Indigo bubble', t.onAccent, t.accent, 4.5],
+  ['Near me pin icon (Indigo) on page', t.accent, t.bg, 3],
+  ['Near me note text on lavender', t.ink, t.soft, 4.5],
   ['Indigo bubble on page', t.accent, t.bg, 3],
   ['Indigo bubble on card', t.accent, t.surface, 3],
   ['"All places" heading on page', t.ink, t.bg, 3],
