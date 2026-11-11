@@ -3,18 +3,20 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>Ellenial Lunch · today's lunch menus at Lindholmen</title>
+  <title>Lunch · Ellenial</title>
+  <meta name="apple-mobile-web-app-title" content="Lunch">
   <meta name="description" content="Every lunch menu near Lindholmen for today, on one screen. Free, no ads, no tracking. An Ellenial tool.">
   <meta name="theme-color" content="#FEF2E2" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#17141F" media="(prefers-color-scheme: dark)">
   <script src="ellenial-theme.js" data-light="#FEF2E2" data-dark="#17141F"></script>
   <link rel="stylesheet" href="styles.css">
-  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="icon" type="image/png" href="icons/lunch.png">
+  <link rel="apple-touch-icon" href="icons/lunch.png">
 </head>
 <body>
   <main class="page">
     <header class="top">
-      <h1 id="heading">Ellenial Lunch – Lindholmen</h1>
+      <h1 id="heading" class="brand"><img class="brand-icon" src="icons/lunch.png" alt="" width="48" height="48"><span class="brand-name"><span class="ellenial-eyebrow">Ellenial</span>Lunch – Lindholmen</span></h1>
       <div class="banner" id="banner" role="status" hidden>
         <p class="banner__title"></p>
         <p class="banner__text"></p>
@@ -73,16 +75,40 @@
       <p class="visually-hidden" id="announce" aria-live="polite"></p>
     </header>
 
+    <!-- Your hearts: full copies of the places you hearted today, in the order you hearted them.
+         The same cards also stay where they are in the list below, so nothing moves while you look. -->
+    <section class="hearts" id="hearts" aria-labelledby="hearts-title" hidden>
+      <h2 class="hearts__title" id="hearts-title" tabindex="-1">
+        <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false"><path d="M12 20.5s-7.5-4.6-9.3-9.2C1.4 8 3.4 4.5 6.9 4.5c2.1 0 3.6 1.2 5.1 3 1.5-1.8 3-3 5.1-3 3.5 0 5.5 3.5 4.2 6.8-1.8 4.6-9.3 9.2-9.3 9.2z" fill="currentColor"/></svg>
+        Your hearts <span class="hearts__count" id="hearts-count"></span>
+      </h2>
+      <button type="button" class="btn-quiet hearts__clear" id="hearts-clear" aria-label="Clear Your hearts">Clear</button>
+      <p class="hearts__note" id="hearts-note">Kept up here for today. They stay in the list below too.</p>
+      <div class="list hearts__list" id="hearts-list"></div>
+    </section>
+    <h2 class="list-title" id="all-title" hidden>All places</h2>
+
     <section id="list" class="list" aria-live="polite"></section>
 
     <button type="button" class="to-top" id="to-top" hidden aria-label="Back to the top"><span aria-hidden="true">↑</span> Top</button>
+    <!-- After a heart: a short note pointing at the Top button, then it fades (screen readers get the same words from #announce) -->
+    <div class="pinned" id="pinned" aria-hidden="true" hidden>
+      <span class="pinned__title"><svg viewBox="0 0 24 24" width="15" height="15" focusable="false"><path d="M12 20.5s-7.5-4.6-9.3-9.2C1.4 8 3.4 4.5 6.9 4.5c2.1 0 3.6 1.2 5.1 3 1.5-1.8 3-3 5.1-3 3.5 0 5.5 3.5 4.2 6.8-1.8 4.6-9.3 9.2-9.3 9.2z" fill="currentColor"/></svg>Pinned to Your hearts</span>
+      <span class="pinned__text">Top takes you there</span>
+    </div>
 
-    <footer class="foot">
-      <p>Menus are read from each restaurant's own website every weekday morning. Something wrong? Check the restaurant's page before you walk over.</p>
-      <p>Walking times are counted from Lindholmen Science Park. Place locations © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors.</p>
-      <p>Free · no ads · no trackers · an <a href="https://ellenial.app">Ellenial</a> tool · <a href="https://github.com/phoenixcyberpunk/ellenial-luncheon">open source</a></p>
-      <p>On this page: an automatic counter shows the number of unique visits, anonymously of course.</p>
-      <p class="prefs" id="prefs">Theme:</p>
+    <footer class="ell-foot">
+      <div class="ell-notes">
+        <p>Menus are read from each restaurant's own website every weekday morning. Something wrong? Check the restaurant's page before you walk over.</p>
+        <p>Walking times are counted from Lindholmen Science Park. Place locations © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors.</p>
+      </div>
+      <div class="ell-shared">
+        <p><a href="https://ellenial.app/drawings">Drawn</a> and designed by me, coded with the help of AI.</p>
+        <p>Free · no ads · no trackers</p>
+        <p>In this app: a simple visit counter</p>
+        <p><a href="https://ellenial.app">An Ellenial tool</a> · <a href="https://github.com/phoenixcyberpunk/ellenial-luncheon">Source</a> · <a href="https://ellenial.app/thanks">Thanks</a></p>
+      </div>
+      <p class="prefs ell-controls" id="prefs">Theme:</p>
     </footer>
   </main>
 

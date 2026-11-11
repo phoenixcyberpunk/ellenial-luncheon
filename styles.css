@@ -98,6 +98,9 @@ h1 {
   line-height: 1.2;
   letter-spacing: -0.005em;
 }
+/* The library tile from ellenial.app (Ellen's hand-drawn flower) beside the name, same as Weather. */
+.brand { display: flex; align-items: center; gap: 12px; }
+.brand-icon { width: 48px; height: 48px; border-radius: 11px; flex: none; }
 
 /* "Menus for week 45 aren't out yet": a Lavender panel with a calendar icon and words, never colour alone */
 .banner {
@@ -652,4 +655,92 @@ h1 {
 #heading:focus { outline: none; }
 @media (max-width: 759px) {
   body.has-shortlist .to-top { bottom: calc(100px + env(safe-area-inset-bottom, 0px)); }
+}
+
+/* "Ellenial" above the app's name (decided 8 Nov 2026): credit where credit is due, without making the name longer. */
+.ellenial-eyebrow { display: block; font-family: 'DM Sans', system-ui, sans-serif; font-size: 11px; line-height: 14px; letter-spacing: .14em; text-transform: uppercase; font-weight: 600; color: var(--muted); margin: 0 0 2px; }
+.brand-name { display: flex; flex-direction: column; }
+
+/* Ellenial shared footer (9 Nov 2026): the same lines, order and look in every app.
+   App-specific notes on top in Fraunces italic, the shared block in DM Sans, controls last. */
+@font-face { font-family: 'Fraunces'; font-style: italic; font-weight: 400; font-display: swap; src: url('fonts/fraunces-latin-400-italic.woff2') format('woff2'); }
+.ell-foot { display: flex; flex-direction: column; align-items: center; gap: 16px; margin-top: 28px; padding: 20px 16px 24px; border-top: 1px solid var(--line, rgba(127,127,127,.25)); text-align: center; font-family: 'DM Sans', system-ui, sans-serif; font-size: 13px; line-height: 18px; color: var(--muted); }
+.ell-foot p { margin: 0; }
+.ell-foot a { color: var(--accent); }
+.ell-notes { display: flex; flex-direction: column; gap: 4px; font-family: 'Fraunces', Georgia, serif; font-style: italic; font-weight: 400; line-height: 19px; max-width: 520px; }
+.ell-shared { display: flex; flex-direction: column; gap: 6px; }
+.ell-controls { display: flex; justify-content: center; align-items: center; gap: 8px; flex-wrap: wrap; margin: 0; }
+
+/* ---------- Your hearts (feedback 11 Nov 2026) ----------
+   A Lavender panel above the list with full copies of the places you hearted, in the order
+   you hearted them. The heading (a heart and the words) says what it is, so the Lavender
+   is only decoration. The originals stay where they are in the list below. */
+.hearts {
+  margin-top: 18px;
+  padding: 14px 10px 10px;
+  border-radius: 22px;
+  background: var(--soft);
+}
+.hearts__title {
+  margin: 0 6px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font: 500 20px/1.2 var(--font-display);
+}
+.hearts__title svg { color: var(--accent); flex: none; }
+.hearts__title:focus { outline: none; }
+.hearts__title:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; border-radius: 4px; }
+.hearts__count { font: 500 14px var(--font-body); color: var(--muted); }
+.hearts__note { margin: 2px 6px 0; font-size: 13px; color: var(--muted); }
+.hearts__list { padding-top: 10px; }
+.hearts__list:empty { display: none; }
+/* Cards that are Lavender themselves get the paper card colour inside the Lavender panel */
+.hearts .card.is-fixed { background: var(--surface); border-color: var(--line); }
+.list-title { margin: 22px 0 0; font: 500 20px/1.2 var(--font-display); }
+.list-title + .list { padding-top: 12px; }
+.hearts { position: relative; }
+.hearts__title { padding-right: 76px; }
+.hearts__clear { position: absolute; top: 12px; right: 12px; min-height: 36px; }
+.hearts__note { padding-right: 70px; }
+
+/* "Pinned to Your hearts · Top takes you there": an Indigo bubble just above the Top button,
+   its tail pointing at it. Shown for about 3 seconds after a heart, then it fades.
+   Words, not colour, carry the message; on-accent text on Indigo passes 4.5:1. */
+.pinned {
+  position: fixed;
+  z-index: 7;
+  right: max(16px, env(safe-area-inset-right, 0px));
+  bottom: calc(72px + env(safe-area-inset-bottom, 0px));
+  max-width: 260px;
+  padding: 10px 14px;
+  border-radius: 16px;
+  background: var(--accent);
+  color: var(--on-accent);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  pointer-events: none;
+  animation: pinned-in 0.2s ease-out;
+  transition: opacity 0.5s ease;
+}
+.pinned::after {
+  content: '';
+  position: absolute;
+  right: 28px;
+  bottom: -8px;
+  border: 9px solid transparent;
+  border-bottom: 0;
+  border-top: 9px solid var(--accent);
+}
+.pinned.is-out { opacity: 0; }
+.pinned__title { display: flex; align-items: center; gap: 6px; font-size: 15px; font-weight: 600; }
+.pinned__text { font-size: 13px; }
+@keyframes pinned-in { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+@media (max-width: 759px) {
+  body.has-shortlist .pinned { bottom: calc(156px + env(safe-area-inset-bottom, 0px)); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pinned { animation: none; transition: none; }
 }

@@ -1,12 +1,14 @@
 name: Read today's menus
 
-# Runs on weekday mornings (times are UTC; Stockholm is UTC+1 in winter, UTC+2 in summer).
-# Several runs, because some places post their menu late in the morning.
+# Runs every half hour on weekday mornings, so menus are fresh all through work hours
+# (times are UTC; Stockholm is UTC+1 in winter, UTC+2 in summer):
+# 05:07–10:37 UTC = 06:07–11:37 Stockholm in winter, 07:07–12:37 in summer.
+# Many runs on purpose: some places post late, a site can be down for a moment, and
+# GitHub sometimes starts scheduled runs late or skips one. A run with nothing new
+# changes nothing (no commit, no deploy). Minutes 7 and 37 avoid GitHub's busy :00.
 on:
   schedule:
-    - cron: '20 6 * * 1-5'
-    - cron: '20 8 * * 1-5'
-    - cron: '50 9 * * 1-5'
+    - cron: '7,37 5-10 * * 1-5'
   workflow_dispatch:
   push:
     branches: [main]
