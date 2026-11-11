@@ -9,7 +9,7 @@
       "lon": 11.94633,
       "kind": "daily",
       "menuDate": "2026-11-11",
-      "readAt": "2026-11-11T05:54:46.005Z",
+      "readAt": "2026-11-11T10:28:55.371Z",
       "items": [
         {
           "text": "Fire: “Chicken dopiaza” - bakat kycklinglår - dopiazasås - stekt lök - friterad lök - yoghurt – koriander (veg alternativ)"
@@ -19,6 +19,10 @@
         },
         {
           "text": "Metal: Onsdagsschnitzeln - Fläskschnitzel - rökig bbqsås – ranchcoleslaw - rostad sötpotatis"
+        },
+        {
+          "text": "Earth: Pokebowl – sushiris – friterad glaserad tofu – marinerad sojaböna - inlagd rödkål - chilimajo - jordnötscrumble",
+          "diet": "veg"
         }
       ],
       "note": "Earth is the vegetarian station."
