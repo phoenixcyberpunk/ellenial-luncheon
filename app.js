@@ -123,6 +123,9 @@
       var card = document.getElementById('place-' + p.id);
       if (card) updateHeart(card, p);
       renderHearts();
+      // Pinning folds "Jump to a place" to make the page calmer (Ellen, 11 Nov); you can open it again
+      var jumpBox = document.getElementById('jump-box');
+      if (on && jumpBox) jumpBox.open = false;
     });
     if (on && !fromStrip) showPinned();
     // Unhearting from inside the strip removes that card, so focus moves on instead of getting lost
@@ -144,10 +147,15 @@
     if (!anchor || !document.body.contains(anchor)) anchor = firstCardOnScreen();
     var before = anchor ? anchor.getBoundingClientRect().top : null;
     change();
-    if (anchor && document.body.contains(anchor)) {
+    if (!anchor || !document.body.contains(anchor)) return;
+    function settle() {
       var moved = anchor.getBoundingClientRect().top - before;
-      if (Math.abs(moved) >= 1) window.scrollBy(0, moved);
+      if (Math.abs(moved) >= 1) window.scrollBy({ left: 0, top: moved, behavior: 'instant' });
     }
+    settle();
+    // The browser's own scroll anchoring can still nudge the page on the next frame
+    // (it does when "Jump to a place" folds at the same time), so check once more then
+    window.requestAnimationFrame(function () { window.requestAnimationFrame(settle); });
   }
   function firstCardOnScreen() {
     var cards = document.querySelectorAll('#list .card');
@@ -1233,9 +1241,10 @@
   function wireShortlist() {
     state.hearts = loadHearts();
     state.sortHearts = [];   // only a lunch link sorts the list (most hearted first); your own hearts get the strip
-    // The jump list starts open on a computer and folded on a phone
+    // The jump list starts open on a computer and folded on a phone, and folded on both
+    // once you've pinned something (Your hearts is then what you came back for)
     var box = document.getElementById('jump-box');
-    if (box && window.matchMedia && window.matchMedia('(min-width: 760px)').matches) box.open = true;
+    if (box && !state.hearts.length && window.matchMedia && window.matchMedia('(min-width: 760px)').matches) box.open = true;
     var clear = document.getElementById('shortlist-clear');
     var stripClear = document.getElementById('hearts-clear');
     if (stripClear && clear) stripClear.addEventListener('click', function () { clear.click(); });
