@@ -669,3 +669,46 @@ h1 {
 .ell-notes { display: flex; flex-direction: column; gap: 4px; font-family: 'Fraunces', Georgia, serif; font-style: italic; font-weight: 400; line-height: 19px; max-width: 520px; }
 .ell-shared { display: flex; flex-direction: column; gap: 6px; }
 .ell-controls { display: flex; justify-content: center; align-items: center; gap: 8px; flex-wrap: wrap; margin: 0; }
+
+/* ---------- Your hearts (feedback 11 Nov 2026) ----------
+   A Lavender panel above the list with full copies of the places you hearted, in the order
+   you hearted them. The heading (a heart and the words) says what it is, so the Lavender
+   is only decoration. The originals stay where they are in the list below. */
+.hearts {
+  margin-top: 18px;
+  padding: 14px 10px 10px;
+  border-radius: 22px;
+  background: var(--soft);
+}
+.hearts__title {
+  margin: 0 6px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font: 500 20px/1.2 var(--font-display);
+}
+.hearts__title svg { color: var(--accent); flex: none; }
+.hearts__title:focus { outline: none; }
+.hearts__title:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; border-radius: 4px; }
+.hearts__count { font: 500 14px var(--font-body); color: var(--muted); }
+.hearts__note { margin: 2px 6px 0; font-size: 13px; color: var(--muted); }
+.hearts__list { padding-top: 10px; }
+.hearts__list:empty { display: none; }
+/* Cards that are Lavender themselves get the paper card colour inside the Lavender panel */
+.hearts .card.is-fixed { background: var(--surface); border-color: var(--line); }
+.list-title { margin: 22px 0 0; font: 500 20px/1.2 var(--font-display); }
+.list-title + .list { padding-top: 12px; }
+
+/* "Added to Your hearts at the top": a quiet line on the card you just hearted, for a few seconds */
+.hearts-added { margin: -2px 0 0; font-size: 13px; color: var(--muted); }
+
+/* "↑ See them" is for phones, where the bar floats at the bottom of the screen */
+@media (min-width: 760px) { .shortlist__see { display: none; } }
+.hearts { position: relative; }
+.hearts__title { padding-right: 76px; }
+.hearts__clear { position: absolute; top: 12px; right: 12px; min-height: 36px; }
+@media (max-width: 759px) {
+  /* On your own, the bar on a phone is just the count, "↑ See them" and "Ask friends" */
+  body.has-hearts-strip .shortlist__names { display: none; }
+}
+.hearts__note { padding-right: 70px; }

@@ -68,12 +68,26 @@
           <p class="shortlist__names" id="shortlist-names"></p>
         </div>
         <span class="shortlist__buttons">
+          <button type="button" class="shortlist__clear shortlist__see" id="shortlist-see" hidden><span aria-hidden="true">↑</span> See them</button>
           <button type="button" class="btn" id="ask-friends">Ask friends</button>
           <button type="button" class="shortlist__clear" id="shortlist-clear">Clear</button>
         </span>
       </div>
       <p class="visually-hidden" id="announce" aria-live="polite"></p>
     </header>
+
+    <!-- Your hearts: full copies of the places you hearted today, in the order you hearted them.
+         The same cards also stay where they are in the list below, so nothing moves while you look. -->
+    <section class="hearts" id="hearts" aria-labelledby="hearts-title" hidden>
+      <h2 class="hearts__title" id="hearts-title" tabindex="-1">
+        <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false"><path d="M12 20.5s-7.5-4.6-9.3-9.2C1.4 8 3.4 4.5 6.9 4.5c2.1 0 3.6 1.2 5.1 3 1.5-1.8 3-3 5.1-3 3.5 0 5.5 3.5 4.2 6.8-1.8 4.6-9.3 9.2-9.3 9.2z" fill="currentColor"/></svg>
+        Your hearts <span class="hearts__count" id="hearts-count"></span>
+      </h2>
+      <button type="button" class="btn-quiet hearts__clear" id="hearts-clear" aria-label="Clear Your hearts">Clear</button>
+      <p class="hearts__note" id="hearts-note">Kept up here for today. They stay in the list below too.</p>
+      <div class="list hearts__list" id="hearts-list"></div>
+    </section>
+    <h2 class="list-title" id="all-title" hidden>All places</h2>
 
     <section id="list" class="list" aria-live="polite"></section>
 
