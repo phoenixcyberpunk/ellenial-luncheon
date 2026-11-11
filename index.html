@@ -68,7 +68,6 @@
           <p class="shortlist__names" id="shortlist-names"></p>
         </div>
         <span class="shortlist__buttons">
-          <button type="button" class="shortlist__clear shortlist__see" id="shortlist-see" hidden><span aria-hidden="true">↑</span> See them</button>
           <button type="button" class="btn" id="ask-friends">Ask friends</button>
           <button type="button" class="shortlist__clear" id="shortlist-clear">Clear</button>
         </span>
@@ -92,6 +91,11 @@
     <section id="list" class="list" aria-live="polite"></section>
 
     <button type="button" class="to-top" id="to-top" hidden aria-label="Back to the top"><span aria-hidden="true">↑</span> Top</button>
+    <!-- After a heart: a short note pointing at the Top button, then it fades (screen readers get the same words from #announce) -->
+    <div class="pinned" id="pinned" aria-hidden="true" hidden>
+      <span class="pinned__title"><svg viewBox="0 0 24 24" width="15" height="15" focusable="false"><path d="M12 20.5s-7.5-4.6-9.3-9.2C1.4 8 3.4 4.5 6.9 4.5c2.1 0 3.6 1.2 5.1 3 1.5-1.8 3-3 5.1-3 3.5 0 5.5 3.5 4.2 6.8-1.8 4.6-9.3 9.2-9.3 9.2z" fill="currentColor"/></svg>Pinned to Your hearts</span>
+      <span class="pinned__text">Top takes you there</span>
+    </div>
 
     <footer class="ell-foot">
       <div class="ell-notes">

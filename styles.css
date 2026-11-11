@@ -698,17 +698,48 @@ h1 {
 .hearts .card.is-fixed { background: var(--surface); border-color: var(--line); }
 .list-title { margin: 22px 0 0; font: 500 20px/1.2 var(--font-display); }
 .list-title + .list { padding-top: 12px; }
-
-/* "Added to Your hearts at the top": a quiet line on the card you just hearted, for a few seconds */
-.hearts-added { margin: -2px 0 0; font-size: 13px; color: var(--muted); }
-
-/* "↑ See them" is for phones, where the bar floats at the bottom of the screen */
-@media (min-width: 760px) { .shortlist__see { display: none; } }
 .hearts { position: relative; }
 .hearts__title { padding-right: 76px; }
 .hearts__clear { position: absolute; top: 12px; right: 12px; min-height: 36px; }
-@media (max-width: 759px) {
-  /* On your own, the bar on a phone is just the count, "↑ See them" and "Ask friends" */
-  body.has-hearts-strip .shortlist__names { display: none; }
-}
 .hearts__note { padding-right: 70px; }
+
+/* "Pinned to Your hearts · Top takes you there": an Indigo bubble just above the Top button,
+   its tail pointing at it. Shown for about 3 seconds after a heart, then it fades.
+   Words, not colour, carry the message; on-accent text on Indigo passes 4.5:1. */
+.pinned {
+  position: fixed;
+  z-index: 7;
+  right: max(16px, env(safe-area-inset-right, 0px));
+  bottom: calc(72px + env(safe-area-inset-bottom, 0px));
+  max-width: 260px;
+  padding: 10px 14px;
+  border-radius: 16px;
+  background: var(--accent);
+  color: var(--on-accent);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  pointer-events: none;
+  animation: pinned-in 0.2s ease-out;
+  transition: opacity 0.5s ease;
+}
+.pinned::after {
+  content: '';
+  position: absolute;
+  right: 28px;
+  bottom: -8px;
+  border: 9px solid transparent;
+  border-bottom: 0;
+  border-top: 9px solid var(--accent);
+}
+.pinned.is-out { opacity: 0; }
+.pinned__title { display: flex; align-items: center; gap: 6px; font-size: 15px; font-weight: 600; }
+.pinned__text { font-size: 13px; }
+@keyframes pinned-in { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+@media (max-width: 759px) {
+  body.has-shortlist .pinned { bottom: calc(156px + env(safe-area-inset-bottom, 0px)); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pinned { animation: none; transition: none; }
+}

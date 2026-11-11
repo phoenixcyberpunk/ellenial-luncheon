@@ -124,7 +124,7 @@
       if (card) updateHeart(card, p);
       renderHearts();
     });
-    if (on && !fromStrip) showAdded(document.getElementById('place-' + p.id));
+    if (on && !fromStrip) showPinned();
     // Unhearting from inside the strip removes that card, so focus moves on instead of getting lost
     if (fromStrip && hadFocus) {
       var left = document.getElementById('hearts-list').querySelectorAll('.card');
@@ -135,7 +135,7 @@
     }
     renderShortlist();
     queueSave();
-    announce(on ? p.name + ' added to Your hearts at the top.' : p.name + ' removed from Your hearts.');
+    announce(on ? p.name + ' pinned to Your hearts. Top takes you there.' : p.name + ' removed from Your hearts.');
   }
 
   // Hold whatever you're looking at in place while something above it changes height.
@@ -155,17 +155,28 @@
     return null;
   }
 
-  // A quiet line on the card you just hearted, gone again after a few seconds
-  function showAdded(node) {
-    if (!node) return;
-    var old = node.querySelector('.hearts-added');
-    if (old) old.remove();
-    var line = document.createElement('p');
-    line.className = 'hearts-added';
-    line.textContent = 'Added to Your hearts at the top';
-    node.querySelector('.card-head').insertAdjacentElement('afterend', line);
-    window.setTimeout(function () { line.remove(); }, 4000);
+  // After a heart: "Pinned to Your hearts · Top takes you there" in a bubble pointing at the
+  // Top button (Ellen, 11 Nov), which shows while the bubble does. Fades after about 3 seconds.
+  var pinnedTimers = [];
+  function showPinned() {
+    var bubble = document.getElementById('pinned');
+    if (!bubble) return;
+    pinnedTimers.forEach(window.clearTimeout);
+    bubble.classList.remove('is-out');
+    bubble.hidden = false;
+    state.pinnedShowing = true;
+    updateToTop();
+    pinnedTimers = [
+      window.setTimeout(function () { bubble.classList.add('is-out'); }, 3000),
+      window.setTimeout(function () {
+        bubble.hidden = true;
+        bubble.classList.remove('is-out');
+        state.pinnedShowing = false;
+        updateToTop();
+      }, 3500)
+    ];
   }
+  var updateToTop = function () {};
 
   // "Your hearts": full copies of your hearted places, in the order you hearted them.
   // The filters apply here too, so the strip never shows a dish the list below hides.
@@ -267,12 +278,7 @@
     document.body.classList.toggle('has-shortlist', n > 0);
     var noun = n === 1 ? '1 place' : n + ' places';
     document.getElementById('shortlist-text').textContent = (inLunch ? 'Hearted together · ' : 'Your hearts · ') + noun;
-    // "↑ See them" goes up to Your hearts (on a phone, where the bar floats at the bottom)
-    var see = document.getElementById('shortlist-see');
-    if (see) see.hidden = inLunch || state.hearts.length === 0;
-    // On your own, Clear sits with Your hearts (the bar on a phone has room for two buttons);
-    // in a lunch the bar keeps "Clear mine"
-    document.body.classList.toggle('has-hearts-strip', !inLunch && state.hearts.length > 0);
+    // On your own, Clear sits with Your hearts; in a lunch the bar keeps "Clear mine"
     var names = document.getElementById('shortlist-names');
     names.textContent = '';
     ids.forEach(function (id) {
@@ -772,8 +778,9 @@
     var ticking = false;
     function update() {
       ticking = false;
-      btn.hidden = window.scrollY < window.innerHeight * 0.9;
+      btn.hidden = !state.pinnedShowing && window.scrollY < window.innerHeight * 0.9;
     }
+    updateToTop = update;
     window.addEventListener('scroll', function () {
       if (!ticking) { ticking = true; window.requestAnimationFrame(update); }
     }, { passive: true });
@@ -1226,14 +1233,6 @@
   function wireShortlist() {
     state.hearts = loadHearts();
     state.sortHearts = [];   // only a lunch link sorts the list (most hearted first); your own hearts get the strip
-    var see = document.getElementById('shortlist-see');
-    if (see) see.addEventListener('click', function () {
-      var box = document.getElementById('hearts');
-      if (!box || box.hidden) return;
-      var calm = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      box.scrollIntoView({ behavior: calm ? 'auto' : 'smooth', block: 'start' });
-      document.getElementById('hearts-title').focus({ preventScroll: true });
-    });
     // The jump list starts open on a computer and folded on a phone
     var box = document.getElementById('jump-box');
     if (box && window.matchMedia && window.matchMedia('(min-width: 760px)').matches) box.open = true;
