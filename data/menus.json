@@ -8,8 +8,8 @@
       "lat": 57.7112,
       "lon": 11.94633,
       "kind": "daily",
-      "menuDate": "2026-11-11",
-      "readAt": "2026-11-11T10:28:55.371Z",
+      "menuDate": "2026-11-12",
+      "readAt": "2026-11-12T05:57:17.573Z",
       "items": [
         {
           "text": "Fire: “Chicken dopiaza” - bakat kycklinglår - dopiazasås - stekt lök - friterad lök - yoghurt – koriander (veg alternativ)"
@@ -18,11 +18,7 @@
           "text": "Water: Saffransstinn fiskgryta – bakad fisk – rostade grönsaker - aioli - örter - rostad tomatolja"
         },
         {
-          "text": "Metal: Onsdagsschnitzeln - Fläskschnitzel - rökig bbqsås – ranchcoleslaw - rostad sötpotatis"
-        },
-        {
-          "text": "Earth: Pokebowl – sushiris – friterad glaserad tofu – marinerad sojaböna - inlagd rödkål - chilimajo - jordnötscrumble",
-          "diet": "veg"
+          "text": "Metal: Husmanstorsdag: Fläsk med löksås - kokt potatis – klassisk löksås - rårörda lingon – persiljesallad"
         }
       ],
       "note": "Earth is the vegetarian station."
@@ -36,9 +32,15 @@
       "price": "139 kr",
       "includes": "salad buffet, bread, coffee and cake",
       "kind": "daily",
-      "menuDate": "2026-11-11",
-      "readAt": "2026-11-11T05:54:46.005Z",
+      "menuDate": "2026-11-12",
+      "readAt": "2026-11-12T05:57:17.573Z",
       "items": [
+        {
+          "text": "OBS! idag stänger vi köket direkt 13:30 & restaurangen 14:00"
+        },
+        {
+          "text": "pga tidigt bokat privat event"
+        },
         {
           "text": "Veckans special: Kooperativets Kimchi Ramen – Udonnudlar i svamp & miso buljong toppas med wokad kyckling, kimchi, böngroddar och koriander, serveras med bakat ägg"
         },
@@ -46,23 +48,29 @@
           "text": "Veckans special: Kooperativets Kimchi Ramen – Udonnudlar i svamp & miso buljong toppas med wokad tofu, kimchi, böngroddar och koriander, serveras med bakat ägg"
         },
         {
-          "text": "Kött: Vilt Wallenbergare med krämig potatispure smaksatt med västerbottenost, rödvinssås smaksatt med bryntsmör & kantareller serveras med lingon"
+          "text": "Kött: Confikterat anklår med kolgrillad korv, råstekt potatis serveras med dragonmajonnäs samt rödvinssås smaksatt med apelsin"
         },
         {
-          "text": "Fisk: Stekt panerad sejfile serveras med dillrostad potatis, pepparrotskräm, citron och örter"
+          "text": "Fisk: Fish’n chips"
         },
         {
-          "text": "Thai: Crispy char Siu Pork – Wokade äggnudlar med 16h rökt fläsksida med kinesisk BBQsås och wokade grönsaker toppad med böngroddar, koriander & rostade sesamfrön"
+          "text": "Fisk: Friterad fisk serveras med pommes frites, curryremoulad, citron och örter"
         },
         {
-          "text": "Indisk: Chicken Alomonds and coriander – Indisk kycklinggryta med mandel & koriander serveras med basmatiris, yoghurt & garlic Naan CHILI 3/5"
+          "text": "Thai: Pad Kra Pao Holy basil Wokad kyckling i ostronsås med chili, vitlök & Thai basilika, serveras med bakat 65 graders ägg, jasminris & koriander"
         },
         {
-          "text": "Världen: Marstrands stolthet, Afrikana Kolgrillad kyckling, krämig currysås, friterade bananchips, mandariner, jordnötter samt mango chutney"
-        },
-        {
-          "text": "Vegetarisk: Marstrands vegetariska stolthet, Afrikana Grillad quorn, krämig currysås, friterade bananchips, mandariner, jordnötter samt mango chutney",
+          "text": "Vegetarisk: Kooperativets klassiska Butter Halloumi– indisk gryta med friterad haloumi serveras med rostad mandel, koriander, Naan samt feffakräm 1/5",
           "diet": "veg"
+        },
+        {
+          "text": "Indisk: Kooperativets klassiska Butter Chicken – indisk gryta med kyckling serveras med rostad mandel, koriander, Naan samt feffakräm chili 1/5"
+        },
+        {
+          "text": "Världen: The Forest Burger vedeldad högrevsburgare toppad med pepparjackost i briochebröd med rostad vitlöksmajonnäs, karameliserad lök m kantareller naperas medkrämig grönpepparsås"
+        },
+        {
+          "text": "Världen: Serveras med frasiga country fries"
         }
       ],
       "note": ""
@@ -76,14 +84,17 @@
       "price": "139 kr",
       "includes": "salad buffet, sourdough bread, coffee and cake",
       "kind": "daily",
-      "menuDate": "2026-11-11",
-      "readAt": "2026-11-11T05:54:46.005Z",
+      "menuDate": "2026-11-12",
+      "readAt": "2026-11-12T05:57:17.573Z",
       "items": [
         {
-          "text": "Korean fried chicken · Kålsallad – Srirachamajonnäs – Sesamfrön – Jasminris – Koriander"
+          "text": "Schnitzel · Ört & vitlöksmör – Rödvinssås – Rostad potatis – Persilja"
         },
         {
-          "text": "Fisch and Chips · Remouladsås – Pommes – Dillsallad – Citron"
+          "text": "Chili & citron Halstrad fångst · Brynt sojasmör – Ingefärsbakad pak choi – Jasminris – Koriander"
+        },
+        {
+          "text": "Torsdags Dessert!"
         },
         {
           "text": "Veckans: Fläsklägg · Rotmos – Pepparrotsås – Senap – Persilja"
@@ -100,11 +111,11 @@
       "price": "195 kr",
       "includes": "salad buffet, coffee, tea and cake",
       "kind": "daily",
-      "menuDate": "2026-11-11",
-      "readAt": "2026-11-11T05:54:46.005Z",
+      "menuDate": "2026-11-12",
+      "readAt": "2026-11-12T05:57:17.573Z",
       "items": [
         {
-          "text": "Kyckling serveras med morotspuré, rostad palsternacka, chorizo och rödvinssky"
+          "text": "torsk serveras med gräslökspotatispuré, fänkålscrudité och brynt smör"
         },
         {
           "text": "risotto serveras med rostade tomater, mandelflakes, grönkål och grana padanao",
@@ -161,7 +172,7 @@
         }
       ],
       "note": "",
-      "problem": "2026-11-11: HTTP 404"
+      "problem": "2026-11-12: HTTP 404"
     },
     {
       "id": "missf",
@@ -233,18 +244,18 @@
       "price": "129 kr",
       "includes": "lunch naan, rice, salad and water",
       "kind": "daily",
-      "menuDate": "2026-11-11",
-      "readAt": "2026-11-11T05:54:46.005Z",
+      "menuDate": "2026-11-12",
+      "readAt": "2026-11-12T05:57:17.573Z",
       "items": [
         {
-          "text": "Chicken Chettinad · sydindisk kycklinggryta i pepprig kryddblandning med kokos"
+          "text": "Aam Chicken · kycklingfilé i fruktig sås med kokosmjölk, mango, mynta och grön chili"
         },
         {
-          "text": "Keema Matter · kryddstark gryta med lammfärs och gröna ärtor"
+          "text": "Kolhapuri Gosht · het lammrätt med svartpeppar, kokosmjölk och koriander"
         },
         {
-          "text": "Pancharatan Dal · linsgryta på fem sorters linser med spiskummin, vitlök och koriander",
-          "diet": "vegan"
+          "text": "Paneer Khumbi Masala · paneer och svamp i mustig tomat- och löksås",
+          "diet": "veg"
         }
       ],
       "note": "Menu 4 of 4 this week. Always on: Subzi thali 139 kr (can be made vegan), palak paneer 139 kr, butter chicken, rogan josh and more, 139–165 kr."
@@ -385,18 +396,18 @@
       "price": "124 kr",
       "includes": "salad buffet, coffee and soft ice cream",
       "kind": "daily",
-      "menuDate": "2026-11-11",
-      "readAt": "2026-11-11T05:54:46.005Z",
+      "menuDate": "2026-11-12",
+      "readAt": "2026-11-12T05:57:17.573Z",
       "items": [
         {
-          "text": "Halloumi and asparagus pasta Alfredo · spinach and scallion salad",
+          "text": "Creamy pea risotto · Grana padano, Roasted hazelnuts, Green kale",
           "diet": "veg"
         },
         {
-          "text": "Lemon baked haddock · salsa rossa, spicy potato wedges, steamed broccoli"
+          "text": "Miso glazed salmon · wasabi mashed potatoes, Asian salad, ginger & lime vinaigrette"
         },
         {
-          "text": "Chicken piccata · capers & butter sauce, roasted potatoes, zucchini salad"
+          "text": "Fiery coconut beef · basmati rice, garlic naan bread, toasted coconut flakes"
         }
       ],
       "note": "Ericsson's restaurant, open to everyone. Three dishes a day, one usually vegetarian; menu in English."
