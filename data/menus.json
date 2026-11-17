@@ -37,7 +37,7 @@
       "includes": "salad buffet, bread, coffee and cake",
       "kind": "daily",
       "menuDate": "2026-11-17",
-      "readAt": "2026-11-17T05:56:40.878Z",
+      "readAt": "2026-11-17T08:37:33.048Z",
       "items": [
         {
           "text": "Veckans special: Asiatisk Glasnudelsallad – med friterade räkor, chilimajonnäs, sojabönor, morötter, kål, böngroddar, koriander & jordnötter"
@@ -56,13 +56,13 @@
           "text": "Thai: Kooperativets klassika Pad Thai – Wokade risnudlar med på kyckling, ägg med vitkål & morötter i syrlig tamarindsås toppad med, jordnötter, böngroddar & koriander"
         },
         {
-          "text": "Indisk: Fried rice Biryani på vårat vis stekt basmatiris med massa goa grönsaker & kryddor toppat med kyckling serveras med limeyoghurt & garlic Naan"
+          "text": "Indisk: Chicken Vindaloo – kryddstark indisk gryta med kyckling serveras med yoghurt, basmatiris, koriander & smörat naan"
         },
         {
           "text": "Världen: Grekisk oregano- och citronmarinerad kyckling med rostad kulpotatis, tzatziki, tomat- och gurksallad, rostade svarta oliver samt steksky"
         },
         {
-          "text": "Vegetariskt: Fried rice Biryani på vårat vis stekt basmatiris med massa goa grönsaker & kryddor toppat med pulled oumph serveras med limeyoghurt & garlic Naan",
+          "text": "Vegetariskt: Samosa Vindaloo – kryddstark indisk gryta med friterade fyllda potatisknyten serveras med yoghurt, basmatiris, koriander & smörat naan",
           "diet": "veg"
         }
       ],
