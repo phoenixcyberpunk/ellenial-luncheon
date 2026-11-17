@@ -8,8 +8,8 @@
       "lat": 57.7112,
       "lon": 11.94633,
       "kind": "daily",
-      "menuDate": "2026-11-16",
-      "readAt": "2026-11-16T08:41:05.108Z",
+      "menuDate": "2026-11-17",
+      "readAt": "2026-11-17T05:56:40.878Z",
       "items": [
         {
           "text": "Water: Bakad fisk – inlagd morot – rostad morot - cruditéer - skaldjurssås - dillfrön - potatispuré med västerbottensost Baked fish – pickled carrot – roasted carrot - cruditées - shellfish sauce – dill seeds – potato puré with västerbotten cheese"
@@ -36,8 +36,8 @@
       "price": "139 kr",
       "includes": "salad buffet, bread, coffee and cake",
       "kind": "daily",
-      "menuDate": "2026-11-16",
-      "readAt": "2026-11-16T08:41:05.108Z",
+      "menuDate": "2026-11-17",
+      "readAt": "2026-11-17T05:56:40.878Z",
       "items": [
         {
           "text": "Veckans special: Asiatisk Glasnudelsallad – med friterade räkor, chilimajonnäs, sojabönor, morötter, kål, böngroddar, koriander & jordnötter"
@@ -47,22 +47,22 @@
           "diet": "veg"
         },
         {
-          "text": "Kött: Kooperativets klassiska Köttbullemåndag på kalvfärs med potatispuré, pepparsås, rårörda lingon & pressgurka"
+          "text": "Kött: Ingen jä..la schnitzel Idag för idag kör vi Kooperativets hemmagjorda Raggmunk med frasigt Stekfläsk & lingon…Frågor på det ??"
         },
         {
-          "text": "Fisk: Pocherad torsk serveras med potatis& rotselleripure, svampsås samt citron och örter"
+          "text": "Fisk: Bakad kolja serveras med en krämig getostrisotto, brynt smör, kapris&rödbetor toppas med örter och rostad panko"
         },
         {
-          "text": "Thai: Chicken cashew – wokad gårdsgris med grönsaker i ostronsås med cashewnötter serveras med jasminris & koriander"
+          "text": "Thai: Kooperativets klassika Pad Thai – Wokade risnudlar med på kyckling, ägg med vitkål & morötter i syrlig tamarindsås toppad med, jordnötter, böngroddar & koriander"
         },
         {
-          "text": "Indisk: Murgh Masala indisk gryta med kyckling serveras med basmatiris, mangochutney, papadum och koriander"
+          "text": "Indisk: Fried rice Biryani på vårat vis stekt basmatiris med massa goa grönsaker & kryddor toppat med kyckling serveras med limeyoghurt & garlic Naan"
         },
         {
-          "text": "Världen: Brasilianskt kryddad kyckling med vitlöksris, svarta bönor, rostad paprika, lime- och kålsallad samt krämig koriander- och chilidressing."
+          "text": "Världen: Grekisk oregano- och citronmarinerad kyckling med rostad kulpotatis, tzatziki, tomat- och gurksallad, rostade svarta oliver samt steksky"
         },
         {
-          "text": "Vegetarisk: Vegetarisk Quorn cashew – wokad quorn med grönsaker i soyasås med cashewnötter serveras med jasminris & koriander",
+          "text": "Vegetariskt: Fried rice Biryani på vårat vis stekt basmatiris med massa goa grönsaker & kryddor toppat med pulled oumph serveras med limeyoghurt & garlic Naan",
           "diet": "veg"
         }
       ],
@@ -77,14 +77,14 @@
       "price": "139 kr",
       "includes": "salad buffet, sourdough bread, coffee and cake",
       "kind": "daily",
-      "menuDate": "2026-11-16",
-      "readAt": "2026-11-16T10:37:03.799Z",
+      "menuDate": "2026-11-17",
+      "readAt": "2026-11-17T05:56:40.878Z",
       "items": [
         {
-          "text": "Wallenbergare · Gräddsås – Lingon – Ärtor – Potatispuré"
+          "text": "Stekt fläsk · Raggmunk & Lingon eller Kokt potatis & Löksås – Persilja"
         },
         {
-          "text": "Pocherad fångst · Räkor – Gurka – Brynt smör – Dillkokt potatis"
+          "text": "Halstrad kolja · Sandefjordsås – Bacon – Blomkål – Potatispuré – Gräslök"
         },
         {
           "text": "Veckans: Kålpudding · Gräddsås – Lingon – Kokt potatis – Persilja"
@@ -105,11 +105,11 @@
       "price": "195 kr",
       "includes": "salad buffet, coffee, tea and cake",
       "kind": "daily",
-      "menuDate": "2026-11-16",
-      "readAt": "2026-11-16T06:04:08.020Z",
+      "menuDate": "2026-11-17",
+      "readAt": "2026-11-17T05:56:40.878Z",
       "items": [
         {
-          "text": "ostbakad kyckling serveras med sötpotatispuré, chili- & honungsqrosad brysseklkål och svampsky"
+          "text": "panerad kummel serveras med kokt potatis, gröna ärtor, räkröra och citron"
         },
         {
           "text": "gnocchi serveras med tomatsås, zucchini, mozzarella, ricottakräm och grana padano",
@@ -166,7 +166,7 @@
         }
       ],
       "note": "",
-      "problem": "2026-11-16: HTTP 404"
+      "problem": "2026-11-17: HTTP 404"
     },
     {
       "id": "missf",
@@ -238,17 +238,17 @@
       "price": "129 kr",
       "includes": "lunch naan, rice, salad and water",
       "kind": "daily",
-      "menuDate": "2026-11-16",
-      "readAt": "2026-11-16T06:04:08.020Z",
+      "menuDate": "2026-11-17",
+      "readAt": "2026-11-17T05:56:40.878Z",
       "items": [
         {
-          "text": "Tandoori Tikka Boti · kycklingfilé marinerad i lime, yoghurt och tandoori masala, i tandoorisås"
+          "text": "Chicken Shahi Korma · krämig kycklingfilégryta med malda pistage- och cashewnötter"
         },
         {
-          "text": "Lamb Punjabi Curry · lamm i sås av lök, tomat, paprika, ingefära, koriander och grön chili"
+          "text": "Lamb Chana Boti · lamm med kikärtor, tomat, färsk koriander, mynta och lime"
         },
         {
-          "text": "Baingan Mirch Masala · aubergine, paprika, tomat, kryddor och koriander",
+          "text": "Dal Zucchini · lätt kryddad linsgryta med zucchini, vitlök och ingefära",
           "diet": "vegan"
         }
       ],
@@ -390,14 +390,18 @@
       "price": "124 kr",
       "includes": "salad buffet, coffee and soft ice cream",
       "kind": "daily",
-      "menuDate": "2026-11-16",
-      "readAt": "2026-11-16T06:04:08.020Z",
+      "menuDate": "2026-11-17",
+      "readAt": "2026-11-17T05:56:40.878Z",
       "items": [
         {
-          "text": "Aloo gobi · chickpeas, cauliflower, spinach, aromatic rice, chili, Baked haddock, fresh beetroot salsa, Greek style roasted vegetables, green butter sauce"
+          "text": "Honey baked chèvre cheese · summery potato salad, roasted beets & walnuts",
+          "diet": "veg"
         },
         {
-          "text": "Boeuf bourguignon · creamy mashed potaoes, roasted carrots, crispy parsnip"
+          "text": "Baked haddock · creamy lentils and mushrooms, artichoke (jordärtskocka) sauce, herb-roasted potatoes"
+        },
+        {
+          "text": "Feta-stuffed pannbiff · grilled pepper sauce, roasted potato wedges, fine beans"
         }
       ],
       "note": "Ericsson's restaurant, open to everyone. Three dishes a day, one usually vegetarian; menu in English."
