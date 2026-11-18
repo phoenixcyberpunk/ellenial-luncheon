@@ -38,7 +38,7 @@
       "includes": "salad buffet, bread, coffee and cake",
       "kind": "daily",
       "menuDate": "2026-11-18",
-      "readAt": "2026-11-18T05:58:31.260Z",
+      "readAt": "2026-11-18T08:38:59.789Z",
       "items": [
         {
           "text": "Veckans special: Asiatisk Glasnudelsallad – med friterade räkor, chilimajonnäs, sojabönor, morötter, kål, böngroddar, koriander & jordnötter"
@@ -57,7 +57,7 @@
           "text": "Thai: Korean Momofuku Bossam – Nattbakad griskind uppvänd med soyaglace & krossade jordnötter serveras med picklad rättika, jasminris & hjärtblad"
         },
         {
-          "text": "Indisk: Indien dirty fries – friterad kyckling på frasiga pommes kryddade med tandoori, kachumbersallad majonnäs smaksatt med grönchili & mynta samt koriander"
+          "text": "Indisk: Indien dirty fries – friterad kyckling på frasiga pommes kryddade med tandoori, kachumbersallad, chilipickles majonnäs, krossade papadum samt koriander"
         },
         {
           "text": "Världen: Kooperativets lasagne på nötfärs och färska lasangeplattorn serveras med tomatsallad toppad med parmesan och ruccola"
@@ -225,7 +225,8 @@
           "diet": "vegan"
         }
       ],
-      "note": "Menu 4 of 4 this week. Always on: Subzi thali 139 kr (can be made vegan), palak paneer 139 kr, butter chicken, rogan josh and more, 139–165 kr."
+      "note": "",
+      "problem": "2026-11-18: The operation was aborted due to timeout"
     },
     {
       "id": "mimolett",
