@@ -37,7 +37,7 @@
       "includes": "salad buffet, bread, coffee and cake",
       "kind": "daily",
       "menuDate": "2026-11-19",
-      "readAt": "2026-11-19T05:58:35.978Z",
+      "readAt": "2026-11-19T10:00:30.156Z",
       "items": [
         {
           "text": "Veckans special: Asiatisk Glasnudelsallad – med friterade räkor, chilimajonnäs, sojabönor, morötter, kål, böngroddar, koriander & jordnötter"
@@ -47,7 +47,7 @@
           "diet": "veg"
         },
         {
-          "text": "Kött: Kooperativets Vilt Kålpudding på vårat vis toppad med sockerstekt kål, äpplesallad samt steksky, rårörda lingon & potatispure smaksatt med västerbottenost"
+          "text": "Kött: Kooperativets Vilt Kålpudding på vårat vis toppad med sockerstekt kål, äpplesallad samt steksky, rårörda lingon & riktigt god potatispure"
         },
         {
           "text": "Fisk: Västerbottenbakad kolja serveras med gräslöksstompad potatis, skaldjurssås smaksatt med saffran toppas med örtsallad"
@@ -56,18 +56,17 @@
           "text": "Thai: Asiatisk kebabtallrik på vedelad kyckling med jasminris toppad med kålsallad, hosin & soyaglace samt chilimjonnäs och rostade sesam"
         },
         {
-          "text": "Vegetarisk: Kooperativets klassiska Butter Halloumi– indisk gryta med friterad haloumi serveras med rostad mandel, koriander, Naan samt feffakräm 1/5",
+          "text": "Vegetarisk: Kooperativets klassiska Butter Halloumi– indisk gryta med friterad haloumi serveras med rostad mandel, koriander, papadum samt feffakräm 1/5",
           "diet": "veg"
         },
         {
-          "text": "Indisk: Kooperativets klassiska Butter Chicken – indisk gryta med kyckling serveras med rostad mandel, koriander, Naan samt feffakräm chili 1/5"
+          "text": "Indisk: Kooperativets klassiska Butter Chicken – indisk gryta med kyckling serveras med rostad mandel, koriander, papadum samt feffakräm chili 1/5"
         },
         {
           "text": "Världen: Southern Fried Chicken Burger med krispig pankopanerad kyckling, smält ostsås, dillpickles, krispig sallad och cajunmajonnäs. Serveras med lökringar & krispiga pommes."
         }
       ],
-      "note": "",
-      "problem": "2026-11-19: no day sections found"
+      "note": ""
     },
     {
       "id": "bistrot",
@@ -94,8 +93,7 @@
           "text": "Veckans: Kålpudding · Gräddsås – Lingon – Kokt potatis – Persilja"
         }
       ],
-      "note": "",
-      "problem": "2026-11-19: week heading not found"
+      "note": ""
     },
     {
       "id": "cuckoosnest",
@@ -229,8 +227,7 @@
           "diet": "veg"
         }
       ],
-      "note": "",
-      "problem": "2026-11-19: \"Nästa Veckas Meny\" tab not found"
+      "note": "Menu 4 of 4 this week. Always on: Subzi thali 139 kr (can be made vegan), palak paneer 139 kr, butter chicken, rogan josh and more, 139–165 kr."
     },
     {
       "id": "mimolett",
