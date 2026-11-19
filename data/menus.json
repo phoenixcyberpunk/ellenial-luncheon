@@ -8,25 +8,24 @@
       "lat": 57.7112,
       "lon": 11.94633,
       "kind": "daily",
-      "menuDate": "2026-11-17",
-      "readAt": "2026-11-17T05:56:40.878Z",
+      "menuDate": "2026-11-19",
+      "readAt": "2026-11-19T07:08:43.542Z",
       "items": [
         {
-          "text": "Water: Bakad fisk – inlagd morot – rostad morot - cruditéer - skaldjurssås - dillfrön - potatispuré med västerbottensost Baked fish – pickled carrot – roasted carrot - cruditées - shellfish sauce – dill seeds – potato puré with västerbotten cheese"
+          "text": "Fire: Larb på kycklingfärs - jasminris – inlagd chili – syrad gurka - jordnöt - lime – sallad - koriander (vegan option available)"
         },
         {
-          "text": "Fire: Spicy red thai curry – jasminris – bakad ingefärsskyckling - thaigrönt - koriander Spicy red thai curry – jasmine rice – baked ginger chicken – thai greens - coriander"
+          "text": "Water: Curryfisk – gul currysås – kokt kulpotatis – gröna ärtor – picklat grönt äpple – dill"
         },
         {
-          "text": "Metal: Potatisgratäng - rosastekt fläskkotlett - pepparsås - broccoli - körvel & dragon Potato gratin – pink seared pork chop – pepper sauce – broccoli – chervil & tarragon"
+          "text": "Metal: Husmanstorsdag: Klassiska köttbullar - potatispuré - pressgurka – lingon – gräddsås med massa cognac"
         },
         {
-          "text": "Earth: Sticky Millow mince bowl – jasminris – hoisin – gröna bönor - sesamfrön - koriander (veg option) Sticky Millow mince bowl – jasmine rice – hoisin – green beans – sesame seeds – coriander (veg option)",
+          "text": "Earth: Grillad spetskål - rotsellerikräm - sandefjordsås - tångrom - dillolja – rostad potatis – saltrostade fröer",
           "diet": "veg"
         }
       ],
-      "note": "Earth is the vegetarian station.",
-      "problem": "2026-11-19: page read, but no menu for today"
+      "note": "Earth is the vegetarian station."
     },
     {
       "id": "kooperativet",
