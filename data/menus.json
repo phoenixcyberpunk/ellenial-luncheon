@@ -26,7 +26,7 @@
         }
       ],
       "note": "Earth is the vegetarian station.",
-      "problem": "2026-11-18: page read, but no menu for today"
+      "problem": "2026-11-19: page read, but no menu for today"
     },
     {
       "id": "kooperativet",
@@ -37,8 +37,8 @@
       "price": "139 kr",
       "includes": "salad buffet, bread, coffee and cake",
       "kind": "daily",
-      "menuDate": "2026-11-18",
-      "readAt": "2026-11-18T08:38:59.789Z",
+      "menuDate": "2026-11-19",
+      "readAt": "2026-11-19T05:58:35.978Z",
       "items": [
         {
           "text": "Veckans special: Asiatisk Glasnudelsallad – med friterade räkor, chilimajonnäs, sojabönor, morötter, kål, böngroddar, koriander & jordnötter"
@@ -48,23 +48,23 @@
           "diet": "veg"
         },
         {
-          "text": "Kött: Kooperativets Philly cheese Schnitzel på gårdsgris med rostad paprika & brynt lök serveras med varm ostsås smaksatt med jalapeños samt frasiga pommes"
+          "text": "Kött: Kooperativets Vilt Kålpudding på vårat vis toppad med sockerstekt kål, äpplesallad samt steksky, rårörda lingon & potatispure smaksatt med västerbottenost"
         },
         {
-          "text": "Fisk: Stekt panerad sejfile serveras rostad potatis,fetaostkräm smaksatt med jalapeno & mynta toppas med citron och örtsallad"
+          "text": "Fisk: Västerbottenbakad kolja serveras med gräslöksstompad potatis, skaldjurssås smaksatt med saffran toppas med örtsallad"
         },
         {
-          "text": "Thai: Korean Momofuku Bossam – Nattbakad griskind uppvänd med soyaglace & krossade jordnötter serveras med picklad rättika, jasminris & hjärtblad"
+          "text": "Thai: Asiatisk kebabtallrik på vedelad kyckling med jasminris toppad med kålsallad, hosin & soyaglace samt chilimjonnäs och rostade sesam"
         },
         {
-          "text": "Indisk: Indien dirty fries – friterad kyckling på frasiga pommes kryddade med tandoori, kachumbersallad, chilipickles majonnäs, krossade papadum samt koriander"
-        },
-        {
-          "text": "Världen: Kooperativets lasagne på nötfärs och färska lasangeplattorn serveras med tomatsallad toppad med parmesan och ruccola"
-        },
-        {
-          "text": "Vegetarisk: Kooperativets lasagne på svamp, pumpa spenat & keso serveras med tomatsallad toppad med parmesan och ruccola",
+          "text": "Vegetarisk: Kooperativets klassiska Butter Halloumi– indisk gryta med friterad haloumi serveras med rostad mandel, koriander, Naan samt feffakräm 1/5",
           "diet": "veg"
+        },
+        {
+          "text": "Indisk: Kooperativets klassiska Butter Chicken – indisk gryta med kyckling serveras med rostad mandel, koriander, Naan samt feffakräm chili 1/5"
+        },
+        {
+          "text": "Världen: Southern Fried Chicken Burger med krispig pankopanerad kyckling, smält ostsås, dillpickles, krispig sallad och cajunmajonnäs. Serveras med lökringar & krispiga pommes."
         }
       ],
       "note": ""
@@ -78,14 +78,17 @@
       "price": "139 kr",
       "includes": "salad buffet, sourdough bread, coffee and cake",
       "kind": "daily",
-      "menuDate": "2026-11-18",
-      "readAt": "2026-11-18T05:58:31.260Z",
+      "menuDate": "2026-11-19",
+      "readAt": "2026-11-19T05:58:35.978Z",
       "items": [
         {
-          "text": "Boeuf bourguignon · Rökt sidfläsk – Champinjoner – Pärllök – Potatispuré"
+          "text": "Schnitzel · Caesarsallad – Friterad kapris – Rödvinssås – Råstekt potatis"
         },
         {
-          "text": "Halstrad fångst · Sparrisrisotto – Vitvinssås – Rucola"
+          "text": "Chevrébakad kolja · Honungsrostade betor – Vitvinssås – Rostad potatis – Rucola"
+        },
+        {
+          "text": "Torsdags Dessert!"
         },
         {
           "text": "Veckans: Kålpudding · Gräddsås – Lingon – Kokt potatis – Persilja"
@@ -102,11 +105,11 @@
       "price": "195 kr",
       "includes": "salad buffet, coffee, tea and cake",
       "kind": "daily",
-      "menuDate": "2026-11-18",
-      "readAt": "2026-11-18T05:58:31.260Z",
+      "menuDate": "2026-11-19",
+      "readAt": "2026-11-19T05:58:35.978Z",
       "items": [
         {
-          "text": "basilikamarinerad kyckling serveras med rostad potatis, tomatsås och friterad aubergine"
+          "text": "fiskfärsbiffar serveras med kokt potatis, gröna ärtor och dillsås med stenbitsrom"
         },
         {
           "text": "gnocchi serveras med tomatsås, zucchini, mozzarella, ricottakräm och grana padano",
@@ -139,7 +142,7 @@
       "readAt": null,
       "items": [],
       "note": "",
-      "problem": "2026-11-18: HTTP 404"
+      "problem": "2026-11-19: HTTP 404"
     },
     {
       "id": "missf",
@@ -211,18 +214,18 @@
       "price": "129 kr",
       "includes": "lunch naan, rice, salad and water",
       "kind": "daily",
-      "menuDate": "2026-11-18",
-      "readAt": "2026-11-18T05:58:31.260Z",
+      "menuDate": "2026-11-19",
+      "readAt": "2026-11-19T05:58:35.978Z",
       "items": [
         {
-          "text": "Chicken Chettinad · sydindisk kycklinggryta i pepprig kryddblandning med kokos"
+          "text": "Aam Chicken · kycklingfilé i fruktig sås med kokosmjölk, mango, mynta och grön chili"
         },
         {
-          "text": "Keema Matter · kryddstark gryta med lammfärs och gröna ärtor"
+          "text": "Kolhapuri Gosht · het lammrätt med svartpeppar, kokosmjölk och koriander"
         },
         {
-          "text": "Pancharatan Dal · linsgryta på fem sorters linser med spiskummin, vitlök och koriander",
-          "diet": "vegan"
+          "text": "Paneer Khumbi Masala · paneer och svamp i mustig tomat- och löksås",
+          "diet": "veg"
         }
       ],
       "note": "Menu 4 of 4 this week. Always on: Subzi thali 139 kr (can be made vegan), palak paneer 139 kr, butter chicken, rogan josh and more, 139–165 kr."
@@ -363,18 +366,18 @@
       "price": "124 kr",
       "includes": "salad buffet, coffee and soft ice cream",
       "kind": "daily",
-      "menuDate": "2026-11-18",
-      "readAt": "2026-11-18T05:58:31.260Z",
+      "menuDate": "2026-11-19",
+      "readAt": "2026-11-19T05:58:35.978Z",
       "items": [
         {
-          "text": "Spiced broccoli · paneer, peas, garam masala cashews, basmati rice",
+          "text": "Roasted Gnocchi · sage, garlic, blue cheese sauce, lentils",
           "diet": "veg"
         },
         {
-          "text": "Fish & Chips · crushed green peas, lemon, Danish remoulade sauce, pickled onion salad"
+          "text": "Lemon poached haddock · shrimps citrus risotto, green kale, spinach sauce"
         },
         {
-          "text": "Schnitzel Cordon bleu · mashed potatoes, white wine sauce, buttered asparagus"
+          "text": "Indian Butter Chicken · cashew nuts, raisins, naan bread, rice, cilantro salad"
         }
       ],
       "note": "Ericsson's restaurant, open to everyone. Three dishes a day, one usually vegetarian; menu in English."
