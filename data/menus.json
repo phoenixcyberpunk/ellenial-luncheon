@@ -8,8 +8,8 @@
       "lat": 57.7112,
       "lon": 11.94633,
       "kind": "daily",
-      "menuDate": "2026-11-19",
-      "readAt": "2026-11-19T07:08:43.542Z",
+      "menuDate": "2026-11-20",
+      "readAt": "2026-11-20T05:58:44.872Z",
       "items": [
         {
           "text": "Fire: Larb på kycklingfärs - jasminris – inlagd chili – syrad gurka - jordnöt - lime – sallad - koriander (vegan option available)"
@@ -18,7 +18,7 @@
           "text": "Water: Curryfisk – gul currysås – kokt kulpotatis – gröna ärtor – picklat grönt äpple – dill"
         },
         {
-          "text": "Metal: Husmanstorsdag: Klassiska köttbullar - potatispuré - pressgurka – lingon – gräddsås med massa cognac"
+          "text": "Metal: Tortellini fylld med ricotta och spenat – ost och pepparsås - bacon – sallad på babyspenat och grana padano"
         },
         {
           "text": "Earth: Grillad spetskål - rotsellerikräm - sandefjordsås - tångrom - dillolja – rostad potatis – saltrostade fröer",
@@ -66,7 +66,8 @@
           "text": "Världen: Southern Fried Chicken Burger med krispig pankopanerad kyckling, smält ostsås, dillpickles, krispig sallad och cajunmajonnäs. Serveras med lökringar & krispiga pommes."
         }
       ],
-      "note": ""
+      "note": "",
+      "problem": "2026-11-20: no day sections found"
     },
     {
       "id": "bistrot",
@@ -93,7 +94,8 @@
           "text": "Veckans: Kålpudding · Gräddsås – Lingon – Kokt potatis – Persilja"
         }
       ],
-      "note": ""
+      "note": "",
+      "problem": "2026-11-20: week heading not found"
     },
     {
       "id": "cuckoosnest",
@@ -104,11 +106,11 @@
       "price": "195 kr",
       "includes": "salad buffet, coffee, tea and cake",
       "kind": "daily",
-      "menuDate": "2026-11-19",
-      "readAt": "2026-11-19T05:58:35.978Z",
+      "menuDate": "2026-11-20",
+      "readAt": "2026-11-20T05:58:44.872Z",
       "items": [
         {
-          "text": "fiskfärsbiffar serveras med kokt potatis, gröna ärtor och dillsås med stenbitsrom"
+          "text": "stekt rimmat fläsk serveras med kokt potatis, haricot verts och löksås"
         },
         {
           "text": "gnocchi serveras med tomatsås, zucchini, mozzarella, ricottakräm och grana padano",
@@ -141,7 +143,7 @@
       "readAt": null,
       "items": [],
       "note": "",
-      "problem": "2026-11-19: HTTP 404"
+      "problem": "2026-11-20: HTTP 404"
     },
     {
       "id": "missf",
@@ -227,7 +229,8 @@
           "diet": "veg"
         }
       ],
-      "note": "Menu 4 of 4 this week. Always on: Subzi thali 139 kr (can be made vegan), palak paneer 139 kr, butter chicken, rogan josh and more, 139–165 kr."
+      "note": "",
+      "problem": "2026-11-20: \"Nästa Veckas Meny\" tab not found"
     },
     {
       "id": "mimolett",
@@ -365,18 +368,18 @@
       "price": "124 kr",
       "includes": "salad buffet, coffee and soft ice cream",
       "kind": "daily",
-      "menuDate": "2026-11-19",
-      "readAt": "2026-11-19T05:58:35.978Z",
+      "menuDate": "2026-11-20",
+      "readAt": "2026-11-20T05:58:44.872Z",
       "items": [
         {
-          "text": "Roasted Gnocchi · sage, garlic, blue cheese sauce, lentils",
+          "text": "Baked tortellini al forno · Sundried tomato cream sauce, Fried egg",
           "diet": "veg"
         },
         {
-          "text": "Lemon poached haddock · shrimps citrus risotto, green kale, spinach sauce"
+          "text": "Baked Salmon · cucumber & apple relish, crispy butter potatoes, dill sauce"
         },
         {
-          "text": "Indian Butter Chicken · cashew nuts, raisins, naan bread, rice, cilantro salad"
+          "text": "Beef Yakisoba · pickled ginger, sriracha mayo, sesame seeds"
         }
       ],
       "note": "Ericsson's restaurant, open to everyone. Three dishes a day, one usually vegetarian; menu in English."
