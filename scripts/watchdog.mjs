@@ -23,6 +23,9 @@ import { fileURLToPath } from 'node:url';
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const TITLE_PREFIX = 'Lunch alert: ';
 const LATE_FROM = '11:00';
+// Mentioning the owner makes GitHub email her even if she doesn't watch the repo
+// (mentions count as "participating"; a new issue alone only reaches watchers).
+const CC = process.env.GITHUB_REPOSITORY_OWNER ? `\n\ncc @${process.env.GITHUB_REPOSITORY_OWNER}` : '';
 
 export function stockholmNow(now = new Date()) {
   const p = Object.fromEntries(new Intl.DateTimeFormat('en-GB', {
@@ -93,7 +96,7 @@ async function main() {
   if (process.env.WATCHDOG_TEST) {
     const issue = await gh('/issues', { method: 'POST', body: JSON.stringify({
       title: `${TITLE_PREFIX}test (nothing is wrong)`,
-      body: `This is a test of the Lunch watchdog, started by hand at ${now.time}. If you got this as an email, alerts reach you. It closes itself right away.\n\nRun: ${runLink()}`,
+      body: `This is a test of the Lunch watchdog, started by hand at ${now.time}. If you got this as an email, alerts reach you. It closes itself right away.\n\nRun: ${runLink()}${CC}`,
     }) });
     await gh(`/issues/${issue.number}`, { method: 'PATCH', body: JSON.stringify({ state: 'closed' }) });
     console.log(`Test issue #${issue.number} opened and closed.`);
@@ -112,7 +115,7 @@ async function main() {
     const title = `${TITLE_PREFIX}${v.name}`;
     const existing = openByTitle[title];
     if (v.state === 'alert') {
-      const body = `${v.reason}\n\nTheir site: ${v.url}\nChecked ${now.date} at ${now.time} (Stockholm). Run: ${runLink()}\n\nThe card keeps showing the last menu the reader had, with its date. This issue closes itself when the place reads fine again.`;
+      const body = `${v.reason}\n\nTheir site: ${v.url}\nChecked ${now.date} at ${now.time} (Stockholm). Run: ${runLink()}\n\nThe card keeps showing the last menu the reader had, with its date. This issue closes itself when the place reads fine again.${CC}`;
       if (dry) { console.log(`[dry] ${existing ? 'comment on' : 'open'} "${title}": ${v.reason}`); continue; }
       if (!existing) {
         const issue = await gh('/issues', { method: 'POST', body: JSON.stringify({ title, body }) });
