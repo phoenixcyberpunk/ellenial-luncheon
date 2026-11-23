@@ -1,0 +1,16 @@
+# Cloudflare Worker: backup timer for the menu reader. See README.md in this folder.
+name = "ellenial-lunch-backup-timer"
+main = "worker.js"
+compatibility_date = "2026-11-01"
+
+# No public address: this Worker only runs on its timer.
+workers_dev = false
+preview_urls = false
+
+[triggers]
+# UTC. Weekdays at :20 and :50, 04:20–10:50 UTC. The Worker itself only acts
+# 06:15–11:55 Stockholm time, so this covers both winter and summer time.
+crons = ["20,50 4-10 * * 1-5"]
+
+[observability]
+enabled = true
