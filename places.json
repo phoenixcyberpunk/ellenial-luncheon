@@ -54,7 +54,8 @@
     {
       "id": "districtone",
       "name": "District One",
-      "url": "https://www.districtone.se/lunch.html",
+      "url": "https://districtone.se/#lunch",
+      "source": "https://docs.google.com/spreadsheets/d/1Lu7uxtjt2bhSZ5eteO5kNKEpDb3MKcJwmvStaB631xA/gviz/tq?tqx=out:csv",
       "lat": 57.70969,
       "lon": 11.94277,
       "reader": "districtone",

@@ -99,6 +99,26 @@ function htmlToLines(html) {
 
 const clean = (s) => s.replace(/\s+/g, ' ').replace(/\s+([,.])/g, '$1').trim();
 
+// Minimal CSV reader (quoted fields, doubled quotes, newlines inside quotes).
+function parseCsv(text) {
+  const rows = []; let row = []; let field = ''; let q = false;
+  for (let i = 0; i < text.length; i++) {
+    const c = text[i];
+    if (q) {
+      if (c === '"' && text[i + 1] === '"') { field += '"'; i++; }
+      else if (c === '"') q = false;
+      else field += c;
+    } else if (c === '"') q = true;
+    else if (c === ',') { row.push(field); field = ''; }
+    else if (c === '\n' || c === '\r') {
+      if (c === '\r' && text[i + 1] === '\n') i++;
+      row.push(field); rows.push(row); row = []; field = '';
+    } else field += c;
+  }
+  if (field || row.length) { row.push(field); rows.push(row); }
+  return rows;
+}
+
 const VEG_WORDS = /^veg|vegetar|vegan/i;
 
 // ---------- readers: one per site ----------
@@ -234,31 +254,24 @@ const readers = {
     return { menuDate: dateInWeek(today, week, dow), items };
   },
 
-  // District One: "Vecka 44", then per day a dotted line, the day name, and pairs of
-  // category ("Fisk", "Vegetarisk Poke bowl") + dish text ending with a full stop.
-  districtone(html, today) {
-    const lines = htmlToLines(html);
-    const start = lines.findIndex((l) => /^vecka\s*\d+/i.test(l));
-    if (start < 0) throw new Error('week heading not found');
-    const week = Number(lines[start].match(/\d+/)[0]);
+  // District One (new site, Nov 2026): the lunch menu lives in a public Google Sheet that
+  // their front page reads (lunch.js). We read the same sheet as CSV (places.json `source`).
+  // Columns: Dag, Kategori, Rätt (SV), then EN/VI. A row "Vecka 48" gives the week;
+  // "Hela veckan" rows apply every day. The Caesar salad is the same every day, so skipped.
+  districtone(csv, today) {
+    const rows = parseCsv(csv).map((r) => r.map((c) => clean(String(c || ''))));
+    const weekRow = rows.find((r) => /^vecka\s*\d+/i.test(r[0] || ''));
+    if (!weekRow) throw new Error('week row not found in the menu sheet');
+    const week = Number(weekRow[0].match(/\d+/)[0]);
     const wanted = weekday(today);
-    const dayAt = lines.findIndex((l, i) => i > start && l.toLowerCase() === DAYS_SV[wanted]);
-    if (dayAt < 0) return { menuDate: null, items: [] };
     const items = [];
-    let category = null;
-    let dish = [];
-    for (const l of lines.slice(dayAt + 1)) {
-      if (/^\.{5,}$/.test(l) || DAYS_SV.includes(l.toLowerCase()) || /^(hem|lunch)$/i.test(l)) break;
-      if (category === null) { category = l; continue; }
-      dish.push(l.replace(/^-\s*/, ''));
-      if (/[.!]$/.test(l)) {
-        const text = clean(dish.join(' '));
-        if (!/^sallad$/i.test(category)) { // same Caesar salad every day
-          items.push({ text: `${category}: ${text}`, diet: VEG_WORDS.test(category) ? 'veg' : undefined });
-        }
-        category = null; dish = [];
-      }
+    for (const [day, category, dish] of rows) {
+      const d = (day || '').toLowerCase();
+      if (!dish || (d !== DAYS_SV[wanted] && d !== 'hela veckan')) continue;
+      if (/^sallad$/i.test(category)) continue;
+      items.push({ text: category ? `${category}: ${dish}` : dish, diet: VEG_WORDS.test(category) ? 'veg' : undefined });
     }
+    if (!items.length) return { menuDate: null, items: [] };
     return { menuDate: dateInWeek(today, week, wanted), items };
   },
 
@@ -374,7 +387,8 @@ function parseJsonAt(s, from) {
 async function getPage(place) {
   if (FIXTURES) return readFile(path.join(FIXTURES, `${place.id}.html`), 'utf8');
   return withRetries(async () => {
-    const res = await fetch(place.url, {
+    // `source` = where the menu data lives, when that isn't the page people visit (`url`).
+    const res = await fetch(place.source || place.url, {
       headers: { 'User-Agent': USER_AGENT, 'Accept-Language': 'sv-SE,sv;q=0.9,en;q=0.5' },
       signal: AbortSignal.timeout(25000),
     });
