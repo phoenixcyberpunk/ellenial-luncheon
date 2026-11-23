@@ -37,13 +37,13 @@
       "includes": "salad buffet, bread, coffee and cake",
       "kind": "daily",
       "menuDate": "2026-11-23",
-      "readAt": "2026-11-23T09:43:20.302Z",
+      "readAt": "2026-11-23T09:56:30.454Z",
       "items": [
         {
-          "text": "Veckans special: French Style Caramelized Onion and Chili Ramen – Udonnudlar i sötsyrlig buljong smaksatt med karamelliserad lök, toppas med pak choi, sticklök, böngroddar, 63graders ägg, chili & misoolja samt nattbakad gårdsgris"
+          "text": "Veckans special: French Style Caramelized Onion and Chili Ramen – Udonnudlar i sötsyrlig buljong smaksatt med karamelliserad lök, toppas med pak choi, sticklök, böngroddar, 67graders ägg, chili & misoolja samt nattbakad gårdsgris"
         },
         {
-          "text": "Veg: French Style Caramelized Onion and Chili Ramen – Udonnudlar i sötsyrlig buljong smaksatt med karamelliserad lök, toppas med pak choi, sticklök, böngroddar, 63graders ägg, chili & misoolja samt friterad tofu",
+          "text": "Veg: French Style Caramelized Onion and Chili Ramen – Udonnudlar i sötsyrlig buljong smaksatt med karamelliserad lök, toppas med pak choi, sticklök, böngroddar, 67graders ägg, chili & misoolja samt friterad tofu",
           "diet": "veg"
         },
         {
@@ -94,8 +94,7 @@
           "diet": "veg"
         }
       ],
-      "note": "",
-      "problem": "2026-11-23: page read, but no menu for today"
+      "note": ""
     },
     {
       "id": "cuckoosnest",
