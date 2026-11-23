@@ -10,6 +10,11 @@ on:
   schedule:
     - cron: '7,37 5-10 * * 1-5'
   workflow_dispatch:
+    inputs:
+      watchdog_test:
+        description: 'Send a test alert (opens and closes one issue) instead of the normal check'
+        type: boolean
+        default: false
   push:
     branches: [main]
     paths:
@@ -18,6 +23,7 @@ on:
 
 permissions:
   contents: write
+  issues: write   # the watchdog opens/closes "Lunch alert" issues, which GitHub emails to Ellen
 
 concurrency:
   group: read-menus
@@ -33,6 +39,14 @@ jobs:
           node-version: 20
       - name: Read menus
         run: node scripts/read-menus.mjs
+      - name: Watchdog (email via a GitHub issue when a site seems to have changed)
+        continue-on-error: true   # alerts must never stop menus from being saved
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          WATCHDOG_TEST: ${{ inputs.watchdog_test && '1' || '' }}
+        run: |
+          git show HEAD:data/menus.json > "$RUNNER_TEMP/prev-menus.json" 2>/dev/null || echo '{"places":[]}' > "$RUNNER_TEMP/prev-menus.json"
+          node scripts/watchdog.mjs "$RUNNER_TEMP/prev-menus.json"
       - name: Save menus if they changed
         run: |
           if [ -z "$(git status --porcelain -- data/menus.json data/menu-images)" ]; then
