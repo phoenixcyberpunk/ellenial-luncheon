@@ -77,25 +77,24 @@
       "price": "139 kr",
       "includes": "salad buffet, sourdough bread, coffee and cake",
       "kind": "daily",
-      "menuDate": "2026-11-27",
-      "readAt": "2026-11-20T15:13:56.432Z",
+      "menuDate": "2026-11-23",
+      "readAt": "2026-11-23T09:50:19.000Z",
       "items": [
         {
-          "text": "Nötfärsbiff · Café de parissås – Potatisgratäng – Bakad tomat"
+          "text": "Pannbiff · Stekt lök – Saltgurka – Gräddsås – Koktpotatis – Persilja"
         },
         {
-          "text": "Havets Wallenbergare · Brynt smör – Pepparrot – Ärtor – Potatispuré"
+          "text": "Pocherad fångst · Syrad krondillsås – Potatisstomp – Smörslungade morötter"
         },
         {
           "text": "Veckans: kycklingpasta · Dragonsås – Portabello – Champinjoner – Grana padano – Rucola"
         },
         {
-          "text": "Pannoumiburgare",
+          "text": "Panerad fetaost · Tzatziki – Ratatouille – Rostad potatis – Rucola",
           "diet": "veg"
         }
       ],
-      "note": "",
-      "problem": "2026-11-23: page read, but no menu for today"
+      "note": ""
     },
     {
       "id": "cuckoosnest",
