@@ -438,6 +438,8 @@ async function main() {
   const now = new Date().toISOString();
   let failures = 0;
 
+  // A last menu worth keeping: has dishes, is from today or the past week, not from the future.
+  const recent = (p) => !!(p && p.items && p.items.length && p.menuDate && p.menuDate <= today && daysBetween(p.menuDate, today) <= 7);
   const places = [];
   for (const cfg of config.places) {
     const base = { id: cfg.id, name: cfg.name, url: cfg.url, lat: cfg.lat ?? null, lon: cfg.lon ?? null };
@@ -461,8 +463,12 @@ async function main() {
       // (not posted yet, or a redesign broke the reader), keep the last menu we had;
       // the page labels it with its own date ("From Thursday · may have changed").
       // Menus older than a week are dropped rather than shown.
-      if (!cleanItems.length || !menuDate || menuDate < (prev && prev.menuDate || '') || daysBetween(menuDate, today) > 7) {
-        const keep = prev && prev.items && prev.items.length && daysBetween(prev.menuDate, today) <= 7;
+      // A menu dated after today is next week's, posted early (Bistrot on Friday afternoons,
+      // 20 Nov 2026): never store it as today's. A kept menu from the future is ignored too,
+      // so it can't block today's real menu (it did on Monday 23 Nov).
+      const prevDate = prev && prev.menuDate && prev.menuDate <= today ? prev.menuDate : '';
+      if (!cleanItems.length || !menuDate || menuDate > today || menuDate < prevDate || daysBetween(menuDate, today) > 7) {
+        const keep = recent(prev);
         places.push(keep ? { ...prev, ...base, note: cfg.note || '' } : { ...base, kind: 'daily', menuDate: null, readAt: null, items: [], note: cfg.note || '' });
         console.log(`${cfg.id}: nothing new for ${today}; ${keep ? `keeping the menu from ${prev.menuDate}` : 'no recent menu to keep'}`);
         places[places.length - 1].problem = `${today}: page read, but no menu for today`;
@@ -480,7 +486,7 @@ async function main() {
       console.log(`${cfg.id}: ${cleanItems.length} dishes for ${menuDate || 'no date'}${same ? ' (unchanged)' : ''}`);
     } catch (err) {
       failures++;
-      const keep = prev && prev.items && prev.items.length && daysBetween(prev.menuDate, today) <= 7;
+      const keep = recent(prev);
       console.warn(`${cfg.id}: could not read (${err.message}); ${keep ? 'keeping the last menu we had' : 'no recent menu to keep'}`);
       places.push(keep ? { ...prev, ...base, note: cfg.note || '' } : { ...base, kind: 'daily', menuDate: null, readAt: null, items: [], note: cfg.note || '' });
       // Kept in the data file so a failing reader can be spotted without the run logs.
