@@ -132,17 +132,40 @@
     {
       "id": "districtone",
       "name": "District One",
-      "url": "https://www.districtone.se/lunch.html",
+      "url": "https://districtone.se/#lunch",
       "lat": 57.70969,
       "lon": 11.94277,
       "price": "135 kr",
       "includes": "homemade bread, salad buffet, coffee and cake",
       "kind": "daily",
-      "menuDate": null,
-      "readAt": null,
-      "items": [],
-      "note": "",
-      "problem": "2026-11-23: HTTP 404"
+      "menuDate": "2026-11-23",
+      "readAt": "2026-11-23T10:05:38.000Z",
+      "items": [
+        {
+          "text": "Fisk: Pocherad torskfile med ägg och persiljesås, serveras med gröna ärtor och kokt potatis."
+        },
+        {
+          "text": "Kött: Köttbullar på kalvfärs med gräddsås och rårörda lingon, serveras med pressgurka och potatismos."
+        },
+        {
+          "text": "Fried chicken: Friterad kyckling med chilimajo och jordnötssås, serveras med morot- och vitkålssallad samt jasminris."
+        },
+        {
+          "text": "Vegetarisk: Friterad dumplings med chili mayo och jordnötssås, serveras med morot och vitkålssallad samt jasminris.",
+          "diet": "veg"
+        },
+        {
+          "text": "Poke bowl: Ponzu marinerad lax eller räkor med sesamfrön, sushiris, romansallad, sojabönor, rädisa, picklad rödlök, mango och avokado, serveras med chili majo och koriander."
+        },
+        {
+          "text": "Veg poke bowl: Tofu med sesamfrön, sushiris, romansallad, sojabönor, rädisa, picklad rödlök, mango och avokado, serveras med chili majo och koriander.",
+          "diet": "veg"
+        },
+        {
+          "text": "Phở: Vietnamesisk nudelsoppa med biff, koriander, gräslök, lök, böngroddar, chili, thai basilika, serveras med lime, hoisinsås och srirachasås."
+        }
+      ],
+      "note": ""
     },
     {
       "id": "missf",
