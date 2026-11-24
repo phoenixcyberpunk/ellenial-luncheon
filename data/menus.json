@@ -37,17 +37,17 @@
       "includes": "salad buffet, bread, coffee and cake",
       "kind": "daily",
       "menuDate": "2026-11-24",
-      "readAt": "2026-11-24T05:20:18.840Z",
+      "readAt": "2026-11-24T09:20:14.394Z",
       "items": [
         {
-          "text": "Veckans special: French Style Caramelized Onion and Chili Ramen – Udonnudlar i sötsyrlig buljong smaksatt med karamelliserad lök, toppas med pak choi, sticklök, böngroddar, 63graders ägg, chili & misoolja samt nattbakad gårdsgris"
+          "text": "Veckans special: French Style Caramelized Onion and Chili Ramen – Udonnudlar i sötsyrlig buljong smaksatt med karamelliserad lök, toppas med pak choi, sticklök, böngroddar, 67graders ägg, chili & misoolja, nattbakad gårdsgris & koriander"
         },
         {
-          "text": "Veg: French Style Caramelized Onion and Chili Ramen – Udonnudlar i sötsyrlig buljong smaksatt med karamelliserad lök, toppas med pak choi, sticklök, böngroddar, 63graders ägg, chili & misoolja samt friterad tofu",
+          "text": "Veg: French Style Caramelized Onion and Chili Ramen – Udonnudlar i sötsyrlig buljong smaksatt med karamelliserad lök, toppas med pak choi, sticklök, böngroddar, 67graders ägg, chili & misoolja, friterad tofu & koriander",
           "diet": "veg"
         },
         {
-          "text": "Kött: Kooperativets Jägar Schnitzel på gårdsgris med krämig svampstuvning på kantareller & champinjoner toppad med lingon & grönkål samt rostade färskpotatis"
+          "text": "Kött: Kooperativets Jägar Schnitzel på gårdsgris med krämig svampstuvning, lingon & grönkål samt rostade färskpotatis"
         },
         {
           "text": "Fisk: Bakad kolja toppad med tapenad serveras med en krämig risotto, ruccola, färskriven grana padano och rostade solrosfrön"
@@ -56,13 +56,13 @@
           "text": "Thai: Orange Chicken – Friterad kyckling i sötsyrlig apelsinsås toppad med sticklök & koriander serveras med jasminris"
         },
         {
-          "text": "Indisk: Fried rice Biryani på vårat vis stekt basmatiris med massa goa grönsaker & kryddor toppat med kyckling serveras med limeyoghurt & garlic Naan"
+          "text": "Indisk: Fried rice Biryani på vårat vis stekt basmatiris med massa goa grönsaker & kryddor toppat med kyckling serveras med limeyoghurt & papadum"
         },
         {
           "text": "Världen: Bookmaker toast på vårt vis med 16h rökt högrev på surdegsbröd med dijon & pepparrotsmajonnäs, krispigsallad toppad med Bea serveras med frasiga pommes"
         },
         {
-          "text": "Vegetariskt: Fried rice Biryani på vårat vis stekt basmatiris med massa goa grönsaker & kryddor toppat med pulled oumph serveras med limeyoghurt & garlic Naan",
+          "text": "Vegetariskt: Fried rice Biryani på vårat vis stekt basmatiris med massa goa grönsaker & kryddor toppat med pulled oumph serveras med limeyoghurt & papadum",
           "diet": "veg"
         }
       ],
