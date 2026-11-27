@@ -8,20 +8,20 @@
       "lat": 57.7112,
       "lon": 11.94633,
       "kind": "daily",
-      "menuDate": "2026-11-26",
-      "readAt": "2026-11-26T05:20:12.837Z",
+      "menuDate": "2026-11-27",
+      "readAt": "2026-11-27T14:51:24.238Z",
       "items": [
         {
-          "text": "Fire: Spicy chicken noodles – shanxinudlar – crispy chili oil – wokade grönsaker - sojaglaserat kycklinglår"
+          "text": "Fire: Open faced chicken burrito – rice and beans – spicy pulled chicken – mango & habanero salsa - ostkräm - syrad lök - koriander – sallad"
         },
         {
-          "text": "Water: Sotad lax - kokt kulpotatis - hummersås - dragonolja – endive – inlagd jalapeno - örtsallad"
+          "text": "Water: Gräddig räkpasta - vitlöksstekta vannameiräkor - citronzest – chili – persilja – pangratatto"
         },
         {
-          "text": "Metal: Husmanstorsdag: Bouef bourguignon på högrev – potatispure - rödvinssås - bacon - syltlök - champinjoner – pommes alumettes"
+          "text": "Metal: Bouef bourguignon på högrev – potatispure - rödvinssås - bacon - syltlök - champinjoner – pommes alumettes"
         },
         {
-          "text": "Earth: Matvete \"taboulleh\" – grillad halloumi - kikärtscréme - fetaost - granatäpple - babyspenat",
+          "text": "Earth: Matvete \"taboulleh\" – grillad halloumi - kikärtscréme - fetaost - granatäpple - babyspenat (veganskt alternativ finns här)",
           "diet": "veg"
         }
       ],
@@ -36,8 +36,8 @@
       "price": "139 kr",
       "includes": "salad buffet, bread, coffee and cake",
       "kind": "daily",
-      "menuDate": "2026-11-26",
-      "readAt": "2026-11-26T08:20:13.359Z",
+      "menuDate": "2026-11-27",
+      "readAt": "2026-11-27T14:51:24.238Z",
       "items": [
         {
           "text": "Veckans special: French Style Caramelized Onion and Chili Ramen – Udonnudlar i sötsyrlig buljong smaksatt med karamelliserad lök, toppas med pak choi, sticklök, böngroddar, 67graders ägg, chili & misoolja, nattbakad gårdsgris & koriander"
@@ -47,23 +47,23 @@
           "diet": "veg"
         },
         {
-          "text": "Kött: Nattbakad kalvhögrev Boeuf Bourguignon med ragu på brynt svamp, brässerad lök & bacon serveras med potatispuré"
+          "text": "Kött: Fredagsgrillen – gårdsgris, potatisgratäng, rödvinssås & bea så klart!!"
         },
         {
-          "text": "Fisk: Bakad kolja serveras med västerbottendushess, skaldjurssås och gröna ärtor"
+          "text": "Fisk: Vinpocherad torsk serveras med potatispuré, vitvinssås, gröna ärtor samt citron och örtsallad"
         },
         {
-          "text": "Thai: Bulgogi på wokad kyckling med svamp & brynt lök i den klassiska koreanska soyasåsen smaksatt med päron och ingefära serveras med jasminris & hjärtsallad"
+          "text": "Thai: Friterade kyckling Dumplings i krämig gröncurry smaksatt med limeblad serveras med grillad pak chuy och jasminris & koriander"
         },
         {
-          "text": "Vegetarisk: Kooperativets klassiska Butter Haloumi– indisk gryta med friterad haloumi serveras med rostad mandel, koriander, Naan samt feffakräm 1/5",
+          "text": "Vegetarisk: Friterade vegetariska Dumplings i krämig gröncurry smaksatt med limeblad serveras med grillad pak chuy och jasminris & koriander",
           "diet": "veg"
         },
         {
-          "text": "Indisk: Kooperativets klassiska Butter Chicken – indisk gryta med kyckling serveras med rostad mandel, koriander, Naan samt feffakräm chili 1/5"
+          "text": "Indisk: Indisk Chicken Tikka Masala– Indisk currygryta med kyckling med rostad mandel serveras med pickelsmajonnäs, basmatiris & koriander och Naan"
         },
         {
-          "text": "Världen: Kooperativets BIG MAC burger högrevsburgare toppad med cheddarost i lyxigt briochebröd, burgardressing, finstrimlad isbergssallad & tärnad lök serveras med frasiga pommes"
+          "text": "Världen: En favorit i repris – American Dirty Fries – Frasiga pommes smaksatt med jävligt god Grillkrydda toppad med nattbakad högrev, varm ostsås smaksatt med jalapeños samt Pico de Gallo, rostadlök & koriander"
         }
       ],
       "note": ""
@@ -77,20 +77,21 @@
       "price": "139 kr",
       "includes": "salad buffet, sourdough bread, coffee and cake",
       "kind": "daily",
-      "menuDate": "2026-11-26",
-      "readAt": "2026-11-26T05:20:12.837Z",
+      "menuDate": "2026-11-27",
+      "readAt": "2026-11-27T14:51:24.238Z",
       "items": [
         {
-          "text": "Korean fried Chicken · Srirachamayo – Kålsallad – Sesamfrön – Jasminris – Koriander"
+          "text": "Nötfärsbiff · Café de parissås – Potatisgratäng – Bakad tomat"
         },
         {
-          "text": "Pankostekt fångst · Skagenröra – Potatispuré – Löksallad – Citron"
-        },
-        {
-          "text": "Torsdags Dessert!"
+          "text": "Havets Wallenbergare · Brynt smör – Pepparrot – Ärtor – Potatispuré"
         },
         {
           "text": "Veckans: kycklingpasta · Dragonsås – Portabello – Champinjoner – Grana padano – Rucola"
+        },
+        {
+          "text": "Pannoumiburgare",
+          "diet": "veg"
         }
       ],
       "note": ""
@@ -104,11 +105,11 @@
       "price": "195 kr",
       "includes": "salad buffet, coffee, tea and cake",
       "kind": "daily",
-      "menuDate": "2026-11-26",
-      "readAt": "2026-11-26T05:20:12.837Z",
+      "menuDate": "2026-11-27",
+      "readAt": "2026-11-27T14:51:24.238Z",
       "items": [
         {
-          "text": "Saffransmarinerad sej serveras med rotselleripuré, bakad purjolök, pepparrot och hummersås"
+          "text": "biffgryta serveras med svamp, kanelrostade morötter och saffranskräm"
         },
         {
           "text": "tofuwok serveras med ris, rostade mandelflakes och srirachadressing",
@@ -137,20 +138,20 @@
       "price": "135 kr",
       "includes": "homemade bread, salad buffet, coffee and cake",
       "kind": "daily",
-      "menuDate": "2026-11-26",
-      "readAt": "2026-11-26T05:20:12.837Z",
+      "menuDate": "2026-11-27",
+      "readAt": "2026-11-27T14:51:24.238Z",
       "items": [
         {
-          "text": "Fisk: Pocherad torskfile med sanderfjordssås och rostade rotfrukter, serveras med potatismos."
+          "text": "Fisk: Skaldjuröverbakad torskfile med vitvinssås och kokt broccoli, serveras med potatismos."
         },
         {
-          "text": "Kött: Husets lasagne med tomat och rödlökssallad, toppad med parmesanost."
+          "text": "Kött: Ostfylld schnitzel med timjansky och gröna ärtor, rostad potatis samt klassiska tillbehör."
         },
         {
-          "text": "Asiatisk: Yakiniki - Tunnskivad entrecote med grönsaker och japansk kålsallad, serveras med ägg och jasminris."
+          "text": "Pad Thai: Wokade risnudlar med kyckling, grönsaker, chilli, lime, jordnötter och ägg."
         },
         {
-          "text": "Vegetarisk: Tofu med grönsaker och japansk kålsallad, serveras med ägg och jasminris.",
+          "text": "Vegetarisk: Friterad dumplings med röd curry i kokosmjölk med paprika, lök, bambuskott och limeblad serveras med jasminris.",
           "diet": "veg"
         },
         {
@@ -236,17 +237,17 @@
       "price": "129 kr",
       "includes": "lunch naan, rice, salad and water",
       "kind": "daily",
-      "menuDate": "2026-11-26",
-      "readAt": "2026-11-26T05:20:12.837Z",
+      "menuDate": "2026-11-27",
+      "readAt": "2026-11-27T14:51:24.238Z",
       "items": [
         {
-          "text": "Aam Chicken · kycklingfilé i fruktig sås med kokosmjölk, mango, mynta och grön chili"
+          "text": "Malvani Chicken · kycklingfilé i sås av kokoskräm, röd chili och Malvani masala"
         },
         {
-          "text": "Kolhapuri Gosht · het lammrätt med svartpeppar, kokosmjölk och koriander"
+          "text": "Fish Tikka · marinerad, grillad laxfilé i husets kryddor, med tandoorisås"
         },
         {
-          "text": "Paneer Khumbi Masala · paneer och svamp i mustig tomat- och löksås",
+          "text": "Mix Veg Korma · säsongens grönsaker i krämig kormasås med kokosmjölk och nötter",
           "diet": "veg"
         }
       ],
@@ -388,14 +389,18 @@
       "price": "124 kr",
       "includes": "salad buffet, coffee and soft ice cream",
       "kind": "daily",
-      "menuDate": "2026-11-26",
-      "readAt": "2026-11-26T05:20:12.837Z",
+      "menuDate": "2026-11-27",
+      "readAt": "2026-11-27T14:51:24.238Z",
       "items": [
         {
-          "text": "Pork Panang · roasted peanuts, paprika, fine beans, fried rice"
+          "text": "Vegetarian ramen · dumplings, boiled egg, pak choi, noodles",
+          "diet": "veg"
         },
         {
-          "text": "Brown butter-poached Haddock · celeriac puree, fried kale, caper crumbs"
+          "text": "Coq au vin chicken fillet · potato puree, butter tossed haricots verts"
+        },
+        {
+          "text": "Salmon · savoy cabbage & bean creamy colcannon, browned butter"
         }
       ],
       "note": "Ericsson's restaurant, open to everyone. Three dishes a day, one usually vegetarian; menu in English."
